@@ -5,13 +5,13 @@ from __future__ import unicode_literals
 PLUGIN_PATH = "pelican-plugins"
 
 AUTHOR = u"Matt O'Brien"
-SITENAME = u"Matt O'Brien (is) Me"
+SITENAME = u"Matt O'Brien (dot) Me"
 SITEURL = ''
 
 
 PLUGINS = ["render_math"]
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
 
