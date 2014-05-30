@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (is) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/math.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-05-29T00:00:00+02:00</updated><entry><title>Math</title><link href="http://mattobrien.me/math.html" rel="alternate"></link><updated>2014-05-29T00:00:00+02:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-29:math.html</id><summary type="html">&lt;p&gt;Hello world!&lt;/p&gt;
-&lt;p&gt;$$\textbf{Let X be a closed subset of [0,1] such that m(X) = 1.  Prove that X = [0, 1].}
-\newline
-\newline
+&lt;p&gt;$$Let $X$ be a closed subset of [0,1] such that m(X) = 1.  Prove that X = [0, 1].
 Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there a 3 cases for which $X=[0, 1]$.
 \newline
 Case 1:  $a &amp;gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.
@@ -10,7 +8,7 @@ Case 1:  $a &amp;gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\ba
 Case 2:  $b &amp;gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.
 \newline
 Case 3:  $a = 0, and b = 0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]\textbackslash X = 0$ which implies that $X$ must be equal to $[0, 1]$.
-\end{comment}$$&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+$$&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
