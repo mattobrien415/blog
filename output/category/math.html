@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Matt O'Brien (is) Me - Matt O'Brien</title>
+        <title>Matt O'Brien (is) Me - math</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -15,59 +15,13 @@
                 <h1><a href="/">Matt O'Brien (is) Me </a></h1>
                 <nav><ul>
                     <li><a href="/category/content.html">content</a></li>
-                    <li><a href="/category/math.html">math</a></li>
+                    <li class="active"><a href="/category/math.html">math</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/hello.html">Hello!</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2014-05-29T00:00:00">
-                Thu 29 May 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="/author/matt-obrien.html">Matt O'Brien</a>
-        </address>
-<p>In <a href="/category/content.html">content</a>. </p>
-<p>tags: <a href="/tag/misc.html">misc</a></p>
-</footer><!-- /.post-info --><p>Hello world!</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/hello-again.html" rel="bookmark"
-                           title="Permalink to Hello again!">Hello again!</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-05-29T00:00:00">
-                Thu 29 May 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="/author/matt-obrien.html">Matt O'Brien</a>
-        </address>
-<p>In <a href="/category/content.html">content</a>. </p>
-<p>tags: <a href="/tag/misc.html">misc</a></p>
-</footer><!-- /.post-info -->                <p>Testing out the features of the Pelican blog framework</p>
-                <a class="readmore" href="/hello-again.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/math.html" rel="bookmark"
-                           title="Permalink to Math">Math</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="/math.html">Math</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2014-05-29T00:00:00">
                 Thu 29 May 2014
@@ -78,14 +32,24 @@
         </address>
 <p>In <a href="/category/math.html">math</a>. </p>
 <p>tags: <a href="/tag/math.html">math</a></p>
-</footer><!-- /.post-info -->                <p>An oldie but goodie</p>
-                <a class="readmore" href="/math.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
+</footer><!-- /.post-info --><p>Hello world!</p>
+<p>\begin{comment}
+\textbf{Let X be a closed subset of [0,1] such that m(X) = 1.  Prove that X = [0, 1].}
+\newline
+\newline
+Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there a 3 cases for which $X=[0, 1]$.
+\newline
+Case 1:  $a &gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.
+\newline
+Case 2:  $b &gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.
+\newline
+Case 3:  $a = 0, and b = 0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]\textbackslash X = 0$ which implies that $X$ must be equal to $[0, 1]$.
+\end{comment}</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
