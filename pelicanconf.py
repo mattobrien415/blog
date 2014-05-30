@@ -2,9 +2,14 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+PLUGIN_PATH = "pelican-plugins"
+
 AUTHOR = u"Matt O'Brien"
 SITENAME = u"Matt O'Brien (is) Me"
 SITEURL = ''
+
+
+PLUGINS = ["render_math"]
 
 TIMEZONE = 'Europe/Paris'
 
@@ -16,10 +21,8 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+LINKS =  (('Spencer Boucher', 'http://spencerboucher.com/'),
+          ('Trevor Stephens', 'http://trevorstephens.com/'),)
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),
@@ -36,6 +39,6 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
 }
 
-
+TWITTER_USERNAME = 'digitizerSF'
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
