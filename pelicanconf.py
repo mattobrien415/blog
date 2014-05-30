@@ -25,9 +25,13 @@ LINKS =  (('Spencer Boucher', 'http://spencerboucher.com/'),
           ('Trevor Stephens', 'http://trevorstephens.com/'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
 
+TWITTER_USERNAME = 'digitizerSF'
+TWITTER_WIDGET_ID = '472464593332097024'
+
+SOCIAL = (('GitHub', 'https://github.com/mobbSF'),
+          ('LinkedIn', 'http://www.linkedin.com/pub/matt-o-brien/5/833/91b/'),
+          ('RSS', SITEURL + 'feeds/all.atom.xml'))
 DEFAULT_PAGINATION = 10
 
 
@@ -39,6 +43,5 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
 }
 
-TWITTER_USERNAME = 'digitizerSF'
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
