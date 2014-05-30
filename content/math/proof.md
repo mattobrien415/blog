@@ -1,7 +1,7 @@
 Title:  Math
 Date: 2014-05-29
 Tags: math
-Summary: An oldie but goodie
+Summary: Lebesque measure #1
 Here is a fun proof that illuminates an important property of Lebesque measure.  Note that the function $m()$ refers to measure.
 
 ### Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$. ###
