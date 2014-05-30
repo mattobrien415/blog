@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 
 PLUGIN_PATH = "pelican-plugins"
 
+THEME = "themes/pelican-themes/mnmlist"
+
 AUTHOR = u"Matt O'Brien"
 SITENAME = u"Matt O'Brien (dot) Me"
 SITEURL = ''

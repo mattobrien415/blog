@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Matt O'Brien (dot) Me - math</title>
+        <link rel="stylesheet" href="http://mattobrien.me/theme/css/main.css" />
+        <link href="http://mattobrien.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Matt O'Brien (dot) Me Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://mattobrien.me/">Matt O'Brien (dot) Me </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="http://mattobrien.me/category/math.html">math</a></li>
+                    <li><a href="http://mattobrien.me/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://mattobrien.me/math.html">Math</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-29T00:00:00">
+                Thu 29 May 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a>
+        </address>
+<p>In <a href="http://mattobrien.me/category/math.html">math</a>. </p>
+<p>tags: <a href="http://mattobrien.me/tag/math.html">math</a></p>
+</footer><!-- /.post-info --><p>Here is a fun proof that illuminates an important property of Lebesque measure.  Note that the function $m()$ refers to measure.</p>
+<h3>Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.</h3>
+<p>Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  </p>
+<p><strong>Case 1:</strong>  $a &gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 2:</strong>  $b &gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 3:</strong>  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.</p><script type= "text/javascript">
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+</script>
+                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://spencerboucher.com/">Spencer Boucher</a></li>
+                            <li><a href="http://trevorstephens.com/">Trevor Stephens</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://mattobrien.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://github.com/mobbSF">GitHub</a></li>
+                            <li><a href="http://www.linkedin.com/pub/matt-o-brien/5/833/91b/">LinkedIn</a></li>
+                            <li><a href="feeds/all.atom.xml">RSS</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51519407-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>
