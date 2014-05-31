@@ -1,4 +1,4 @@
-Title: Math
+Title: Numerical Analysis
 Date:  2014-05-31  
 Tages: math  
 Summary:  Numerical Analysis #1  
