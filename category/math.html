@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<title>Matt O'Brien (dot) Me &mdash; Numerical Analysis</title>
+		<title>Matt O'Brien (dot) Me &mdash; Articles in Category math</title>
 		<meta charset="utf-8" />
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<link rel="stylesheet" type="text/css" href="http://mattobrien.me/theme/css/style.css" />
@@ -34,10 +34,12 @@
 		</div><!-- /#menu -->
 		
 		<div class="page-title">
+<div class="page-title">
+	<h2>Filed under <span>math</span> &hellip;</h2>
+</div>
 		</div>
 	
 		<div id="contents">
-
 <div class="post type-post status-publish format-standard hentry category-general" id="post">
 	<div class="entry-meta">
 		<div class="date"><a href="http://mattobrien.me/numerical-analysis.html">Sat 31 May 2014</a></div>
@@ -142,8 +144,59 @@ Thus $L_{n+1,i}(x) = L_{n+1,i}^{</em>}(x)$.
     		<span class="tag-links"><strong>Tagged</strong>
  <a href="http://mattobrien.me/tag/math.html" rel="tag">math</a>    		</span>
 	</div> <!--/#main-->
-</div>  <!--/#post-->
+</div>  <!--/#post--><div class="post type-post status-publish format-standard hentry category-general" id="post">
+	<div class="entry-meta">
+		<div class="date"><a href="http://mattobrien.me/lebseque-measure-1.html">Thu 29 May 2014</a></div>
+		<span class="byline">By <a href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a></span>
+			<span class="cat-links"><a href="http://mattobrien.me/category/math.html" title="View all posts in math" rel="category tag">math</a></span>
+	</div> <!-- /#entry-meta -->
+	<div class="main">
+		<h2 class="entry-title">
+			<a href="http://mattobrien.me/lebseque-measure-1.html" title="Permalink to Lebseque measure #1" rel="bookmark">Lebseque measure #1</a>
+		</h2>
+		<div class="entry-content">
+			<p>Here is a fun proof that illuminates an important property of Lebesque measure.  Note that the function $m()$ refers to measure.</p>
+<h3>Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.</h3>
+<p>Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  </p>
+<p><strong>Case 1:</strong>  $a &gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 2:</strong>  $b &gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 3:</strong>  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.</p><script type= "text/javascript">
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+</script>
 
+		</div> <!--/#entry-content-->
+    		<span class="tag-links"><strong>Tagged</strong>
+ <a href="http://mattobrien.me/tag/math.html" rel="tag">math</a>    		</span>
+	</div> <!--/#main-->
+</div>  <!--/#post--><div class="navigation">
+</div>
 		</div>
 		
 		<div id="footer">
