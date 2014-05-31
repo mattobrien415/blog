@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>Numerical Analysis</title>
-        <link rel="stylesheet" href="http://mattobrien.me/theme/css/main.css" />
-        <link href="http://mattobrien.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Matt O'Brien (dot) Me Atom Feed" />
-
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+		<title>Matt O'Brien (dot) Me &mdash; Numerical Analysis</title>
+		<meta charset="utf-8" />
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="stylesheet" type="text/css" href="http://mattobrien.me/theme/css/style.css" />
+		<link rel='stylesheet' id='oswald-css'  href='http://fonts.googleapis.com/css?family=Oswald&#038;ver=3.3.2' type='text/css' media='all' />
+		<style type="text/css">
+			body.custom-background { background-color: #f5f5f5; }
+		</style>
+		<link rel="alternate" type="application/atom+xml"
+			title="Matt O'Brien (dot) Me — Flux Atom"
+			href="http://mattobrien.me/" /> 
+		<!--[if lte IE 8]><script src="http://mattobrien.me/theme/js/html5shiv.js"></script><![endif]-->
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://mattobrien.me/">Matt O'Brien (dot) Me </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="http://mattobrien.me/category/misc.html">misc</a></li>
-                </ul>
-                </nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="http://mattobrien.me/numerical-analysis.html" rel="bookmark"
-           title="Permalink to Numerical Analysis">Numerical Analysis</a></h1>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    </header>
+<body class="home blog custom-background " >
+	<div id="container">
+		<div id="header">
+				<h1 id="site-title"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a></h1>
+		</div><!-- /#banner -->
+		
+		<div id="menu">
+			<div class="menu-navigation-container">
+				<ul id="menu-navigation" class="menu">
+						<li class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://mattobrien.me/category/misc.html">misc</a></li>
+						<li  class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://spencerboucher.com/">Spencer Boucher</a></li>
+						<li  class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://trevorstephens.com/">Trevor Stephens</a></li>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 31 May 2014</span>
-<span>| tags: <a href="http://mattobrien.me/tag/math.html">math</a></span>
-</footer><!-- /.post-info -->      <p>\boldmath
+				</ul>
+			</div> <!--/#menu-navigation-container-->
+		</div><!-- /#menu -->
+		
+		<div class="page-title">
+		</div>
+	
+		<div id="contents">
+
+<div class="post type-post status-publish format-standard hentry category-general" id="post">
+	<div class="entry-meta">
+		<div class="date"><a href="http://mattobrien.me/numerical-analysis.html">Sat 31 May 2014</a></div>
+		<span class="byline">By <a href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a></span>
+			<span class="cat-links"><a href="http://mattobrien.me/category/misc.html" title="View all posts in misc" rel="category tag">misc</a></span>
+	</div> <!-- /#entry-meta -->
+	<div class="main">
+		<h2 class="entry-title">
+			<a href="http://mattobrien.me/numerical-analysis.html" title="Permalink to Numerical Analysis" rel="bookmark">Numerical Analysis</a>
+		</h2>
+		<div class="entry-content">
+			<p>\boldmath
 \textbf{For Lagrange interpolation on the nodes $x_0 &lt; x_1 &lt; \cdots &lt; x_{n-1} &lt; x_n $ of the data $\left{ (x_i, f(x_i))\right}{i=0}^n$ the interpolating polynomial is $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$, where \begin{align<em>}
 L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}
 \end{align</em>}
@@ -121,43 +137,29 @@ Thus $L_{n+1,i}(x) = L_{n+1,i}^{</em>}(x)$.
     }
 </script>
 
-    </div><!-- /.entry-content -->
+		</div> <!--/#entry-content-->
+    		<span class="tag-links"><strong>Tagged</strong>
+ <a href="http://mattobrien.me/tag/math.html" rel="tag">math</a>    		</span>
+	</div> <!--/#main-->
+</div>  <!--/#post-->
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://spencerboucher.com/">Spencer Boucher</a></li>
-                            <li><a href="http://trevorstephens.com/">Trevor Stephens</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://mattobrien.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                            <li><a href="https://github.com/mobbSF">GitHub</a></li>
-                            <li><a href="http://www.linkedin.com/pub/matt-o-brien/5/833/91b/">LinkedIn</a></li>
-                            <li><a href="feeds/all.atom.xml">RSS</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
-        </footer><!-- /#contentinfo -->
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-51519407-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+		</div>
+		
+		<div id="footer">
+			<p>Powered by <a href="http://pelican.readthedocs.org">Pelican</a>, theme by <a href="http://bunnyman.info">tBunnyMan</a>.</p>
+				<script type="text/javascript">
+					var _gaq = _gaq || [];
+					_gaq.push(['_setAccount', 'UA-51519407-1']);
+					_gaq.push(['_trackPageview']);
+					(function() {
+						var ga = document.createElement('script'); 
+						ga.type = 'text/javascript'; ga.async = true;
+						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					})();
+				</script>
+		</div><!-- /#footer -->
+	</div><!-- /#container -->
+	<div style="display:none"></div>
 </body>
 </html>
