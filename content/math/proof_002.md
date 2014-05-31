@@ -1,4 +1,8 @@
-Title: Numerical Analysis Date: 2014-05-31 Tags: math Summary: Numerical Analysis #1 
+Title: Numerical Analysis 
+Date: 2014-05-31 
+Tags: math 
+Summary: Numerical Analysis #1 
+
 \boldmath
 \textbf{For Lagrange interpolation on the nodes $x_0 < x_1 < \cdots < x_{n-1} < x_n $ of the data $\left\{ (x_i, f(x_i))\right\}{i=0}^n$ the interpolating polynomial is $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$, where \begin{align*}
 L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}
