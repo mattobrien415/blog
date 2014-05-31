@@ -23,16 +23,69 @@
         
 
             <header>
-                <h1><a href="http://mattobrien.me" id="site-title">Matt O'Brien (dot) Me </a> : <a href="http://mattobrien.me/math.html" id="page-title">Math</a></h1>
-<time datetime="2014-05-29T00:00:00">Thu 29 May 2014</time>            </header>
+                <h1><a href="http://mattobrien.me" id="site-title">Matt O'Brien (dot) Me </a> : <a href="http://mattobrien.me/numerical-analysis.html" id="page-title">Numerical Analysis</a></h1>
+<time datetime="2014-05-31T00:00:00">Sat 31 May 2014</time>            </header>
 
             <article>
-                <p>Here is a fun proof that illuminates an important property of Lebesque measure.  Note that the function $m()$ refers to measure.</p>
-<h3>Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.</h3>
-<p>Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  </p>
-<p><strong>Case 1:</strong>  $a &gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
-<p><strong>Case 2:</strong>  $b &gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
-<p><strong>Case 3:</strong>  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.</p><script type= "text/javascript">
+                <p>\boldmath
+\textbf{For Lagrange interpolation on the nodes $x_0 &lt; x_1 &lt; \cdots &lt; x_{n-1} &lt; x_n $ of the data $\left{ (x_i, f(x_i))\right}{i=0}^n$ the interpolating polynomial is $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$, where \begin{align<em>}
+L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}
+\end{align</em>}
+Prove that
+\begin{align<em>}
+L_{n,0}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})(x-x_{1})\cdots (x-x_{n-1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}
+\end{align</em>}
+and state the general result for $L_{n,i}(x)$.}
+\unboldmath</p>
+<p>\begin{proof}
+For $i=0$, 
+\begin{align<em>}
+L_{n,0}(x) = \frac{(x-x_{1})(x-x_{2})\cdots (x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}
+\end{align</em>}
+Now, let
+\begin{align<em>}
+L_{n, 0}^{</em>} = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})}
+\end{align<em>}
+We will use induction.  We need to show that 
+\begin{align</em>}
+L_{n,0}(x) &amp;= L^{<em>}<em 0="0" n_1_="n+1,">{n, 0}(x) \text{   . So, we will prove that }
+\ L</em>(x) &amp;= L_{n+1, 0}^{</em>}(x).
+\end{align<em>}
+\begin{align</em>}
+L_{n+1, 0}(x) &amp;= \frac{(x-x_{1}(x-x_{2})\cdots(x-x_{n})(x-x_{n+1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}.
+\ \text{ Now,}\L_{n+1, 0}^{<em>}(x) &amp;= 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})}+ \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})} + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
+\ &amp;= L_{n, 0}^{</em>}(x) + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}\text{.}
+\end{align<em>}
+Since by assumption $L_{n,0}(x) = L^{</em>}<em 1="1">{n, 0}(x)$, we have
+\begin{align<em>}
+L_{n+1,0}^{</em>}(x) &amp;= \frac{(x-x</em>)\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})} + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
+\ &amp;= \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n})(x_{0}-x_{n+1})+(x-x_{0})(x-x_{1})(x-x_{n-1})(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
+\ &amp;= \frac{(x_{0}-x_{n+1}+x-x_{0})[(x-x_{1})\cdots(x-x_{n})]}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
+\ &amp;= \frac{(x-x_{n+1})(x-x_{1})(x-x_{2})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
+\ &amp;=L_{n+1,0}(x)
+\end{align<em>}
+Since $L_{n+1, 0}(x) = L_{n+1,0}^{</em>}(x)$, we can deduce that our assumption holds true for $L_{n,0}(x) = L_{n, 0}^{<em>}(x)$.
+\Note that every $x_{0}$ term in $L_{n,0}^{</em>}(x)$ disappears.  So,
+\begin{align<em>}
+L_{n, i}^{</em>}(x) = 1 + \frac{(x-x_{i})}{(x_{i}-x_{1})}+ \cdots + \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n-1})}{(x_{i}-x_{1})(x_{i}-x_{2})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}.
+\end{align<em>}
+With the same induction technique,
+\begin{align</em>}
+L_{n+1,i=1}^{<em>} = \frac{(x-x_{i})}{(x_{i}-x_{1})}&amp;+\cdots+\frac{(x-x_{i})(x-x_{2})\cdots(x-x_{n-1})}{(x_{i}-x_{1})(x_{i}-x_{2})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})} 
+\  &amp;+ \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n-1})(x-x_{n})}{(x_{i}-x_{1})(x_{i}-x_{2})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})(x_{i}-x_{n+1})}.
+\end{align</em>}
+Now,
+\begin{align<em>}
+L_{n+1,i}(x) &amp;= \frac{(x-x_{i})\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})(x-x_{n+i})}{(x_{i}-x_{i})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})(x_{i}-x_{n+i})}.
+\ \text{Now,}
+\ L_{n+1, i}^{</em>}(x) &amp;= \frac{L_{n,i}^{<em>}(x) +(x- x_{1})(x- x_{2})\cdots(x- x_{n-i})(x- x_{n})}{(x_{i}- x_{1})\cdots(x_{i}- x_{i-1})(x_{i}- x_{i+1})\cdots(x_{i}- x_{n})(x_{i}- x_{n+i})}
+\ &amp;= \frac{(x- x_{1})\cdots(x- x_{i-1})(x- x_{i+1})\cdots(x- x_{n})}{(x_{i} -x_{1})\cdots(x_{i} -x_{i-1})(x_{i} -x_{i+1})\cdots(x_{i} -x_{n})} +
+\frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n-1})(x-x_{n})}{(x_{i}-x_{1})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})(x_{i}-x_{n+1})}.
+\ L_{n+1,i}^{</em>}(x) &amp;= \frac{(x-x_{i}+x_{i}-x_{n+1})[(x-x_{1})\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})]}{(x_{i}-x_{1})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})(x_{i}-x_{n+1})}
+\&amp;= L_{n+1, i}(x).
+\end{align<em>}
+Thus $L_{n+1,i}(x) = L_{n+1,i}^{</em>}(x)$.
+\end{proof}</p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -63,6 +116,15 @@
     }
 </script>
             </article>
+                <section id="article-list">
+                    <h2>All posts</h2>
+                    <ol>
+        
+
+ 
+            <li><a href="http://mattobrien.me/math.html" rel="bookmark" title="Permalink to Math">Math</a></li>
+    </ol>
+    </section><!-- #article-list -->
 
         <footer>
             <nav>
