@@ -6,7 +6,7 @@ Summary: Numerical Analysis #1
 
 For Lagrange interpolation on the nodes
 $x_0 < x_1 < \cdots < x_{n-1} < x_n$
-of the data $\{(x_i, f(x_i))\}_{i=0}^n$, the interpolating polynomial is
+of the data $\{(x_i, f(x_i))\}{i=0}^n$, the interpolating polynomial is
 $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$,
 where
 \begin{align*}
