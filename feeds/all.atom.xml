@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-05-31T00:00:00-07:00</updated><entry><title>Numerical Analysis</title><link href="http://mattobrien.me/numerical-analysis.html" rel="alternate"></link><updated>2014-05-31T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-31:numerical-analysis.html</id><summary type="html">&lt;p&gt;For Lagrange interpolation on the nodes
 $x_0 &amp;lt; x_1 &amp;lt; \cdots &amp;lt; x_{n-1} &amp;lt; x_n$
-of the data $${(x_i, f(x_i))}&lt;em 0="0" _="=" i="i"&gt;{i=0}^n$$, the interpolating polynomial is
-$p(x) = \sum&lt;/em&gt;^n f(x_i)L_{n, i}(x)$,
+of the data $${(x_i, f(x_i))}{i=0}^n$$, the interpolating polynomial is
+$p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$,
 where
 \begin{align&lt;em&gt;}
 L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}
