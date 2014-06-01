@@ -4,43 +4,34 @@ Tags: math
 Summary: Numerical Analysis #1 
 
 
-### **For Lagrange interpolation on the nodes** $x_0 < x_1 < \cdots < x_{n-1} < x_n$ **of the data** $\{(x_i, f(x_i))\}$ **, from** $i=0$ **to** $n$ **, the interpolating polynomial is** $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$**, where** $L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}$**.**  **Prove that** $L_{n,0}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})(x-x_{1})\cdots (x-x_{n-1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}$ **, and state the general result for** $L_{n,i}(x)$**.**
+### **For Lagrange interpolation on the nodes** $x_0 < x_1 < \cdots < x_{n-1} < x_n$ **of the data** $\{(x_i, f(x_i))\}$ **, from** $i=0$ **to** $n$ **, the interpolating polynomial is** $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$**, where** $L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}$**.**  **Prove that** $L_{n,0}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})(x-x_{1})\cdots (x-x_{n-1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}$ ** and state the general result for** $L_{n,i}(x)$**.**
 
-\begin{proof}
+
 For
 $i=0$
 , 
-\begin{align*}
-L_{n,0}(x) = \frac{(x-x_{1})(x-x_{2})\cdots (x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}
-\end{align*}
+$L_{n,0}(x) = \frac{(x-x_{1})(x-x_{2})\cdots (x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}$
 
 Now, let
 
-\begin{align*}
-L_{n, 0}^{*} = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})}
-\end{align*}
+$L_{n, 0}^{*} = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})}$
 
-We will use induction.  We need to show that 
+We will use induction.  We need to show that: 
 
-\begin{align*}
-L_{n,0}(x) &= L^{*}_{n, 0}(x) \text{   . So, we will prove that }
-\\ L_{n+1, 0}(x) &= L_{n+1, 0}^{*}(x).
-\end{align*}
+$L_{n,0}(x) &= L^{*}_{n, 0}(x)$
+So, we will prove that
 
-\begin{align*}
-L_{n+1, 0}(x) &= \frac{(x-x_{1}(x-x_{2})\cdots(x-x_{n})(x-x_{n+1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}.
-\\ \text{ Now,}\\L_{n+1, 0}^{*}(x) &= 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})}+ \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})} + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
-\\ &= L_{n, 0}^{*}(x) + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}\text{.}
-\end{align*}
+$L_{n+1, 0}(x) = L_{n+1, 0}^{*}(x).$
+
+$L_{n+1, 0}(x) = \frac{(x-x_{1}(x-x_{2})\cdots(x-x_{n})(x-x_{n+1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}.$
+
+Now, $L_{n+1, 0}^{*}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})}+ \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})} + 
+\frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})} = L_{n, 0}^{*}(x) + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}$.
 
 Since by assumption $L_{n,0}(x) = L^{*}_{n, 0}(x)$, we have
-\begin{align*}
-L_{n+1,0}^{*}(x) &= \frac{(x-x_{1})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})} + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
-\\ &= \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n})(x_{0}-x_{n+1})+(x-x_{0})(x-x_{1})(x-x_{n-1})(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
-\\ &= \frac{(x_{0}-x_{n+1}+x-x_{0})[(x-x_{1})\cdots(x-x_{n})]}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
-\\ &= \frac{(x-x_{n+1})(x-x_{1})(x-x_{2})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
-\\ &=L_{n+1,0}(x)
-\end{align*}
+
+$L_{n+1,0}^{*}(x) = \frac{(x-x_{1})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})} + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})} = \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n})(x_{0}-x_{n+1})+(x-x_{0})(x-x_{1})(x-x_{n-1})(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
+ = \frac{(x_{0}-x_{n+1}+x-x_{0})[(x-x_{1})\cdots(x-x_{n})]}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})} = \frac{(x-x_{n+1})(x-x_{1})(x-x_{2})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}\ &=L_{n+1,0}(x)
 
 Since $L_{n+1, 0}(x) = L_{n+1,0}^{*}(x)$, we can deduce that our assumption holds true for $L_{n,0}(x) = L_{n, 0}^{*}(x)$.
 \\Note that every $x_{0}$ term in $L_{n,0}^{*}(x)$ disappears.  So,
