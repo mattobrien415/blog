@@ -18,7 +18,7 @@ $L_{n, 0}^{*} = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{
 
 We will use induction.  We need to show that: 
 
-$L_{n,0}(x) &= L^{*}_{n, 0}(x)$
+$L_{n,0}(x) = L^{*}_{n, 0}(x)$
 So, we will prove that
 
 $L_{n+1, 0}(x) = L_{n+1, 0}^{*}(x).$
@@ -34,7 +34,8 @@ $L_{n+1,0}^{*}(x) = \frac{(x-x_{1})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\c
  = \frac{(x_{0}-x_{n+1}+x-x_{0})[(x-x_{1})\cdots(x-x_{n})]}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})} = \frac{(x-x_{n+1})(x-x_{1})(x-x_{2})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}\ &=L_{n+1,0}(x)
 
 Since $L_{n+1, 0}(x) = L_{n+1,0}^{*}(x)$, we can deduce that our assumption holds true for $L_{n,0}(x) = L_{n, 0}^{*}(x)$.
-\\Note that every $x_{0}$ term in $L_{n,0}^{*}(x)$ disappears.  So,
+
+Note that every $x_{0}$ term in $L_{n,0}^{*}(x)$ disappears.  So,*
 
 \begin{align*}
 L_{n, i}^{*}(x) = 1 + \frac{(x-x_{i})}{(x_{i}-x_{1})}+ \cdots + \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n-1})}{(x_{i}-x_{1})(x_{i}-x_{2})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}.
