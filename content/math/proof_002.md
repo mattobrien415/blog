@@ -4,7 +4,7 @@ Tags: math
 Summary: Numerical Analysis #1 
 
 
-For Lagrange interpolation on the nodes 
+For Lagrange interpolation on the nodes sss
 $x_0 < x_1 < \cdots < x_{n-1} < x_n$
 of the data $$\{(x_i, f(x_i))\}_{i=0}^n$$
 the interpolating polynomial is
