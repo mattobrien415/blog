@@ -4,14 +4,8 @@ Tags: math
 Summary: Numerical Analysis #1 
 
 
-For Lagrange interpolation on the nodes
-$x_0 < x_1 < \cdots < x_{n-1} < x_n$
-of the data $\{(x_i, f(x_i))\}$, from $i=0$ to $n$, the interpolating polynomial is
-$p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$,
-where
-\begin{align*}
-L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}
-\end{align*}
+### For Lagrange interpolation on the nodes $x_0 < x_1 < \cdots < x_{n-1} < x_n$ of the data $\{(x_i, f(x_i))\}$, from $i=0$ to $n$, the interpolating polynomial is $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$, where
+$L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}$
 Prove that
 \begin{align*}
 L_{n,0}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})(x-x_{1})\cdots (x-x_{n-1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}
