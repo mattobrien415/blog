@@ -67,7 +67,7 @@
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <h3><strong>For Lagrange interpolation on the nodes</strong> $x_0 &lt; x_1 &lt; \cdots &lt; x_{n-1} &lt; x_n$ <strong>of the data</strong> ${(x_i, f(x_i))}$ <strong>, from</strong> $i=0$ <strong>to</strong> $n$ <strong>, the interpolating polynomial is</strong> $p(x) = \sum_{i  = 0}^n f(x_i)L_{n, i}(x)$<strong>, where</strong> $L_{n,i}(x) = \frac{(x-x_{0}) \cdots (x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}{(x_{i}-x_{0}) \cdots (x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}$<strong>.</strong>  <strong>Prove that</strong> $L_{n,0}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})} + \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})(x-x_{1})\cdots (x-x_{n-1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}$ <strong> and state the general result for</strong> $L_{n,i}(x)$<strong>.</strong></h3>
-<p>For
+<p>*For
 $i=0$
 , 
 $L_{n,0}(x) = \frac{(x-x_{1})(x-x_{2})\cdots (x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})}$</p>
@@ -83,8 +83,8 @@ So, we will prove that</p>
 <p>Since by assumption $L_{n,0}(x) = L^{*}_{n, 0}(x)$, we have</p>
 <p>$L_{n+1,0}^{*}(x) = \frac{(x-x_{1})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})} + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})} = \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n})(x_{0}-x_{n+1})+(x-x_{0})(x-x_{1})(x-x_{n-1})(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}
  = \frac{(x_{0}-x_{n+1}+x-x_{0})[(x-x_{1})\cdots(x-x_{n})]}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})} = \frac{(x-x_{n+1})(x-x_{1})(x-x_{2})\cdots(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}\ &amp;=L_{n+1,0}(x)</p>
-<p>Since $L_{n+1, 0}(x) = L_{n+1,0}^{<em>}(x)$, we can deduce that our assumption holds true for $L_{n,0}(x) = L_{n, 0}^{</em>}(x)$.
-\Note that every $x_{0}$ term in $L_{n,0}^{*}(x)$ disappears.  So,</p>
+<p>Since $L_{n+1, 0}(x) = L_{n+1,0}^{<em>}(x)$, we can deduce that our assumption holds true for $L_{n,0}(x) = L_{n, 0}^{</em>}(x)$.</p>
+<p>Note that every $x_{0}$ term in $L_{n,0}^{<em>}(x)$ disappears.  So,</em></p>
 <p>\begin{align<em>}
 L_{n, i}^{</em>}(x) = 1 + \frac{(x-x_{i})}{(x_{i}-x_{1})}+ \cdots + \frac{(x-x_{1})(x-x_{2})\cdots(x-x_{n-1})}{(x_{i}-x_{1})(x_{i}-x_{2})\cdots(x_{i}-x_{i-1})(x_{i}-x_{i+1})\cdots(x_{i}-x_{n})}.
 \end{align*}</p>
