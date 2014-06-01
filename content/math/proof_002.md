@@ -23,9 +23,11 @@ So, we will prove that
 
 $L_{n+1, 0}(x) = L_{n+1, 0}^{*}(x).$
 
+To begin,
+
 $L_{n+1, 0}(x) = \frac{(x-x_{1}(x-x_{2})\cdots(x-x_{n})(x-x_{n+1})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}.$
 
-Now, $L_{n+1, 0}^{*}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})}+ \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})} + 
+Now, $L_{n+1, 0}^{*}(x) = 1 + \frac{(x-x_{0})}{(x_{0}-x_{1})}+ \frac{(x-x_{0})(x-x_{1})}{(x_{0}-x_{1})(x_{0}-x_{2})} + \cdots + \frac{(x-x_{0})\cdots(x-x_{n-1})}{(x_{0}-x_{1})\cdots(x_{0}-x_{n})}$ + 
 \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})} = L_{n, 0}^{*}(x) + \frac{(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})(x-x_{n})}{(x_{0}-x_{1})(x_{0}-x_{2})\cdots(x_{0}-x_{n})(x_{0}-x_{n+1})}$.
 
 Since by assumption $L_{n,0}(x) = L^{*}_{n, 0}(x)$, we have
