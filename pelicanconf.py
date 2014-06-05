@@ -10,7 +10,7 @@ AUTHOR = u"Matt O'Brien"
 SITENAME = u"Matt O'Brien (dot) Me"
 SITEURL = ''
 
-DISQUS_SITENAME = "mattobrienme.disqus.com"
+DISQUS_SITENAME = "mattobrienme"
 
 PLUGINS = ["render_math"]
 
