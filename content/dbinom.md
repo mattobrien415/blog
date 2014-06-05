@@ -17,10 +17,3 @@ cumulative mass function
 *Answer:  1*  
  
 I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability density function.”  However, that is not the case.
-
-To further exacerbate things, if you consult the help files, you will see the function calls listed in this order:  
-**dbinom**  
-**pbinom**
-
-dbinom is listed first and pbinom second.  This is in alphabetical order. Intuitively, however, you might feel that the function for the pdf would be listed first, since it returns the then the cdf.   
-
