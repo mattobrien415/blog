@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 
-        <title>Matt O'Brien (dot) Me - Articles by Matt O'Brien</title>
+        <title>pbinom for binomial distribution in R</title>
         <meta charset="utf-8" />
         <link href="http://mattobrien.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Matt O'Brien (dot) Me Full Atom Feed" />
+        <link href="http://mattobrien.me/feeds/r.atom.xml" type="application/atom+xml" rel="alternate" title="Matt O'Brien (dot) Me Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -44,55 +45,46 @@
               </ul>
             </div>
 
-<section id="content">
-<h2>Articles by Matt O'Brien</h2>
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-		         <ol id="post-list">
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="bookmark" title="Permalink to pbinom for binomial distribution in R">pbinom for binomial distribution in R</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-06-05T00:00:00"> Thu 05 June 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>a quick quiz</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="bookmark" title="Permalink to pbinom for binomial distribution in R">Read more <i class="icon-arrow-right"></i></a></div>
 
 
+            <header>
+              <h2 class="entry-title">
+                <a href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="bookmark"
+                   title="Permalink to pbinom for binomial distribution in R">pbinom for binomial distribution in R</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-06-05T00:00:00">
+                Thu 05 June 2014
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I love R. But it does has some things that are a bit irksome.  For example, I have found it somewhat difficult to remember which prefix corresponds to which function, when working with distributions. </p>
+<p>Here is a quick quiz:  </p>
+<p><strong>Given a binomial distribution:</strong><br />
+<strong>dbinom ---&gt; ?</strong><br />
+<strong>pbinom ---&gt;  ?</strong>  </p>
+<ol>
+<li>
+<p>probability distribution function<br />
+cumulative mass function</p>
+</li>
+<li>
+<p>cumulative mass function<br />
+ probability distribution function  </p>
+</li>
+</ol>
+<p><em>Answer:  1</em>  </p>
+<p>I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability density function.”  However, that is not the case.</p>
+            </div><!-- /.entry-content -->
 
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://mattobrien.me/tag/statistics.html">statistics</a>
-											<a class="danger label" href="http://mattobrien.me/tag/r.html">R</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://mattobrien.me/lebesgue-measure-1.html" rel="bookmark" title="Permalink to Lebesgue measure #1">Lebesgue measure #1</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-05-29T00:00:00"> Thu 29 May 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Lebesgue measure #1</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://mattobrien.me/lebesgue-measure-1.html" rel="bookmark" title="Permalink to Lebesgue measure #1">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://mattobrien.me/tag/math.html">math</a>
-								</div>
-
-
-
-				        </article></li>
-				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
@@ -129,10 +121,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->
