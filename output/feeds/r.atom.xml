@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/r.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-06-05T00:00:00-07:00</updated><entry><title>pbinom for binomial distribution in R</title><link href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="alternate"></link><updated>2014-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-06-05:pbinom-for-binomial-distribution-in-r.html</id><summary type="html">&lt;p&gt;I love R. But it does has some things that are a bit irksome.  For example, I have found it somewhat difficult to remember which prefix corresponds to which function, when working with distributions. &lt;/p&gt;
+&lt;p&gt;Here is a quick quiz:  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Given a binomial distribution:&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;dbinom ---&amp;gt; ?&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;pbinom ---&amp;gt;  ?&lt;/strong&gt;  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;probability mass function&lt;br /&gt;
+cumulative distribution function&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cumulative distribution function&lt;br /&gt;
+ probability mass function  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;Answer:  1&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability mass function.”  However, that is not the case.&lt;/p&gt;</summary><category term="statistics"></category><category term="R"></category></entry></feed>

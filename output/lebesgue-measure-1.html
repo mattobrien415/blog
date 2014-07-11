@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Matt O'Brien (dot) Me</title>
+        <title>Lebesgue measure #1</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="http://mattobrien.me/theme/css/main.css" type="text/css" />
         <link href="http://mattobrien.me/" type="application/atom+xml" rel="alternate" title="Matt O'Brien (dot) Me ATOM Feed" />
@@ -27,12 +27,15 @@
                 </ul></nav>
         </header><!-- /#banner -->
 
-     <section id="content" class="body">
-        <aside id="featured"><article>
-                <h1 class="entry-title"><a href="http://mattobrien.me/lebesgue-measure-2.html">Lebesgue measure #2</a></h1>
+<section id="content" class="body">
+<article>
+        <header> <h1 class="entry-title"><a href="lebesgue-measure-1.html"
+        rel="bookmark" title="Permalink to Lebesgue measure #1">Lebesgue measure #1</a></h1> <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+ </header>
+        <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2014-07-11T00:00:00">
-                Fri 11 July 2014
+        <abbr class="published" title="2014-05-29T00:00:00">
+                Thu 29 May 2014
         </abbr>
 
         <address class="vcard author">
@@ -40,28 +43,12 @@
         </address>
 <p>In <a href="http://mattobrien.me/category/math.html">math</a>. </p>
 <p>tags: <a href="http://mattobrien.me/tag/math.html">math</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <h3>Show that the sum, difference and product of two BV-functions is a BV-function.</h3>
-<p>Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,
-\begin{align<em>}
-\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1} + g(x_{i-1}) } |
-\  &amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1} | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
-\  &amp;\leq  V(f, P) + V(g, P)
-\end{align</em>} 
-$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
-\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).$
-Thus, $(f + g)$ is a function of bounded variation.</p>
-<p>To show that $(f - g)$ is of bounded variation, the proof is the same and $V(f - g) \leq V(f) + V(g)$</p>
-<p>To show that the product of two functions of bounded variation is also of bounded variation, notice that both $f$ and $g$ are bounded, and thus there exists $K \in \mathbb{N}$ such that
-$|f(x)| \leq k, |g(x) | \leq k, \forall x \in P$.</p>
-<p>Thus, 
-\begin{align<em>}
-\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1}g(x{i - 1})|
-\ &amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1} } + g(x_{i-1} { f(x_i) - f(x_{i - 1}) } |
-\ &amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1} | + | g(x_{i - 1} | | f(x_i) - f(x_{i - 1}) | }
-\ &amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
-\ &amp;\leq k V(g) + kV(f).
-\end{align</em>}
-and so the product of two functions of bounded variation is also of bounded variation.</p><script type= "text/javascript">
+        <p>Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.</p>
+<h3>Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.</h3>
+<p>Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  </p>
+<p><strong>Case 1:</strong>  $a &gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 2:</strong>  $b &gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 3:</strong>  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.</p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -92,58 +79,28 @@ and so the product of two functions of bounded variation is also of bounded vari
     }
 </script>
 
-        </article></aside><!-- /#featured -->
-                <h1>Other articles</h1>
-                <hr />
-                    <ol id="posts-list" class="hfeed">
-        <li><article class="hentry">
-                <header>
-                        <h1><a href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="bookmark" title="Permalink to pbinom for binomial distribution in R">pbinom for binomial distribution in R</a></h1>
-                </header>
+        </div><!-- /.entry-content -->
+        <div class="comments">
+        <h2>Comments !</h2>
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+               var disqus_identifier = "lebesgue-measure-1.html";
+               (function() {
+               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+               dsq.src = 'http://mattobrienme.disqus.com/embed.js';
+               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+        </div>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-06-05T00:00:00">
-                Thu 05 June 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a>
-        </address>
-<p>In <a href="http://mattobrien.me/category/r.html">R</a>. </p>
-<p>tags: <a href="http://mattobrien.me/tag/statistics.html">statistics</a><a href="http://mattobrien.me/tag/r.html">R</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>a quick quiz</p>
-                <a class="readmore" href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html">read more</a>
-                </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
-                <header>
-                        <h1><a href="http://mattobrien.me/lebesgue-measure-1.html" rel="bookmark" title="Permalink to Lebesgue measure #1">Lebesgue measure #1</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-05-29T00:00:00">
-                Thu 29 May 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a>
-        </address>
-<p>In <a href="http://mattobrien.me/category/math.html">math</a>. </p>
-<p>tags: <a href="http://mattobrien.me/tag/math.html">math</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>Lebesgue measure #1</p>
-                <a class="readmore" href="http://mattobrien.me/lebesgue-measure-1.html">read more</a>
-                </div><!-- /.entry-content -->
-        </article></li>
-</ol><!-- /#posts-list -->
-</section><!-- /#content -->
+</article>
+</section>
 
         <aside id="sidebar">
                 <div class="widget">
                         <h2>Categories</h2>
                         <ul>
-                           <li ><a href="http://mattobrien.me/category/math.html">math</a></li>
+                           <li class="active"><a href="http://mattobrien.me/category/math.html">math</a></li>
                            <li ><a href="http://mattobrien.me/category/r.html">R</a></li>
                         </ul>
                 </div>
