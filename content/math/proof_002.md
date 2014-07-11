@@ -1,7 +1,7 @@
 ﻿Title:  Lebesgue measure #2
 Date: 2014-07-17
 Tags: math
-Summary: Hi
+Summary: This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a [book](http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958) on the subject at the time.  
 
 ### Show that the sum, difference and product of two BV-functions is a BV-function. ###
 
