@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/math.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-07-11T00:00:00-07:00</updated><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-11T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-11:lebesgue-measure-2.html</id><summary type="html">&lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
-&lt;p&gt;Let $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,
+&lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,
 \begin{align&lt;em&gt;}
 \sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1} + g(x_{i-1}) } |
 \  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1} | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
