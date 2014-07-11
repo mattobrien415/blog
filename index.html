@@ -29,7 +29,79 @@
 
      <section id="content" class="body">
         <aside id="featured"><article>
-                <h1 class="entry-title"><a href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html">pbinom for binomial distribution in R</a></h1>
+                <h1 class="entry-title"><a href="http://mattobrien.me/lebesgue-measure-2.html">Lebesgue measure #2</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-07-11T00:00:00">
+                Fri 11 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://mattobrien.me/author/matt-obrien.html">Matt O'Brien</a>
+        </address>
+<p>In <a href="http://mattobrien.me/category/math.html">math</a>. </p>
+<p>tags: <a href="http://mattobrien.me/tag/math.html">math</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <h3>Show that the sum, difference and product of two BV-functions is a BV-function.</h3>
+<p>Let $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,
+\begin{align<em>}
+\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1} + g(x_{i-1}) } |
+\  &amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1} | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
+\  &amp;\leq  V(f, P) + V(g, P)
+\end{align</em>} 
+$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
+\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).$
+Thus, $(f + g)$ is a function of bounded variation.</p>
+<p>To show that $(f - g)$ is of bounded variation, the proof is the same and $V(f - g) \leq V(f) + V(g)$</p>
+<p>To show that the product of two functions of bounded variation is also of bounded variation, notice that both $f$ and $g$ are bounded, and thus there exists $K \in \mathbb{N}$ such that
+$|f(x)| \leq k, |g(x) | \leq k, \forall x \in P$.</p>
+<p>Thus, 
+\begin{align<em>}
+\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1}g(x{i - 1})|
+\ &amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1} } + g(x_{i-1} { f(x_i) - f(x_{i - 1}) } |
+\ &amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1} | + | g(x_{i - 1} | | f(x_i) - f(x_{i - 1}) | }
+\ &amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
+\ &amp;\leq k V(g) + kV(f).
+\end{align</em>}
+and so the product of two functions of bounded variation is also of bounded variation.</p><script type= "text/javascript">
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+</script>
+
+        </article></aside><!-- /#featured -->
+                <h1>Other articles</h1>
+                <hr />
+                    <ol id="posts-list" class="hfeed">
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="bookmark" title="Permalink to pbinom for binomial distribution in R">pbinom for binomial distribution in R</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-06-05T00:00:00">
                 Thu 05 June 2014
@@ -40,27 +112,10 @@
         </address>
 <p>In <a href="http://mattobrien.me/category/r.html">R</a>. </p>
 <p>tags: <a href="http://mattobrien.me/tag/statistics.html">statistics</a><a href="http://mattobrien.me/tag/r.html">R</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>I love R. But it does has some things that are a bit irksome.  For example, I have found it somewhat difficult to remember which prefix corresponds to which function, when working with distributions. </p>
-<p>Here is a quick quiz:  </p>
-<p><strong>Given a binomial distribution:</strong><br />
-<strong>dbinom ---&gt; ?</strong><br />
-<strong>pbinom ---&gt;  ?</strong>  </p>
-<ol>
-<li>
-<p>probability mass function<br />
-cumulative distribution function</p>
-</li>
-<li>
-<p>cumulative distribution function<br />
- probability mass function  </p>
-</li>
-</ol>
-<p><em>Answer:  1</em>  </p>
-<p>I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability mass function.”  However, that is not the case.</p>
-        </article></aside><!-- /#featured -->
-                <h1>Other articles</h1>
-                <hr />
-                    <ol id="posts-list" class="hfeed">
+                <p>a quick quiz</p>
+                <a class="readmore" href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
         <li><article class="hentry">
                 <header>
                         <h1><a href="http://mattobrien.me/lebesgue-measure-1.html" rel="bookmark" title="Permalink to Lebesgue measure #1">Lebesgue measure #1</a></h1>
