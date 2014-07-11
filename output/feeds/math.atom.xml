@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/math.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-07-17T00:00:00-07:00</updated><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;</summary><category term="math"></category></entry><entry><title>Lebesgue measure #1</title><link href="http://mattobrien.me/lebesgue-measure-1.html" rel="alternate"></link><updated>2014-05-29T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-29:lebesgue-measure-1.html</id><summary type="html">&lt;p&gt;Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/math.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-07-17T00:00:00-07:00</updated><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
+&lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,
+\begin{align&lt;em&gt;}
+\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1} + g(x_{i-1}) } |
+\  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1} | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
+\  &amp;amp;\leq  V(f, P) + V(g, P)
+\end{align&lt;/em&gt;} 
+$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
+\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).$
+Thus, $(f + g)$ is a function of bounded variation.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary><category term="math"></category></entry><entry><title>Lebesgue measure #1</title><link href="http://mattobrien.me/lebesgue-measure-1.html" rel="alternate"></link><updated>2014-05-29T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-29:lebesgue-measure-1.html</id><summary type="html">&lt;p&gt;Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.&lt;/p&gt;
 &lt;h3&gt;Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.&lt;/h3&gt;
 &lt;p&gt;Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Case 1:&lt;/strong&gt;  $a &amp;gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.  &lt;/p&gt;
