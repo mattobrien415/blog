@@ -3,4 +3,5 @@ Date: 2014-07-17
 Tags: math
 Summary: Hi
 
-bye.
+### Show that the sum, difference and product of two BV-functions is a BV-function. ###
+
