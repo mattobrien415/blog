@@ -1,7 +1,7 @@
 ﻿Title:  pbinom for binomial distribution in R
 Date: 2014-06-05
 Tags: statistics, R
-Summary: a quick quiz  
+Summary: A quick pop quiz to test your memory for working with probability distributions in R  
 
 
 I love R. But it does has some things that are a bit irksome.  For example, I have found it somewhat difficult to remember which prefix corresponds to which function, when working with distributions. 
