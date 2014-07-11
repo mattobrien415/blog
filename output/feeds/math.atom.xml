@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/math.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-07-17T00:00:00-07:00</updated><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
-&lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,
-$$\begin{align&lt;em&gt;}
+&lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  &lt;/p&gt;
+&lt;p&gt;$$\begin{align&lt;em&gt;}
 \sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1} + g(x_{i-1}) } |
 \  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1} | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
 \  &amp;amp;\leq  V(f, P) + V(g, P)
 \end{align&lt;/em&gt;}$ 
 $\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
-\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).$$
-Thus, $(f + g)$ is a function of bounded variation.&lt;/p&gt;
+\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).$$  &lt;/p&gt;
+&lt;p&gt;Thus, $(f + g)$ is a function of bounded variation.&lt;/p&gt;
 &lt;p&gt;To show that $(f - g)$ is of bounded variation, the proof is the same and $V(f - g) \leq V(f) + V(g)$&lt;/p&gt;
 &lt;p&gt;To show that the product of two functions of bounded variation is also of bounded variation, notice that both $f$ and $g$ are bounded, and thus there exists $K \in \mathbb{N}$ such that
 $|f(x)| \leq k, |g(x) | \leq k, \forall x \in P$.&lt;/p&gt;
