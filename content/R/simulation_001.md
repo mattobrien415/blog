@@ -1,4 +1,4 @@
-﻿Title:  using pi as a pseudorandom number generator
+﻿Title:  using $pi$ as a pseudorandom number generator
 Date: 2014-03-05
 Tags: simulation, R
 Summary: Can the digits of $\pi$ be used as a pesudorandom number generator?   
