@@ -9,12 +9,12 @@ This is a proof of basic closure-type properties with respect to functions of bo
 
 Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = \{x_i = 1 \leq i \leq n \}.$  Then,  
 
-$\begin{align\*}
-\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &= \sum_{i = 1}^{n} | \{ f(x_i) + g(x_i) \} - \{ f(x_{i - 1}) + g(x_{i-1}) \} | 
-
-\\  &\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
+$
+\begin{align\*}
+\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &= \sum_{i = 1}^{n} | \{ f(x_i) + g(x_i) \} - \{ f(x_{i - 1}) + g(x_{i-1}) \} | \\  &\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
 \\  &\leq  V(f, P) + V(g, P)
-\end{align\*}$  
+\end{align\*}$
+  
 
 $\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
 \Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).
