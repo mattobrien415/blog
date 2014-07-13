@@ -9,7 +9,8 @@ The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tes
 First, get the digits [here:](https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt), download the file and read it into `R` as Pi.  
 
 
-> PI <- read.table("\your_path\PI.txt",quote="\"")
+> PI <- read.table("\your_path\PI.txt",quote="\"")  
+
 > pi_digits <- unlist(strsplit(as.character(PI[1,]),""))[2:1000]  
 
 The proportion of even numbers in the first 1000 digits of pi is:  
@@ -17,8 +18,10 @@ The proportion of even numbers in the first 1000 digits of pi is:
 is_even <- function(x) x %% 2 == 0
 is_odd <- function(x) x %% 2 != 0  
 
-> pi_digits <- as.numeric(pi_digits)
-> indices_for_evens <- pi_digits[is_even(pi_digits)]
+> pi_digits <- as.numeric(pi_digits)  
+
+> indices_for_evens <- pi_digits[is_even(pi_digits)]  
+
 > indices_for_odds <- pi_digits[is_odd(pi_digits)]
 
 > length(indices_for_evens) / 1000 
