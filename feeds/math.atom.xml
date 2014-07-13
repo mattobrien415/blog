@@ -5,7 +5,7 @@
 &lt;p&gt;$
 \begin{align*}
 \sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1}) + g(x_{i-1}) } | \\  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
-\  &amp;amp;\leq  V(f, P) + V(g, P)
+\\  &amp;amp;\leq  V(f, P) + V(g, P)
 \end{align*}$&lt;/p&gt;
 &lt;p&gt;$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
 \Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).
@@ -17,10 +17,10 @@ $|f(x)| \leq k, |g(x) | \leq k, \forall x \in P$.&lt;/p&gt;
 &lt;p&gt;Thus, 
 $$\begin{align*}
 \sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1}g(x{i - 1})|
-\ &amp;amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1} } + g(x_{i-1} { f(x_i) - f(x_{i - 1}) } |
+\\ &amp;amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1} } + g(x_{i-1} { f(x_i) - f(x_{i - 1}) } |
 \ &amp;amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1} | + | g(x_{i - 1} | | f(x_i) - f(x_{i - 1}) | }
-\ &amp;amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
-\ &amp;amp;\leq k V(g) + kV(f).
+\\ &amp;amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
+\\ &amp;amp;\leq k V(g) + kV(f).
 \end{align*}$$
 and so the product of two functions of bounded variation is also of bounded variation.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
