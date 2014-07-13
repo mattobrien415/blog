@@ -89,14 +89,14 @@ and so the product of two functions of bounded variation is also of bounded vari
 &lt;/script&gt;
 </summary><category term="math"></category></entry><entry><title>Set Theory #1</title><link href="http://mattobrien.me/set-theory-1.html" rel="alternate"></link><updated>2014-04-10T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-04-10:set-theory-1.html</id><summary type="html">&lt;p&gt;A great little proof that is simple and a nice way to practice your $\Latex$.&lt;/p&gt;
 &lt;h3&gt;Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.&lt;/h3&gt;
-&lt;p&gt;First we show the proof for the righthand implication, that is&lt;br /&gt;
-$C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$   &lt;/p&gt;
-&lt;p&gt;Let $x \in C $ then $x \in A $. So, $x \in A$ or $x \in B$. Hence $x \in (A \cup B)$.  &lt;/p&gt;
+&lt;p&gt;First we show the proof for the righthand implication, that is:&lt;br /&gt;
+$C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$.   &lt;/p&gt;
+&lt;p&gt;Let $x \in C $. Then $x \in A $. So, $x \in A$ or $x \in B$. Hence $x \in (A \cup B)$.  &lt;/p&gt;
 &lt;p&gt;Second, we show the proof for the lefthand implication, that is
 $C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.  &lt;/p&gt;
 &lt;p&gt;This second statement is false as demonstrated by the following simple counterexample:  &lt;/p&gt;
 &lt;p&gt;Let&lt;/p&gt;
-&lt;p&gt;$\being{\align*}
+&lt;p&gt;$\begin{\align*}
 A &amp;amp;= [ 1, 2]\\ 
   B &amp;amp;=[1.3]\\
   C&amp;amp;=[2, 3]\\
