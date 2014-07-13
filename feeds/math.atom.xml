@@ -3,11 +3,11 @@
 &lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
 &lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  &lt;/p&gt;
 &lt;p&gt;$$
-\begin{align&lt;em&gt;}
+\begin{align*}
 \sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1} + g(x_{i-1}) } |
 \  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1} | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
 \  &amp;amp;\leq  V(f, P) + V(g, P)
-\end{align&lt;/em&gt;}$ 
+\end{align*}$ 
 $\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
 \Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).
 $$  &lt;/p&gt;
@@ -16,13 +16,13 @@ $$  &lt;/p&gt;
 &lt;p&gt;To show that the product of two functions of bounded variation is also of bounded variation, notice that both $f$ and $g$ are bounded, and thus there exists $K \in \mathbb{N}$ such that
 $|f(x)| \leq k, |g(x) | \leq k, \forall x \in P$.&lt;/p&gt;
 &lt;p&gt;Thus, 
-$$\begin{align&lt;em&gt;}
+$$\begin{align*}
 \sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1}g(x{i - 1})|
 \ &amp;amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1} } + g(x_{i-1} { f(x_i) - f(x_{i - 1}) } |
 \ &amp;amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1} | + | g(x_{i - 1} | | f(x_i) - f(x_{i - 1}) | }
 \ &amp;amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
 \ &amp;amp;\leq k V(g) + kV(f).
-\end{align&lt;/em&gt;}$$
+\end{align*}$$
 and so the product of two functions of bounded variation is also of bounded variation.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
