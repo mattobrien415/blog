@@ -151,16 +151,16 @@ Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.&lt;/
 </summary><category term="math"></category></entry><entry><title>using pi as a pseudorandom number generator</title><link href="http://mattobrien.me/using-pi-as-a-pseudorandom-number-generator.html" rel="alternate"></link><updated>2014-03-05T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-03-05:using-pi-as-a-pseudorandom-number-generator.html</id><summary type="html">&lt;p&gt;The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  &lt;/p&gt;
 &lt;p&gt;First, get the digits &lt;a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt"&gt;here:&lt;/a&gt;, download the file and read it into &lt;code&gt;R&lt;/code&gt; as Pi.  &lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;PI &amp;lt;- read.table("\your_path\PI.txt",quote="\"")
-pi_digits &amp;lt;- unlist(strsplit(as.character(PI[1,]),""))[2:1000]  &lt;/p&gt;
+&lt;p&gt;PI &amp;lt;- read.table("\your_path\PI.txt",quote="\"")  &lt;/p&gt;
+&lt;p&gt;pi_digits &amp;lt;- unlist(strsplit(as.character(PI[1,]),""))[2:1000]  &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The proportion of even numbers in the first 1000 digits of pi is:  &lt;/p&gt;
 &lt;p&gt;is_even &amp;lt;- function(x) x %% 2 == 0
 is_odd &amp;lt;- function(x) x %% 2 != 0  &lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;pi_digits &amp;lt;- as.numeric(pi_digits)
-indices_for_evens &amp;lt;- pi_digits[is_even(pi_digits)]
-indices_for_odds &amp;lt;- pi_digits[is_odd(pi_digits)]&lt;/p&gt;
+&lt;p&gt;pi_digits &amp;lt;- as.numeric(pi_digits)  &lt;/p&gt;
+&lt;p&gt;indices_for_evens &amp;lt;- pi_digits[is_even(pi_digits)]  &lt;/p&gt;
+&lt;p&gt;indices_for_odds &amp;lt;- pi_digits[is_odd(pi_digits)]&lt;/p&gt;
 &lt;p&gt;length(indices_for_evens) / 1000 &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  &lt;/p&gt;

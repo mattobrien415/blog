@@ -73,16 +73,16 @@ Filed under <a href="http://mattobrien.me/category/r.html">R</a>
 	<p>The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  </p>
 <p>First, get the digits <a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt">here:</a>, download the file and read it into <code>R</code> as Pi.  </p>
 <blockquote>
-<p>PI &lt;- read.table("\your_path\PI.txt",quote="\"")
-pi_digits &lt;- unlist(strsplit(as.character(PI[1,]),""))[2:1000]  </p>
+<p>PI &lt;- read.table("\your_path\PI.txt",quote="\"")  </p>
+<p>pi_digits &lt;- unlist(strsplit(as.character(PI[1,]),""))[2:1000]  </p>
 </blockquote>
 <p>The proportion of even numbers in the first 1000 digits of pi is:  </p>
 <p>is_even &lt;- function(x) x %% 2 == 0
 is_odd &lt;- function(x) x %% 2 != 0  </p>
 <blockquote>
-<p>pi_digits &lt;- as.numeric(pi_digits)
-indices_for_evens &lt;- pi_digits[is_even(pi_digits)]
-indices_for_odds &lt;- pi_digits[is_odd(pi_digits)]</p>
+<p>pi_digits &lt;- as.numeric(pi_digits)  </p>
+<p>indices_for_evens &lt;- pi_digits[is_even(pi_digits)]  </p>
+<p>indices_for_odds &lt;- pi_digits[is_odd(pi_digits)]</p>
 <p>length(indices_for_evens) / 1000 </p>
 </blockquote>
 <p>Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  </p>
