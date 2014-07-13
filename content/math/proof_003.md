@@ -3,7 +3,7 @@ Date: 2014-04-10
 Tags: math  git 
 Summary: Set theory proof #1
 
-A great little proof that is simple and a nice way to practice your $\\Latex$.
+A great little proof that is simple and a nice way to practice your $\Latex$.
 
 ###Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.###
 
@@ -21,7 +21,8 @@ This second statement is false as demonstrated by the following simple counterex
 Let
 
 $$\begin{\align\*}
-A &= [ 1, 2]
+A &= [1, 2]
+\end{align\*}$$
 \\\\
 B &=[1.3]
 \\\\
