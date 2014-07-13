@@ -20,10 +20,11 @@ This second statement is false as demonstrated by the following simple counterex
 
 Let
 
-$\begin{\align\*}
+$  
+\begin{\align\*}
 A &= [ 1, 2]\\\\ 
   B &=[1.3]\\\\
-  C&=[2, 3]\\\\
+  C &=[2, 3]\\\\
  \text{then, } A\cup B &=[1,2,3]\\\\
  \text{hence, } C &\subset A \cup B\\\\
  \text{but,  } C &\not\subset A\\\\
