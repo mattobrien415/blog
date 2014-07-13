@@ -52,10 +52,10 @@ and so the product of two functions of bounded variation is also of bounded vari
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 &lt;/script&gt;
-</summary><category term="math"></category></entry><entry><title>Set Theory #1</title><link href="http://mattobrien.me/set-theory-1.html" rel="alternate"></link><updated>2014-06-10T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-06-10:set-theory-1.html</id><summary type="html">&lt;p&gt;A great little proof that is simple and a nice way to practice your $\Latex$!&lt;/p&gt;
+</summary><category term="math"></category></entry><entry><title>Set Theory #1</title><link href="http://mattobrien.me/set-theory-1.html" rel="alternate"></link><updated>2014-06-10T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-06-10:set-theory-1.html</id><summary type="html">&lt;p&gt;A great little proof that is simple and a nice way to practice your $\Latex$.&lt;/p&gt;
 &lt;h3&gt;Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.&lt;/h3&gt;
-&lt;p&gt;First we show the proof for the righthand implication, that is \\
-\begin{proof}
+&lt;p&gt;First we show the proof for the righthand implication, that is  &lt;/p&gt;
+&lt;p&gt;\begin{proof}
  \begin{align*}
  C \subset A \text{ and }  C \subset B \rightarrow C \subset (A \cup B) \\ 
  \end{align*}
@@ -105,7 +105,7 @@ Second we show the proof for the lefthand implication, that is \\
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 &lt;/script&gt;
-</summary><category term="math"></category></entry><entry><title>Lebesgue measure #1</title><link href="http://mattobrien.me/lebesgue-measure-1.html" rel="alternate"></link><updated>2014-05-29T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-29:lebesgue-measure-1.html</id><summary type="html">&lt;p&gt;Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.&lt;/p&gt;
+</summary><category term="math  git"></category></entry><entry><title>Lebesgue measure #1</title><link href="http://mattobrien.me/lebesgue-measure-1.html" rel="alternate"></link><updated>2014-05-29T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-29:lebesgue-measure-1.html</id><summary type="html">&lt;p&gt;Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.&lt;/p&gt;
 &lt;h3&gt;Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.&lt;/h3&gt;
 &lt;p&gt;Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Case 1:&lt;/strong&gt;  $a &amp;gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.  &lt;/p&gt;
