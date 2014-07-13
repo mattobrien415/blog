@@ -1,7 +1,7 @@
 ﻿Title:  using Pi as a pseudorandom number generator
 Date: 2014-03-05
 Tags: simulation, R
-Summary: Can the digits of $Pi$ be used as a pesudorandom number generator?   
+Summary: Can the digits of Pi be used as a pesudorandom number generator?   
 
 
 The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  
