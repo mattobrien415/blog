@@ -1,39 +1,72 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Name       : Brown Stone  
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20100928
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Lebesgue measure #2</title>
-<link href="http://mattobrien.me/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="http://mattobrien.me/" type="application/atom+xml" rel="alternate" title="Matt O'Brien (dot) Me ATOM Feed" />
+    <meta charset="utf-8">
+    <title>Matt O'Brien (dot) Me</title>
+    <meta name="description" content="">
+    <meta name="author" content="Matt O'Brien">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
-<div id="wrapper">
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
+<header class="blog-header">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+      </div>
+
+      <div class="span3" id="blog-nav">
+	<ul class="nav nav-pills pull-right">
+	    <li  class="active" >
+	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	    <li >
+	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	</ul>
+      </div>
+    </div> <!-- End of fluid row-->
+  </div>   <!-- End of Container-->
+</header>
     
-                        	<div id="content">
-					<div class="post">
-						<h2 class="title"><a href="lebesgue-measure-2.html">Lebesgue measure #2</a></h2>
-						<p class="meta"><span class="date">Le Thu 17 July 2014 </span><span class="posted">Par <a href="#">Matt O'Brien</a></span><span>&nbsp; | Catégorie : <a href="http://mattobrien.me/category/math.html">math</a></span></p>
-					<p class="meta">Tags : <span><a href="http://mattobrien.me/tag/math.html">math</a> / </span>
-</p>	
-						<div style="clear: both;">&nbsp;</div>
-						<div class="entry">
-						 <p>This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a <a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958">book</a> on the subject at the time.  </p>
+<div class="container">
+    <div class="content">
+    <div class="row-fluid">
+
+        <div class="span10">
+    <div class='article'>
+      <div class="row-fluid">
+           <div class="content-title span9">
+             <h1>Lebesgue measure #2</h1b>
+           </div>
+      </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Thu 17 July 2014 </p>
+
+<p style="text-align: left;">
+Filed under <a href="http://mattobrien.me/category/math.html">math</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
+<p>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</p>
+      </div>
+      
+      <div class="span8">
+	<p>This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a <a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958">book</a> on the subject at the time.  </p>
 <h3>Show that the sum, difference and product of two BV-functions is a BV-function.</h3>
 <p>Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  </p>
 <p>$
@@ -86,93 +119,95 @@ and so the product of two functions of bounded variation is also of bounded vari
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 </script>
-	
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-						</div>
-					</div>
-			      
-					<div style="clear: both;">&nbsp;</div>
-                                        <div class="post">
-                                        <h2 class="title">Commentaires !</h2>
-                                            <div id="disqus_thread"></div>
-                                            <script type="text/javascript">
-                                               var disqus_identifier = "lebesgue-measure-2.html";
-                                               (function() {
-                                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                               dsq.src = 'http://mattobrienme.disqus.com/embed.js';
-                                               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                              })();
-                                            </script>
-                                        </div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<div id="logo">
-						<h1><a href="http://mattobrien.me">Matt O'Brien (dot) Me</h1>
-					</div>
-					<div id="menu">
-						<ul>
-							<li class="current_page_item"><a href="http://mattobrien.me">Home</a></li>
-							<li><a href="http://mattobrien.me/archives.html">Archives</a></li>
-						</ul>
-					</div>
-					<ul>
-						<li>
-							<h2>Catégories</h2>
-							<ul>
-								 <li class="active"><a href="http://mattobrien.me/category/math.html">math</a></li>
-								 <li ><a href="http://mattobrien.me/category/r.html">R</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Blogroll</h2>
-							<ul>
-                                                            <li><a href="http://spencerboucher.com/">Spencer Boucher</a></li>
-                                                            <li><a href="http://trevorstephens.com/">Trevor Stephens</a></li>
-							</ul>
-						</li>
-                                                <li>
-                                                        <h2>Social</h2>
-                                                        <ul>
-                                                            <li><a href="http://mattobrien.me/" rel="alternate">Flux Atom</a></li>
-                                                            <li><a href="https://github.com/mobbSF">GitHub</a></li>
-                                                            <li><a href="http://www.linkedin.com/pub/matt-o-brien/5/833/91b/">LinkedIn</a></li>
-                                                            <li><a href="feeds/all.atom.xml">RSS</a></li>
-                                                        </ul>
-                                                </li><!-- /.social -->
-						<li>
-						        <h2>Tags</h2>
-						        <ul>
-                                                                <li><a href="http://mattobrien.me/tag/r.html">R</a></li>
-                                                                <li><a href="http://mattobrien.me/tag/statistics.html">statistics</a></li>
-                                                                <li><a href="http://mattobrien.me/tag/math.html">math</a></li>
-						        </ul>
-						</li>
-						
-						
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
 
-<div id="footer">
-	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
-	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
-</p>
-</div>
-    <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    try {
-        var pageTracker = _gat._getTracker("UA-51519407-1");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
-<!-- end #footer -->
+	<hr />
+      </div>
+    </div>
+    <div class="span10">
+      <h3>Comments</h3>
+    
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mattobrienme'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>  
+    </div>
+        </div>
+        
+        
+    </div>     </div> </div>
+
+<!--footer-->
+<div class="container">
+  <div class="well" style="background-color: #E9EFF6">
+    <div id="blog-footer">
+      <div class="row-fluid">
+	<div class="social span2" align="center" id="socialist">
+	  <ul class="nav nav-list">
+	    <li class="nav-header">
+	      Social
+	    </li>
+	    <li><a href="https://github.com/mobbSF"><i class="icon-GitHub" style="color: #1f334b"></i>GitHub</a></li>
+	    <li><a href="http://www.linkedin.com/pub/matt-o-brien/5/833/91b/"><i class="icon-LinkedIn" style="color: #1f334b"></i>LinkedIn</a></li>
+	    <li><a href="feeds/all.atom.xml"><i class="icon-RSS" style="color: #1f334b"></i>RSS</a></li>
+
+	  </ul>
+	</div>
+        <div class="links span2" align="center">
+          <ul class="nav nav-list">
+            <li class="nav-header"> 
+              Links
+            </li>
+            
+            <li><a href="http://spencerboucher.com/">Spencer Boucher</a></li>
+            <li><a href="http://trevorstephens.com/">Trevor Stephens</a></li>
+          </ul>
+        </div>
+	<div class="site-nav span2" align="center">
+          <ul class="nav nav-list" id="site-links">
+            <li class="nav-header"> 
+              Site
+            </li>
+            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+                </i>Home</a></li>
+            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+                </i>Archives</a></li>
+	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+                </i>Tags</a></li>
+	    
+            <li><a href="http://mattobrien.me/" rel="alternate">
+                <i class="icon-rss-sign" style="color: #1f334b"></i>
+                Atom Feed</a></li>
+	  </ul>
+
+        </div>
+
+      </div> <!--end of fluid row-->
+    </div> <!--end of blog-footer-->
+    <hr />
+    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+      &copy; Matt O'Brien
+    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
+        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
+        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
+        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+
+  </div> <!--end of well -->
+</div> <!--end of container -->
+
+<!--/footer-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+
+
+<script>var _gaq=[['_setAccount','UA-51519407-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
 </body>
 </html>
