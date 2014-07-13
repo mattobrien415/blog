@@ -1,14 +1,15 @@
 ﻿Title:  Set Theory #1
 Date: 2014-06-10
-Tags: math  
+Tags: math  git 
 Summary: Set theory proof #1
 
-A great little proof that is simple and a nice way to practice your $\Latex$!
+A great little proof that is simple and a nice way to practice your $\\Latex$.
 
 ###Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.###
 
 
-First we show the proof for the righthand implication, that is \\\\
+First we show the proof for the righthand implication, that is  
+
 \begin{proof}
  \begin{align\*}
  C \subset A \text{ and }  C \subset B \rightarrow C \subset (A \cup B) \\\\ 
