@@ -46,11 +46,11 @@
         <p>This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a <a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958">book</a> on the subject at the time.  </p>
 <h3>Show that the sum, difference and product of two BV-functions is a BV-function.</h3>
 <p>Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  </p>
-<p>$\begin{align*}
-\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1}) + g(x_{i-1}) } | </p>
-<p>\  &amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
+<p>$
+\begin{align*}
+\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1}) + g(x_{i-1}) } | \  &amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
 \  &amp;\leq  V(f, P) + V(g, P)
-\end{align*}$  </p>
+\end{align*}$</p>
 <p>$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
 \Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).
 $  </p>
