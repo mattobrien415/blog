@@ -4,7 +4,7 @@
 &lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  &lt;/p&gt;
 &lt;p&gt;$
 \begin{align*}
-\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1}) + g(x_{i-1}) } | \  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
+\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1}) + g(x_{i-1}) } | \\  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
 \  &amp;amp;\leq  V(f, P) + V(g, P)
 \end{align*}$&lt;/p&gt;
 &lt;p&gt;$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
