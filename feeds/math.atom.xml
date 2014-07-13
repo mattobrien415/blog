@@ -98,14 +98,21 @@ $C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.  &lt;/p&gt;
 &lt;p&gt;Let&lt;/p&gt;
 &lt;p&gt;$&lt;br /&gt;
 \begin{\align*}
-A &amp;amp;= [ 1, 2]\\ 
-  B &amp;amp;=[1.3]\\
-  C &amp;amp;=[2, 3]\\
- \text{then, } A\cup B &amp;amp;=[1,2,3]\\
- \text{hence, } C &amp;amp;\subset A \cup B\\
- \text{but,  } C &amp;amp;\not\subset A\\
- C &amp;amp;\not\subset B\\
- \end{align*}$&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+A &amp;amp;= [ 1, 2]
+\\
+B &amp;amp;=[1.3]
+\\
+C &amp;amp;=[2, 3]
+\\
+\text{then, } A\cup B &amp;amp;=[1,2,3]
+\\
+\text{hence, } C &amp;amp;\subset A \cup B
+\\
+\text{but,  } C &amp;amp;\not\subset A
+\\
+C &amp;amp;\not\subset B
+\\
+\end{align*}$&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
