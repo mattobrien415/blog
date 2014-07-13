@@ -128,4 +128,4 @@ Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.&lt;/
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 &lt;/script&gt;
-</summary><category term="math  git"></category></entry></feed>
+</summary><category term="math"></category></entry></feed>
