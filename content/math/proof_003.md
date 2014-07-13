@@ -3,7 +3,7 @@ Date: 2014-04-10
 Tags: math  git 
 Summary: Set theory proof #1
 
-A great little proof that is simple and a nice way to practice your $\LaTex$.
+A great little proof that is simple and a nice way to practice your $\LaTeX$.
 
 ###Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.###
 
