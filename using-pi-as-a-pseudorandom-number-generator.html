@@ -69,26 +69,29 @@ Filed under <a href="http://mattobrien.me/category/r.html">R</a>
       
       <div class="span8">
 	<p>The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  </p>
-<p>First, get the digits <a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt">here:</a>, download the file and read it into <code>R</code> as Pi.  </p>
-<blockquote>
-<p>PI &lt;- read.table("\your_path\PI.txt",quote="\"")  </p>
-<p>pi_digits &lt;- unlist(strsplit(as.character(PI[1,]),""))[2:1000]  </p>
-</blockquote>
-<p>The proportion of even numbers in the first 1000 digits of pi is:  </p>
-<p>is_even &lt;- function(x) x %% 2 == 0
-is_odd &lt;- function(x) x %% 2 != 0  </p>
-<blockquote>
-<p>pi_digits &lt;- as.numeric(pi_digits)  </p>
-<p>indices_for_evens &lt;- pi_digits[is_even(pi_digits)]  </p>
-<p>indices_for_odds &lt;- pi_digits[is_odd(pi_digits)]</p>
-<p>length(indices_for_evens) / 1000 </p>
-</blockquote>
+<p>First, get the digits <a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt">here:</a>, download the file and read it into <code>R</code> and call it PI  </p>
+<div class="highlight"><pre>PI <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&quot;\your_path\PI.txt&quot;</span><span class="p">,</span>quote<span class="o">=</span><span class="s">&quot;\&quot;&quot;</span><span class="p">)</span>  
+pi_digits <span class="o">&lt;-</span> unlist<span class="p">(</span>strsplit<span class="p">(</span>as.character<span class="p">(</span>PI<span class="p">[</span><span class="m">1</span><span class="p">,]),</span><span class="s">&quot;&quot;</span><span class="p">))[</span><span class="m">2</span><span class="o">:</span><span class="m">1000</span><span class="p">]</span>  
+</pre></div>
+
+
+<p>The proportion of even numbers in the first 1000 digits of pi is found as follows:  </p>
+<div class="highlight"><pre>is_even <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> x <span class="o">%%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span>  
+is_odd <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> x <span class="o">%%</span> <span class="m">2</span> <span class="o">!=</span> <span class="m">0</span>  
+pi_digits <span class="o">&lt;-</span> as.numeric<span class="p">(</span>pi_digits<span class="p">)</span>  
+indices_for_evens <span class="o">&lt;-</span> pi_digits<span class="p">[</span>is_even<span class="p">(</span>pi_digits<span class="p">)]</span>  
+indices_for_odds <span class="o">&lt;-</span> pi_digits<span class="p">[</span>is_odd<span class="p">(</span>pi_digits<span class="p">)]</span>  
+length<span class="p">(</span>indices_for_evens<span class="p">)</span> <span class="o">/</span> <span class="m">1000</span>  
+</pre></div>
+
+
 <p>Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  </p>
-<blockquote>
-<p>flips &lt;- c(rep(1, 500), rep(0, 500))
-evens_for_t_test &lt;- c(rep(1, each=length(indices_for_evens)),  rep(0, each=length(indices_for_odds)) )
-t.test(flips, evens_for_t_test, alternative="two.sided")</p>
-</blockquote>
+<div class="highlight"><pre>flips <span class="o">&lt;-</span> c<span class="p">(</span>rep<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">500</span><span class="p">),</span> rep<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">500</span><span class="p">))</span>  
+evens_for_t_test <span class="o">&lt;-</span> c<span class="p">(</span>rep<span class="p">(</span><span class="m">1</span><span class="p">,</span> each<span class="o">=</span>length<span class="p">(</span>indices_for_evens<span class="p">)),</span>  rep<span class="p">(</span><span class="m">0</span><span class="p">,</span> each<span class="o">=</span>length<span class="p">(</span>indices_for_odds<span class="p">))</span> <span class="p">)</span>  
+t.test<span class="p">(</span>flips<span class="p">,</span> evens_for_t_test<span class="p">,</span> alternative<span class="o">=</span><span class="s">&quot;two.sided&quot;</span><span class="p">)</span>  
+</pre></div>
+
+
 <p>The p-value is 0.4881.  At a 0.05 significance level, we fail to reject the null hypothesis.Thus, we infer that the digits of pi have passed a test for randomness.  </p>
 <p>So why aren't the digits of $\pi$ used to generate random numbers?  One problem may be the choice of a seed -- in one sense, each time you re-run your simulation based on the digits of $\pi$, you will have to pick up where you left off last time.  This invariably will lead to the requirement of having to calculated $\pi$ to a huge number of decimal places.  In the end, that computational requirement is the major bottleneck and that bottleneck can probably can be arrived at in a number of novel and unfortunate ways. </p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
