@@ -20,8 +20,7 @@ This second statement is false as demonstrated by the following simple counterex
 
 Let
 
-$  
-\begin{\align\*}
+$\begin{\align\*}
 A &= [ 1, 2]
 \\\\
 B &=[1.3]
