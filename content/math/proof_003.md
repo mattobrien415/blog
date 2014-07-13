@@ -22,11 +22,18 @@ Let
 
 $  
 \begin{\align\*}
-A &= [ 1, 2]\\\\ 
-  B &=[1.3]\\\\
-  C &=[2, 3]\\\\
- \text{then, } A\cup B &=[1,2,3]\\\\
- \text{hence, } C &\subset A \cup B\\\\
- \text{but,  } C &\not\subset A\\\\
- C &\not\subset B\\\\
- \end{align\*}$
+A &= [ 1, 2]
+\\\\
+B &=[1.3]
+\\\\
+C &=[2, 3]
+\\\\
+\text{then, } A\cup B &=[1,2,3]
+\\\\
+\text{hence, } C &\subset A \cup B
+\\\\
+\text{but,  } C &\not\subset A
+\\\\
+C &\not\subset B
+\\\\
+\end{align\*}$
