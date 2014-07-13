@@ -96,8 +96,7 @@ $C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$.   &lt;/p&gt;
 $C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.  &lt;/p&gt;
 &lt;p&gt;This second statement is false as demonstrated by the following simple counterexample:  &lt;/p&gt;
 &lt;p&gt;Let&lt;/p&gt;
-&lt;p&gt;$&lt;br /&gt;
-\begin{\align*}
+&lt;p&gt;$\begin{\align*}
 A &amp;amp;= [ 1, 2]
 \\
 B &amp;amp;=[1.3]
