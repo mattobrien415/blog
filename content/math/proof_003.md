@@ -18,22 +18,9 @@ $C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.
 
 This second statement is false as demonstrated by the following simple counterexample:  
 
-Let
+Choose:  
 
-$$\begin{\align\*}
-A &= [1, 2]
-\end{align\*}$$
-\\\\
-B &=[1.3]
-\\\\
-C &=[2, 3]
-\\\\
-\text{then, } A\cup B &=[1,2,3]
-\\\\
-\text{hence, } C &\subset A \cup B
-\\\\
-\text{but,  } C &\not\subset A
-\\\\
-C &\not\subset B
-\\\\
-\end{align\*}$$
+$A = [1, 2]$, $B =[1, 3]$, and $C =[2, 3]$.  
+
+Then, $A\cup B =[1,2,3]$.  
+Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.
