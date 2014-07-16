@@ -4,6 +4,7 @@
 &lt;p&gt;&lt;a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=OPdRX5Poqo4
 " target="_blank"&gt;&lt;img src="http://img.youtube.com/vi/OPdRX5Poqo4/0.jpg" 
 alt="muay thai kick tutorial" width="240" height="180" border="10" /&gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="sport science"></category></entry><entry><title>Visualization in RShiny</title><link href="http://mattobrien.me/visualization-in-rshiny.html" rel="alternate"></link><updated>2014-08-02T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-08-02:visualization-in-rshiny.html</id><summary type="html">&lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science. The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  &lt;/p&gt;
+&lt;p&gt;You can find this visualization hosted &lt;a href="https://mattobriendotme.shinyapps.io/shinyapp/"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h1&gt;THE PROJECT:&lt;/h1&gt;
 &lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science.   &lt;/p&gt;
 &lt;p&gt;The fields in the data consisted of job description, company name, salary, city, state and zipcode.  &lt;/p&gt;
