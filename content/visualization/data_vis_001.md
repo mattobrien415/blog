@@ -3,6 +3,9 @@ Date: 2014-08-02
 Tags: visualization
 Summary: 
 Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science. The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  
+
+You can find this visualization hosted [here](https://mattobriendotme.shinyapps.io/shinyapp/).
+
 # THE PROJECT:  
 Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science.   
 
