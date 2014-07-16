@@ -1,5 +1,5 @@
 Title:  Muay Thai kick to the body
-Date: 2014-08-02
+Date: 2014-07-15
 Tags: sport science
 Summary: Biomechanics of a body kick
 My interest in human movement led me to doing some 3D modeling. I purchased an 8 strobe Optitrack system and asked an amateur fighter to put on the reflective suit and demonstrate his body kick. After I captured the movement, I discussed some of the findings in this animation.  
