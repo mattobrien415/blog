@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Matt O'Brien (dot) Me</title>
+    <meta name="description" content="">
+    <meta name="author" content="Matt O'Brien">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<header class="blog-header">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+      </div>
+
+      <div class="span3" id="blog-nav">
+	<ul class="nav nav-pills pull-right">
+	    <li >
+	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	    <li >
+	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	    <li >
+	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	    <li  class="active" >
+	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	</ul>
+      </div>
+    </div> <!-- End of fluid row-->
+  </div>   <!-- End of Container-->
+</header>
+    
+<div class="container">
+    <div class="content">
+    <div class="row-fluid">
+
+        <div class="span10">
+        
+
+        
+
+    <div class='row-fluid''>
+        <div class="article-title span9">
+            <a href="http://mattobrien.me/visualization-in-rshiny.html"><h1>Visualization in RShiny</h1></a>
+        </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Sat 02 August 2014 </p>
+
+<p style="text-align: left;">
+Filed under <a href="http://mattobrien.me/category/visualization.html">visualization</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="http://mattobrien.me/tag/visualization.html">visualization</a> </p>
+<p>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</p>
+      </div>
+      <div class="article-content span8">
+	<p>Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science. The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  </p>
+<h1>THE PROJECT:</h1>
+<p>Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science.   </p>
+<p>The fields in the data consisted of job description, company name, salary, city, state and zipcode.  </p>
+<p>The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  </p>
+<h1>VISUALIZATION #1: COUNTRY MAP</h1>
+<p>The first visualization is of a map of the continental United States.  The idea here was to obtain a broad overview of which areas in which states have the most jobs.  </p>
+<p>You can interact with this map in a number of ways:  </p>
+<ul>
+<li>
+<p>Select which states you want to see and don't want to see  </p>
+</li>
+<li>
+<p>Use a slider to narrow the results down to jobs that pay within a specific salary range</p>
+</li>
+<li>
+<p>You can manage overplotting by adjusting the alpha value</p>
+</li>
+<li>
+<p>You can mange overplotting by introducing jitter to the points</p>
+</li>
+</ul>
+<p>The data began as zipcode information.  Using the <code>library(zipcode)</code> package, the zipcode data was transformed into longitude and latitude coordinates.  </p>
+<p>The data showed me that most of the jobs reside in the Bay Area of California.  There aren't many jobs in the Midwest or South, and there are a good amount of jobs in Washington and Texas.  </p>
+<p>Originally I was using red dots (it looked like the map had chicken pox).  I changed to circles and changed the color to green.  I also added state initials, even though it required me to post a question on StackOverflow which you can view <a href="http://stackoverflow.com/questions/23447760/include-borders-and-state-abbreviations-when-using-the-map-function-with-the-map">here</a>.  </p>
+<p>This map has good data density and data-to-ink ratio.  The lie factor is increased when the jitter is used, considerably.  Sometimes, some points in Washington jump into Canada.  </p>
+<p>The interactivity enhances the visualization in the sense that it makes the locations visible and simple to view.  </p>
+<p>I also am happy all four methods of interaction.  Here is a screenshot of the visualization with and without jitter:  </p>
+<p><img alt="" src="https://github.com/mobbSF/msan622/blob/master/final-project/001.png?raw=true" /></p>
+<p>One problem is the inability to adjust all states.  I chose a checkbox for the States, and as much as I wanted to, I wasn't able include all 48 states due, simply, to lack of space.  A better control would have allowed me to subset on certain important States.  To me, this is a major, major flaw in my visualization.  The question remains, how can a user intuitively and easily select any combination of 48 states when there is limited space on the graphic?  My solution is to remove control from the user, which is not ideal.  </p>
+<h1>VISUALIZATION #2:  CLOROPLETH</h1>
+<p>This map is a cloropleth, which is somewhat of a combination of a heatmap and geographic map.  </p>
+<p><img alt="" src="https://github.com/mobbSF/msan622/blob/master/final-project/002.png?raw=true" /></p>
+<p>When you think of a cloropleth, or even a heatmap in general, trying to incorporate interactivity can be a difficult task.  After all, a heatmap pretty much shows everything...perhaps the granularity of binning can be adjusted, but what else?  </p>
+<p>I chose to approach this in a way that made sense to me.  The way this map works, is the view all of the states together to see how they relate to each other.  Now, we slow remove states, one by one, and each time, watch the choropleth regenerate, and rescale itself to show how the remaining states are distributed.  So, if you didn't want to live in CA, you could remove it, and see a "new" heatmap, based on the remaining parts of the country.  </p>
+<p>Here, the colors are mapped to the total sum of all salaries.  For example, there is about 5 million dollars worth of salary to be earned in California, which makes the color dark green.  </p>
+<p>This plot is really another attempt to see how many jobs in each state exist.  The first visualization, naturally suffers from intense overplotting.  The choropleth generalizes the jobs to fit within a state, not just a tiny point surrounded by a hollow circle.  In retrospect, this plot is a little more general in nature than plot 1, and maybe I should have switched the order of these plots to guarantee that the plots are in general --&gt; specific order.   </p>
+<p>I like the creative way to burrow deep into specific combinations of jobs, depending on which states you choose to exclude.  Once you get used to this idea, it makes a lot of sense.  </p>
+<p>I had to use the <code>choroplethr</code> package, which is so different than the first plot.  Making the two of them match was difficult.  Even matching the colors (which is still imperfect) was a major challenge and required me to get creative.  </p>
+<h1>VISUALIZATION #3: SINGLE STATE BUBBLEPLOT</h1>
+<p>Visualization 3 moves us into looking at single states, where we can see more clearly exactly where the jobs reside.  Here is an example of just one of the states you can zoom in on, Washington:  </p>
+<p><img alt="" src="https://github.com/mobbSF/msan622/blob/master/final-project/003.png?raw=true" /></p>
+<p>Here, we have:  </p>
+<ul>
+<li>
+<p>Selecting the particular state in a dropdown menu  </p>
+</li>
+<li>
+<p>Adjusting salary as in the first map  </p>
+</li>
+<li>
+<p>Adjusting alpha  </p>
+</li>
+<li>
+<p>Adding jitter </p>
+</li>
+</ul>
+<p>The data was encoded in the same way as the first plot, just further subsetted by state, and more importantly, salary was mapped to the size of the circular point.  </p>
+<p>This visualization is nice, since now we get a better feel for which specific areas these jobs are in.  As the visualizations go, they attempt to get more and granular in nature, and this plot makes a big jump in that direction.  Also, it is really important to realize this is a bubbleplot, and now we can see the salary related to specific jobs, which was prior not easy to see on such an individualized basis.  </p>
+<p>Since the states are just simple polygons, they aren't very exciting.  I added some fill as color (grey90) which helped.  </p>
+<p>This plot, due to the lack of color and texture, clearly has a fantastic data to ink ratio. The lie factor is fine and the data density is good too.  In retrospect, I could have removed the jitter option, which would have kept the lie factor down.  I am not convinced that jitter is useful at this level anyways.  It could easily move a job from one city to another.  </p>
+<p>The alpha is always necessary, I suspect, except for sparse states like Kansas where there aren't any overlapping jobs.  The ability to zoom in by selecting a particular state is crucial.  Jitter, as mentioned prior, isn't exceptionally important.  </p>
+<p>The plot generates single states, which is a somewhat unorthodox way to create a plot.  I like the dropdown menu and I am glad that I was able to make all the plots resize to fill up the space, even though I finally had to post another StackOverflow question <a href="http://stackoverflow.com/questions/23449033/how-to-resize-a-state-when-using-the-map-function-in-the-mapproj-library-in-r">here</a>.  </p>
+<p>I originally wanted to find some way to 'grey out' the controls that aren't being used in this plot, since it's hard to even find the dropdown menu way at the bottom.  </p>
+<h1>VISUALIZATION #4: BAR PLOT</h1>
+<p>This chart can be sorted as seen below:  </p>
+<p><img alt="" src="https://github.com/mobbSF/msan622/blob/master/final-project/004.png?raw=true" />  </p>
+<p>The data was summed and encoded as scalars with which to plot the number of jobs in each state.  </p>
+<p>Strangely enough, a simple bar chart might be the most interesting plot of all 4.  Why? Because, finally, we get a numeric representation of the distribution of jobs out there.  Up until now, we've had to rely on color, shape, and space to do so.  Now, we finally hit the nail on the head and with this bar chart, we can see exactly what the job market looked like at this given time, across the country.  </p>
+<p>Of course ordering in a bar chart is always a good idea when it comes to interactivity (or at least I suspect this is true).  It only takes a glance to see the relationship between the states and how they come together.  </p>
+<p>I was glad that I was able to remove that annoying area between the x and y axis, remove the tickmarks as I wanted, and otherwise to the customary cleanup on ggplot that we've practiced up to now.  </p>
+<p>There is no end to how much work you can put into a good visualization -- this project provided me with lots of appreciation as to how difficult a good vis really is to construct.  For example, was it worth the hours it took to figure out how to give this custom error message?  </p>
+<p><img alt="" src="https://github.com/mobbSF/msan622/blob/master/final-project/005.gif?raw=true" />  </p>
+<p>Who knows.  But, I also now have more appreciation for why lots of visualizations are hard to read.  This is a large and deep field.  </p> 
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/visualization-in-rshiny.html">
+          <i class="icon-comment"></i> Comment </a>
+	<hr />
+      </div>
+      
+    </div>
+    
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://mattobrien.me/category/visualization.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        
+    </div>     </div> </div>
+
+<!--footer-->
+<div class="container">
+  <div class="well" style="background-color: #E9EFF6">
+    <div id="blog-footer">
+      <div class="row-fluid">
+	<div class="social span2" align="center" id="socialist">
+	  <ul class="nav nav-list">
+	    <li class="nav-header">
+	      Social
+	    </li>
+	    <li><a href="https://github.com/mobbSF"><i class="icon-GitHub" style="color: #1f334b"></i>GitHub</a></li>
+	    <li><a href="http://www.linkedin.com/pub/matt-o-brien/5/833/91b/"><i class="icon-LinkedIn" style="color: #1f334b"></i>LinkedIn</a></li>
+	    <li><a href="feeds/all.atom.xml"><i class="icon-RSS" style="color: #1f334b"></i>RSS</a></li>
+
+	  </ul>
+	</div>
+        <div class="links span2" align="center">
+          <ul class="nav nav-list">
+            <li class="nav-header"> 
+              Links
+            </li>
+            
+            <li><a href="http://spencerboucher.com/">Spencer Boucher</a></li>
+            <li><a href="http://trevorstephens.com/">Trevor Stephens</a></li>
+          </ul>
+        </div>
+	<div class="site-nav span2" align="center">
+          <ul class="nav nav-list" id="site-links">
+            <li class="nav-header"> 
+              Site
+            </li>
+            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+                </i>Home</a></li>
+            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+                </i>Archives</a></li>
+	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+                </i>Tags</a></li>
+	    
+            <li><a href="http://mattobrien.me/" rel="alternate">
+                <i class="icon-rss-sign" style="color: #1f334b"></i>
+                Atom Feed</a></li>
+	  </ul>
+
+        </div>
+
+      </div> <!--end of fluid row-->
+    </div> <!--end of blog-footer-->
+    <hr />
+    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+      &copy; Matt O'Brien
+    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
+        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
+        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
+        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+
+  </div> <!--end of well -->
+</div> <!--end of container -->
+
+<!--/footer-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+
+
+<script>var _gaq=[['_setAccount','UA-51519407-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
+</body>
+</html>
