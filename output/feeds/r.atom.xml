@@ -15,4 +15,59 @@ cumulative distribution function&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;em&gt;Answer:  1&lt;/em&gt;  &lt;/p&gt;
-&lt;p&gt;I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability mass function.”  However, that is not the case.&lt;/p&gt;</summary><category term="statistics"></category><category term="R"></category></entry></feed>
+&lt;p&gt;I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability mass function.”  However, that is not the case.&lt;/p&gt;</summary><category term="statistics"></category><category term="R"></category></entry><entry><title>using Pi as a pseudorandom number generator</title><link href="http://mattobrien.me/using-pi-as-a-pseudorandom-number-generator.html" rel="alternate"></link><updated>2014-03-05T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-03-05:using-pi-as-a-pseudorandom-number-generator.html</id><summary type="html">&lt;p&gt;The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  &lt;/p&gt;
+&lt;p&gt;First, get the digits &lt;a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt"&gt;here:&lt;/a&gt;, download the file and read it into &lt;code&gt;R&lt;/code&gt; and call it PI  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;PI &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.table&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\your_path\PI.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;quote&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; unlist&lt;span class="p"&gt;(&lt;/span&gt;strsplit&lt;span class="p"&gt;(&lt;/span&gt;as.character&lt;span class="p"&gt;(&lt;/span&gt;PI&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,]),&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The proportion of even numbers in the first 1000 digits of pi is found as follows:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;is_even &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; x &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;  
+is_odd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; x &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;  
+pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; as.numeric&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)&lt;/span&gt;  
+indices_for_evens &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; pi_digits&lt;span class="p"&gt;[&lt;/span&gt;is_even&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)]&lt;/span&gt;  
+indices_for_odds &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; pi_digits&lt;span class="p"&gt;[&lt;/span&gt;is_odd&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)]&lt;/span&gt;  
+length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;flips &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+evens_for_t_test &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)),&lt;/span&gt;  rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_odds&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;  
+t.test&lt;span class="p"&gt;(&lt;/span&gt;flips&lt;span class="p"&gt;,&lt;/span&gt; evens_for_t_test&lt;span class="p"&gt;,&lt;/span&gt; alternative&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;two.sided&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The p-value is 0.4881.  At a 0.05 significance level, we fail to reject the null hypothesis.Thus, we infer that the digits of pi have passed a test for randomness.  &lt;/p&gt;
+&lt;p&gt;So why aren't the digits of $\pi$ used to generate random numbers?  One problem may be the choice of a seed -- in one sense, each time you re-run your simulation based on the digits of $\pi$, you will have to pick up where you left off last time.  This invariably will lead to the requirement of having to calculated $\pi$ to a huge number of decimal places.  In the end, that computational requirement is the major bottleneck and that bottleneck can probably can be arrived at in a number of novel and unfortunate ways. &lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary><category term="simulation"></category><category term="R"></category></entry></feed>

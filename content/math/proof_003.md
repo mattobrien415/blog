@@ -1,6 +1,6 @@
 ﻿Title:  Set Theory #1
 Date: 2014-04-10
-Tags: math  git 
+Tags: math
 Summary: Set theory proof #1
 
 A great little proof that is simple and a nice way to practice your $\LaTeX$.

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/math.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-07-17T00:00:00-07:00</updated><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/math.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-07-17T00:00:00-07:00</updated><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;p&gt;This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a &lt;a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958"&gt;book&lt;/a&gt; on the subject at the time.  &lt;/p&gt;
+&lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
 &lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  &lt;/p&gt;
-&lt;p&gt;$$
-\begin{align&lt;em&gt;}
-\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1} + g(x_{i-1}) } |
-\  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1} | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
-\  &amp;amp;\leq  V(f, P) + V(g, P)
-\end{align&lt;/em&gt;}$ 
-$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
+&lt;p&gt;$
+\begin{align*}
+\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1}) + g(x_{i-1}) } | \\  &amp;amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
+\\  &amp;amp;\leq  V(f, P) + V(g, P)
+\end{align*}$&lt;/p&gt;
+&lt;p&gt;$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
 \Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).
-$$  &lt;/p&gt;
+$  &lt;/p&gt;
 &lt;p&gt;Thus, $(f + g)$ is a function of bounded variation.&lt;/p&gt;
 &lt;p&gt;To show that $(f - g)$ is of bounded variation, the proof is the same and $V(f - g) \leq V(f) + V(g)$&lt;/p&gt;
 &lt;p&gt;To show that the product of two functions of bounded variation is also of bounded variation, notice that both $f$ and $g$ are bounded, and thus there exists $K \in \mathbb{N}$ such that
 $|f(x)| \leq k, |g(x) | \leq k, \forall x \in P$.&lt;/p&gt;
 &lt;p&gt;Thus, 
-$$\begin{align&lt;em&gt;}
-\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1}g(x{i - 1})|
-\ &amp;amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1} } + g(x_{i-1} { f(x_i) - f(x_{i - 1}) } |
-\ &amp;amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1} | + | g(x_{i - 1} | | f(x_i) - f(x_{i - 1}) | }
-\ &amp;amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
-\ &amp;amp;\leq k V(g) + kV(f).
-\end{align&lt;/em&gt;}$$
+$$\begin{align*}
+\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1})g(x{i - 1})|
+\\ &amp;amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1}) } + g(x_{i-1}) { f(x_i) - f(x_{i - 1}) } |
+\\ &amp;amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1}) | + | g(x_{i - 1}) | | f(x_i) - f(x_{i - 1}) | }
+\\ &amp;amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
+\\ &amp;amp;\leq k V(g) + kV(f).
+\end{align*}$$
 and so the product of two functions of bounded variation is also of bounded variation.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
@@ -58,6 +58,47 @@ and so the product of two functions of bounded variation is also of bounded vari
 &lt;p&gt;&lt;strong&gt;Case 1:&lt;/strong&gt;  $a &amp;gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Case 2:&lt;/strong&gt;  $b &amp;gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Case 3:&lt;/strong&gt;  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary><category term="math"></category></entry><entry><title>Set Theory #1</title><link href="http://mattobrien.me/set-theory-1.html" rel="alternate"></link><updated>2014-04-10T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-04-10:set-theory-1.html</id><summary type="html">&lt;p&gt;A great little proof that is simple and a nice way to practice your $\LaTeX$.&lt;/p&gt;
+&lt;h3&gt;Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.&lt;/h3&gt;
+&lt;p&gt;First we examine the righthand implication, that is:&lt;br /&gt;
+$C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$.   &lt;/p&gt;
+&lt;p&gt;Let $x \in C $. Then $x \in A $. So, $x \in A$ or $x \in B$. Hence $x \in (A \cup B)$.  &lt;/p&gt;
+&lt;p&gt;Second, we examine the lefthand implication, that is
+$C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.  &lt;/p&gt;
+&lt;p&gt;This second statement is false as demonstrated by the following simple counterexample:  &lt;/p&gt;
+&lt;p&gt;Choose:  &lt;/p&gt;
+&lt;p&gt;$A = [1, 2]$, $B =[1, 3]$, and $C =[2, 3]$.  &lt;/p&gt;
+&lt;p&gt;Then, $A\cup B =[1,2,3]$.&lt;br /&gt;
+Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
