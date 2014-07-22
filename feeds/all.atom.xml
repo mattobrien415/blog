@@ -191,7 +191,7 @@ alt="muay thai kick tutorial" width="240" height="180" border="10" /&gt;&lt;/a&g
 &lt;p&gt;For each iteration&lt;br /&gt;
 (a) Randomly divide your data in training and testing using 1/3 for
 testing and 2/3 for training.&lt;br /&gt;
-(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement
+(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement&lt;br /&gt;
 (c) For every document in the training set use the equation $$c^{*}=argmax_{c}log(P(c)) + \sum_{i=1}^{M}n_{i}(d) * log(P(w_{i}|c))$$ to compute $P(c|d)$ and predict the class c.&lt;br /&gt;
 (d) Compute the accuracy of the testing set.&lt;/p&gt;
 &lt;/li&gt;
@@ -526,9 +526,7 @@ ave_accuracy:80.3%  &lt;/p&gt;
 
 &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;ss&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
