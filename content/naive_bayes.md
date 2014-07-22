@@ -17,7 +17,7 @@ The algorithm uses these steps:
 1. For each iteration  
 (a) Randomly divide your data in training and testing using 1/3 for
 testing and 2/3 for training.  
-(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement
+(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement  
 (c) For every document in the training set use the equation $$c^{*}=argmax_{c}log(P(c)) + \sum_{i=1}^{M}n_{i}(d) * log(P(w_{i}|c))$$ to compute $P(c|d)$ and predict the class c.  
 (d) Compute the accuracy of the testing set.
 
@@ -50,17 +50,17 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
     import random
     import math
     import collections
-
+    
     # some simple stopwords: could easily be improved with a little work
     stopWords = ['a', 'i', 'b', 'r', 'able', 'about', 'across', 'after', 'all', 'almost', 'also', 'am', 'among', 'an', 'and', 'any', 'are', 'as', 'at', 'be','because', 'been', 'but', 'by', 'can', 'cannot', 'could', 'dear','did', 'do', 'does', 'either', 'else', 'ever', 'every','for','from', 'get', 'got', 'had', 'has', 'have', 'he', 'her', 'hers','him', 'his', 'how', 'however', 'i', 'if', 'in', 'into', 'is','it', 'its', 'just', 'least', 'let', 'like', 'likely', 'may','me', 'might', 'most', 'must', 'my', 'neither', 'no', 'nor','not', 'of', 'off', 'often', 'on', 'only', 'or', 'other', 'our','own', 'rather', 'said', 'say', 'says', 'she', 'should', 'since','so', 'some', 'than', 'that', 'the', 'their', 'them', 'then','there', 'these', 'they', 'this', 'tis', 'to', 'too', 'twas', 'us','ve', 'wants', 'was', 'we', 'were', 'what', 'when', 'where', 'which','while', 'who', 'whom', 'why', 'will', 'with', 'would', 'yet','you', 'your', ':', ',', '.', '"', "'","it's", "(", ")", ";", "!","--", "-", "?"]
-
+    
     def parseArgument():
         ### Code for parsing arguments
         parser = argparse.ArgumentParser(description='Parsing a file.')
         parser.add_argument('-d', nargs=1, required=True)
         args = vars(parser.parse_args())
         return args
-
+        
     ###  This function takes the directory path and divides the file names found in the pos / neg directories
     ###  into the proper proportions, stored into a dict named 'D'.
     def CreateD(directory):
@@ -92,7 +92,7 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
         fileDict["neg_train"] = neg_train
         fileDict["neg_test"] = neg_test
         return fileDict
-
+        
     ### This function used a counter object to count the number of documents in the class 'pos' or 'neg'.  This is used
     ### for printing summary statistics at the end.
     def CountDocsInClass(directory,subdir,file_list):
@@ -102,7 +102,7 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
             cntr = cntr + collections.Counter([t for t in (f.read()).split() if not t in stopWords])#add word counts to counter object
             f.close()#Close each File
         return cntr
-
+        
     def main():
         args = parseArgument()
         directory = args['d'][0]
@@ -110,11 +110,11 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
         tot_acc = 0
         # Iterations
         for step in range(1,4):
-
+        
     ### Here is the training code:
     ### First we create the dictionary of filenames using the CreateD function.
             file_dict = CreateD(directory)
-
+            
     ### Here we count the number of documents in the 'pos' and 'neg' class using the CountDocsInClass function.
             positive_counter = CountDocsInClass(directory,'pos',file_dict['pos_train'])
             negative_counter = CountDocsInClass(directory,'neg',file_dict['neg_train'])
@@ -177,7 +177,7 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
                 else:
                     filescore[file]['output'] = 'neg'
                 f.close()
-
+                
     ###   Create some counters to track the numbers of successes for each class
             count_positive_success = 0
             count_negative_success = 0
@@ -198,7 +198,5 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
             print "accuracy:",acc,'%'
             tot_acc = tot_acc + acc
         print "ave_accuracy:",tot_acc/3.0
-
+        
     main()
-
-ss
