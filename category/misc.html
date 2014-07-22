@@ -107,35 +107,319 @@ iteration 3:<br />
     ...<br />
 ave_accuracy:80.3%  </p>
 <p>Make sure to include the command line parameters <code>python naive-bayes.py -d my_directory</code> where <code>my_directory</code> is the path to the directory that holds the positive and negative reviews along with the python script.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 
+
 <span class="c"># some simple stopwords: could easily be improved with a little work</span>
 <span class="n">stopWords</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;able&#39;</span><span class="p">,</span> <span class="s">&#39;about&#39;</span><span class="p">,</span> <span class="s">&#39;across&#39;</span><span class="p">,</span> <span class="s">&#39;after&#39;</span><span class="p">,</span> <span class="s">&#39;all&#39;</span><span class="p">,</span> <span class="s">&#39;almost&#39;</span><span class="p">,</span> <span class="s">&#39;also&#39;</span><span class="p">,</span> <span class="s">&#39;am&#39;</span><span class="p">,</span> <span class="s">&#39;among&#39;</span><span class="p">,</span> <span class="s">&#39;an&#39;</span><span class="p">,</span> <span class="s">&#39;and&#39;</span><span class="p">,</span> <span class="s">&#39;any&#39;</span><span class="p">,</span> <span class="s">&#39;are&#39;</span><span class="p">,</span> <span class="s">&#39;as&#39;</span><span class="p">,</span> <span class="s">&#39;at&#39;</span><span class="p">,</span> <span class="s">&#39;be&#39;</span><span class="p">,</span><span class="s">&#39;because&#39;</span><span class="p">,</span> <span class="s">&#39;been&#39;</span><span class="p">,</span> <span class="s">&#39;but&#39;</span><span class="p">,</span> <span class="s">&#39;by&#39;</span><span class="p">,</span> <span class="s">&#39;can&#39;</span><span class="p">,</span> <span class="s">&#39;cannot&#39;</span><span class="p">,</span> <span class="s">&#39;could&#39;</span><span class="p">,</span> <span class="s">&#39;dear&#39;</span><span class="p">,</span><span class="s">&#39;did&#39;</span><span class="p">,</span> <span class="s">&#39;do&#39;</span><span class="p">,</span> <span class="s">&#39;does&#39;</span><span class="p">,</span> <span class="s">&#39;either&#39;</span><span class="p">,</span> <span class="s">&#39;else&#39;</span><span class="p">,</span> <span class="s">&#39;ever&#39;</span><span class="p">,</span> <span class="s">&#39;every&#39;</span><span class="p">,</span><span class="s">&#39;for&#39;</span><span class="p">,</span><span class="s">&#39;from&#39;</span><span class="p">,</span> <span class="s">&#39;get&#39;</span><span class="p">,</span> <span class="s">&#39;got&#39;</span><span class="p">,</span> <span class="s">&#39;had&#39;</span><span class="p">,</span> <span class="s">&#39;has&#39;</span><span class="p">,</span> <span class="s">&#39;have&#39;</span><span class="p">,</span> <span class="s">&#39;he&#39;</span><span class="p">,</span> <span class="s">&#39;her&#39;</span><span class="p">,</span> <span class="s">&#39;hers&#39;</span><span class="p">,</span><span class="s">&#39;him&#39;</span><span class="p">,</span> <span class="s">&#39;his&#39;</span><span class="p">,</span> <span class="s">&#39;how&#39;</span><span class="p">,</span> <span class="s">&#39;however&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;if&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="s">&#39;into&#39;</span><span class="p">,</span> <span class="s">&#39;is&#39;</span><span class="p">,</span><span class="s">&#39;it&#39;</span><span class="p">,</span> <span class="s">&#39;its&#39;</span><span class="p">,</span> <span class="s">&#39;just&#39;</span><span class="p">,</span> <span class="s">&#39;least&#39;</span><span class="p">,</span> <span class="s">&#39;let&#39;</span><span class="p">,</span> <span class="s">&#39;like&#39;</span><span class="p">,</span> <span class="s">&#39;likely&#39;</span><span class="p">,</span> <span class="s">&#39;may&#39;</span><span class="p">,</span><span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="s">&#39;might&#39;</span><span class="p">,</span> <span class="s">&#39;most&#39;</span><span class="p">,</span> <span class="s">&#39;must&#39;</span><span class="p">,</span> <span class="s">&#39;my&#39;</span><span class="p">,</span> <span class="s">&#39;neither&#39;</span><span class="p">,</span> <span class="s">&#39;no&#39;</span><span class="p">,</span> <span class="s">&#39;nor&#39;</span><span class="p">,</span><span class="s">&#39;not&#39;</span><span class="p">,</span> <span class="s">&#39;of&#39;</span><span class="p">,</span> <span class="s">&#39;off&#39;</span><span class="p">,</span> <span class="s">&#39;often&#39;</span><span class="p">,</span> <span class="s">&#39;on&#39;</span><span class="p">,</span> <span class="s">&#39;only&#39;</span><span class="p">,</span> <span class="s">&#39;or&#39;</span><span class="p">,</span> <span class="s">&#39;other&#39;</span><span class="p">,</span> <span class="s">&#39;our&#39;</span><span class="p">,</span><span class="s">&#39;own&#39;</span><span class="p">,</span> <span class="s">&#39;rather&#39;</span><span class="p">,</span> <span class="s">&#39;said&#39;</span><span class="p">,</span> <span class="s">&#39;say&#39;</span><span class="p">,</span> <span class="s">&#39;says&#39;</span><span class="p">,</span> <span class="s">&#39;she&#39;</span><span class="p">,</span> <span class="s">&#39;should&#39;</span><span class="p">,</span> <span class="s">&#39;since&#39;</span><span class="p">,</span><span class="s">&#39;so&#39;</span><span class="p">,</span> <span class="s">&#39;some&#39;</span><span class="p">,</span> <span class="s">&#39;than&#39;</span><span class="p">,</span> <span class="s">&#39;that&#39;</span><span class="p">,</span> <span class="s">&#39;the&#39;</span><span class="p">,</span> <span class="s">&#39;their&#39;</span><span class="p">,</span> <span class="s">&#39;them&#39;</span><span class="p">,</span> <span class="s">&#39;then&#39;</span><span class="p">,</span><span class="s">&#39;there&#39;</span><span class="p">,</span> <span class="s">&#39;these&#39;</span><span class="p">,</span> <span class="s">&#39;they&#39;</span><span class="p">,</span> <span class="s">&#39;this&#39;</span><span class="p">,</span> <span class="s">&#39;tis&#39;</span><span class="p">,</span> <span class="s">&#39;to&#39;</span><span class="p">,</span> <span class="s">&#39;too&#39;</span><span class="p">,</span> <span class="s">&#39;twas&#39;</span><span class="p">,</span> <span class="s">&#39;us&#39;</span><span class="p">,</span><span class="s">&#39;ve&#39;</span><span class="p">,</span> <span class="s">&#39;wants&#39;</span><span class="p">,</span> <span class="s">&#39;was&#39;</span><span class="p">,</span> <span class="s">&#39;we&#39;</span><span class="p">,</span> <span class="s">&#39;were&#39;</span><span class="p">,</span> <span class="s">&#39;what&#39;</span><span class="p">,</span> <span class="s">&#39;when&#39;</span><span class="p">,</span> <span class="s">&#39;where&#39;</span><span class="p">,</span> <span class="s">&#39;which&#39;</span><span class="p">,</span><span class="s">&#39;while&#39;</span><span class="p">,</span> <span class="s">&#39;who&#39;</span><span class="p">,</span> <span class="s">&#39;whom&#39;</span><span class="p">,</span> <span class="s">&#39;why&#39;</span><span class="p">,</span> <span class="s">&#39;will&#39;</span><span class="p">,</span> <span class="s">&#39;with&#39;</span><span class="p">,</span> <span class="s">&#39;would&#39;</span><span class="p">,</span> <span class="s">&#39;yet&#39;</span><span class="p">,</span><span class="s">&#39;you&#39;</span><span class="p">,</span> <span class="s">&#39;your&#39;</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="s">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s">&quot;&#39;&quot;</span><span class="p">,</span><span class="s">&quot;it&#39;s&quot;</span><span class="p">,</span> <span class="s">&quot;(&quot;</span><span class="p">,</span> <span class="s">&quot;)&quot;</span><span class="p">,</span> <span class="s">&quot;;&quot;</span><span class="p">,</span> <span class="s">&quot;!&quot;</span><span class="p">,</span><span class="s">&quot;--&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="s">&quot;?&quot;</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">parseArgument</span><span class="p">():</span>
+    <span class="c">### Code for parsing arguments</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">&#39;Parsing a file.&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-d&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">args</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">args</span>
+
+<span class="c">###  This function takes the directory path and divides the file names found in the pos / neg directories</span>
+<span class="c">###  into the proper proportions, stored into a dict named &#39;D&#39;.</span>
+<span class="k">def</span> <span class="nf">CreateD</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">pos_train</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pos_test</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">neg_train</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">neg_test</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s">&#39;/pos&#39;</span>
+    <span class="n">neg</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s">&#39;/neg&#39;</span>
+    <span class="n">pos_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+    <span class="n">neg_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">neg</span><span class="p">)</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pos_names</span><span class="p">)</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">neg_names</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">pos_names</span><span class="p">:</span>
+        <span class="n">pos_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos_names</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">pos_names</span><span class="p">:</span>
+            <span class="n">pos_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos_names</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">pos_names</span><span class="p">:</span>
+            <span class="n">pos_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos_names</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+    <span class="k">while</span> <span class="n">neg_names</span><span class="p">:</span>
+        <span class="n">neg_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neg_names</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">neg_names</span><span class="p">:</span>
+            <span class="n">neg_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neg_names</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">neg_names</span><span class="p">:</span>
+            <span class="n">neg_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neg_names</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+    <span class="n">fileDict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;pos_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_train</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;pos_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_test</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;neg_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_train</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;neg_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_test</span>
+    <span class="k">return</span> <span class="n">fileDict</span>
+
+<span class="c">### This function used a counter object to count the number of documents in the class &#39;pos&#39; or &#39;neg&#39;.  This is used</span>
+<span class="c">### for printing summary statistics at the end.</span>
+<span class="k">def</span> <span class="nf">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">subdir</span><span class="p">,</span><span class="n">file_list</span><span class="p">):</span>
+    <span class="n">cntr</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s">&#39;/&#39;</span><span class="o">+</span><span class="n">subdir</span><span class="o">+</span><span class="s">&#39;/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c">#open each File</span>
+        <span class="n">cntr</span> <span class="o">=</span> <span class="n">cntr</span> <span class="o">+</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">([</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stopWords</span><span class="p">])</span><span class="c">#add word counts to counter object</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span><span class="c">#Close each File</span>
+    <span class="k">return</span> <span class="n">cntr</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parseArgument</span><span class="p">()</span>
+    <span class="n">directory</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c"># variable for calculating average accuracy</span>
+    <span class="n">tot_acc</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c"># Iterations</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+
+<span class="c">### Here is the training code:</span>
+<span class="c">### First we create the dictionary of filenames using the CreateD function.</span>
+        <span class="n">file_dict</span> <span class="o">=</span> <span class="n">CreateD</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+
+<span class="c">### Here we count the number of documents in the &#39;pos&#39; and &#39;neg&#39; class using the CountDocsInClass function.</span>
+        <span class="n">positive_counter</span> <span class="o">=</span> <span class="n">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span>
+        <span class="n">negative_counter</span> <span class="o">=</span> <span class="n">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s">&#39;neg&#39;</span><span class="p">,</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])</span>
+<span class="c">### These 2 lines find a total count in the counters for each class.</span>
+        <span class="n">tot_cnt_pos</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">positive_counter</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">tot_cnt_neg</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">negative_counter</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="c">### We create V, as specified in the Vocabulary list</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">positive_counter</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">+</span> <span class="n">negative_counter</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="c">### The final_dict will hold the conditional probabilities for each t in V</span>
+        <span class="n">final_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">V</span><span class="p">:</span>
+            <span class="n">final_dict</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;pos&#39;</span><span class="p">:(</span><span class="n">positive_counter</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_pos</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;neg&#39;</span><span class="p">:(</span><span class="n">negative_counter</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_neg</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
+<span class="c">### calculating prior probabilities for each class</span>
+        <span class="n">pos_prior</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])))</span>
+        <span class="n">neg_prior</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])))</span>
+<span class="c">### This code is for the Testing part of the Naive Bayes algorithm</span>
+<span class="c">### We create a list of classes</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="s">&#39;neg&#39;</span><span class="p">]</span>
+<span class="c">### initializing filescore dictionary to keep track of test data - has the test file as key and four other associated</span>
+        <span class="c"># parameters namely:</span>
+        <span class="c">#                   orig    -  is file originally +ve or -ve</span>
+        <span class="c">#                   pos     -  sum of log probs for +ve class</span>
+        <span class="c">#                   neg     -  sum of log probs for +ve class</span>
+        <span class="c">#                   output  -  output file classification after comparing &#39;pos&#39; and &#39;neg&#39;</span>
+        <span class="n">filescore</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c"># for all test files combined run loop</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_test&#39;</span><span class="p">]):</span>
+            <span class="c"># initialize  the file dictionary within filescore dictionary</span>
+            <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="c"># populate &#39;orig&#39; attribute for each file i.e. filescore[file][&#39;orig&#39;]</span>
+            <span class="k">if</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">]:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s">&#39;/pos/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c">#open each File</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;pos&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s">&#39;/neg/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c">#open each File</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;neg&#39;</span>
+            <span class="c"># extract all words for the given file into t_list after removing stopwords</span>
+            <span class="n">t_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stopWords</span><span class="p">]</span>
+            <span class="c"># within a file run the below loop for each class to sum the log probabilities for each class</span>
+            <span class="k">for</span> <span class="n">clss</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
+                <span class="c"># initializing score variable with prior probbabilities</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">clss</span> <span class="o">==</span> <span class="s">&#39;pos&#39;</span><span class="p">):</span>
+                    <span class="n">score</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pos_prior</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">score</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">neg_prior</span><span class="p">)</span>
+<span class="c">### The code below takes logs as per pseudocode</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_list</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">final_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+                        <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">final_dict</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">clss</span><span class="p">])</span>
+                    <span class="c"># handling unknown words in test file</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">clss</span><span class="o">==</span><span class="s">&#39;pos&#39;</span><span class="p">:</span>
+                            <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_pos</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+                        <span class="k">if</span> <span class="n">clss</span><span class="o">==</span><span class="s">&#39;neg&#39;</span><span class="p">:</span>
+                            <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_neg</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="n">clss</span><span class="p">]</span> <span class="o">=</span> <span class="n">score</span>
+<span class="c">###   Counting the results</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;pos&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;neg&#39;</span><span class="p">]):</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;pos&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;neg&#39;</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c">###   Create some counters to track the numbers of successes for each class</span>
+        <span class="n">count_positive_success</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">count_negative_success</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">fl</span> <span class="ow">in</span> <span class="n">filescore</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;pos&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">])):</span>
+                <span class="n">count_positive_success</span> <span class="o">=</span> <span class="n">count_positive_success</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;pos&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">])):</span>
+                <span class="n">count_negative_success</span> <span class="o">=</span> <span class="n">count_negative_success</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c">### Print results to screen</span>
+        <span class="k">print</span> <span class="s">&quot;iteration &quot;</span><span class="p">,</span><span class="n">step</span><span class="p">,</span><span class="s">&quot;:&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;num_pos_test_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_pos_training_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_pos_correct_docs:&quot;</span><span class="p">,</span><span class="n">count_positive_success</span>
+        <span class="k">print</span> <span class="s">&quot;num_neg_test_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_test&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_neg_training_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_neg_correct_docs:&quot;</span><span class="p">,</span><span class="n">count_negative_success</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">count_positive_success</span><span class="o">+</span><span class="n">count_negative_success</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">])</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_test&#39;</span><span class="p">]))</span>
+        <span class="k">print</span> <span class="s">&quot;accuracy:&quot;</span><span class="p">,</span><span class="n">acc</span><span class="p">,</span><span class="s">&#39;%&#39;</span>
+        <span class="n">tot_acc</span> <span class="o">=</span> <span class="n">tot_acc</span> <span class="o">+</span> <span class="n">acc</span>
+    <span class="k">print</span> <span class="s">&quot;ave_accuracy:&quot;</span><span class="p">,</span><span class="n">tot_acc</span><span class="o">/</span><span class="mf">3.0</span>
+
+<span class="n">main</span><span class="p">()</span>
 </pre></div>
 </td></tr></table><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
