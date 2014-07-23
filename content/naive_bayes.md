@@ -46,7 +46,6 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
 
 
     :::python
-    <
     #!/usr/bin/env python
     import argparse
     import os
@@ -60,4 +59,3 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
         parser.add_argument('-d', nargs=1, required=True)
         args = vars(parser.parse_args())
         return args 
-     >   
