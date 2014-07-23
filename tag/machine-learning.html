@@ -107,33 +107,20 @@ iteration 3:<br />
     ...<br />
 ave_accuracy:80.3%  </p>
 <p>Make sure to include the command line parameters <code>python naive-bayes.py -d my_directory</code> where <code>my_directory</code> is the path to the directory that holds the positive and negative reviews along with the python script.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">collections</span>
+<div class="highlight"><pre>    <span class="err">#</span><span class="o">!/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">env</span> <span class="n">python</span>
+    <span class="n">import</span> <span class="n">argparse</span>
+    <span class="n">import</span> <span class="n">os</span>
+    <span class="n">import</span> <span class="n">random</span>
+    <span class="n">import</span> <span class="n">math</span>
+    <span class="n">import</span> <span class="n">collections</span>
 
-<span class="k">def</span> <span class="nf">parseArgument</span><span class="p">():</span>
-    <span class="c">### Code for parsing arguments</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">&#39;Parsing a file.&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-d&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">args</span>
-</pre></div>
-</td></tr></table><script type= "text/javascript">
+    <span class="n">def</span> <span class="n">parseArgument</span><span class="p">()</span><span class="o">:</span>
+        <span class="err">###</span> <span class="n">Code</span> <span class="k">for</span> <span class="n">parsing</span> <span class="n">arguments</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Parsing</span> <span class="n">a</span> <span class="n">file</span><span class="p">.</span><span class="err">&#39;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="err">&#39;</span><span class="o">-</span><span class="n">d</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">vars</span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse_args</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">args</span> 
+</pre></div><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
