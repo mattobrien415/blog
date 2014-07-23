@@ -44,7 +44,9 @@ ave_accuracy:80.3%
 
 Make sure to include the command line parameters `python naive-bayes.py -d my_directory` where `my_directory` is the path to the directory that holds the positive and negative reviews along with the python script.
 
-```
+
+:::python
+<
 #!/usr/bin/env python
 import argparse
 import os
@@ -197,5 +199,4 @@ def main():
         tot_acc = tot_acc + acc
     print "ave_accuracy:",tot_acc/3.0
     
-main()
-```
+main()>
