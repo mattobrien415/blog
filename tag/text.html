@@ -29,7 +29,7 @@
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
-	    <li  class="active" >
+	    <li >
 	      <a href="http://mattobrien.me/category/math.html ">math</a>
 	    <li >
 	      <a href="http://mattobrien.me/category/misc.html ">misc</a>
@@ -52,101 +52,75 @@
     <div class="row-fluid">
 
         <div class="span10">
-    <div class='article'>
-      <div class="row-fluid">
-           <div class="content-title span9">
-             <h1>Lebesgue measure #2</h1b>
-           </div>
-      </div>
+        
+
+        
+
+    <div class='row-fluid''>
+        <div class="article-title span9">
+            <a href="http://mattobrien.me/word-frequencies-for-web-pages.html"><h1>Word frequencies for web pages</h1></a>
+        </div>
+    </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Thu 17 July 2014 </p>
+<p>Fri 20 June 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/math.html">math</a>
+Filed under <a href="http://mattobrien.me/category/python.html">python</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
+    Tags <a href="http://mattobrien.me/tag/text.html">text</a> <a href="http://mattobrien.me/tag/python.html">python</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
-      
-      <div class="span8">
-	<p>This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a <a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958">book</a> on the subject at the time.  </p>
-<h3>Show that the sum, difference and product of two BV-functions is a BV-function.</h3>
-<p>Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  </p>
-<p>$
-\begin{align*}
-\sum_{i = 1}^{n} | (f + g )(x_i) - (f + g)(x_{i-1}) | &amp;= \sum_{i = 1}^{n} | { f(x_i) + g(x_i) } - { f(x_{i - 1}) + g(x_{i-1}) } | \\  &amp;\leq \sum_{i = 1}^{n} | f(x_i) - f(x_{i - 1}) | + \sum_{i = 1}^{n} | g(x_i) - g(x_{i - 1})|
-\\  &amp;\leq  V(f, P) + V(g, P)
-\end{align*}$</p>
-<p>$\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P) \leq V(f, P) + V(g, P)
-\Rightarrow V(f + g, P) \leq V(f, P) + V(g, P).
-$  </p>
-<p>Thus, $(f + g)$ is a function of bounded variation.</p>
-<p>To show that $(f - g)$ is of bounded variation, the proof is the same and $V(f - g) \leq V(f) + V(g)$</p>
-<p>To show that the product of two functions of bounded variation is also of bounded variation, notice that both $f$ and $g$ are bounded, and thus there exists $K \in \mathbb{N}$ such that
-$|f(x)| \leq k, |g(x) | \leq k, \forall x \in P$.</p>
-<p>Thus, 
-$$\begin{align*}
-\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1})g(x{i - 1})|
-\\ &amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1}) } + g(x_{i-1}) { f(x_i) - f(x_{i - 1}) } |
-\\ &amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1}) | + | g(x_{i - 1}) | | f(x_i) - f(x_{i - 1}) | }
-\\ &amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
-\\ &amp;\leq k V(g) + kV(f).
-\end{align*}$$
-and so the product of two functions of bounded variation is also of bounded variation.</p><script type= "text/javascript">
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-    }
-</script>
+      <div class="article-content span8">
+	<p>This script will take any particular webpage (in this case, the wikipedia page for Machine Learning) and do a quick a dirty scrape then count of the words on the page. It is not particularly sophisticated and can be further customized and improved for whatever your purpose may be. </p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
+<span class="c">## read contents from webpage</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://en.wikipedia.org/wiki/Machine_learning&#39;</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c"># create BS object</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+
+<span class="c"># clean text: lower case, remove trailing commas, remove words less than 2 characters long </span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="n">mytext</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="n">mytext</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">mytext</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># remove stopwords</span>
+<span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">mytext</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s">&#39;english&#39;</span><span class="p">)]</span>
+
+<span class="c"># return counts using counter object</span>
+<span class="n">mycounts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">filtered_words</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">mycounts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div> 
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/word-frequencies-for-web-pages.html">
+          <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
+      
     </div>
-    <div class="span10">
-      <h3>Comments</h3>
     
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'mattobrienme'; 
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>  
-    </div>
+    <li class="active"><a href="http://mattobrien.me/tag/text.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
         </div>
         
         
