@@ -58,42 +58,51 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="/pbinom-for-binomial-distribution-in-r.html"><h1>pbinom for binomial distribution in R</h1></a>
+            <a href="/word-frequencies-for-web-pages.html"><h1>Word frequencies for web pages</h1></a>
         </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Thu 05 June 2014 </p>
+<p>Fri 20 June 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="/category/r.html">R</a>
+Filed under <a href="/category/python.html">python</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="/tag/statistics.html">statistics</a> <a href="/tag/r.html">R</a> </p>
+    Tags <a href="/tag/text.html">text</a> <a href="/tag/python.html">python</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="article-content span8">
-	<p>I love R. But it does has some things that are a bit irksome.  For example, I have found it somewhat difficult to remember which prefix corresponds to which function, when working with distributions. </p>
-<p>Here is a quick quiz:  </p>
-<p><strong>Given a binomial distribution:</strong><br />
-<strong>dbinom ---&gt; ?</strong><br />
-<strong>pbinom ---&gt;  ?</strong>  </p>
-<ol>
-<li>
-<p>probability mass function<br />
-cumulative distribution function</p>
-</li>
-<li>
-<p>cumulative distribution function<br />
- probability mass function  </p>
-</li>
-</ol>
-<p><em>Answer:  1</em>  </p>
-<p>I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability mass function.”  However, that is not the case.</p> 
-	<a class="btn btn-mini xsmall" href="/pbinom-for-binomial-distribution-in-r.html">
+	<p>This script will take any particular webpage (in this case, the wikipedia page for Machine Learning) and do a quick a dirty scrape then count of the words on the page. It is not particularly sophisticated and can be further customized and improved for whatever your purpose may be. </p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c">## read contents from webpage</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://en.wikipedia.org/wiki/Machine_learning&#39;</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c"># create BS object</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+
+<span class="c"># clean text: lower case, remove trailing commas, remove words less than 2 characters long </span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="n">mytext</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="n">mytext</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
+<span class="n">mytext</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">mytext</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># remove stopwords</span>
+<span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">mytext</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s">&#39;english&#39;</span><span class="p">)]</span>
+
+<span class="c"># return counts using counter object</span>
+<span class="n">mycounts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">filtered_words</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">mycounts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div> 
+	<a class="btn btn-mini xsmall" href="/word-frequencies-for-web-pages.html">
           <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
@@ -104,7 +113,7 @@ cumulative distribution function</p>
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="/tag/statistics.html">1</a></li>
+    <li class="active"><a href="/tag/python.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 

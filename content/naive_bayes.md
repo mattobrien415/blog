@@ -52,7 +52,7 @@ Make sure to include the command line parameters `python naive-bayes.py -d my_di
     import random
     import math
     import collections
-    
+        
     def parseArgument():
         ### Code for parsing arguments
         parser = argparse.ArgumentParser(description='Parsing a file.')
