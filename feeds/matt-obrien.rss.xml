@@ -5,7 +5,7 @@
 &lt;p&gt;Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.&lt;/p&gt;
 &lt;p&gt;Thus, 
 $$\begin{align*}
-\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&amp;amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1})g(x{i - 1})|
+\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1})|&amp;amp;= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1})g(x{i - 1})|
 \\ &amp;amp;= \sum_{i = 1}^{n} |f(x_i) {g(x_i) - g(x_{i - 1}) } + g(x_{i-1}) { f(x_i) - f(x_{i - 1}) } |
 \\ &amp;amp;\leq \sum_{i = 1}^{n} { | f(x_i) | |g(x_i)  - g(x_{i - 1}) | + | g(x_{i - 1}) | | f(x_i) - f(x_{i - 1}) | }
 \\ &amp;amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
