@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matt O'Brien (dot) Me</title><link>/</link><description></description><atom:link href="/feeds/matt-obrien.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 08 Feb 2015 00:00:00 -0800</lastBuildDate><item><title>Convex Optimization #1</title><link>/convex-optimization-1.html</link><description>&lt;p&gt;I don't think this is an exceptionally groundbreaking proof, but I was going through some papers from when I took &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;mathematical modeling&lt;/a&gt; some time ago.&lt;/p&gt;
 &lt;h3&gt;Show from first principles that if $f^1$, $f^2$,...,$f^k$ : $\mathbb{R^n} \rightarrow \mathbb{R}$ are convex (concave) functions with the same domain, and if $\omega_1$,...,$\omega_k$ are non-negative scalars, then the function $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex (concave).&lt;/h3&gt;
-&lt;p&gt;Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ as non-negative scalars, we need to show that $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex; that is, $$\sum_{i = 1}^k \omega_i f_i$$ is a convex function.
-\newline
+&lt;p&gt;Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ as non-negative scalars, we need to show that $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex; that is, $\sum_{i = 1}^k \omega_i f_i$ is a convex function.
+$\newline$
 Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.
 \begin{align&lt;em&gt;}
 \f (\lambda x + (1 - \lambda)y &amp;amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
