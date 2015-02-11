@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-07-17T00:00:00-07:00</updated><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;p&gt;This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a &lt;a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958"&gt;book&lt;/a&gt; on the subject at the time.  &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2015-02-08T00:00:00-08:00</updated><entry><title>Convex Optimization</title><link href="http://mattobrien.me/convex-optimization.html" rel="alternate"></link><updated>2015-02-08T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2015-02-08:convex-optimization.html</id><summary type="html">&lt;p&gt;I don't think this is an exceptionally groundbreaking proof, but I was going through some papers from when I took &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;mathematical modeling&lt;/a&gt; some time ago.&lt;/p&gt;
+&lt;h3&gt;Show from first principles that if $f^1$, $f^2$,...,$f^k$ : $\mathbb{R^n} \rightarrow \mathbb{R}$ are convex (concave) functions with the same domain, and if $\omega_1$,...,$\omega_k$ are non-negative scalars, then the function $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex (concave).&lt;/h3&gt;
+&lt;p&gt;First we examine the righthand implication, that is:&lt;br /&gt;
+$C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$.   &lt;/p&gt;
+&lt;p&gt;Let $x \in C $. Then $x \in A $. So, $x \in A$ or $x \in B$. Hence $x \in (A \cup B)$.  &lt;/p&gt;
+&lt;p&gt;Second, we examine the lefthand implication, that is
+$C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.  &lt;/p&gt;
+&lt;p&gt;This second statement is false as demonstrated by the following simple counterexample:  &lt;/p&gt;
+&lt;p&gt;Choose:  &lt;/p&gt;
+&lt;p&gt;$A = [1, 2]$, $B =[1, 3]$, and $C =[2, 3]$.  &lt;/p&gt;
+&lt;p&gt;Then, $A\cup B =[1,2,3]$.&lt;br /&gt;
+Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary><category term="math"></category></entry><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;p&gt;This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a &lt;a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958"&gt;book&lt;/a&gt; on the subject at the time.  &lt;/p&gt;
 &lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
 &lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  &lt;/p&gt;
 &lt;p&gt;$
@@ -465,23 +506,23 @@ Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.&lt;/
 </summary><category term="math"></category></entry><entry><title>using Pi as a pseudorandom number generator</title><link href="http://mattobrien.me/using-pi-as-a-pseudorandom-number-generator.html" rel="alternate"></link><updated>2014-03-05T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-03-05:using-pi-as-a-pseudorandom-number-generator.html</id><summary type="html">&lt;p&gt;The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  &lt;/p&gt;
 &lt;p&gt;First, get the digits &lt;a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt"&gt;here:&lt;/a&gt;, download the file and read it into &lt;code&gt;R&lt;/code&gt; and call it PI  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;PI &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.table&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\your_path\PI.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;quote&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
-pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; unlist&lt;span class="p"&gt;(&lt;/span&gt;strsplit&lt;span class="p"&gt;(&lt;/span&gt;as.character&lt;span class="p"&gt;(&lt;/span&gt;PI&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,]),&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
+pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;unlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;strsplit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;as.character&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;PI&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,]),&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The proportion of even numbers in the first 1000 digits of pi is found as follows:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;is_even &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; x &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;  
-is_odd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; x &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;  
-pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; as.numeric&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)&lt;/span&gt;  
-indices_for_evens &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; pi_digits&lt;span class="p"&gt;[&lt;/span&gt;is_even&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)]&lt;/span&gt;  
-indices_for_odds &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; pi_digits&lt;span class="p"&gt;[&lt;/span&gt;is_odd&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)]&lt;/span&gt;  
-length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;is_even&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  
+&lt;span class="nx"&gt;is_odd&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  
+&lt;span class="nx"&gt;pi_digits&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nx"&gt;as&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="nx"&gt;indices_for_evens&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;  
+&lt;span class="nx"&gt;indices_for_odds&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;is_odd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;  
+&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;indices_for_evens&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;  
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;flips &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
-evens_for_t_test &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)),&lt;/span&gt;  rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_odds&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;div class="highlight"&gt;&lt;pre&gt;flips &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+evens_for_t_test &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)),&lt;/span&gt;  &lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;indices_for_odds&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;  
 t.test&lt;span class="p"&gt;(&lt;/span&gt;flips&lt;span class="p"&gt;,&lt;/span&gt; evens_for_t_test&lt;span class="p"&gt;,&lt;/span&gt; alternative&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;two.sided&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
 &lt;/pre&gt;&lt;/div&gt;
 
