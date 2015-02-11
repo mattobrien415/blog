@@ -21,11 +21,11 @@ $$\begin{align\*}
 \end{align\*}$$
 and so the product of two functions of bounded variation is also of bounded variation.
 
-$$\begin{align*}
+$$\begin{align\*}
 f(\lambda x + (1 - \lambda)y &= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
 \\\\ &\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 
 \\\\ &= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
 \\\\ &= \lambda f(x) + (1 - \lambda) f(x).
-\end{align*}$$
+\end{align\*}$$
 
 Thus we have shown that convexity holds under this operation.
