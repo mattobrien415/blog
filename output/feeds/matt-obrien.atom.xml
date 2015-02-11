@@ -12,12 +12,12 @@ $$\begin{align*}
 \\ &amp;amp;\leq k V(g) + kV(f).
 \end{align*}$$
 and so the product of two functions of bounded variation is also of bounded variation.&lt;/p&gt;
-&lt;p&gt;$\begin{align&lt;em&gt;}
+&lt;p&gt;$$\begin{align&lt;em&gt;}
 \f (\lambda x + (1 - \lambda)y &amp;amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
-\ &amp;amp;\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 
-\ &amp;amp;= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
-\ &amp;amp;= \lambda f(x) + (1 - \lambda) f(x).
-\end{align&lt;/em&gt;}$&lt;/p&gt;
+\\ &amp;amp;\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 
+\\ &amp;amp;= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
+\\ &amp;amp;= \lambda f(x) + (1 - \lambda) f(x).
+\end{align&lt;/em&gt;}$$&lt;/p&gt;
 &lt;p&gt;Thus we have shown that convexity holds under this operation.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
