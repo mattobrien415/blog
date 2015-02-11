@@ -58,7 +58,7 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="/convex-optimization.html"><h1>Convex Optimization</h1></a>
+            <a href="/convex-optimization-1.html"><h1>Convex Optimization #1</h1></a>
         </div>
     </div>
     <div class="row-fluid">
@@ -78,16 +78,16 @@ Filed under <a href="/category/math.html">math</a>
       <div class="article-content span8">
 	<p>I don't think this is an exceptionally groundbreaking proof, but I was going through some papers from when I took <a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444">mathematical modeling</a> some time ago.</p>
 <h3>Show from first principles that if $f^1$, $f^2$,...,$f^k$ : $\mathbb{R^n} \rightarrow \mathbb{R}$ are convex (concave) functions with the same domain, and if $\omega_1$,...,$\omega_k$ are non-negative scalars, then the function $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex (concave).</h3>
-<p>First we examine the righthand implication, that is:<br />
-$C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$.   </p>
-<p>Let $x \in C $. Then $x \in A $. So, $x \in A$ or $x \in B$. Hence $x \in (A \cup B)$.  </p>
-<p>Second, we examine the lefthand implication, that is
-$C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.  </p>
-<p>This second statement is false as demonstrated by the following simple counterexample:  </p>
-<p>Choose:  </p>
-<p>$A = [1, 2]$, $B =[1, 3]$, and $C =[2, 3]$.  </p>
-<p>Then, $A\cup B =[1,2,3]$.<br />
-Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.</p><script type= "text/javascript">
+<p>Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ as non-negative scalars, we need to show that $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex; that is, $$\sum_{i = 1}^k \omega_i f_i$$ is a convex function.
+\newline
+Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.
+\begin{align<em>}
+\f (\lambda x + (1 - \lambda)y &amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
+\ &amp;\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 
+\ &amp;= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
+\ &amp;= \lambda f(x) + (1 - \lambda) f(x).
+\end{align</em>}
+Thus we have shown that convexity holds under this operation.</p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -118,7 +118,7 @@ Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.</p><
     }
 </script>
  
-	<a class="btn btn-mini xsmall" href="/convex-optimization.html">
+	<a class="btn btn-mini xsmall" href="/convex-optimization-1.html">
           <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
