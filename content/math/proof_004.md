@@ -11,12 +11,11 @@ Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ a
 
 Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.
 
-\begin{align*}
-\\f (\lambda x + (1 - \lambda)y &= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
+$\begin{align*}
+f (\lambda x + (1 - \lambda)y &= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
 \\ &\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 
 \\ &= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
 \\ &= \lambda f(x) + (1 - \lambda) f(x).
-\end{align*}
-\end{align*}
+\end{align*}$
 
 Thus we have shown that convexity holds under this operation.
