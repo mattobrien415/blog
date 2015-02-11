@@ -11,6 +11,16 @@ Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ a
 
 Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.
 
+Thus, 
+$$\begin{align\*}
+\sum_{i = 1}^{n} | (fg)(x_i) - (fg)(x_{i - 1}|&= \sum_{i = 1}^{n} | f(x_i)g(x_i) - f(x_{i -1})g(x{i - 1})|
+\\\\ &= \sum_{i = 1}^{n} |f(x_i) \{g(x_i) - g(x_{i - 1}) \} + g(x_{i-1}) \{ f(x_i) - f(x_{i - 1}) \} |
+\\\\ &\leq \sum_{i = 1}^{n} \{ | f(x_i) | |g(x_i)  - g(x_{i - 1}) | + | g(x_{i - 1}) | | f(x_i) - f(x_{i - 1}) | \}
+\\\\ &\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
+\\\\ &\leq k V(g) + kV(f).
+\end{align\*}$$
+and so the product of two functions of bounded variation is also of bounded variation.
+
 $\begin{align*}
 \f (\lambda x + (1 - \lambda)y &= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
 \\ &\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 

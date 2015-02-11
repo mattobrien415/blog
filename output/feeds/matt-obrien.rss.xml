@@ -4,7 +4,7 @@
 &lt;p&gt;Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ as non-negative scalars, we need to show that $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex; that is, $\sum_{i = 1}^k \omega_i f_i$ is a convex function.&lt;/p&gt;
 &lt;p&gt;Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.&lt;/p&gt;
 &lt;p&gt;$\begin{align&lt;em&gt;}
-f (\lambda x + (1 - \lambda)y &amp;amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
+\f (\lambda x + (1 - \lambda)y &amp;amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
 \ &amp;amp;\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 
 \ &amp;amp;= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
 \ &amp;amp;= \lambda f(x) + (1 - \lambda) f(x).
