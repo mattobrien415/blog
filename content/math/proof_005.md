@@ -3,7 +3,7 @@ Date: 2015-11-11
 Tags: math
 Summary: Proof by induction
 
-Good example of a proof by induction. The problem is from a chapter in the book The Art of Proof.
+Good example of a proof by induction. The problem is from a chapter in the book [The Art of Proof](http://www.amazon.com/The-Art-Proof-Mathematics-Undergraduate/dp/1441970223).
 
 ###For $x\not = 1$ and $k \in\mathbb{Z_{{\geq}0}}$, prove that $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$###
 
