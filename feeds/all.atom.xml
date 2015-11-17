@@ -17,7 +17,7 @@ Next we show  $P(k+1)$ to be true, that is
 &amp;amp;=  \frac {1-x^{k+1}}{1-x} +  \frac {x^{k+1}*({1-x})}{1-x}\\
 &amp;amp;=\frac{1-x^{k+1}+x^{k+1}-x^{k+1+1}}{1-x}\\
 &amp;amp;=\frac{1-x^{k+2}}{1-x}.\\
-\end{align*}.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+\end{align*}. &lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
