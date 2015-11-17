@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
+    <script src="http://mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="/theme/local.css" rel="stylesheet">
-    <link href="/theme/pygments.css" rel="stylesheet">
-    <link href="/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,23 +24,21 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li >
-	      <a href="/category/math.html ">math</a>
+	      <a href="http://mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="/category/misc.html ">misc</a>
+	      <a href="http://mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="/category/python.html ">python</a>
+	      <a href="http://mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="/category/r.html ">R</a>
+	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
 	    <li >
-	      <a href="/category/sport.html ">sport</a>
-	    <li >
-	      <a href="/category/visualization.html ">visualization</a>
+	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -58,35 +56,43 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="/convex-optimization-1.html"><h1>Convex Optimization #1</h1></a>
+            <a href="http://mattobrien.me/proof-by-induction.html"><h1>Proof by induction</h1></a>
         </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Sun 08 February 2015 </p>
+<p>Wed 11 November 2015 </p>
 
 <p style="text-align: left;">
-Filed under <a href="/category/math.html">math</a>
+Filed under <a href="http://mattobrien.me/category/math.html">math</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="/tag/math.html">math</a> </p>
+    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="article-content span8">
-	<p>I don't think this is an exceptionally groundbreaking proof, but I was going through some papers from when I took <a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444">mathematical modeling</a> some time ago.</p>
-<h3>Show from first principles that if $f^1$, $f^2$,...,$f^k$ : $\mathbb{R^n} \rightarrow \mathbb{R}$ are convex (concave) functions with the same domain, and if $\omega_1$,...,$\omega_k$ are non-negative scalars, then the function $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex (concave).</h3>
-<p>Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ as non-negative scalars, we need to show that $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex; that is, $\sum_{i = 1}^k \omega_i f_i$ is a convex function.</p>
-<p>Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.</p>
-<p>$$\begin{align*}
-f(\lambda x + (1 - \lambda)y &amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - \lambda )y) 
-\\ &amp;\leq \sum_{i=1}^k \omega_i (\lambda f_i (x) + (1- \lambda) f_i(y)) 
-\\ &amp;= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
-\\ &amp;= \lambda f(x) + (1 - \lambda) f(x).
-\end{align*}$$</p>
-<p>Thus we have shown that convexity holds under this operation.</p><script type= "text/javascript">
+	<p>Good example of a proof by induction. The problem is from a chapter in the book The Art of Proof.</p>
+<h3>For $x\not = 1$ and $k \in\mathbb{Z_{{\geq}0}}$, prove that $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$</h3>
+<p>We proceed by proof by Induction.<br />
+Let $P(k)$ denote the statement  $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$.<br />
+Checking the base case, in this case $k=0$, we show that  \begin{align<em>}<br />
+P(0) &amp;=\displaystyle\sum\limits_{j=0}^0 x^j \
+&amp;=\frac {1-x^{0+1}}{1-x}\
+&amp;=\frac {1-x}{1-x}\
+&amp;=1.
+\end{align</em>}
+Now, we assume $P(k)$ to be true, that is $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$. 
+Next we show  $P(k+1)$ to be true, that is
+\begin{align<em>}
+\displaystyle\sum\limits_{j=0}^{k+1} x^j &amp;= \displaystyle\sum\limits_{j=0}^k x^j + x^{k+1}\
+&amp;= \frac {1-x^{k+1}}{1-k} +   {x^{k+1}}   \text{             by the induction hypothesis}\
+&amp;=  \frac {1-x^{k+1}}{1-x} +  \frac {x^{k+1}</em>({1-x})}{1-x} \
+&amp;=\frac{1-x^{k+1}+x^{k+1}-x^{k+1+1}}{1-x}\
+&amp;=\frac{1-x^{k+2}}{1-x}.\
+\end{align*}.</p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -117,7 +123,7 @@ f(\lambda x + (1 - \lambda)y &amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - 
     }
 </script>
  
-	<a class="btn btn-mini xsmall" href="/convex-optimization-1.html">
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/proof-by-induction.html">
           <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
@@ -132,7 +138,41 @@ f(\lambda x + (1 - \lambda)y &amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - 
 
     <div class='row-fluid'>
       <div class='article-title span9'> 
-        <a href="/lebesgue-measure-2.html"><h1>Lebesgue measure #2</h1></a>
+        <a href="http://mattobrien.me/convex-optimization-1.html"><h1>Convex Optimization #1</h1></a>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Sun 08 February 2015 </p>
+
+<p style="text-align: left;">
+Filed under <a href="http://mattobrien.me/category/math.html">math</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
+<p>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</p>
+      </div>
+      <div class="summary span8">
+	<p>Convext Optimization proof #1</p> 
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/convex-optimization-1.html">
+          <i class="icon-plus-sign"></i> Read More </a>
+	<hr />
+      </div>
+      
+    </div>
+      
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="http://mattobrien.me/lebesgue-measure-2.html"><h1>Lebesgue measure #2</h1></a>
       </div>
     </div>
     <div class="row-fluid">
@@ -140,18 +180,18 @@ f(\lambda x + (1 - \lambda)y &amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (1 - 
 <p>Thu 17 July 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="/category/math.html">math</a>
+Filed under <a href="http://mattobrien.me/category/math.html">math</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="/tag/math.html">math</a> </p>
+    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="summary span8">
 	<p>Lebesgue measure #2</p> 
-	<a class="btn btn-mini xsmall" href="/lebesgue-measure-2.html">
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/lebesgue-measure-2.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
@@ -166,7 +206,7 @@ Filed under <a href="/category/math.html">math</a>
 
     <div class='row-fluid'>
       <div class='article-title span9'> 
-        <a href="/lebesgue-measure-1.html"><h1>Lebesgue measure #1</h1></a>
+        <a href="http://mattobrien.me/lebesgue-measure-1.html"><h1>Lebesgue measure #1</h1></a>
       </div>
     </div>
     <div class="row-fluid">
@@ -174,18 +214,18 @@ Filed under <a href="/category/math.html">math</a>
 <p>Thu 29 May 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="/category/math.html">math</a>
+Filed under <a href="http://mattobrien.me/category/math.html">math</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="/tag/math.html">math</a> </p>
+    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="summary span8">
 	<p>Lebesgue measure #1</p> 
-	<a class="btn btn-mini xsmall" href="/lebesgue-measure-1.html">
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/lebesgue-measure-1.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
@@ -200,7 +240,7 @@ Filed under <a href="/category/math.html">math</a>
 
     <div class='row-fluid'>
       <div class='article-title span9'> 
-        <a href="/set-theory-1.html"><h1>Set Theory #1</h1></a>
+        <a href="http://mattobrien.me/set-theory-1.html"><h1>Set Theory #1</h1></a>
       </div>
     </div>
     <div class="row-fluid">
@@ -208,18 +248,18 @@ Filed under <a href="/category/math.html">math</a>
 <p>Thu 10 April 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="/category/math.html">math</a>
+Filed under <a href="http://mattobrien.me/category/math.html">math</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="/tag/math.html">math</a> </p>
+    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="summary span8">
 	<p>Set theory proof #1</p> 
-	<a class="btn btn-mini xsmall" href="/set-theory-1.html">
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/set-theory-1.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
@@ -230,7 +270,7 @@ Filed under <a href="/category/math.html">math</a>
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="/tag/math.html">1</a></li>
+    <li class="active"><a href="http://mattobrien.me/tag/math.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
@@ -274,14 +314,14 @@ Filed under <a href="/category/math.html">math</a>
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href=""><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="/" rel="alternate">
+            <li><a href="http://mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -291,7 +331,7 @@ Filed under <a href="/category/math.html">math</a>
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
