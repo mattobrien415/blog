@@ -23,4 +23,4 @@ Next we show  $P(k+1)$ to be true, that is
 &=  \frac {1-x^{k+1}}{1-x} +  \frac {x^{k+1}*({1-x})}{1-x}\\\\
 &=\frac{1-x^{k+1}+x^{k+1}-x^{k+1+1}}{1-x}\\\\
 &=\frac{1-x^{k+2}}{1-x}.\\\\
-\end{align\*}.
+\end{align\*}. 
