@@ -1,4 +1,4 @@
-﻿Title:  Lebesgue measure #2
+Title:  Lebesgue measure #2
 Date: 2014-07-17
 Tags: math  
 Summary: Lebesgue measure #2

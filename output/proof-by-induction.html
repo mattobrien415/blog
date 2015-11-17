@@ -29,7 +29,7 @@
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
-	    <li >
+	    <li  class="active" >
 	      <a href="/category/math.html ">math</a>
 	    <li >
 	      <a href="/category/python.html ">python</a>
@@ -50,14 +50,96 @@
     <div class="row-fluid">
 
         <div class="span10">
-<ul>
-	<li><a href="/category/math.html">math</li>
-	<li><a href="/category/python.html">python</li>
-	<li><a href="/category/r.html">R</li>
-	<li><a href="/category/sport.html">sport</li>
-	<li><a href="/category/visualization.html">visualization</li>
-</ul>
+    <div class='article'>
+      <div class="row-fluid">
+           <div class="content-title span9">
+             <h1>Proof by induction</h1b>
+           </div>
+      </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Wed 11 November 2015 </p>
 
+<p style="text-align: left;">
+Filed under <a href="/category/math.html">math</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/math.html">math</a> </p>
+<p>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</p>
+      </div>
+      
+      <div class="span8">
+	<p>Good example of a proof by induction. The problem is from a chapter in the book The Art of Proof.</p>
+<h3>For $x\not = 1$ and $k \in\mathbb{Z_{{\geq}0}}$, prove that $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$</h3>
+<p>We proceed by proof by Induction.<br />
+Let $P(k)$ denote the statement  $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$.<br />
+Checking the base case, in this case $k=0$, we show that  \begin{align<em>}<br />
+P(0) &amp;=\displaystyle\sum\limits_{j=0}^0 x^j \
+&amp;=\frac {1-x^{0+1}}{1-x}\
+&amp;=\frac {1-x}{1-x}\
+&amp;=1.
+\end{align</em>}
+Now, we assume $P(k)$ to be true, that is $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$. 
+Next we show  $P(k+1)$ to be true, that is
+\begin{align<em>}
+\displaystyle\sum\limits_{j=0}^{k+1} x^j &amp;= \displaystyle\sum\limits_{j=0}^k x^j + x^{k+1}\
+&amp;= \frac {1-x^{k+1}}{1-k} +   {x^{k+1}}   \text{             by the induction hypothesis}\
+&amp;=  \frac {1-x^{k+1}}{1-x} +  \frac {x^{k+1}</em>({1-x})}{1-x} \
+&amp;=\frac{1-x^{k+1}+x^{k+1}-x^{k+1+1}}{1-x}\
+&amp;=\frac{1-x^{k+2}}{1-x}.\
+\end{align*}.</p><script type= "text/javascript">
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+</script>
+
+	<hr />
+      </div>
+    </div>
+    <div class="span10">
+      <h3>Comments</h3>
+    
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mattobrienme'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>  
+    </div>
         </div>
         
         
