@@ -44,6 +44,16 @@ CREATE (b1)-[r:BOXER_STATUS {
 
 ```
 
+Here's what it looks like:
+
+```
+MATCH (n)
+RETURN n
+```
+![mtpo](https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png)
+
+
+
 Here's some simple queries to practice with:  
 
 
