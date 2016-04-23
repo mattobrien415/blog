@@ -33,6 +33,13 @@ CREATE (b1)-[r:BOXER_STATUS {
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;Here's what it looks like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MATCH (n)
+RETURN n
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Here's some simple queries to practice with:  &lt;/p&gt;
 &lt;p&gt;Query 1: What happened when Little Mac fought opponents ranked #1?  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MATCH &lt;span class="p"&gt;(&lt;/span&gt;result&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;r&lt;span class="o"&gt;:&lt;/span&gt;BOXER_STATUS&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;boxer&lt;span class="p"&gt;)&lt;/span&gt;

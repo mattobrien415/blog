@@ -108,6 +108,13 @@ CREATE (b1)-[r:BOXER_STATUS {
 </pre></div>
 
 
+<p>Here's what it looks like:</p>
+<div class="highlight"><pre><span></span>MATCH (n)
+RETURN n
+</pre></div>
+
+
+<p><img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png" /></p>
 <p>Here's some simple queries to practice with:  </p>
 <p>Query 1: What happened when Little Mac fought opponents ranked #1?  </p>
 <div class="highlight"><pre><span></span>MATCH <span class="p">(</span>result<span class="p">)</span> <span class="o">&lt;-</span><span class="p">[</span>r<span class="o">:</span>BOXER_STATUS<span class="p">]</span><span class="o">-</span> <span class="p">(</span>boxer<span class="p">)</span>

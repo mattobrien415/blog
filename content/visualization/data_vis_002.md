@@ -50,7 +50,7 @@ Here's what it looks like:
 MATCH (n)
 RETURN n
 ```
-![mtpo](https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png)
+![mtpo](https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png?raw=true)
 
 
 
