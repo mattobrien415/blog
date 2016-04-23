@@ -1,6 +1,6 @@
 Title:  sentiment prediction with Naive Bayes
 Date: 2014-05-01
-Tags: machine learning
+Tags: python
 Summary: Predicting positive or negative Amazon movie reviews  
 
 

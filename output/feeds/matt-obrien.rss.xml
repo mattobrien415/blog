@@ -669,7 +669,7 @@ ave_accuracy:80.3%  &lt;/p&gt;
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 &lt;/script&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matt O'Brien</dc:creator><pubDate>Thu, 01 May 2014 00:00:00 -0700</pubDate><guid isPermaLink="false">tag:mattobrien.me,2014-05-01:sentiment-prediction-with-naive-bayes.html</guid><category>machine learning</category></item><item><title>Set Theory #1</title><link>http://mattobrien.me/set-theory-1.html</link><description>&lt;p&gt;A great little proof that is simple and a nice way to practice your $\LaTeX$.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matt O'Brien</dc:creator><pubDate>Thu, 01 May 2014 00:00:00 -0700</pubDate><guid isPermaLink="false">tag:mattobrien.me,2014-05-01:sentiment-prediction-with-naive-bayes.html</guid><category>python</category></item><item><title>Set Theory #1</title><link>http://mattobrien.me/set-theory-1.html</link><description>&lt;p&gt;A great little proof that is simple and a nice way to practice your $\LaTeX$.&lt;/p&gt;
 &lt;h3&gt;Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.&lt;/h3&gt;
 &lt;p&gt;First we examine the righthand implication, that is:&lt;br /&gt;
 $C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$.   &lt;/p&gt;
