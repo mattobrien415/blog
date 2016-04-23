@@ -212,59 +212,6 @@ By Theorem 2.48, $f$ is measurable.&lt;/p&gt;&lt;script type= "text/javascript"&
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 &lt;/script&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matt O'Brien</dc:creator><pubDate>Thu, 28 Jan 2016 00:00:00 -0800</pubDate><guid isPermaLink="false">tag:mattobrien.me,2016-01-28:measurability-proof.html</guid><category>in progress</category></item><item><title>Measurability Proof</title><link>http://mattobrien.me/measurability-proof.html</link><description>&lt;p&gt;Note: I can't finish this till I get Dr Ov's book so I can use Thm 2.4i, 2.4iii, 2.48&lt;/p&gt;
-&lt;h3&gt;Prove that a function $f $on $[a,b]$ is measurable iff $f$ inverse($U$) is measurable for any open set $U$ of $R$.&lt;/h3&gt;
-&lt;p&gt;$\Rightarrow$
-\newline
-By Theorem 2.4i, and Theorem 2.4iii, we have 2 open sets:
-\newline
-$ J = { x:  f(x) &lt;j \}$
-\newline
-$K = \{ x:  f(x) &gt; k } ,$ where $j&lt;k$.
-\newline
-Consider $J \cap K$ which is also open.
-\newline
-Let $U = J \bigcap K = \bigcup_{i=1}^{n}. (j_i, k_i)$, so that $f^{-1} \left( \bigcup \{ x \in [a, b] : f(x) \in U  \} \right) = f^{-}(U)$. 
-\newline
-\newline
-$\Leftarrow$
-\newline
-Let $f^{-1}(U)$ be measurable.
-\newline
-Let $U = \left( c, \infty \right)$.
-\newline
-Then, $f^{-1}(U)$ measurable $\rightarrow \left\{x: f(x) &gt; c \right}$ is measurable.
-\newline
-By Theorem 2.48, $f$ is measurable.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-    }
-&lt;/script&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matt O'Brien</dc:creator><pubDate>Thu, 28 Jan 2016 00:00:00 -0800</pubDate><guid isPermaLink="false">tag:mattobrien.me,2016-01-28:measurability-proof.html</guid><category>in progress</category></item><item><title>Functions of unbounded variation</title><link>http://mattobrien.me/functions-of-unbounded-variation.html</link><description>&lt;p&gt;This is a nice proof that relies on the fact that a harmonic series is divergent.  &lt;/p&gt;
 &lt;h3&gt;Show that the function&lt;/h3&gt;
 &lt;p&gt;$f(x) = 

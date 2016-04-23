@@ -29,7 +29,7 @@
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
-	    <li  class="active" >
+	    <li >
 	      <a href="http://mattobrien.me/category/math.html ">math</a>
 	    <li >
 	      <a href="http://mattobrien.me/category/python.html ">python</a>
@@ -50,52 +50,56 @@
     <div class="row-fluid">
 
         <div class="span10">
-    <div class='article'>
-      <div class="row-fluid">
-           <div class="content-title span9">
-             <h1>Measurability Proof</h1b>
-           </div>
-      </div>
+        
+
+        
+
+    <div class='row-fluid''>
+        <div class="article-title span9">
+            <a href="http://mattobrien.me/using-pi-as-a-pseudorandom-number-generator.html"><h1>using Pi as a pseudorandom number generator</h1></a>
+        </div>
+    </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Thu 28 January 2016 </p>
+<p>Wed 05 March 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/math.html">math</a>
+Filed under <a href="http://mattobrien.me/category/r.html">R</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/in-progress.html">in progress</a> </p>
+    Tags <a href="http://mattobrien.me/tag/simulation.html">simulation</a> <a href="http://mattobrien.me/tag/r.html">R</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
-      
-      <div class="span8">
-	<p>Note: I can't finish this till I get Dr Ov's book so I can use Thm 2.4i, 2.4iii, 2.48</p>
-<h3>Prove that a function $f $on $[a,b]$ is measurable iff $f$ inverse($U$) is measurable for any open set $U$ of $R$.</h3>
-<p>$\Rightarrow$
-\newline
-By Theorem 2.4i, and Theorem 2.4iii, we have 2 open sets:
-\newline
-$ J = { x:  f(x) <j \}$
-\newline
-$K = \{ x:  f(x) > k } ,$ where $j<k$.
-\newline
-Consider $J \cap K$ which is also open.
-\newline
-Let $U = J \bigcap K = \bigcup_{i=1}^{n}. (j_i, k_i)$, so that $f^{-1} \left( \bigcup \{ x \in [a, b] : f(x) \in U  \} \right) = f^{-}(U)$. 
-\newline
-\newline
-$\Leftarrow$
-\newline
-Let $f^{-1}(U)$ be measurable.
-\newline
-Let $U = \left( c, \infty \right)$.
-\newline
-Then, $f^{-1}(U)$ measurable $\rightarrow \left\{x: f(x) > c \right}$ is measurable.
-\newline
-By Theorem 2.48, $f$ is measurable.</p><script type= "text/javascript">
+      <div class="article-content span8">
+	<p>The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  </p>
+<p>First, get the digits <a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt">here:</a>, download the file and read it into <code>R</code> and call it PI  </p>
+<div class="highlight"><pre><span></span>PI <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&quot;\your_path\PI.txt&quot;</span><span class="p">,</span>quote<span class="o">=</span><span class="s">&quot;\&quot;&quot;</span><span class="p">)</span>  
+pi_digits <span class="o">&lt;-</span> <span class="kp">unlist</span><span class="p">(</span><span class="kp">strsplit</span><span class="p">(</span><span class="kp">as.character</span><span class="p">(</span>PI<span class="p">[</span><span class="m">1</span><span class="p">,]),</span><span class="s">&quot;&quot;</span><span class="p">))[</span><span class="m">2</span><span class="o">:</span><span class="m">1000</span><span class="p">]</span>  
+</pre></div>
+
+
+<p>The proportion of even numbers in the first 1000 digits of pi is found as follows:  </p>
+<div class="highlight"><pre><span></span>is_even <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> x <span class="o">%%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span>  
+is_odd <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> x <span class="o">%%</span> <span class="m">2</span> <span class="o">!=</span> <span class="m">0</span>  
+pi_digits <span class="o">&lt;-</span> <span class="kp">as.numeric</span><span class="p">(</span>pi_digits<span class="p">)</span>  
+indices_for_evens <span class="o">&lt;-</span> pi_digits<span class="p">[</span>is_even<span class="p">(</span>pi_digits<span class="p">)]</span>  
+indices_for_odds <span class="o">&lt;-</span> pi_digits<span class="p">[</span>is_odd<span class="p">(</span>pi_digits<span class="p">)]</span>  
+<span class="kp">length</span><span class="p">(</span>indices_for_evens<span class="p">)</span> <span class="o">/</span> <span class="m">1000</span>  
+</pre></div>
+
+
+<p>Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  </p>
+<div class="highlight"><pre><span></span>flips <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="kp">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">500</span><span class="p">),</span> <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">500</span><span class="p">))</span>  
+evens_for_t_test <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="kp">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> each<span class="o">=</span><span class="kp">length</span><span class="p">(</span>indices_for_evens<span class="p">)),</span>  <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> each<span class="o">=</span><span class="kp">length</span><span class="p">(</span>indices_for_odds<span class="p">))</span> <span class="p">)</span>  
+t.test<span class="p">(</span>flips<span class="p">,</span> evens_for_t_test<span class="p">,</span> alternative<span class="o">=</span><span class="s">&quot;two.sided&quot;</span><span class="p">)</span>  
+</pre></div>
+
+
+<p>The p-value is 0.4881.  At a 0.05 significance level, we fail to reject the null hypothesis.Thus, we infer that the digits of pi have passed a test for randomness.  </p>
+<p>So why aren't the digits of $\pi$ used to generate random numbers?  One problem may be the choice of a seed -- in one sense, each time you re-run your simulation based on the digits of $\pi$, you will have to pick up where you left off last time.  This invariably will lead to the requirement of having to calculated $\pi$ to a huge number of decimal places.  In the end, that computational requirement is the major bottleneck and that bottleneck can probably can be arrived at in a number of novel and unfortunate ways. </p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -125,26 +129,26 @@ By Theorem 2.48, $f$ is measurable.</p><script type= "text/javascript">
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 </script>
-
+ 
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/using-pi-as-a-pseudorandom-number-generator.html">
+          <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
+      
     </div>
-    <div class="span10">
-      <h3>Comments</h3>
     
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'mattobrienme'; 
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>  
-    </div>
+    <li class="active"><a href="http://mattobrien.me/tag/simulation.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
         </div>
         
         

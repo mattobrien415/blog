@@ -29,7 +29,7 @@
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
-	    <li >
+	    <li  class="active" >
 	      <a href="http://mattobrien.me/category/math.html ">math</a>
 	    <li >
 	      <a href="http://mattobrien.me/category/python.html ">python</a>
@@ -37,7 +37,7 @@
 	      <a href="http://mattobrien.me/category/r.html ">R</a>
 	    <li >
 	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
-	    <li  class="active" >
+	    <li >
 	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
@@ -53,131 +53,61 @@
     <div class='article'>
       <div class="row-fluid">
            <div class="content-title span9">
-             <h1>a csv defined Shiny structure</h1b>
+             <h1>Lebesgue measure #1</h1b>
            </div>
       </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Sat 16 April 2016 </p>
+<p>Thu 29 May 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/visualization.html">visualization</a>
+Filed under <a href="http://mattobrien.me/category/math.html">math</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/visualization.html">visualization</a> <a href="http://mattobrien.me/tag/r.html">R</a> </p>
+    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       
       <div class="span8">
-	<p>This project allows you to use 2 csvs (containing IDs, variables, names, and values) to automatically generate a Shiny structure that you can further customize.</p>
-<p>To fork the project, go to the GitHub page <a href="https://github.com/mobbSF/csv-defined-Shiny-structure">here</a>.</p>
-<p>Use a csv ('chart_settings.csv') in a form similar to this:  </p>
-<table>
-<thead>
-<tr>
-<th>variable</th>
-<th align="center">x_axis_labels</th>
-<th align="right">tab_name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>var1</td>
-<td align="center">some_name_var1</td>
-<td align="right">tab1</td>
-</tr>
-<tr>
-<td>var2</td>
-<td align="center">some_name_var2</td>
-<td align="right">tab1</td>
-</tr>
-<tr>
-<td>var3</td>
-<td align="center">some_name_var3</td>
-<td align="right">tab2</td>
-</tr>
-<tr>
-<td>var4</td>
-<td align="center">some_name_var4</td>
-<td align="right">tab3</td>
-</tr>
-<tr>
-<td>var5</td>
-<td align="center">some_name_var5</td>
-<td align="right">tab3</td>
-</tr>
-</tbody>
-</table>
-<p>is used along with a csv containing variables and values ('IDs_to_examine.csv'): </p>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th align="center">Date</th>
-<th align="center">var1</th>
-<th align="center">var2</th>
-<th align="center">var3</th>
-<th align="center">var4</th>
-<th align="center">var5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td align="center">1/1/11</td>
-<td align="center">1</td>
-<td align="center">20</td>
-<td align="center">5</td>
-<td align="center">50</td>
-<td align="center">50</td>
-</tr>
-<tr>
-<td>1</td>
-<td align="center">1/1/11</td>
-<td align="center">15</td>
-<td align="center">3</td>
-<td align="center">45</td>
-<td align="center">88</td>
-<td align="center">100</td>
-</tr>
-<tr>
-<td>2</td>
-<td align="center">1/1/13</td>
-<td align="center">97</td>
-<td align="center">16</td>
-<td align="center">5</td>
-<td align="center">5</td>
-<td align="center">8</td>
-</tr>
-<tr>
-<td>2</td>
-<td align="center">1/1/14</td>
-<td align="center">55</td>
-<td align="center">15</td>
-<td align="center">90</td>
-<td align="center">75</td>
-<td align="center">35</td>
-</tr>
-<tr>
-<td>3</td>
-<td align="center">1/1/15</td>
-<td align="center">1</td>
-<td align="center">76</td>
-<td align="center">66</td>
-<td align="center">22</td>
-<td align="center">1</td>
-</tr>
-</tbody>
-</table>
-<p>...to create a Shiny with any number of tabs; in this case, 3 ('tab1' to 'tab3').  </p>
-<p>Each tab contains one ggplot, featuring the variables; in this case 'var1' to 'var5'.</p>
-<p>Click <a href="https://mattobriendotme.shinyapps.io/csv-defined-Shiny-structure/">here</a> to see it in action.  </p>
-<hr />
-<p>Examine the screenshot and map trace each element back to the appropriate csv. For the sake of simplicity and to avoid creating any unnecessarily customized features, the inputs show only two large, unsized and unmodified variables plotted as a histogram:  </p>
-<p><img alt="alt text" src="https://github.com/mobbSF/csv-defined-Shiny-structure/blob/master/screenshot.png?raw=true" title="Logo Title Text 2" /></p>
+	<p>Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.</p>
+<h3>Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.</h3>
+<p>Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  </p>
+<p><strong>Case 1:</strong>  $a &gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 2:</strong>  $b &gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
+<p><strong>Case 3:</strong>  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.</p><script type= "text/javascript">
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+</script>
+
 	<hr />
       </div>
     </div>
