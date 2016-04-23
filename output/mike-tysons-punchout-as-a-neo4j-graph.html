@@ -72,7 +72,7 @@ Filed under <a href="http://mattobrien.me/category/visualization.html">visualiza
       </div>
       
       <div class="span8">
-	<p><img alt="alt text" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /></p>
+	<p><img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /></p>
 <p>This is a quick and fun little graph of the classic Nintendo game, Mike Tyson's Punch-Out!!.  </p>
 <p>The information for the graph comes directly from the <a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki">Punchout Wiki</a>. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. </p>
 <p>I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  </p>
@@ -101,27 +101,19 @@ CREATE (b1)-[r:BOXER_STATUS {
                   nationality: line.nationality,
                   age: line.age,
                   rank: line.rank
-                         } ]-&gt;(f);</p>
-<div class="highlight"><pre><span></span>Here&#39;s some simple queries to practice with:  
-
-
-Query 1: What happened when Little Mac fought opponents ranked #1?
-</pre></div>
-
-
-<p>MATCH (result) &lt;-[r:BOXER_STATUS]- (boxer)
+                         } ]-&gt;(f);```</p>
+<p>Here's some simple queries to practice with:  </p>
+<p>Query 1: What happened when Little Mac fought opponents ranked #1?  </p>
+<p><code>MATCH (result) &lt;-[r:BOXER_STATUS]- (boxer)
 WHERE toInt(r.rank) = 1
-RETURN result.outcome, result.notes</p>
-<div class="highlight"><pre><span></span>Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?
-</pre></div>
-
-
-<p>START n=node(<em>), m=node(</em>)
+RETURN result.outcome, result.notes</code></p>
+<p>Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?</p>
+<div class="highlight"><pre><span></span>START n=node(*), m=node(*)
 WHERE
   n.outcome=m.outcome AND
   ID(n) &lt;ID(m)
 RETURN n, m
-```</p>
+</pre></div>
 	<hr />
       </div>
     </div>

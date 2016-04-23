@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/matt-obrien.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2016-03-16T00:00:00-07:00</updated><entry><title>Mike Tyson's Punchout! as a Neo4j graph</title><link href="http://mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html" rel="alternate"></link><published>2016-03-16T00:00:00-07:00</published><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-03-16:mike-tysons-punchout-as-a-neo4j-graph.html</id><summary type="html">&lt;p&gt;&lt;img alt="alt text" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/matt-obrien.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2016-03-16T00:00:00-07:00</updated><entry><title>Mike Tyson's Punchout! as a Neo4j graph</title><link href="http://mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html" rel="alternate"></link><published>2016-03-16T00:00:00-07:00</published><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-03-16:mike-tysons-punchout-as-a-neo4j-graph.html</id><summary type="html">&lt;p&gt;&lt;img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /&gt;&lt;/p&gt;
 &lt;p&gt;This is a quick and fun little graph of the classic Nintendo game, Mike Tyson's Punch-Out!!.  &lt;/p&gt;
 &lt;p&gt;The information for the graph comes directly from the &lt;a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki"&gt;Punchout Wiki&lt;/a&gt;. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. &lt;/p&gt;
 &lt;p&gt;I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  &lt;/p&gt;
@@ -28,27 +28,19 @@ CREATE (b1)-[r:BOXER_STATUS {
                   nationality: line.nationality,
                   age: line.age,
                   rank: line.rank
-                         } ]-&amp;gt;(f);&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Here&amp;#39;s some simple queries to practice with:  
-
-
-Query 1: What happened when Little Mac fought opponents ranked #1?
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;MATCH (result) &amp;lt;-[r:BOXER_STATUS]- (boxer)
+                         } ]-&amp;gt;(f);```&lt;/p&gt;
+&lt;p&gt;Here's some simple queries to practice with:  &lt;/p&gt;
+&lt;p&gt;Query 1: What happened when Little Mac fought opponents ranked #1?  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MATCH (result) &amp;lt;-[r:BOXER_STATUS]- (boxer)
 WHERE toInt(r.rank) = 1
-RETURN result.outcome, result.notes&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;START n=node(&lt;em&gt;), m=node(&lt;/em&gt;)
+RETURN result.outcome, result.notes&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;START n=node(*), m=node(*)
 WHERE
   n.outcome=m.outcome AND
   ID(n) &amp;lt;ID(m)
 RETURN n, m
-```&lt;/p&gt;</summary><category term="visualization"></category></entry><entry><title>Proof by induction</title><link href="http://mattobrien.me/proof-by-induction.html" rel="alternate"></link><published>2015-11-11T00:00:00-08:00</published><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2015-11-11:proof-by-induction.html</id><summary type="html">&lt;p&gt;Good example of a proof by induction. The problem is from a chapter in the book &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;The Art of Proof&lt;/a&gt;.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="visualization"></category></entry><entry><title>Proof by induction</title><link href="http://mattobrien.me/proof-by-induction.html" rel="alternate"></link><published>2015-11-11T00:00:00-08:00</published><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2015-11-11:proof-by-induction.html</id><summary type="html">&lt;p&gt;Good example of a proof by induction. The problem is from a chapter in the book &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;The Art of Proof&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;For $x\not = 1$ and $k \in\mathbb{Z_{{\geq}0}}$, prove that $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$&lt;/h3&gt;
 &lt;p&gt;We proceed by proof by Induction.&lt;br /&gt;
 Let $P(k)$ denote the statement  $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$.&lt;br /&gt;

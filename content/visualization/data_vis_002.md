@@ -14,7 +14,8 @@ I took the liberty of having Little Mac win all his fights by knockout. But then
 _Notice that the dataset is read in painlessly via Google Docs as outlined [here](http://blog.bruggen.com/2014/07/using-loadcsv-to-import-data-from.html)._
 
 
-```Query 1
+```
+Query 1
 
 LOAD CSV WITH HEADERS FROM
 'https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&gid=0' AS line
@@ -39,7 +40,9 @@ CREATE (b1)-[r:BOXER_STATUS {
                   nationality: line.nationality,
                   age: line.age,
                   rank: line.rank
-                         } ]->(f);```
+                         } ]->(f);  
+
+```
 
 Here's some simple queries to practice with:  
 
@@ -47,9 +50,11 @@ Here's some simple queries to practice with:
 Query 1: What happened when Little Mac fought opponents ranked #1?  
 
 
-```MATCH (result) <-[r:BOXER_STATUS]- (boxer)
+```
+MATCH (result) <-[r:BOXER_STATUS]- (boxer)
 WHERE toInt(r.rank) = 1
-RETURN result.outcome, result.notes```
+RETURN result.outcome, result.notes
+```
 
 
 Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?
