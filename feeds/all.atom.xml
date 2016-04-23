@@ -4,9 +4,10 @@
 &lt;p&gt;The information for the graph comes directly from the &lt;a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki"&gt;Punchout Wiki&lt;/a&gt;. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. &lt;/p&gt;
 &lt;p&gt;I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Notice that the dataset is read in painlessly via Google Docs as outlined &lt;a href="http://blog.bruggen.com/2014/07/using-loadcsv-to-import-data-from.html"&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;```Query 1&lt;/p&gt;
-&lt;p&gt;LOAD CSV WITH HEADERS FROM
-'https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;amp;gid=0' AS line
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Query 1
+
+LOAD CSV WITH HEADERS FROM
+&amp;#39;https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;amp;gid=0&amp;#39; AS line
 MERGE (b1:boxer {
                     boxer_id: line.boxer_id,
                     name: line.name
@@ -28,12 +29,18 @@ CREATE (b1)-[r:BOXER_STATUS {
                   nationality: line.nationality,
                   age: line.age,
                   rank: line.rank
-                         } ]-&amp;gt;(f);```&lt;/p&gt;
+                         } ]-&amp;gt;(f);  
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Here's some simple queries to practice with:  &lt;/p&gt;
 &lt;p&gt;Query 1: What happened when Little Mac fought opponents ranked #1?  &lt;/p&gt;
-&lt;p&gt;&lt;code&gt;MATCH (result) &amp;lt;-[r:BOXER_STATUS]- (boxer)
-WHERE toInt(r.rank) = 1
-RETURN result.outcome, result.notes&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MATCH &lt;span class="p"&gt;(&lt;/span&gt;result&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;r&lt;span class="o"&gt;:&lt;/span&gt;BOXER_STATUS&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;boxer&lt;span class="p"&gt;)&lt;/span&gt;
+WHERE toInt&lt;span class="p"&gt;(&lt;/span&gt;r.rank&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+RETURN result.outcome&lt;span class="p"&gt;,&lt;/span&gt; result.notes
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;START n=node(*), m=node(*)
 WHERE
