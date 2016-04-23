@@ -15,7 +15,7 @@ This is a nice proof that relies on the fact that a harmonic series is divergent
 ###Show that the function###
 $f(x) = 
 \begin{cases}
-xcos\frac{\pi}{x}& \text{if }x \in (0,1] \\
+xcos\frac{\pi}{x}& \text{if }x \in (0,1] \\\\
 0, & \text{if } x =0
 \end{cases}$ 
 ### is not a function of bounded variation.###
