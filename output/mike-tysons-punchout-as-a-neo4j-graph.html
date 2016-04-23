@@ -77,9 +77,10 @@ Filed under <a href="http://mattobrien.me/category/visualization.html">visualiza
 <p>The information for the graph comes directly from the <a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki">Punchout Wiki</a>. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. </p>
 <p>I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  </p>
 <p><em>Notice that the dataset is read in painlessly via Google Docs as outlined <a href="http://blog.bruggen.com/2014/07/using-loadcsv-to-import-data-from.html">here</a>.</em></p>
-<p>```Query 1</p>
-<p>LOAD CSV WITH HEADERS FROM
-'https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;gid=0' AS line
+<div class="highlight"><pre><span></span>Query 1
+
+LOAD CSV WITH HEADERS FROM
+&#39;https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;gid=0&#39; AS line
 MERGE (b1:boxer {
                     boxer_id: line.boxer_id,
                     name: line.name
@@ -101,12 +102,18 @@ CREATE (b1)-[r:BOXER_STATUS {
                   nationality: line.nationality,
                   age: line.age,
                   rank: line.rank
-                         } ]-&gt;(f);```</p>
+                         } ]-&gt;(f);  
+</pre></div>
+
+
 <p>Here's some simple queries to practice with:  </p>
 <p>Query 1: What happened when Little Mac fought opponents ranked #1?  </p>
-<p><code>MATCH (result) &lt;-[r:BOXER_STATUS]- (boxer)
-WHERE toInt(r.rank) = 1
-RETURN result.outcome, result.notes</code></p>
+<div class="highlight"><pre><span></span>MATCH <span class="p">(</span>result<span class="p">)</span> <span class="o">&lt;-</span><span class="p">[</span>r<span class="o">:</span>BOXER_STATUS<span class="p">]</span><span class="o">-</span> <span class="p">(</span>boxer<span class="p">)</span>
+WHERE toInt<span class="p">(</span>r.rank<span class="p">)</span> <span class="o">=</span> <span class="m">1</span>
+RETURN result.outcome<span class="p">,</span> result.notes
+</pre></div>
+
+
 <p>Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?</p>
 <div class="highlight"><pre><span></span>START n=node(*), m=node(*)
 WHERE
