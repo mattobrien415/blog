@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <script src="http://www.mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,21 +24,21 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li >
-	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/python.html ">python</a>
+	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
 	    <li  class="active" >
-	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -56,81 +56,131 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="http://mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html"><h1>Mike Tyson's Punchout! as a Neo4j graph</h1></a>
+            <a href="http://www.mattobrien.me/a-csv-defined-shiny-structure.html"><h1>a csv defined Shiny structure</h1></a>
         </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Wed 16 March 2016 </p>
+<p>Sat 16 April 2016 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/visualization.html">visualization</a>
+Filed under <a href="http://www.mattobrien.me/category/visualization.html">visualization</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/visualization.html">visualization</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/visualization.html">visualization</a> <a href="http://www.mattobrien.me/tag/r.html">R</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="article-content span8">
-	<p><img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /></p>
-<p>This is a quick and fun little graph of the classic Nintendo game, Mike Tyson's Punch-Out!!.  </p>
-<p>The information for the graph comes directly from the <a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki">Punchout Wiki</a>. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. </p>
-<p>I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  </p>
-<p><em>Notice that the dataset is read in painlessly via Google Docs as outlined <a href="http://blog.bruggen.com/2014/07/using-loadcsv-to-import-data-from.html">here</a>.</em></p>
-<div class="highlight"><pre><span></span>Query 1
-
-LOAD CSV WITH HEADERS FROM
-&#39;https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;gid=0&#39; AS line
-MERGE (b1:boxer {
-                    boxer_id: line.boxer_id,
-                    name: line.name
-                })
-MERGE (b2:boxer {boxer_id: line.fought
-                })
-MERGE (f:fight  { fight_id: line.fight_id,
-                  notes: line.notes,
-                  outcome: line.outcome
-                })
-//CREATE (b1)-[:AGAINST]-&gt;(b2)
-CREATE (b1)-[r:BOXER_STATUS {
-                  total_fights: line.total_fights,
-                  wins: line.wins,
-                  wins_by_KO: line.wins_by_KO,
-                  losses: line.losses,
-                  weight: line.weight,
-                  height: line.height,
-                  nationality: line.nationality,
-                  age: line.age,
-                  rank: line.rank
-                         } ]-&gt;(f);  
-</pre></div>
-
-
-<p>Here's what it looks like:</p>
-<div class="highlight"><pre><span></span>MATCH (n)
-RETURN n
-</pre></div>
-
-
-<p><img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png?raw=true" /></p>
-<p>Here's some simple queries to practice with:  </p>
-<p>Query 1: What happened when Little Mac fought opponents ranked #1?  </p>
-<div class="highlight"><pre><span></span>MATCH <span class="p">(</span>result<span class="p">)</span> <span class="o">&lt;-</span><span class="p">[</span>r<span class="o">:</span>BOXER_STATUS<span class="p">]</span><span class="o">-</span> <span class="p">(</span>boxer<span class="p">)</span>
-WHERE toInt<span class="p">(</span>r.rank<span class="p">)</span> <span class="o">=</span> <span class="m">1</span>
-RETURN result.outcome<span class="p">,</span> result.notes
-</pre></div>
-
-
-<p>Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?</p>
-<div class="highlight"><pre><span></span>START n=node(*), m=node(*)
-WHERE
-  n.outcome=m.outcome AND
-  ID(n) &lt;ID(m)
-RETURN n, m
-</pre></div> 
-	<a class="btn btn-mini xsmall" href="http://mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html">
+	<p>This project allows you to use 2 csvs (containing IDs, variables, names, and values) to automatically generate a Shiny structure that you can further customize.</p>
+<p>To fork the project, go to the GitHub page <a href="https://github.com/mobbSF/csv-defined-Shiny-structure">here</a>.</p>
+<p>Use a csv ('chart_settings.csv') in a form similar to this:  </p>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th align="center">x_axis_labels</th>
+<th align="right">tab_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>var1</td>
+<td align="center">some_name_var1</td>
+<td align="right">tab1</td>
+</tr>
+<tr>
+<td>var2</td>
+<td align="center">some_name_var2</td>
+<td align="right">tab1</td>
+</tr>
+<tr>
+<td>var3</td>
+<td align="center">some_name_var3</td>
+<td align="right">tab2</td>
+</tr>
+<tr>
+<td>var4</td>
+<td align="center">some_name_var4</td>
+<td align="right">tab3</td>
+</tr>
+<tr>
+<td>var5</td>
+<td align="center">some_name_var5</td>
+<td align="right">tab3</td>
+</tr>
+</tbody>
+</table>
+<p>is used along with a csv containing variables and values ('IDs_to_examine.csv'): </p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th align="center">Date</th>
+<th align="center">var1</th>
+<th align="center">var2</th>
+<th align="center">var3</th>
+<th align="center">var4</th>
+<th align="center">var5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td align="center">1/1/11</td>
+<td align="center">1</td>
+<td align="center">20</td>
+<td align="center">5</td>
+<td align="center">50</td>
+<td align="center">50</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="center">1/1/11</td>
+<td align="center">15</td>
+<td align="center">3</td>
+<td align="center">45</td>
+<td align="center">88</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center">1/1/13</td>
+<td align="center">97</td>
+<td align="center">16</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center">1/1/14</td>
+<td align="center">55</td>
+<td align="center">15</td>
+<td align="center">90</td>
+<td align="center">75</td>
+<td align="center">35</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center">1/1/15</td>
+<td align="center">1</td>
+<td align="center">76</td>
+<td align="center">66</td>
+<td align="center">22</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>...to create a Shiny with any number of tabs; in this case, 3 ('tab1' to 'tab3').  </p>
+<p>Each tab contains one ggplot, featuring the variables; in this case 'var1' to 'var5'.</p>
+<p>Click <a href="https://mattobriendotme.shinyapps.io/csv-defined-Shiny-structure/">here</a> to see it in action.  </p>
+<hr />
+<p>Examine the screenshot and map trace each element back to the appropriate csv. For the sake of simplicity and to avoid creating any unnecessarily customized features, the inputs show only two large, unsized and unmodified variables plotted as a histogram:  </p>
+<p><img alt="alt text" src="https://github.com/mobbSF/csv-defined-Shiny-structure/blob/master/screenshot.png?raw=true" title="Logo Title Text 2" /></p> 
+	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/a-csv-defined-shiny-structure.html">
           <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
@@ -145,7 +195,41 @@ RETURN n, m
 
     <div class='row-fluid'>
       <div class='article-title span9'> 
-        <a href="http://mattobrien.me/visualization-in-rshiny.html"><h1>Visualization in RShiny</h1></a>
+        <a href="http://www.mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html"><h1>Mike Tyson's Punchout! as a Neo4j graph</h1></a>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Wed 16 March 2016 </p>
+
+<p style="text-align: left;">
+Filed under <a href="http://www.mattobrien.me/category/visualization.html">visualization</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="http://www.mattobrien.me/tag/visualization.html">visualization</a> </p>
+<p>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</p>
+      </div>
+      <div class="summary span8">
+	<p>a simple example of a graph database</p> 
+	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html">
+          <i class="icon-plus-sign"></i> Read More </a>
+	<hr />
+      </div>
+      
+    </div>
+      
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="http://www.mattobrien.me/visualization-in-rshiny.html"><h1>Visualization in RShiny</h1></a>
       </div>
     </div>
     <div class="row-fluid">
@@ -153,18 +237,18 @@ RETURN n, m
 <p>Sun 18 May 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/visualization.html">visualization</a>
+Filed under <a href="http://www.mattobrien.me/category/visualization.html">visualization</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/visualization.html">visualization</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/visualization.html">visualization</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="summary span8">
 	<p>Visualizing and interacting with data science jobs in the United States</p> 
-	<a class="btn btn-mini xsmall" href="http://mattobrien.me/visualization-in-rshiny.html">
+	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/visualization-in-rshiny.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
@@ -175,7 +259,7 @@ Filed under <a href="http://mattobrien.me/category/visualization.html">visualiza
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="http://mattobrien.me/category/visualization.html">1</a></li>
+    <li class="active"><a href="http://www.mattobrien.me/category/visualization.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
@@ -219,14 +303,14 @@ Filed under <a href="http://mattobrien.me/category/visualization.html">visualiza
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://mattobrien.me/" rel="alternate">
+            <li><a href="http://www.mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -236,7 +320,7 @@ Filed under <a href="http://mattobrien.me/category/visualization.html">visualiza
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
