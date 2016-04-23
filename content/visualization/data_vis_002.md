@@ -3,7 +3,7 @@ Date: 2016-03-16
 Tags: visualization
 Summary: a simple example of a graph database
 
-![alt text](http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg "Mike Tyson's Punchout!!")
+![Mike Tyson's Punchout!!](http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg "Mike Tyson's Punchout!!")
 
 This is a quick and fun little graph of the classic Nintendo game, Mike Tyson's Punch-Out!!.  
 
@@ -39,17 +39,17 @@ CREATE (b1)-[r:BOXER_STATUS {
                   nationality: line.nationality,
                   age: line.age,
                   rank: line.rank
-                         } ]->(f);
-```
+                         } ]->(f);```
+
 Here's some simple queries to practice with:  
 
 
-Query 1: What happened when Little Mac fought opponents ranked #1?
-```
-MATCH (result) <-[r:BOXER_STATUS]- (boxer)
+Query 1: What happened when Little Mac fought opponents ranked #1?  
+
+
+```MATCH (result) <-[r:BOXER_STATUS]- (boxer)
 WHERE toInt(r.rank) = 1
-RETURN result.outcome, result.notes
-```
+RETURN result.outcome, result.notes```
 
 
 Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?
