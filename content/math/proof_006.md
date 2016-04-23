@@ -26,7 +26,7 @@ For each $m \in \mathbb{N}$ define $P_m = \{0, \frac{1}{2m}, \frac{1}{2m-1}, \do
 
 Next we consider the variation of $f$:  
 
-$\begin\{align\*}
+$\begin\{align\*\}
 \sum_{i=1}^{n} \left| f(x_i) - f(x_{i-1} \right| &= \left| \frac{1}{2m} - 0) \right| + \left|-\frac{1}{2m-1} - \frac{1}{2m} \right| + \left|\frac{1}{2m-2} \right| + \dots + \left| -\frac{1}{3} - \frac{1}{4} \right| + \left| \frac{1}{2} + \frac{1}{3} \right| + \left| -1 -\frac{1}{2} \right|
 \\\\ &= \frac{1}{2m} + \frac{1}{2m-1} + \frac{1}{2m} + \frac{1}{2m} + \frac{1}{2m-2m} + \frac{1}{2m-1} + \dots + \frac{1}{3} + \frac{1}{4} + \frac{1}{2} + \frac{1}{3} + 1 + \frac{1}{2}
 \\\\ &= 2(\frac{1}{2m} + \frac{1}{2m-1} + \dots +  \frac{1}{2}) + 1
