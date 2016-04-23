@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-PLUGIN_PATH = "pelican-plugins"
+PLUGIN_PATHS = ["pelican-plugins"]
 
 #THEME = "themes/notmyidea-cms"
 THEME = "themes/built-texts"
 
 AUTHOR = u"Matt O'Brien"
 SITENAME = u"Matt O'Brien (dot) Me"
-SITEURL = ''
+SITEURL = 'http://www.mattobrien.me'
 
 DISQUS_SITENAME = "mattobrienme"
 
