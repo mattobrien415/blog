@@ -45,7 +45,7 @@ The interactivity enhances the visualization in the sense that it makes the loca
 
 I also am happy all four methods of interaction.  Here is a screenshot of the visualization with and without jitter:  
 
-![](https://github.com/mobbSF/msan622/blob/master/final-project/001.png?raw=true)
+![vis](https://github.com/mobbSF/msan622/blob/master/final-project/001.png?raw=true)
 
 
 One problem is the inability to adjust all states.  I chose a checkbox for the States, and as much as I wanted to, I wasn't able include all 48 states due, simply, to lack of space.  A better control would have allowed me to subset on certain important States.  To me, this is a major, major flaw in my visualization.  The question remains, how can a user intuitively and easily select any combination of 48 states when there is limited space on the graphic?  My solution is to remove control from the user, which is not ideal.  
@@ -54,7 +54,7 @@ One problem is the inability to adjust all states.  I chose a checkbox for the S
 
 This map is a cloropleth, which is somewhat of a combination of a heatmap and geographic map.  
 
-![](https://github.com/mobbSF/msan622/blob/master/final-project/002.png?raw=true)
+![vis](https://github.com/mobbSF/msan622/blob/master/final-project/002.png?raw=true)
 
 
 When you think of a cloropleth, or even a heatmap in general, trying to incorporate interactivity can be a difficult task.  After all, a heatmap pretty much shows everything...perhaps the granularity of binning can be adjusted, but what else?  
@@ -74,7 +74,7 @@ I had to use the `choroplethr` package, which is so different than the first plo
 
 Visualization 3 moves us into looking at single states, where we can see more clearly exactly where the jobs reside.  Here is an example of just one of the states you can zoom in on, Washington:  
 
-![](https://github.com/mobbSF/msan622/blob/master/final-project/003.png?raw=true)
+![vis](https://github.com/mobbSF/msan622/blob/master/final-project/003.png?raw=true)
 
 Here, we have:  
 
@@ -111,7 +111,7 @@ I originally wanted to find some way to 'grey out' the controls that aren't bein
 This chart can be sorted as seen below:  
 
 
-![](https://github.com/mobbSF/msan622/blob/master/final-project/004.png?raw=true)  
+![vis](https://github.com/mobbSF/msan622/blob/master/final-project/004.png?raw=true)  
 
 
 The data was summed and encoded as scalars with which to plot the number of jobs in each state.  
@@ -126,6 +126,6 @@ I was glad that I was able to remove that annoying area between the x and y axis
 There is no end to how much work you can put into a good visualization -- this project provided me with lots of appreciation as to how difficult a good vis really is to construct.  For example, was it worth the hours it took to figure out how to give this custom error message?  
 
 
-![](https://github.com/mobbSF/msan622/blob/master/final-project/005.gif?raw=true)  
+![vis](https://github.com/mobbSF/msan622/blob/master/final-project/005.gif?raw=true)  
 
 Who knows.  But, I also now have more appreciation for why lots of visualizations are hard to read.  This is a large and deep field.  

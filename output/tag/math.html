@@ -89,12 +89,12 @@ xcos\frac{\pi}{x}&amp; \text{if }x \in (0,1] \
 <h3>is not a function of bounded variation.</h3>
 <p>To show this function is not BV, we construct a sequence of partitions as follows:</p>
 <p>For each $m \in \mathbb{N}$ define $P_m = {0, \frac{1}{2m}, \frac{1}{2m-1}, \dots, \frac{1}{3}, \frac{1}{2}, 1 }$.  To check the function we evaluate it at those partition points and find $f(P_m) = {0, \frac{1}{2m}, \frac{1}{2m-1}, \dots, -\frac{1}{3}, -\frac{1}{2}, -1 }$ </p>
-<p>Next we consider the variation of $f$:
-$\begin{align<em>}
+<p>Next we consider the variation of $f$:  </p>
+<p>$\begin{align<em>}
 \sum_{i=1}^{n} \left| f(x_i) - f(x_{i-1} \right| &amp;= \left| \frac{1}{2m} - 0) \right| + \left|-\frac{1}{2m-1} - \frac{1}{2m} \right| + \left|\frac{1}{2m-2} \right| + \dots + \left| -\frac{1}{3} - \frac{1}{4} \right| + \left| \frac{1}{2} + \frac{1}{3} \right| + \left| -1 -\frac{1}{2} \right|
 \\ &amp;= \frac{1}{2m} + \frac{1}{2m-1} + \frac{1}{2m} + \frac{1}{2m} + \frac{1}{2m-2m} + \frac{1}{2m-1} + \dots + \frac{1}{3} + \frac{1}{4} + \frac{1}{2} + \frac{1}{3} + 1 + \frac{1}{2}
 \\ &amp;= 2(\frac{1}{2m} + \frac{1}{2m-1} + \dots +  \frac{1}{2}) + 1
-\end{align</em>} $</p>
+\end{align</em>} $  </p>
 <p>This is a harmonic series in the form of $\sum_{n=2}^{\infty} \frac{1}{n}$ which is divergent.  So no matter what $M$ we choose for a bound, we can construct a partition for which the variation is unbounded.</p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
