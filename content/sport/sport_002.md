@@ -5,7 +5,9 @@ Summary: Aggregating boxing outcomes by nation of origin
 
 # A nation by nation look at knockouts in boxing
 
-Here's a question for you: Who scores more knockouts as a whole, Mexican fighters or Philipino fighters?
+Here's a question for you: Who scores more knockouts as a whole, Mexican fighters or Philipino fighters?  
+
+(tl;dr: click [here](https://mattobriendotme.shinyapps.io/ko_by_countries/ "Knockouts by Nation") to find out yourself.)
 
 It's a good question...and it's one that could certainly stir up some impassioned debate on various online forums. Unfortunately, we'd all be stuck debating based on our intuition. It is impossible to answer this kind of question without looking directly at the numbers. But unlike other sports such as baseball or basketball, the cold hard facts are sometimes harder to come across in boxing. 
 
