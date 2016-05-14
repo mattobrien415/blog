@@ -105,7 +105,7 @@ iteration 3:<br />
     ...<br />
 ave_accuracy:80.3%  </p>
 <p>Make sure to include the command line parameters <code>python naive-bayes.py -d my_directory</code> where <code>my_directory</code> is the path to the directory that holds the positive and negative reviews along with the python script.</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -113,20 +113,20 @@ ave_accuracy:80.3%  </p>
 <span class="kn">import</span> <span class="nn">collections</span>
 
 <span class="k">def</span> <span class="nf">parseArgument</span><span class="p">():</span>
-    <span class="c1">### Code for parsing arguments</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Parsing a file.&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c">### Code for parsing arguments</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">&#39;Parsing a file.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-d&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">args</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">args</span> 
-<span class="c1">###  This function takes the directory path and divides the file names found in the pos / neg directories</span>
-<span class="c1">###  into the proper proportions, stored into a dict named &#39;D&#39;.</span>
+<span class="c">###  This function takes the directory path and divides the file names found in the pos / neg directories</span>
+<span class="c">###  into the proper proportions, stored into a dict named &#39;D&#39;.</span>
 <span class="k">def</span> <span class="nf">CreateD</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
     <span class="n">pos_train</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">pos_test</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">neg_train</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">neg_test</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/pos&#39;</span>
-    <span class="n">neg</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s1">&#39;/neg&#39;</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s">&#39;/pos&#39;</span>
+    <span class="n">neg</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s">&#39;/neg&#39;</span>
     <span class="n">pos_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
     <span class="n">neg_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">neg</span><span class="p">)</span>
     <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pos_names</span><span class="p">)</span>
@@ -144,150 +144,120 @@ ave_accuracy:80.3%  </p>
         <span class="k">if</span> <span class="n">neg_names</span><span class="p">:</span>
             <span class="n">neg_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neg_names</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
     <span class="n">fileDict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">fileDict</span><span class="p">[</span><span class="s2">&quot;pos_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_train</span>
-    <span class="n">fileDict</span><span class="p">[</span><span class="s2">&quot;pos_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_test</span>
-    <span class="n">fileDict</span><span class="p">[</span><span class="s2">&quot;neg_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_train</span>
-    <span class="n">fileDict</span><span class="p">[</span><span class="s2">&quot;neg_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_test</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;pos_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_train</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;pos_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_test</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;neg_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_train</span>
+    <span class="n">fileDict</span><span class="p">[</span><span class="s">&quot;neg_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_test</span>
     <span class="k">return</span> <span class="n">fileDict</span>
 
-<span class="c1">### This function used a counter object to count the number of documents in the class &#39;pos&#39; or &#39;neg&#39;.  This is used</span>
-<span class="c1">### for printing summary statistics at the end.</span>
+<span class="c">### This function used a counter object to count the number of documents in the class &#39;pos&#39; or &#39;neg&#39;.  This is used</span>
+<span class="c">### for printing summary statistics at the end.</span>
 <span class="k">def</span> <span class="nf">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">subdir</span><span class="p">,</span><span class="n">file_list</span><span class="p">):</span>
     <span class="n">cntr</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">()</span>
     <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">subdir</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c1">#open each File</span>
-        <span class="n">cntr</span> <span class="o">=</span> <span class="n">cntr</span> <span class="o">+</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">([</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stopWords</span><span class="p">])</span><span class="c1">#add word counts to counter object</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span><span class="c1">#Close each File</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s">&#39;/&#39;</span><span class="o">+</span><span class="n">subdir</span><span class="o">+</span><span class="s">&#39;/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c">#open each File</span>
+        <span class="n">cntr</span> <span class="o">=</span> <span class="n">cntr</span> <span class="o">+</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">([</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stopWords</span><span class="p">])</span><span class="c">#add word counts to counter object</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span><span class="c">#Close each File</span>
     <span class="k">return</span> <span class="n">cntr</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">parseArgument</span><span class="p">()</span>
-    <span class="n">directory</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1"># variable for calculating average accuracy</span>
+    <span class="n">directory</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c"># variable for calculating average accuracy</span>
     <span class="n">tot_acc</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1"># Iterations</span>
+    <span class="c"># Iterations</span>
     <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
 
-<span class="c1">### Here is the training code:</span>
-<span class="c1">### First we create the dictionary of filenames using the CreateD function.</span>
+<span class="c">### Here is the training code:</span>
+<span class="c">### First we create the dictionary of filenames using the CreateD function.</span>
         <span class="n">file_dict</span> <span class="o">=</span> <span class="n">CreateD</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
 
-<span class="c1">### Here we count the number of documents in the &#39;pos&#39; and &#39;neg&#39; class using the CountDocsInClass function.</span>
-        <span class="n">positive_counter</span> <span class="o">=</span> <span class="n">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s1">&#39;pos&#39;</span><span class="p">,</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_train&#39;</span><span class="p">])</span>
-        <span class="n">negative_counter</span> <span class="o">=</span> <span class="n">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s1">&#39;neg&#39;</span><span class="p">,</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_train&#39;</span><span class="p">])</span>
-<span class="c1">### These 2 lines find a total count in the counters for each class.</span>
+<span class="c">### Here we count the number of documents in the &#39;pos&#39; and &#39;neg&#39; class using the CountDocsInClass function.</span>
+        <span class="n">positive_counter</span> <span class="o">=</span> <span class="n">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span>
+        <span class="n">negative_counter</span> <span class="o">=</span> <span class="n">CountDocsInClass</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s">&#39;neg&#39;</span><span class="p">,</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])</span>
+<span class="c">### These 2 lines find a total count in the counters for each class.</span>
         <span class="n">tot_cnt_pos</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">positive_counter</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
         <span class="n">tot_cnt_neg</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">negative_counter</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-<span class="c1">### We create V, as specified in the Vocabulary list</span>
+<span class="c">### We create V, as specified in the Vocabulary list</span>
         <span class="n">V</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">positive_counter</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">+</span> <span class="n">negative_counter</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="c1">### The final_dict will hold the conditional probabilities for each t in V</span>
+<span class="c">### The final_dict will hold the conditional probabilities for each t in V</span>
         <span class="n">final_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">V</span><span class="p">:</span>
-            <span class="n">final_dict</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pos&#39;</span><span class="p">:(</span><span class="n">positive_counter</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_pos</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;neg&#39;</span><span class="p">:(</span><span class="n">negative_counter</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_neg</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
-<span class="c1">### calculating prior probabilities for each class</span>
-        <span class="n">pos_prior</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_train&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_train&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_train&#39;</span><span class="p">])))</span>
-        <span class="n">neg_prior</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_train&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_train&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_train&#39;</span><span class="p">])))</span>
-<span class="c1">### This code is for the Testing part of the Naive Bayes algorithm</span>
-<span class="c1">### We create a list of classes</span>
-        <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">,</span><span class="s1">&#39;neg&#39;</span><span class="p">]</span>
-<span class="c1">### initializing filescore dictionary to keep track of test data - has the test file as key and four other associated</span>
-        <span class="c1"># parameters namely:</span>
-        <span class="c1">#                   orig    -  is file originally +ve or -ve</span>
-        <span class="c1">#                   pos     -  sum of log probs for +ve class</span>
-        <span class="c1">#                   neg     -  sum of log probs for +ve class</span>
-        <span class="c1">#                   output  -  output file classification after comparing &#39;pos&#39; and &#39;neg&#39;</span>
+            <span class="n">final_dict</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;pos&#39;</span><span class="p">:(</span><span class="n">positive_counter</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_pos</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s">&#39;neg&#39;</span><span class="p">:(</span><span class="n">negative_counter</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_neg</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
+<span class="c">### calculating prior probabilities for each class</span>
+        <span class="n">pos_prior</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])))</span>
+        <span class="n">neg_prior</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])))</span>
+<span class="c">### This code is for the Testing part of the Naive Bayes algorithm</span>
+<span class="c">### We create a list of classes</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="s">&#39;neg&#39;</span><span class="p">]</span>
+<span class="c">### initializing filescore dictionary to keep track of test data - has the test file as key and four other associated</span>
+        <span class="c"># parameters namely:</span>
+        <span class="c">#                   orig    -  is file originally +ve or -ve</span>
+        <span class="c">#                   pos     -  sum of log probs for +ve class</span>
+        <span class="c">#                   neg     -  sum of log probs for +ve class</span>
+        <span class="c">#                   output  -  output file classification after comparing &#39;pos&#39; and &#39;neg&#39;</span>
         <span class="n">filescore</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1"># for all test files combined run loop</span>
-        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_test&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_test&#39;</span><span class="p">]):</span>
-            <span class="c1"># initialize  the file dictionary within filescore dictionary</span>
+        <span class="c"># for all test files combined run loop</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_test&#39;</span><span class="p">]):</span>
+            <span class="c"># initialize  the file dictionary within filescore dictionary</span>
             <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="c1"># populate &#39;orig&#39; attribute for each file i.e. filescore[file][&#39;orig&#39;]</span>
-            <span class="k">if</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_test&#39;</span><span class="p">]:</span>
-                <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s1">&#39;/pos/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c1">#open each File</span>
-                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s1">&#39;orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pos&#39;</span>
+            <span class="c"># populate &#39;orig&#39; attribute for each file i.e. filescore[file][&#39;orig&#39;]</span>
+            <span class="k">if</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">]:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s">&#39;/pos/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c">#open each File</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;pos&#39;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s1">&#39;/neg/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c1">#open each File</span>
-                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s1">&#39;orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;neg&#39;</span>
-            <span class="c1"># extract all words for the given file into t_list after removing stopwords</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">directory</span><span class="o">+</span><span class="s">&#39;/neg/&#39;</span><span class="o">+</span><span class="nb">file</span><span class="p">)</span><span class="c">#open each File</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;neg&#39;</span>
+            <span class="c"># extract all words for the given file into t_list after removing stopwords</span>
             <span class="n">t_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stopWords</span><span class="p">]</span>
-            <span class="c1"># within a file run the below loop for each class to sum the log probabilities for each class</span>
+            <span class="c"># within a file run the below loop for each class to sum the log probabilities for each class</span>
             <span class="k">for</span> <span class="n">clss</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
-                <span class="c1"># initializing score variable with prior probbabilities</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">clss</span> <span class="o">==</span> <span class="s1">&#39;pos&#39;</span><span class="p">):</span>
+                <span class="c"># initializing score variable with prior probbabilities</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">clss</span> <span class="o">==</span> <span class="s">&#39;pos&#39;</span><span class="p">):</span>
                     <span class="n">score</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pos_prior</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">score</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">neg_prior</span><span class="p">)</span>
-<span class="c1">### The code below takes logs as per pseudocode</span>
+<span class="c">### The code below takes logs as per pseudocode</span>
                 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_list</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">final_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
                         <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">final_dict</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">clss</span><span class="p">])</span>
-                    <span class="c1"># handling unknown words in test file</span>
+                    <span class="c"># handling unknown words in test file</span>
                     <span class="k">else</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">clss</span><span class="o">==</span><span class="s1">&#39;pos&#39;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">clss</span><span class="o">==</span><span class="s">&#39;pos&#39;</span><span class="p">:</span>
                             <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_pos</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-                        <span class="k">if</span> <span class="n">clss</span><span class="o">==</span><span class="s1">&#39;neg&#39;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">clss</span><span class="o">==</span><span class="s">&#39;neg&#39;</span><span class="p">:</span>
                             <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">tot_cnt_neg</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
                 <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="n">clss</span><span class="p">]</span> <span class="o">=</span> <span class="n">score</span>
-<span class="c1">###   Counting the results</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s1">&#39;neg&#39;</span><span class="p">]):</span>
-                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pos&#39;</span>
+<span class="c">###   Counting the results</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;pos&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;neg&#39;</span><span class="p">]):</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;pos&#39;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;neg&#39;</span>
+                <span class="n">filescore</span><span class="p">[</span><span class="nb">file</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;neg&#39;</span>
             <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="c1">###   Create some counters to track the numbers of successes for each class</span>
+<span class="c">###   Create some counters to track the numbers of successes for each class</span>
         <span class="n">count_positive_success</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">count_negative_success</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">fl</span> <span class="ow">in</span> <span class="n">filescore</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">((</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s1">&#39;orig&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;pos&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s1">&#39;orig&#39;</span><span class="p">])):</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;pos&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">])):</span>
                 <span class="n">count_positive_success</span> <span class="o">=</span> <span class="n">count_positive_success</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="p">((</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s1">&#39;orig&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;pos&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s1">&#39;orig&#39;</span><span class="p">])):</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;pos&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;output&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">filescore</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="s">&#39;orig&#39;</span><span class="p">])):</span>
                 <span class="n">count_negative_success</span> <span class="o">=</span> <span class="n">count_negative_success</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="c1">### Print results to screen</span>
-        <span class="k">print</span> <span class="s2">&quot;iteration &quot;</span><span class="p">,</span><span class="n">step</span><span class="p">,</span><span class="s2">&quot;:&quot;</span>
-        <span class="k">print</span> <span class="s2">&quot;num_pos_test_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_test&#39;</span><span class="p">])</span>
-        <span class="k">print</span> <span class="s2">&quot;num_pos_training_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_train&#39;</span><span class="p">])</span>
-        <span class="k">print</span> <span class="s2">&quot;num_pos_correct_docs:&quot;</span><span class="p">,</span><span class="n">count_positive_success</span>
-        <span class="k">print</span> <span class="s2">&quot;num_neg_test_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_test&#39;</span><span class="p">])</span>
-        <span class="k">print</span> <span class="s2">&quot;num_neg_training_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_train&#39;</span><span class="p">])</span>
-        <span class="k">print</span> <span class="s2">&quot;num_neg_correct_docs:&quot;</span><span class="p">,</span><span class="n">count_negative_success</span>
-        <span class="n">acc</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">count_positive_success</span><span class="o">+</span><span class="n">count_negative_success</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;pos_test&#39;</span><span class="p">])</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s1">&#39;neg_test&#39;</span><span class="p">]))</span>
-        <span class="k">print</span> <span class="s2">&quot;accuracy:&quot;</span><span class="p">,</span><span class="n">acc</span><span class="p">,</span><span class="s1">&#39;%&#39;</span>
+<span class="c">### Print results to screen</span>
+        <span class="k">print</span> <span class="s">&quot;iteration &quot;</span><span class="p">,</span><span class="n">step</span><span class="p">,</span><span class="s">&quot;:&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;num_pos_test_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_pos_training_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_train&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_pos_correct_docs:&quot;</span><span class="p">,</span><span class="n">count_positive_success</span>
+        <span class="k">print</span> <span class="s">&quot;num_neg_test_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_test&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_neg_training_docs:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_train&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;num_neg_correct_docs:&quot;</span><span class="p">,</span><span class="n">count_negative_success</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">count_positive_success</span><span class="o">+</span><span class="n">count_negative_success</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;pos_test&#39;</span><span class="p">])</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">file_dict</span><span class="p">[</span><span class="s">&#39;neg_test&#39;</span><span class="p">]))</span>
+        <span class="k">print</span> <span class="s">&quot;accuracy:&quot;</span><span class="p">,</span><span class="n">acc</span><span class="p">,</span><span class="s">&#39;%&#39;</span>
         <span class="n">tot_acc</span> <span class="o">=</span> <span class="n">tot_acc</span> <span class="o">+</span> <span class="n">acc</span>
-    <span class="k">print</span> <span class="s2">&quot;ave_accuracy:&quot;</span><span class="p">,</span><span class="n">tot_acc</span><span class="o">/</span><span class="mf">3.0</span>
+    <span class="k">print</span> <span class="s">&quot;ave_accuracy:&quot;</span><span class="p">,</span><span class="n">tot_acc</span><span class="o">/</span><span class="mf">3.0</span>
 
 <span class="n">main</span><span class="p">()</span>
-</pre></div><script type= "text/javascript">
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-    }
-</script>
-
+</pre></div>
 	<hr />
       </div>
     </div>

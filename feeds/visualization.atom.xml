@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/visualization.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2016-04-16T00:00:00-07:00</updated><entry><title>a csv defined Shiny structure</title><link href="http://mattobrien.me/a-csv-defined-shiny-structure.html" rel="alternate"></link><published>2016-04-16T00:00:00-07:00</published><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-04-16:a-csv-defined-shiny-structure.html</id><summary type="html">&lt;p&gt;This project allows you to use 2 csvs (containing IDs, variables, names, and values) to automatically generate a Shiny structure that you can further customize.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/visualization.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2016-04-16T00:00:00-07:00</updated><entry><title>a csv defined Shiny structure</title><link href="http://mattobrien.me/a-csv-defined-shiny-structure.html" rel="alternate"></link><updated>2016-04-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-04-16:a-csv-defined-shiny-structure.html</id><summary type="html">&lt;p&gt;This project allows you to use 2 csvs (containing IDs, variables, names, and values) to automatically generate a Shiny structure that you can further customize.&lt;/p&gt;
 &lt;p&gt;To fork the project, go to the GitHub page &lt;a href="https://github.com/mobbSF/csv-defined-Shiny-structure"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Use a csv ('chart_settings.csv') in a form similar to this:  &lt;/p&gt;
 &lt;table&gt;
@@ -104,62 +104,62 @@
 &lt;p&gt;Click &lt;a href="https://mattobriendotme.shinyapps.io/csv-defined-Shiny-structure/"&gt;here&lt;/a&gt; to see it in action.  &lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;Examine the screenshot and map trace each element back to the appropriate csv. For the sake of simplicity and to avoid creating any unnecessarily customized features, the inputs show only two large, unsized and unmodified variables plotted as a histogram:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="alt text" src="https://github.com/mobbSF/csv-defined-Shiny-structure/blob/master/screenshot.png?raw=true" title="Logo Title Text 2" /&gt;&lt;/p&gt;</summary><category term="visualization"></category><category term="R"></category></entry><entry><title>Mike Tyson's Punchout! as a Neo4j graph</title><link href="http://mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html" rel="alternate"></link><published>2016-03-16T00:00:00-07:00</published><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-03-16:mike-tysons-punchout-as-a-neo4j-graph.html</id><summary type="html">&lt;p&gt;&lt;img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="alt text" src="https://github.com/mobbSF/csv-defined-Shiny-structure/blob/master/screenshot.png?raw=true" title="Logo Title Text 2" /&gt;&lt;/p&gt;</summary><category term="visualization"></category><category term="R"></category></entry><entry><title>Mike Tyson's Punchout! as a Neo4j graph</title><link href="http://mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html" rel="alternate"></link><updated>2016-03-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-03-16:mike-tysons-punchout-as-a-neo4j-graph.html</id><summary type="html">&lt;p&gt;&lt;img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /&gt;&lt;/p&gt;
 &lt;p&gt;This is a quick and fun little graph of the classic Nintendo game, Mike Tyson's Punch-Out!!.  &lt;/p&gt;
 &lt;p&gt;The information for the graph comes directly from the &lt;a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki"&gt;Punchout Wiki&lt;/a&gt;. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. &lt;/p&gt;
 &lt;p&gt;I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Notice that the dataset is read in painlessly via Google Docs as outlined &lt;a href="http://blog.bruggen.com/2014/07/using-loadcsv-to-import-data-from.html"&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Query 1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Query&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 
-LOAD CSV WITH HEADERS FROM
-&amp;#39;https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;amp;gid=0&amp;#39; AS line
-MERGE (b1:boxer {
-                    boxer_id: line.boxer_id,
-                    name: line.name
-                })
-MERGE (b2:boxer {boxer_id: line.fought
-                })
-MERGE (f:fight  { fight_id: line.fight_id,
-                  notes: line.notes,
-                  outcome: line.outcome
-                })
-//CREATE (b1)-[:AGAINST]-&amp;gt;(b2)
-CREATE (b1)-[r:BOXER_STATUS {
-                  total_fights: line.total_fights,
-                  wins: line.wins,
-                  wins_by_KO: line.wins_by_KO,
-                  losses: line.losses,
-                  weight: line.weight,
-                  height: line.height,
-                  nationality: line.nationality,
-                  age: line.age,
-                  rank: line.rank
-                         } ]-&amp;gt;(f);  
+&lt;span class="n"&gt;LOAD&lt;/span&gt; &lt;span class="n"&gt;CSV&lt;/span&gt; &lt;span class="n"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;HEADERS&lt;/span&gt; &lt;span class="n"&gt;FROM&lt;/span&gt;
+&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;amp;gid=0&amp;#39; AS line&lt;/span&gt;
+&lt;span class="n"&gt;MERGE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;boxer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                    &lt;span class="nl"&gt;boxer_id:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;boxer_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="nl"&gt;name:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
+                &lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="n"&gt;MERGE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;boxer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;boxer_id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fought&lt;/span&gt;
+                &lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="n"&gt;MERGE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;fight&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;fight_id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fight_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;notes:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;notes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;outcome:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;outcome&lt;/span&gt;
+                &lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="c1"&gt;//CREATE (b1)-[:AGAINST]-&amp;gt;(b2)&lt;/span&gt;
+&lt;span class="n"&gt;CREATE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;BOXER_STATUS&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                  &lt;span class="nl"&gt;total_fights:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_fights&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;wins:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wins&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;wins_by_KO:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wins_by_KO&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;losses:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;losses&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;weight:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;nationality:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nationality&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;age:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                  &lt;span class="nl"&gt;rank:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rank&lt;/span&gt;
+                         &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Here's what it looks like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MATCH (n)
-RETURN n
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MATCH&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;RETURN&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;Here's some simple queries to practice with:  &lt;/p&gt;
 &lt;p&gt;Query 1: What happened when Little Mac fought opponents ranked #1?  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MATCH &lt;span class="p"&gt;(&lt;/span&gt;result&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;r&lt;span class="o"&gt;:&lt;/span&gt;BOXER_STATUS&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;boxer&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;MATCH &lt;span class="p"&gt;(&lt;/span&gt;result&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;r&lt;span class="o"&gt;:&lt;/span&gt;BOXER_STATUS&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;boxer&lt;span class="p"&gt;)&lt;/span&gt;
 WHERE toInt&lt;span class="p"&gt;(&lt;/span&gt;r.rank&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
 RETURN result.outcome&lt;span class="p"&gt;,&lt;/span&gt; result.notes
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;START n=node(*), m=node(*)
-WHERE
-  n.outcome=m.outcome AND
-  ID(n) &amp;lt;ID(m)
-RETURN n, m
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="visualization"></category></entry><entry><title>Visualization in RShiny</title><link href="http://mattobrien.me/visualization-in-rshiny.html" rel="alternate"></link><published>2014-05-18T00:00:00-07:00</published><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-18:visualization-in-rshiny.html</id><summary type="html">&lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science. The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;START&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;WHERE&lt;/span&gt;
+  &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;outcome&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;outcome&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt;
+  &lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;RETURN&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="visualization"></category></entry><entry><title>Visualization in RShiny</title><link href="http://mattobrien.me/visualization-in-rshiny.html" rel="alternate"></link><updated>2014-05-18T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-18:visualization-in-rshiny.html</id><summary type="html">&lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science. The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  &lt;/p&gt;
 &lt;p&gt;You can find this visualization hosted &lt;a href="https://mattobriendotme.shinyapps.io/shinyapp/"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h1&gt;THE PROJECT:&lt;/h1&gt;
 &lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science.   &lt;/p&gt;
