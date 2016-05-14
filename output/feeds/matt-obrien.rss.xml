@@ -221,7 +221,7 @@ Summary: Proof regarding a function of bounded variation&lt;/p&gt;
 &lt;h3&gt;Show that the function&lt;/h3&gt;
 &lt;p&gt;$f(x) = 
 \begin{cases}
-xcos\frac{\pi}{x}&amp;amp; \text{if }x \in (0,1] \
+xcos\frac{\pi}{x}&amp;amp; \text{if }x \in (0,1] \\
 0, &amp;amp; \text{if } x =0
 \end{cases}$ &lt;/p&gt;
 &lt;h3&gt;is not a function of bounded variation.&lt;/h3&gt;
