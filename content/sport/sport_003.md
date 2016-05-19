@@ -15,8 +15,8 @@ I collected a gigantic set of over 3.3 million boxing matches that spanned all e
 
 My three main questions are:  
 
-1) What percent of fights end in a stoppage?
-1) What round do knockout happen more frequently?  
+1) What percent of fights end in a stoppage?  
+1) What round do knockout happen more frequently?    
 2) What weight classes see the most knockouts?  
 
 ---  
