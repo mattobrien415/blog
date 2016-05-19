@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Matt O'Brien (dot) Me</title>
+    <meta name="description" content="">
+    <meta name="author" content="Matt O'Brien">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<header class="blog-header">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+      </div>
+
+      <div class="span3" id="blog-nav">
+	<ul class="nav nav-pills pull-right">
+	    <li >
+	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	    <li >
+	      <a href="http://mattobrien.me/category/python.html ">python</a>
+	    <li >
+	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	    <li  class="active" >
+	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	    <li >
+	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	</ul>
+      </div>
+    </div> <!-- End of fluid row-->
+  </div>   <!-- End of Container-->
+</header>
+    
+<div class="container">
+    <div class="content">
+    <div class="row-fluid">
+
+        <div class="span10">
+    <div class='article'>
+      <div class="row-fluid">
+           <div class="content-title span9">
+             <h1>An analysis of stoppages in boxing</h1b>
+           </div>
+      </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Wed 18 May 2016 </p>
+
+<p style="text-align: left;">
+Filed under <a href="http://mattobrien.me/category/sport.html">sport</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="http://mattobrien.me/tag/sport-science.html">sport science</a> </p>
+<p>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</p>
+      </div>
+      
+      <div class="span8">
+	<h1>An analysis of stoppages in boxing</h1>
+<p>Knockouts are truly the most dramatic, exciting, terrifying, heartbreaking and exhilarating outcome of any sporting event.  Along with the basic knockout, there is also the TKO that occurs when the ref waves it off. A fighter can also retire in between rounds if the fighter (or more likely, their corner) has seen enough and knows there is no decent chance of winning.  </p>
+<p>But what do we really know about these stoppages? No, I don't mean in terms of brain injury and health (that's another topic for another time), but from the big picture?  </p>
+<p>I collected a gigantic set of over 3.3 million boxing matches that spanned all eras of the sport, in every division, with all countries included. I filtered out how many fights ended by knockout, and dove in to see what I could find out. Of these 3.3 million fights, 1,275,316 of them ended in a stoppage.  </p>
+<p><em>This resulting dataset is a large enough so that we should be confident that insights found within can safely extend to the whole of the sport.</em></p>
+<p>My three main questions are:  </p>
+<p>1) What percent of fights end in a stoppage?
+1) What round do knockout happen more frequently?<br />
+2) What weight classes see the most knockouts?  </p>
+<hr />
+<p><h1>#1:</h1> </p>
+<p>The first question is the simplest. Clearly not every fight ends in a knockout. I'd say that stoppages are a minority. If you are a boxing fan (and you probably are if you are reading this), then you probably already have a pretty good number in your head. Maybe 20%? 40%?  </p>
+<p>Looking at the data, the number I got was [1275316 /  3330197] * 100  = 38.  </p>
+<p><strong>So the percentage then is thirty eight.</strong>  </p>
+<p>Does this match your intuition? For me, it sounds about right. </p>
+<hr />
+<p><h1>#2:</h1>  </p>
+<p>Next up, let's look at how stoppages are distributed across rounds. Of these 1,275,316 stoppages, here's <em>when</em> they happen:  </p>
+<p><img alt="stoppages across rounds" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_003.png" /> 
+<em>The x-axis is the round, and the y-axis is the count.</em>  </p>
+<p><strong>Stoppages happen most often in the second round.</strong>   </p>
+<p>Why might this be? Maybe you could argue that most boxing matches that end in stoppage are by definition a mismatch -- and it happens quick, mostly within 4 rounds.  Maybe it's harder to get a knockout later, because familiarity between fighters grow, and the fight becomes a pattern.  I can only use the numbers to supply the outcome, not the cause. </p>
+<p>No matter what the reason, it's clear that those Chavez Sr vs Taylor 12 round endings are extremely rare indeed!  </p>
+<p><a href="https://www.youtube.com/watch?v=AgenYK7VaxY"><img alt="Chavez Sr vs Taylor 12" src="http://img.youtube.com/vi/AgenYK7VaxY/0.jpg" /></a><br />
+<em>Julio Cesar Chavez Jr KO12 Meldrick Taylor</em></p>
+<hr />
+<p><h1>#3:</h1>  </p>
+<p>Finally, what about weight classes? Which division is the most dangerous, where the most knockouts happen? I wouldn't be surprised if the first reaction for most people is 'heavyweight.' Let's see what the numbers say:  </p>
+<p><img alt="stoppages by division" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_004.png" /> 
+<em>The x-axis is the weight class, and the y-axis is the count.</em>  </p>
+<p>Turns out, by separating all fights that end in stoppage into their divisions, we find that <strong>welterweight and lightweight, both individually, barely beat out the big guys.</strong>  </p>
+<p>That's a bit surprising, especially since the heavyweight class includes both cruiserweights and light heavies, which covers a big span of possible weights.  </p>
+<p>It's unfortunate that, to quote  Rishad Marquardt from boxingnews24.com, <a href="http://www.boxingnews24.com/2016/05/revival-interest-heavyweight-division-still-hot-air-least-now/">"The heavyweight division in boxing has, historically speaking, been the premier division within the sport."</a>  The big fighters historically tend to dominate mainstream news coverage, but you can get more explosive action (and bigger headlines) if you also set your sights down to include a few more weight classes.</p>
+<p>(Recall, lightweight is between 130 lbs and less than 140 lbs.  Welterweight is between 140 and less than 154 lbs. 'Super' and 'Light' subclasses were folded in.)</p>
+<hr />
+<p><h1>So what does it all mean?</h1> 
+ Well, here's two take-home messages. </p>
+<p>Say you just lost all your money playing craps in Vegas, and you've only got $5 left in your pocket.  Go to the nearest sportsbook, and wager $5 on the next lightweight matchup. Pick a knockout in the 2nd round. That's your best chance for a decent payoff.  </p>
+<p>But if you want a safer bet, albeit a smaller payout? Recall that historically, only 38% of boxing matches end prematurely. You'd actually be better off putting your money on a 12 round decision on a pair of 105 lb combatants...so look for a minimumweight fight!  </p>
+<p>Here's another take-home. Say you are a coach. If you want your fighter to be a kayo artist, then consider training them to perform best in the second round (and to be sharpest on defense at that time as well).  Work on interval training where the highest workloads are early. Later intervals could focus more on endurance, footwork and jabs. After all, if there hasn't been a knockout by round 4, then probabistically speaking, the fight is probably going to the cards. Time to pile up points and impress the judges.</p>
+	<hr />
+      </div>
+    </div>
+    <div class="span10">
+      <h3>Comments</h3>
+    
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mattobrienme'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>  
+    </div>
+        </div>
+        
+        
+    </div>     </div> </div>
+
+<!--footer-->
+<div class="container">
+  <div class="well" style="background-color: #E9EFF6">
+    <div id="blog-footer">
+      <div class="row-fluid">
+	<div class="social span2" align="center" id="socialist">
+	  <ul class="nav nav-list">
+	    <li class="nav-header">
+	      Social
+	    </li>
+	    <li><a href="https://github.com/mobbSF"><i class="icon-GitHub" style="color: #1f334b"></i>GitHub</a></li>
+	    <li><a href="http://www.linkedin.com/pub/matt-o-brien/5/833/91b/"><i class="icon-LinkedIn" style="color: #1f334b"></i>LinkedIn</a></li>
+	    <li><a href="http://www.mattobrien.mefeeds/all.atom.xml"><i class="icon-RSS" style="color: #1f334b"></i>RSS</a></li>
+
+	  </ul>
+	</div>
+        <div class="links span2" align="center">
+          <ul class="nav nav-list">
+            <li class="nav-header"> 
+              Links
+            </li>
+            
+            <li><a href="http://spencerboucher.com/">Spencer Boucher</a></li>
+            <li><a href="http://trevorstephens.com/">Trevor Stephens</a></li>
+          </ul>
+        </div>
+	<div class="site-nav span2" align="center">
+          <ul class="nav nav-list" id="site-links">
+            <li class="nav-header"> 
+              Site
+            </li>
+            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+                </i>Home</a></li>
+            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+                </i>Archives</a></li>
+	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+                </i>Tags</a></li>
+	    
+            <li><a href="http://mattobrien.me/" rel="alternate">
+                <i class="icon-rss-sign" style="color: #1f334b"></i>
+                Atom Feed</a></li>
+	  </ul>
+
+        </div>
+
+      </div> <!--end of fluid row-->
+    </div> <!--end of blog-footer-->
+    <hr />
+    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+      &copy; Matt O'Brien
+    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
+        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
+        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
+        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+
+  </div> <!--end of well -->
+</div> <!--end of container -->
+
+<!--/footer-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+
+
+<script>var _gaq=[['_setAccount','UA-51519407-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
+</body>
+</html>
