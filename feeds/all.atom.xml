@@ -18,8 +18,8 @@
 &lt;p&gt;I collected a gigantic set of over 3.3 million boxing matches that spanned all eras of the sport, in every division, with all countries included. I filtered out how many fights ended by knockout, and dove in to see what I could find out. Of these 3.3 million fights, 1,275,316 of them ended in a stoppage.  &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This resulting dataset is a large enough so that we should be confident that insights found within can safely extend to the whole of the sport.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;My three main questions are:  &lt;/p&gt;
-&lt;p&gt;1) What percent of fights end in a stoppage?
-1) What round do knockout happen more frequently?&lt;br /&gt;
+&lt;p&gt;1) What percent of fights end in a stoppage?&lt;br /&gt;
+1) What round do knockout happen more frequently?  &lt;br /&gt;
 2) What weight classes see the most knockouts?  &lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;h1&gt;#1:&lt;/h1&gt; &lt;/p&gt;
