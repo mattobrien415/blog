@@ -1,5 +1,5 @@
 Title:  The 80 Best Boxers; A Career Viewer
-Date: 2016-05-19
+Date: 2016-06-05
 Tags: sport science, boxing
 Summary: A visualization of the careers of the top 80 boxers in the last 80 years 
 
