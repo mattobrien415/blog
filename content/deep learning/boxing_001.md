@@ -4,6 +4,8 @@ Tags: deep learning, sport, wagering
 Summary: Part 1 Characteristics of the dataset
 
 
+#### THIS BLOG POST IS IN PROGRESS  
+
 Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.
 
 One particular line in the blog post stuck out for me: "It’s as if at some point in the past few years, the Warriors solved contemporary basketball..."
@@ -127,7 +129,7 @@ Now, going the other direction,
 This actually is more clear when you look at the actual Neo4J graph itself:
 
 <Neo_000.jpg>
-![Neo4J graph](https://github.com/mobbSF/blog/blob/master/images/Neo_000.png)
+![Neo4J graph](https://github.com/mobbSF/blog/blob/master/images/Neo_000.png?raw=true)
 
 Here you see the boxer node, their record at a given time (node), the fight node, and the complementary information for their opponents. Note that this particular boxer had a few rematches which are visible when two edges touch the same P2 node.
 
