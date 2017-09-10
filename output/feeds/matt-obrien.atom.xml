@@ -1,16 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2016-06-05T00:00:00-07:00</updated><entry><title>The 80 Best Boxers; A Career Viewer</title><link href="http://mattobrien.me/the-80-best-boxers-a-career-viewer.html" rel="alternate"></link><updated>2016-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-06-05:the-80-best-boxers-a-career-viewer.html</id><summary type="html">&lt;h1&gt;The 80 Best Boxers; A Career Viewer&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me - Matt O'Brien</title><link href="http://www.mattobrien.me/" rel="alternate"></link><link href="http://www.mattobrien.me/feeds/matt-obrien.atom.xml" rel="self"></link><id>http://www.mattobrien.me/</id><updated>2017-09-15T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering</title><link href="http://www.mattobrien.me/deep-learning-for-sport-wagering.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering.html</id><summary type="html">&lt;p&gt;Part 1: Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;p&gt;Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.&lt;/p&gt;
+&lt;p&gt;One particular line in the blog post stuck out for me: "It’s as if at some point in the past few years, the Warriors solved contemporary basketball..."&lt;/p&gt;
+&lt;p&gt;Solved! Kinda heavy on the hyperbole, but not that far off.&lt;/p&gt;
+&lt;p&gt;This got me thinking about other sports, and their capacity to be understood via data science and analytics. In particular, I became interested in the somewhat marginal and obscure (by major American sport standards, anyway) sport of boxing. I began to think that boxing could lend itself to being 'solved' nicely, because it has many characteristics that lend it to straightforward analysis and modeling.&lt;/p&gt;
+&lt;p&gt;At it's heart, boxing has a simple structure.  Unlike many popular sports, it's not a team sport -- so there isn't a dynamic interplay between multiple individuals. It's also not new: the sport became standardized in the late 1600s. Thus, there is plenty of data available.  Fortunately for me, much of it is available online.&lt;/p&gt;
+&lt;p&gt;To make the project more impactful, I decided to set a very specific goal. I've found that often, personal projects such as these will hold up better if there is the possibility of a good payoff at the end --  so I figured, why not try to build an algorithm that would allow me to win money in Vegas? Yes, I'm talking about wagering on boxing.&lt;/p&gt;
+&lt;p&gt;After quite a few long nights and weekends of collecting, reshaping, and modeling the data, I came into posession a pretty good model. The tl;dr is that the model guarantees a result of up to a 30% return on investment. &lt;/p&gt;
+&lt;p&gt;So, if you make it thru this (hopefully not painful to read) blog post, then check on some upcoming fights. Ask me where to put your money, and I might be able to provide you with the 'nap.' The word 'nap' refers to a highly confident bet. That's been a fun side-effect from this project -- I learned a lot of cool new slang terms! &lt;/p&gt;
+&lt;p&gt;There will be 3 parts to this blog post:&lt;/p&gt;
+&lt;p&gt;1) Characteristics of the data
+2) Building models
+3) Prediction and Evaluation&lt;/p&gt;
+&lt;p&gt;1) Data &lt;/p&gt;
+&lt;p&gt;The project was built on a very substantial dataset. I had metadata on 373,415 individual boxers, alongside a collection of over 3.5 million fights (3,529,624 to be exact). These I imported into two MySQL tables. The dataset spanned the entire history of the sport. It was really fun to dig into. There were fighters from every corner of the globe, competing from the mid-1800s to the present day. There were boxers in every weight class from minimumweight upward, possessing all skill levels, at all ages, and exhibiting all levels of success. Perusing revealed some quite obscure fighters: a boxer from Accra, Ghana, who fought only once (unfortunately losing by knockout), back in 1966. Then, there was data on all the modern day multimillionaire heavyweight champions. There were was, for example, Wladamir Klitchko, nicknamed 'Dr Steelhammer.' &lt;/p&gt;
+&lt;p&gt;The dataset definitely possessed depth. The breadth in features was as such:&lt;/p&gt;
+&lt;p&gt;Boxer's metadata
+name 
+sex 
+birth_date 
+division 
+stance 
+height 
+reach 
+country 
+residence 
+birth_place 
+world_rank 
+total_wins 
+ko_wins 
+total_losses 
+ko_losses 
+draws 
+rounds 
+ko_percent &lt;/p&gt;
+&lt;p&gt;Although elements like a boxer's weight are extremely important in real life boxing, some particular features like that and others were not applicable.
+For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent fight was at 146. So a single value pulled from the metadata would only reflect the most recent weight, not the weight at each fight.&lt;/p&gt;
+&lt;p&gt;It was simple to keep stance (orthodox or southpaw) as a categorical variable.&lt;/p&gt;
+&lt;p&gt;The dataset was balanced: 55% Wins, 45% Losses.&lt;/p&gt;
+&lt;p&gt;More useful was the specific data for each boxing match:
+boxer1_id 
+boxer2_id 
+date 
+location 
+rounds_planned 
+rounds_happened 
+boxer1_mass 
+boxer2_mass 
+boxer2_wins 
+boxer2_loses 
+boxer2_draws 
+boxer2_last6_wins 
+boxer2_last6_loses 
+boxer2_last6_draws 
+outcome 
+outcome_type 
+rating 
+time 
+referee 
+judge1 
+judge2 
+judge3 
+judge1_score 
+judge2_score 
+judge3_score 
+titles 
+comments &lt;/p&gt;
+&lt;p&gt;As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.&lt;/p&gt;
+&lt;p&gt;With that being settled, the first important decision I made with respect to transformation of the data was to do a self-join within the fight table in MySQL. Thus, as shown above, each record in the dataset represented one fight. There would be a boxer1 and a boxer2. The target for each row would be Win, Lose, or Draw, with respect to boxer1. There would also be the granular outcome information: the type of W, L or D. After all, there are many ways for a boxing match to end: points, knockout, quitting on the stool, etc etc.&lt;/p&gt;
+&lt;p&gt;(Quick note on a detail of the sport itself: Notice that although boxing is an individual sport, each fighter also has a whole team behind them. During competition, there is a coach, obviously, and there is the cutman as well. The cutman handles the first aid between rounds. These guys are the secondaries -- so in boxing, we'll call the 2 boxers primaries. I quickly renamed boxer1 and boxer2 to P1 and P2.)&lt;/p&gt;
+&lt;p&gt;Looking at these data, all seemed promising. But after some more reflection, I started to be concerned with what this rectangular representation was missing.
+Really, these fights are all sequences of events that happen for a boxer -- they start with fight #1, then continue forward until the end of their careers. This made me interested in engineering some temporal variables, which I proceed to do in Pandas. Now, each row had these features:&lt;/p&gt;
+&lt;p&gt;P1_ageAtFight
+P2_ageAtFight
+P1_rounds_fought
+P2_rounds_fought&lt;/p&gt;
+&lt;p&gt;Another feature as basically 'career length', or how many days it had been since the boxer's debut. These became:&lt;br&gt;
+P1_days_since_ff
+P2_days_since_ff&lt;/p&gt;
+&lt;p&gt;where 'ff' is just 'first fight'.&lt;/p&gt;
+&lt;p&gt;Some boxers were missing a birthdate, so I imputed these birthdates by assuming that each boxer's debut was on their 20th birthday. This was a simple subtraction from of 20 years from the date of the first fight.&lt;/p&gt;
+&lt;p&gt;But beyond the sequential, temporal perspective, there was still something more to be done. I realized this dataset could also be realized as a graph, with nodes for the boxers and the fights, and nodes for their professional W, L, D records at the time of the fight. So I imported if out of SQL and into Neo4J.&lt;/p&gt;
+&lt;p&gt;Once this was done (and it took quite some time, given I had never used Neo4J before), I had a new way of conceptualizing these competitions. The schema is, in ASCI art:&lt;/p&gt;
+&lt;p&gt;(A boxer, call them 'P1')--[had a record (W, L, D) on some date] --&amp;gt;(and there was a Fight at some location, with some outcome).&lt;/p&gt;
+&lt;p&gt;Now, going the other direction,
+(and there was a Fight at some location, with some outcome)&amp;lt;--[the opponent had a record, (W, L, D) on that same date]---(The opponent, call them 'P2')&lt;/p&gt;
+&lt;p&gt;This actually is more clear when you look at the actual Neo4J graph itself:&lt;/p&gt;
+&lt;p&gt;&lt;Neo_000.jpg&gt;&lt;/p&gt;
+&lt;p&gt;Here you see the boxer node, their record at a given time (node), the fight node, and the complementary information for their opponents. Note that this particular boxer had a few rematches which are visible when two edges touch the same P2 node.&lt;/p&gt;
+&lt;p&gt;Actually, it's interesting to see how the graph can be expanded:&lt;/p&gt;
+&lt;p&gt;&lt;Neo_001.jpg&gt;&lt;/p&gt;
+&lt;p&gt;again, &lt;/p&gt;
+&lt;p&gt;&lt;Neo_002.jpg&gt;&lt;/p&gt;
+&lt;p&gt;and again,&lt;/p&gt;
+&lt;p&gt;&lt;Neo_003.jpg&gt;&lt;/p&gt;
+&lt;p&gt;and so forth.&lt;/p&gt;
+&lt;p&gt;Envisioned as a graph, it was amazing to see the interconnectedness of the sport as a whole. &lt;/p&gt;
+&lt;p&gt;The first metric I focussed on creating using Cypher was a 'quality of opposition' (QOO) score.&lt;/p&gt;
+&lt;p&gt;QOO is necessary to suss out boxers with inflated records. Interestingly enough, boxing is the only sport (that I can think of, anyway) where a boxer actually gets to choose their opponent. There are no tournaments...no leagues...just arrangements between two boxers and the businesspeople around them, to hold an event. So what is stopping a boxer from inflating their record with lousy opposition? http://boxrec.com/en/boxer/4741 Absolutely nothing.&lt;/p&gt;
+&lt;p&gt;It all really comes down to the quality of those 20 fight for each boxer. If P1 was just beating up on 20 tomato cans, then we need to consider P1 in this light. Since if P2 was battling top-quality opposition that whole time, then you'd be wise to put your money on P2.&lt;/p&gt;
+&lt;p&gt;(In reality, most successful fighters start competing relatively frequently, against somewhat weak opposition. Later, they increase the quality of opposition as they decrease the frequency of competition. So the above scenario is an exaggeration, in most cases).&lt;/p&gt;
+&lt;p&gt;To show how the metric works, let's first start with this made up, simplified visual scenario:&lt;/p&gt;
+&lt;p&gt;&lt;QOO_001.jpg&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, P1 has fought 3 opponents (they live in 'Layer 1'), and each of those opponents had fought 3 opponents themselves (they live in 'Layer 2').&lt;/p&gt;
+&lt;p&gt;Now consider Layer 2. For each group of 3 fights, sum up these fighters' records as : count(Wins) / count(fights).&lt;/p&gt;
+&lt;p&gt;&lt;QOO_002.jpg&gt;&lt;/p&gt;
+&lt;p&gt;Now, recursively running back up the graph, let's see how the boxer in Layer 1 performed against this group. This will be count(Wins) / count(opponents) from above, but now multiplied by the previously calculated value. Voila; we have the QOO metric.&lt;/p&gt;
+&lt;p&gt;&lt;QOO_003.jpg&gt;&lt;/p&gt;
+&lt;p&gt;After setting a QOO score for all fights on the nodes in Neo4J, it was easy to put together another quick and dirty metric: QOOP, which for lack of better nomenclature, is 'Quality of opposition prime'. Here, I just took the mean of all a boxers' opponents' QOOs and wrote it to the node.&lt;/p&gt;
+&lt;p&gt;Indicator columns with 0 or 1 were included, in case the QOO metrics couldn't be built. This could happen, say, if a fight was a boxer's debut.&lt;/p&gt;
+&lt;p&gt;As a work in progress, I'm still playing with different ways to extract value from the Neo4J implementation. But this was a good start and took me pretty far.&lt;/p&gt;
+&lt;p&gt;Now that the data were all cleaned up ready to go, it was time to (finally!!) get to the fun part...building some deep learning models.&lt;/p&gt;</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>The 80 Best Boxers; A Career Viewer</title><link href="http://www.mattobrien.me/the-80-best-boxers-a-career-viewer.html" rel="alternate"></link><published>2016-06-05T00:00:00-07:00</published><updated>2016-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2016-06-05:/the-80-best-boxers-a-career-viewer.html</id><summary type="html">&lt;p&gt;A visualization of the careers of the top 80 boxers in the last 80 years&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The 80 Best Boxers; A Career Viewer&lt;/h1&gt;
 &lt;p&gt;A few years back, the Ring Magazine compiled a list of &lt;a href="http://boxing.about.com/od/history/a/ring_80_best.htm"&gt;The 80 Best Boxers of the Last 80 Years&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This is a solid list, compiled by the definitive boxing authority. But it is fundamentally just..well, a list. Which is a bit boring. It got me thinking of ways to get a better feel for what these boxers' accomplished throughout the duration of their careers.&lt;/p&gt;
 &lt;p&gt;To do that, I created an app which allows us to see where in the world these 80 pugilists plied their trade. We can explore chronologically, or by their opponent's names, and see how the top guys wrecked shop all over the world. There are big 'W', 'L', or 'D' letters plotted directly on a zoomable map, to indicate what happened and where.   &lt;/p&gt;
 &lt;p&gt;Here's a screenshot:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="screenshot" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_007.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="screenshot" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_007.png"&gt;&lt;/p&gt;
 &lt;p&gt;But you can &lt;a href="https://mattobriendotme.shinyapps.io/top_80_career_viewer/"&gt;click here&lt;/a&gt; to play with it yourself, which is a lot more fun than looking at my screenshots.&lt;/p&gt;
 &lt;p&gt;Speaking of screenshots, you can see below, that some fighters travelled all over the place. This is the career of the Old Mongoose himself, &lt;a href="https://en.wikipedia.org/wiki/Archie_Moore"&gt;Archie Moore&lt;/a&gt;: &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Archie Moore's career" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_005.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Archie Moore's career" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_005.png"&gt;&lt;/p&gt;
 &lt;p&gt;Then we have guys like &lt;a href="https://en.wikipedia.org/wiki/Rocky_Marciano"&gt;Rocky Marciano&lt;/a&gt;, who stuck pretty much to his own backyard during the duration of his short but undefeated career: &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Rocky Marcian's career" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_006.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Have a look at &lt;a href="https://mattobriendotme.shinyapps.io/top_80_career_viewer/"&gt;the app&lt;/a&gt; and play with it! Let me know what you think in the comments. I'd also appreciate a heads up on any bugs you might find.  &lt;/p&gt;</summary><category term="sport science"></category><category term="boxing"></category></entry><entry><title>A nation by nation look at knockouts in boxing</title><link href="http://mattobrien.me/a-nation-by-nation-look-at-knockouts-in-boxing.html" rel="alternate"></link><updated>2016-05-31T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-05-31:a-nation-by-nation-look-at-knockouts-in-boxing.html</id><summary type="html">&lt;h1&gt;A nation by nation look at knockouts in boxing&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Rocky Marcian's career" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_006.png"&gt;&lt;/p&gt;
+&lt;p&gt;Have a look at &lt;a href="https://mattobriendotme.shinyapps.io/top_80_career_viewer/"&gt;the app&lt;/a&gt; and play with it! Let me know what you think in the comments. I'd also appreciate a heads up on any bugs you might find.  &lt;/p&gt;</content><category term="sport science"></category><category term="boxing"></category></entry><entry><title>A nation by nation look at knockouts in boxing</title><link href="http://www.mattobrien.me/a-nation-by-nation-look-at-knockouts-in-boxing.html" rel="alternate"></link><published>2016-05-31T00:00:00-07:00</published><updated>2016-05-31T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2016-05-31:/a-nation-by-nation-look-at-knockouts-in-boxing.html</id><summary type="html">&lt;p&gt;Aggregating boxing outcomes by nation of origin&lt;/p&gt;</summary><content type="html">&lt;h1&gt;A nation by nation look at knockouts in boxing&lt;/h1&gt;
 &lt;p&gt;Here's a question for you: Who scores more knockouts as a whole, Mexican fighters or Philipino fighters?  &lt;/p&gt;
 &lt;p&gt;(tl;dr: click &lt;a href="https://mattobriendotme.shinyapps.io/ko_by_countries/" title="Knockouts by Nation"&gt;here&lt;/a&gt; to find out yourself.)&lt;/p&gt;
 &lt;p&gt;It's a good question...and it's one that could certainly stir up some impassioned debate on various online forums. Unfortunately, we'd all be stuck debating based on our intuition. It is impossible to answer this kind of question without looking directly at the numbers. But unlike other sports such as baseball or basketball, the cold hard facts are sometimes harder to come across in boxing. &lt;/p&gt;
@@ -18,51 +128,81 @@
 &lt;p&gt;Forget about compairing Mexico and the Philipines for a second. How about...Ghana and Austrailia?  &lt;/p&gt;
 &lt;p&gt;(Now might be a good time to take a break and rewatch the the Ring Magazine's offical 'Upset of the Year' way back in 1992! Yes, of course I'm talking about the rematch between &lt;a href="https://www.youtube.com/watch?v=QsqmNOAw1Sk"&gt;Jeff Fenech and Azumah Nelson&lt;/a&gt;.)  &lt;/p&gt;
 &lt;p&gt;Turns out that Austraila, as a whole, doesn't seem to be producing a whole slew of knockout punchers. Their percent of stoppages is well below 50...but on the other hand, Ghana is around 60%.  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Ghana vs. Austraila" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_001.png" /&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Ghana vs. Austraila" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_001.png"&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Notice that "Other" on the far right of the graph, contains stuff like Draws, No Contests, and other non-definitive outcomes.&lt;/em&gt;  &lt;/p&gt;
 &lt;p&gt;The tool gets more fun when you look at side-by-side comparisons between more than 2 nations (the dropdown on the left has over 100 countries to choose from):  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Jamacia, Switzerland, Isreal" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_002.png" /&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Jamacia, Switzerland, Isreal" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_002.png"&gt;  &lt;/p&gt;
 &lt;p&gt;Appears that the Israelis have the advantage. Historically, Jamacia doesn't seem to be doing a while lot of winning by KO.  &lt;/p&gt;
-&lt;p&gt;What do you think? Did you find this useful or interesting? Let me know in the comments section if you find anything surprising.  &lt;/p&gt;</summary><category term="sport science"></category><category term="visualization"></category></entry><entry><title>An analysis of stoppages in boxing</title><link href="http://mattobrien.me/an-analysis-of-stoppages-in-boxing.html" rel="alternate"></link><updated>2016-05-18T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-05-18:an-analysis-of-stoppages-in-boxing.html</id><summary type="html">&lt;h1&gt;An analysis of stoppages in boxing&lt;/h1&gt;
+&lt;p&gt;What do you think? Did you find this useful or interesting? Let me know in the comments section if you find anything surprising.  &lt;/p&gt;</content><category term="sport science"></category><category term="visualization"></category></entry><entry><title>An analysis of stoppages in boxing</title><link href="http://www.mattobrien.me/an-analysis-of-stoppages-in-boxing.html" rel="alternate"></link><published>2016-05-18T00:00:00-07:00</published><updated>2016-05-18T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2016-05-18:/an-analysis-of-stoppages-in-boxing.html</id><summary type="html">&lt;p&gt;Some perspectives on knockouts&lt;/p&gt;</summary><content type="html">&lt;h1&gt;An analysis of stoppages in boxing&lt;/h1&gt;
 &lt;p&gt;Knockouts are truly the most dramatic, exciting, terrifying, heartbreaking and exhilarating outcome of any sporting event.  Along with the basic knockout, there is also the TKO that occurs when the ref waves it off. A fighter can also retire in between rounds if the fighter (or more likely, their corner) has seen enough and knows there is no decent chance of winning.  &lt;/p&gt;
 &lt;p&gt;But what do we really know about these stoppages? No, I don't mean in terms of brain injury and health (that's another topic for another time), but from the big picture?  &lt;/p&gt;
 &lt;p&gt;I collected a gigantic set of over 3.3 million boxing matches that spanned all eras of the sport, in every division, with all countries included. I filtered out how many fights ended by knockout, and dove in to see what I could find out. Of these 3.3 million fights, 1,275,316 of them ended in a stoppage.  &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This resulting dataset is a large enough so that we should be confident that insights found within can safely extend to the whole of the sport.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;My three main questions are:  &lt;/p&gt;
-&lt;p&gt;1) What percent of fights end in a stoppage?&lt;br /&gt;
-1) What round do knockout happen more frequently?  &lt;br /&gt;
+&lt;p&gt;1) What percent of fights end in a stoppage?&lt;br&gt;
+1) What round do knockout happen more frequently?  &lt;br&gt;
 2) What weight classes see the most knockouts?  &lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;h1&gt;#1:&lt;/h1&gt; &lt;/p&gt;
 &lt;p&gt;The first question is the simplest. Clearly not every fight ends in a knockout. I'd say that stoppages are a minority. If you are a boxing fan (and you probably are if you are reading this), then you probably already have a pretty good number in your head. Maybe 20%? 40%?  &lt;/p&gt;
 &lt;p&gt;Looking at the data, the number I got was [1275316 /  3330197] * 100  = 38.  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;So the percentage then is thirty eight.&lt;/strong&gt;  &lt;/p&gt;
 &lt;p&gt;Does this match your intuition? For me, it sounds about right. &lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;h1&gt;#2:&lt;/h1&gt;  &lt;/p&gt;
 &lt;p&gt;Next up, let's look at how stoppages are distributed across rounds. Of these 1,275,316 stoppages, here's &lt;em&gt;when&lt;/em&gt; they happen:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="stoppages across rounds" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_003.png" /&gt; 
+&lt;p&gt;&lt;img alt="stoppages across rounds" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_003.png"&gt; 
 &lt;em&gt;The x-axis is the round, and the y-axis is the count.&lt;/em&gt;  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Stoppages happen most often in the second round.&lt;/strong&gt;   &lt;/p&gt;
 &lt;p&gt;Why might this be? Maybe you could argue that most boxing matches that end in stoppage are by definition a mismatch -- and it happens quick, mostly within 4 rounds.  Maybe it's harder to get a knockout later, because familiarity between fighters grow, and the fight becomes a pattern.  I can only use the numbers to supply the outcome, not the cause. &lt;/p&gt;
 &lt;p&gt;No matter what the reason, it's clear that those Chavez Sr vs Taylor 12 round endings are extremely rare indeed!  &lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=AgenYK7VaxY"&gt;&lt;img alt="Chavez Sr vs Taylor 12" src="http://img.youtube.com/vi/AgenYK7VaxY/0.jpg" /&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=AgenYK7VaxY"&gt;&lt;img alt="Chavez Sr vs Taylor 12" src="http://img.youtube.com/vi/AgenYK7VaxY/0.jpg"&gt;&lt;/a&gt;&lt;br&gt;
 &lt;em&gt;Julio Cesar Chavez Jr KO12 Meldrick Taylor&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;h1&gt;#3:&lt;/h1&gt;  &lt;/p&gt;
 &lt;p&gt;Finally, what about weight classes? Which division is the most dangerous, where the most knockouts happen? I wouldn't be surprised if the first reaction for most people is 'heavyweight.' Let's see what the numbers say:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="stoppages by division" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_004.png" /&gt; 
+&lt;p&gt;&lt;img alt="stoppages by division" src="https://raw.githubusercontent.com/mobbSF/blog/master/content/sport/image_004.png"&gt; 
 &lt;em&gt;The x-axis is the weight class, and the y-axis is the count.&lt;/em&gt;  &lt;/p&gt;
 &lt;p&gt;Turns out, by separating all fights that end in stoppage into their divisions, we find that &lt;strong&gt;welterweight and lightweight, both individually, barely beat out the big guys.&lt;/strong&gt;  &lt;/p&gt;
 &lt;p&gt;That's a bit surprising, especially since the heavyweight class includes both cruiserweights and light heavies, which covers a big span of possible weights.  &lt;/p&gt;
 &lt;p&gt;It's unfortunate that, to quote  Rishad Marquardt from boxingnews24.com, &lt;a href="http://www.boxingnews24.com/2016/05/revival-interest-heavyweight-division-still-hot-air-least-now/"&gt;"The heavyweight division in boxing has, historically speaking, been the premier division within the sport."&lt;/a&gt;  The big fighters historically tend to dominate mainstream news coverage, but you can get more explosive action (and bigger headlines) if you also set your sights down to include a few more weight classes.&lt;/p&gt;
 &lt;p&gt;(Recall, lightweight is between 130 lbs and less than 140 lbs.  Welterweight is between 140 and less than 154 lbs. 'Super' and 'Light' subclasses were folded in.)&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;h1&gt;So what does it all mean?&lt;/h1&gt; 
  Well, here's two take-home messages. &lt;/p&gt;
 &lt;p&gt;Say you just lost all your money playing craps in Vegas, and you've only got $5 left in your pocket.  Go to the nearest sportsbook, and wager $5 on the next lightweight matchup. Pick a knockout in the 2nd round. That's your best chance for a decent payoff.  &lt;/p&gt;
 &lt;p&gt;But if you want a safer bet, albeit a smaller payout? Recall that historically, only 38% of boxing matches end prematurely. You'd actually be better off putting your money on a 12 round decision on a pair of 105 lb combatants...so look for a minimumweight fight!  &lt;/p&gt;
-&lt;p&gt;Here's another take-home. Say you are a coach. If you want your fighter to be a kayo artist, then consider training them to perform best in the second round (and to be sharpest on defense at that time as well).  Work on interval training where the highest workloads are early. Later intervals could focus more on endurance, footwork and jabs. After all, if there hasn't been a knockout by round 4, then probabistically speaking, the fight is probably going to the cards. Time to pile up points and impress the judges.&lt;/p&gt;</summary><category term="sport science"></category></entry><entry><title>a csv defined Shiny structure</title><link href="http://mattobrien.me/a-csv-defined-shiny-structure.html" rel="alternate"></link><updated>2016-04-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-04-16:a-csv-defined-shiny-structure.html</id><summary type="html">&lt;p&gt;This project allows you to use 2 csvs (containing IDs, variables, names, and values) to automatically generate a Shiny structure that you can further customize.&lt;/p&gt;
+&lt;p&gt;Here's another take-home. Say you are a coach. If you want your fighter to be a kayo artist, then consider training them to perform best in the second round (and to be sharpest on defense at that time as well).  Work on interval training where the highest workloads are early. Later intervals could focus more on endurance, footwork and jabs. After all, if there hasn't been a knockout by round 4, then probabistically speaking, the fight is probably going to the cards. Time to pile up points and impress the judges.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="sport science"></category></entry><entry><title>a csv defined Shiny structure</title><link href="http://www.mattobrien.me/a-csv-defined-shiny-structure.html" rel="alternate"></link><published>2016-04-16T00:00:00-07:00</published><updated>2016-04-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2016-04-16:/a-csv-defined-shiny-structure.html</id><summary type="html">&lt;p&gt;automatically generate a Shiny visualization in R&lt;/p&gt;</summary><content type="html">&lt;p&gt;This project allows you to use 2 csvs (containing IDs, variables, names, and values) to automatically generate a Shiny structure that you can further customize.&lt;/p&gt;
 &lt;p&gt;To fork the project, go to the GitHub page &lt;a href="https://github.com/mobbSF/csv-defined-Shiny-structure"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Use a csv ('chart_settings.csv') in a form similar to this:  &lt;/p&gt;
 &lt;table&gt;
@@ -165,49 +305,49 @@
 &lt;p&gt;...to create a Shiny with any number of tabs; in this case, 3 ('tab1' to 'tab3').  &lt;/p&gt;
 &lt;p&gt;Each tab contains one ggplot, featuring the variables; in this case 'var1' to 'var5'.&lt;/p&gt;
 &lt;p&gt;Click &lt;a href="https://mattobriendotme.shinyapps.io/csv-defined-Shiny-structure/"&gt;here&lt;/a&gt; to see it in action.  &lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;Examine the screenshot and map trace each element back to the appropriate csv. For the sake of simplicity and to avoid creating any unnecessarily customized features, the inputs show only two large, unsized and unmodified variables plotted as a histogram:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="alt text" src="https://github.com/mobbSF/csv-defined-Shiny-structure/blob/master/screenshot.png?raw=true" title="Logo Title Text 2" /&gt;&lt;/p&gt;</summary><category term="visualization"></category><category term="R"></category></entry><entry><title>Mike Tyson's Punchout! as a Neo4j graph</title><link href="http://mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html" rel="alternate"></link><updated>2016-03-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-03-16:mike-tysons-punchout-as-a-neo4j-graph.html</id><summary type="html">&lt;p&gt;&lt;img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="alt text" src="https://github.com/mobbSF/csv-defined-Shiny-structure/blob/master/screenshot.png?raw=true" title="Logo Title Text 2"&gt;&lt;/p&gt;</content><category term="visualization"></category><category term="R"></category></entry><entry><title>Mike Tyson's Punchout! as a Neo4j graph</title><link href="http://www.mattobrien.me/mike-tysons-punchout-as-a-neo4j-graph.html" rel="alternate"></link><published>2016-03-16T00:00:00-07:00</published><updated>2016-03-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2016-03-16:/mike-tysons-punchout-as-a-neo4j-graph.html</id><summary type="html">&lt;p&gt;a simple example of a graph database&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!"&gt;&lt;/p&gt;
 &lt;p&gt;This is a quick and fun little graph of the classic Nintendo game, Mike Tyson's Punch-Out!!.  &lt;/p&gt;
 &lt;p&gt;The information for the graph comes directly from the &lt;a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki"&gt;Punchout Wiki&lt;/a&gt;. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. &lt;/p&gt;
 &lt;p&gt;I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Notice that the dataset is read in painlessly via Google Docs as outlined &lt;a href="http://blog.bruggen.com/2014/07/using-loadcsv-to-import-data-from.html"&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Query&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Query 1
 
-&lt;span class="n"&gt;LOAD&lt;/span&gt; &lt;span class="n"&gt;CSV&lt;/span&gt; &lt;span class="n"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;HEADERS&lt;/span&gt; &lt;span class="n"&gt;FROM&lt;/span&gt;
-&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;amp;gid=0&amp;#39; AS line&lt;/span&gt;
-&lt;span class="n"&gt;MERGE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;boxer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                    &lt;span class="nl"&gt;boxer_id:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;boxer_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="nl"&gt;name:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
-                &lt;span class="p"&gt;})&lt;/span&gt;
-&lt;span class="n"&gt;MERGE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;boxer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;boxer_id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fought&lt;/span&gt;
-                &lt;span class="p"&gt;})&lt;/span&gt;
-&lt;span class="n"&gt;MERGE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;fight&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;fight_id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fight_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;notes:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;notes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;outcome:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;outcome&lt;/span&gt;
-                &lt;span class="p"&gt;})&lt;/span&gt;
-&lt;span class="c1"&gt;//CREATE (b1)-[:AGAINST]-&amp;gt;(b2)&lt;/span&gt;
-&lt;span class="n"&gt;CREATE&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;BOXER_STATUS&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                  &lt;span class="nl"&gt;total_fights:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_fights&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;wins:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wins&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;wins_by_KO:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wins_by_KO&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;losses:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;losses&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;weight:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;nationality:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nationality&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;age:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                  &lt;span class="nl"&gt;rank:&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rank&lt;/span&gt;
-                         &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+LOAD CSV WITH HEADERS FROM
+&amp;#39;https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;amp;gid=0&amp;#39; AS line
+MERGE (b1:boxer {
+                    boxer_id: line.boxer_id,
+                    name: line.name
+                })
+MERGE (b2:boxer {boxer_id: line.fought
+                })
+MERGE (f:fight  { fight_id: line.fight_id,
+                  notes: line.notes,
+                  outcome: line.outcome
+                })
+//CREATE (b1)-[:AGAINST]-&amp;gt;(b2)
+CREATE (b1)-[r:BOXER_STATUS {
+                  total_fights: line.total_fights,
+                  wins: line.wins,
+                  wins_by_KO: line.wins_by_KO,
+                  losses: line.losses,
+                  weight: line.weight,
+                  height: line.height,
+                  nationality: line.nationality,
+                  age: line.age,
+                  rank: line.rank
+                         } ]-&amp;gt;(f);  
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Here's what it looks like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MATCH&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;RETURN&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;MATCH (n)
+RETURN n
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png?raw=true"&gt;&lt;/p&gt;
 &lt;p&gt;Here's some simple queries to practice with:  &lt;/p&gt;
 &lt;p&gt;Query 1: What happened when Little Mac fought opponents ranked #1?  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;MATCH &lt;span class="p"&gt;(&lt;/span&gt;result&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;r&lt;span class="o"&gt;:&lt;/span&gt;BOXER_STATUS&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;boxer&lt;span class="p"&gt;)&lt;/span&gt;
@@ -217,12 +357,12 @@ RETURN result.outcome&lt;span class="p"&gt;,&lt;/span&gt; result.notes
 
 
 &lt;p&gt;Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;START&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;WHERE&lt;/span&gt;
-  &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;outcome&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;outcome&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt;
-  &lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;RETURN&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="visualization"></category></entry><entry><title>Measurability Proof</title><link href="http://mattobrien.me/measurability-proof.html" rel="alternate"></link><updated>2016-01-28T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-01-28:measurability-proof.html</id><summary type="html">&lt;p&gt;Note: I can't finish this till I get Dr Ov's book so I can use Thm 2.4i, 2.4iii, 2.48&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;START n=node(*), m=node(*)
+WHERE
+  n.outcome=m.outcome AND
+  ID(n) &amp;lt;ID(m)
+RETURN n, m
+&lt;/pre&gt;&lt;/div&gt;</content><category term="visualization"></category></entry><entry><title>Measurability Proof</title><link href="http://www.mattobrien.me/measurability-proof.html" rel="alternate"></link><published>2016-01-28T00:00:00-08:00</published><updated>2016-01-28T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2016-01-28:/measurability-proof.html</id><summary type="html">&lt;p&gt;Proof by induction&lt;/p&gt;</summary><content type="html">&lt;p&gt;Note: I can't finish this till I get Dr Ov's book so I can use Thm 2.4i, 2.4iii, 2.48&lt;/p&gt;
 &lt;h3&gt;Prove that a function $f $on $[a,b]$ is measurable iff $f$ inverse($U$) is measurable for any open set $U$ of $R$.&lt;/h3&gt;
 &lt;p&gt;$\Rightarrow$
 \newline
@@ -245,7 +385,37 @@ Let $U = \left( c, \infty \right)$.
 \newline
 Then, $f^{-1}(U)$ measurable $\rightarrow \left\{x: f(x) &gt; c \right}$ is measurable.
 \newline
-By Theorem 2.48, $f$ is measurable.&lt;/p&gt;</summary><category term="in progress"></category></entry><entry><title>Functions of unbounded variation</title><link href="http://mattobrien.me/functions-of-unbounded-variation.html" rel="alternate"></link><updated>2015-11-11T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2015-11-11:functions-of-unbounded-variation.html</id><summary type="html">&lt;p&gt;This proof relies on the fact that a harmonic series is divergent.  &lt;/p&gt;
+By Theorem 2.48, $f$ is measurable.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="in progress"></category></entry><entry><title>Functions of unbounded variation</title><link href="http://www.mattobrien.me/functions-of-unbounded-variation.html" rel="alternate"></link><published>2015-11-11T00:00:00-08:00</published><updated>2015-11-11T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2015-11-11:/functions-of-unbounded-variation.html</id><summary type="html">&lt;p&gt;Proof regarding a function of bounded variation&lt;/p&gt;</summary><content type="html">&lt;p&gt;This proof relies on the fact that a harmonic series is divergent.  &lt;/p&gt;
 &lt;p&gt;Title:  Functions of unbounded variation
 Date: 2015-11-11
 Tags: math
@@ -266,11 +436,41 @@ xcos\frac{\pi}{x}&amp;amp; \text{if }x \in (0,1] \\
 \\ &amp;amp;= \frac{1}{2m} + \frac{1}{2m-1} + \frac{1}{2m} + \frac{1}{2m} + \frac{1}{2m-2m} + \frac{1}{2m-1} + \dots + \frac{1}{3} + \frac{1}{4} + \frac{1}{2} + \frac{1}{3} + 1 + \frac{1}{2}
 \\ &amp;amp;= 2(\frac{1}{2m} + \frac{1}{2m-1} + \dots +  \frac{1}{2}) + 1
 \end{align*} $  &lt;/p&gt;
-&lt;p&gt;This is a harmonic series in the form of $\sum_{n=2}^{\infty} \frac{1}{n}$ which is divergent.  So no matter what $M$ we choose for a bound, we can construct a partition for which the variation is unbounded.&lt;/p&gt;</summary><category term="math"></category></entry><entry><title>Proof by induction</title><link href="http://mattobrien.me/proof-by-induction.html" rel="alternate"></link><updated>2015-11-11T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2015-11-11:proof-by-induction.html</id><summary type="html">&lt;p&gt;Good example of a proof by induction. The problem is from a chapter in the book &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;The Art of Proof&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is a harmonic series in the form of $\sum_{n=2}^{\infty} \frac{1}{n}$ which is divergent.  So no matter what $M$ we choose for a bound, we can construct a partition for which the variation is unbounded.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="math"></category></entry><entry><title>Proof by induction</title><link href="http://www.mattobrien.me/proof-by-induction.html" rel="alternate"></link><published>2015-11-11T00:00:00-08:00</published><updated>2015-11-11T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2015-11-11:/proof-by-induction.html</id><summary type="html">&lt;p&gt;Proof by induction&lt;/p&gt;</summary><content type="html">&lt;p&gt;Good example of a proof by induction. The problem is from a chapter in the book &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;The Art of Proof&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;For $x\not = 1$ and $k \in\mathbb{Z_{{\geq}0}}$, prove that $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$&lt;/h3&gt;
-&lt;p&gt;We proceed by proof by Induction.&lt;br /&gt;
-Let $P(k)$ denote the statement  $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$.&lt;br /&gt;
-Checking the base case, in this case $k=0$, we show that  \begin{align*}&lt;br /&gt;
+&lt;p&gt;We proceed by proof by Induction.&lt;br&gt;
+Let $P(k)$ denote the statement  $\displaystyle\sum\limits_{j=0}^k x^j =\frac {1-x^{k+1}}{1-x}$.&lt;br&gt;
+Checking the base case, in this case $k=0$, we show that  \begin{align*}&lt;br&gt;
 P(0) &amp;amp;=\displaystyle\sum\limits_{j=0}^0 x^j \\
 &amp;amp;=\frac {1-x^{0+1}}{1-x}\\
 &amp;amp;=\frac {1-x}{1-x}\\
@@ -284,7 +484,37 @@ Next we show  $P(k+1)$ to be true, that is
 &amp;amp;=  \frac {1-x^{k+1}}{1-x} +  \frac {x^{k+1}*({1-x})}{1-x}\\
 &amp;amp;=\frac{1-x^{k+1}+x^{k+1}-x^{k+1+1}}{1-x}\\
 &amp;amp;=\frac{1-x^{k+2}}{1-x}.\\
-\end{align*}. &lt;/p&gt;</summary><category term="math"></category></entry><entry><title>Convex Optimization #1</title><link href="http://mattobrien.me/convex-optimization-1.html" rel="alternate"></link><updated>2015-02-08T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2015-02-08:convex-optimization-1.html</id><summary type="html">&lt;p&gt;I don't think this is an exceptionally groundbreaking proof, but I was going through some papers from when I took &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;mathematical modeling&lt;/a&gt; some time ago.&lt;/p&gt;
+\end{align*}. &lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="math"></category></entry><entry><title>Convex Optimization #1</title><link href="http://www.mattobrien.me/convex-optimization-1.html" rel="alternate"></link><published>2015-02-08T00:00:00-08:00</published><updated>2015-02-08T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2015-02-08:/convex-optimization-1.html</id><summary type="html">&lt;p&gt;Convext Optimization proof #1&lt;/p&gt;</summary><content type="html">&lt;p&gt;I don't think this is an exceptionally groundbreaking proof, but I was going through some papers from when I took &lt;a href="http://bulletin.sfsu.edu/sfstatebulletin/courses/40444"&gt;mathematical modeling&lt;/a&gt; some time ago.&lt;/p&gt;
 &lt;h3&gt;Show from first principles that if $f^1$, $f^2$,...,$f^k$ : $\mathbb{R^n} \rightarrow \mathbb{R}$ are convex (concave) functions with the same domain, and if $\omega_1$,...,$\omega_k$ are non-negative scalars, then the function $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex (concave).&lt;/h3&gt;
 &lt;p&gt;Given $f^1$, $f^2$,...,$f^k$ as convex functions and $\omega_1$,...,$\omega_k$ as non-negative scalars, we need to show that $\omega_1 f^1 +$...$+ \omega_k f^k$ is also convex; that is, $\sum_{i = 1}^k \omega_i f_i$ is a convex function.&lt;/p&gt;
 &lt;p&gt;Using first principles, we consider a linear combination $\lambda x + (1 - \lambda)y$ where $\lambda \in [0, 1]$, $x, y \in $ the domain of all $f^k$.&lt;/p&gt;
@@ -294,7 +524,37 @@ f(\lambda x + (1 - \lambda)y &amp;amp;= \sum_{i=1}^k \omega_i f_i (\lambda x + (
 \\ &amp;amp;= \lambda \sum_{i =1}^k \omega_i f_i(x) = (1 - \lambda) \sum_{i =1}^k \omega f_i(y)
 \\ &amp;amp;= \lambda f(x) + (1 - \lambda) f(x).
 \end{align*}$$&lt;/p&gt;
-&lt;p&gt;Thus we have shown that convexity holds under this operation.&lt;/p&gt;</summary><category term="math"></category></entry><entry><title>Lebesgue measure #2</title><link href="http://mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-07-17:lebesgue-measure-2.html</id><summary type="html">&lt;p&gt;This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a &lt;a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958"&gt;book&lt;/a&gt; on the subject at the time.  &lt;/p&gt;
+&lt;p&gt;Thus we have shown that convexity holds under this operation.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="math"></category></entry><entry><title>Lebesgue measure #2</title><link href="http://www.mattobrien.me/lebesgue-measure-2.html" rel="alternate"></link><published>2014-07-17T00:00:00-07:00</published><updated>2014-07-17T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-07-17:/lebesgue-measure-2.html</id><summary type="html">&lt;p&gt;Lebesgue measure #2&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a proof of basic closure-type properties with respect to functions of bounded variation. I had the chance to study these when I took a class by Dr. Ovchinnikov, who was in the process of writing a &lt;a href="http://www.amazon.com/Measure-Integral-Derivative-Lebesgues-Universitext/dp/1461471958"&gt;book&lt;/a&gt; on the subject at the time.  &lt;/p&gt;
 &lt;h3&gt;Show that the sum, difference and product of two BV-functions is a BV-function.&lt;/h3&gt;
 &lt;p&gt;Let  $f$, $g$, be two BV functions over $[a, b]$.  Define a partition, $P = {x_i = 1 \leq i \leq n }.$  Then,  &lt;/p&gt;
 &lt;p&gt;$
@@ -317,7 +577,37 @@ $$\begin{align*}
 \\ &amp;amp;\leq k \sum_{i = 1}^{n} |g(x_i) - g(x_{i-1}) | + k \sum_{i = 1}^{n} | f(x_i) - f(x_{i -1})|
 \\ &amp;amp;\leq k V(g) + kV(f).
 \end{align*}$$
-and so the product of two functions of bounded variation is also of bounded variation.&lt;/p&gt;</summary><category term="math"></category></entry><entry><title>Word frequencies for web pages</title><link href="http://mattobrien.me/word-frequencies-for-web-pages.html" rel="alternate"></link><updated>2014-06-20T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-06-20:word-frequencies-for-web-pages.html</id><summary type="html">&lt;p&gt;This script will take any particular webpage (in this case, the wikipedia page for Machine Learning) and do a quick a dirty scrape then count of the words on the page. It is not particularly sophisticated and can be further customized and improved for whatever your purpose may be. &lt;/p&gt;
+and so the product of two functions of bounded variation is also of bounded variation.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="math"></category></entry><entry><title>Word frequencies for web pages</title><link href="http://www.mattobrien.me/word-frequencies-for-web-pages.html" rel="alternate"></link><published>2014-06-20T00:00:00-07:00</published><updated>2014-06-20T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-06-20:/word-frequencies-for-web-pages.html</id><summary type="html">&lt;p&gt;Using a few select Python packages, it's fairly painless to find top word counts&lt;/p&gt;</summary><content type="html">&lt;p&gt;This script will take any particular webpage (in this case, the wikipedia page for Machine Learning) and do a quick a dirty scrape then count of the words on the page. It is not particularly sophisticated and can be further customized and improved for whatever your purpose may be. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;urllib&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.corpus&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stopwords&lt;/span&gt;
@@ -342,32 +632,62 @@ and so the product of two functions of bounded variation is also of bounded vari
 &lt;span class="c"&gt;# return counts using counter object&lt;/span&gt;
 &lt;span class="n"&gt;mycounts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filtered_words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;mycounts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;most_common&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="text"></category><category term="python"></category></entry><entry><title>pbinom for binomial distribution in R</title><link href="http://mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="alternate"></link><updated>2014-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-06-05:pbinom-for-binomial-distribution-in-r.html</id><summary type="html">&lt;p&gt;I love R. But it does has some things that are a bit irksome.  For example, I have found it somewhat difficult to remember which prefix corresponds to which function, when working with distributions. &lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="text"></category><category term="python"></category></entry><entry><title>pbinom for binomial distribution in R</title><link href="http://www.mattobrien.me/pbinom-for-binomial-distribution-in-r.html" rel="alternate"></link><published>2014-06-05T00:00:00-07:00</published><updated>2014-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-06-05:/pbinom-for-binomial-distribution-in-r.html</id><summary type="html">&lt;p&gt;A quick pop quiz to test your memory for working with probability distributions in R&lt;/p&gt;</summary><content type="html">&lt;p&gt;I love R. But it does has some things that are a bit irksome.  For example, I have found it somewhat difficult to remember which prefix corresponds to which function, when working with distributions. &lt;/p&gt;
 &lt;p&gt;Here is a quick quiz:  &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Given a binomial distribution:&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;dbinom ---&amp;gt; ?&lt;/strong&gt;&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;Given a binomial distribution:&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;dbinom ---&amp;gt; ?&lt;/strong&gt;&lt;br&gt;
 &lt;strong&gt;pbinom ---&amp;gt;  ?&lt;/strong&gt;  &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;probability mass function&lt;br /&gt;
+&lt;p&gt;probability mass function&lt;br&gt;
 cumulative distribution function&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;cumulative distribution function&lt;br /&gt;
+&lt;p&gt;cumulative distribution function&lt;br&gt;
  probability mass function  &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;em&gt;Answer:  1&lt;/em&gt;  &lt;/p&gt;
-&lt;p&gt;I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability mass function.”  However, that is not the case.&lt;/p&gt;</summary><category term="statistics"></category><category term="R"></category></entry><entry><title>Lebesgue measure #1</title><link href="http://mattobrien.me/lebesgue-measure-1.html" rel="alternate"></link><updated>2014-05-29T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-29:lebesgue-measure-1.html</id><summary type="html">&lt;p&gt;Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.&lt;/p&gt;
+&lt;p&gt;I am temped to choose 2, since pbinom feels like it should correspond with pdf.  After all, ‘p’ is the first initial of the first word in the phrase “probability mass function.”  However, that is not the case.&lt;/p&gt;</content><category term="statistics"></category><category term="R"></category></entry><entry><title>Lebesgue measure #1</title><link href="http://www.mattobrien.me/lebesgue-measure-1.html" rel="alternate"></link><published>2014-05-29T00:00:00-07:00</published><updated>2014-05-29T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-05-29:/lebesgue-measure-1.html</id><summary type="html">&lt;p&gt;Lebesgue measure #1&lt;/p&gt;</summary><content type="html">&lt;p&gt;Here is a fun proof that illuminates an important property of Lebesgue measure.  Note that the function $m()$ refers to measure.&lt;/p&gt;
 &lt;h3&gt;Let $X$ be a closed subset of $[0,1]$ such that $m(X) = 1$.  Prove that $X = [0, 1]$.&lt;/h3&gt;
 &lt;p&gt;Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Case 1:&lt;/strong&gt;  $a &amp;gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Case 2:&lt;/strong&gt;  $b &amp;gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &amp;lt; 1$ and $m(X)$ cannot equal $1$.  &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Case 3:&lt;/strong&gt;  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.&lt;/p&gt;</summary><category term="math"></category></entry><entry><title>Muay Thai kick to the body</title><link href="http://mattobrien.me/muay-thai-kick-to-the-body.html" rel="alternate"></link><updated>2014-05-21T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-21:muay-thai-kick-to-the-body.html</id><summary type="html">&lt;p&gt;My interest in human movement led me to doing some 3D modeling. I purchased an 8 strobe Optitrack system and asked an amateur fighter to put on the reflective suit and demonstrate his body kick. After I captured the movement, I discussed some of the findings in this animation.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Case 3:&lt;/strong&gt;  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="math"></category></entry><entry><title>Muay Thai kick to the body</title><link href="http://www.mattobrien.me/muay-thai-kick-to-the-body.html" rel="alternate"></link><published>2014-05-21T00:00:00-07:00</published><updated>2014-05-21T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-05-21:/muay-thai-kick-to-the-body.html</id><summary type="html">&lt;p&gt;Biomechanics of a body kick&lt;/p&gt;</summary><content type="html">&lt;p&gt;My interest in human movement led me to doing some 3D modeling. I purchased an 8 strobe Optitrack system and asked an amateur fighter to put on the reflective suit and demonstrate his body kick. After I captured the movement, I discussed some of the findings in this animation.  &lt;/p&gt;
 &lt;p&gt;The most interesting thing about the clip is the overhead view. I realized that nobody has ever considered what a kick looks like from the top: when you observe it from this position, it quickly becomes clear that the kick is generated from the top down -- the shoulder girdle clearly rotates first and reaches it's peak torque prior to the completion of the rotation of the pelvis. If you go train in muay thai, it's not uncommon to hear a reguritated coaching dogma, namely, "Turn your hip over", which is somewhat true but really just betrays a lack of ability to consider the kick as a movement that is fundamentally a top-down kinetic chain.   &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=OPdRX5Poqo4
 " target="_blank"&gt;&lt;img src="http://img.youtube.com/vi/OPdRX5Poqo4/0.jpg" 
-alt="muay thai kick tutorial" width="240" height="180" border="10" /&gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="sport science"></category></entry><entry><title>Visualization in RShiny</title><link href="http://mattobrien.me/visualization-in-rshiny.html" rel="alternate"></link><updated>2014-05-18T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-18:visualization-in-rshiny.html</id><summary type="html">&lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science. The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  &lt;/p&gt;
+alt="muay thai kick tutorial" width="240" height="180" border="10" /&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="sport science"></category></entry><entry><title>Visualization in RShiny</title><link href="http://www.mattobrien.me/visualization-in-rshiny.html" rel="alternate"></link><published>2014-05-18T00:00:00-07:00</published><updated>2014-05-18T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-05-18:/visualization-in-rshiny.html</id><summary type="html">&lt;p&gt;Visualizing and interacting with data science jobs in the United States&lt;/p&gt;</summary><content type="html">&lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science. The motivation for this project is to visualize where data science jobs are in the United States as well as how much they pay.  &lt;/p&gt;
 &lt;p&gt;You can find this visualization hosted &lt;a href="https://mattobriendotme.shinyapps.io/shinyapp/"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h1&gt;THE PROJECT:&lt;/h1&gt;
 &lt;p&gt;Using data from a popular job search website, I gathered a set of 2036 jobs for positions open for individuals proficient in data science.   &lt;/p&gt;
@@ -396,11 +716,11 @@ alt="muay thai kick tutorial" width="240" height="180" border="10" /&gt;&lt;/a&g
 &lt;p&gt;This map has good data density and data-to-ink ratio.  The lie factor is increased when the jitter is used, considerably.  Sometimes, some points in Washington jump into Canada.  &lt;/p&gt;
 &lt;p&gt;The interactivity enhances the visualization in the sense that it makes the locations visible and simple to view.  &lt;/p&gt;
 &lt;p&gt;I also am happy all four methods of interaction.  Here is a screenshot of the visualization with and without jitter:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/001.png?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/001.png?raw=true"&gt;&lt;/p&gt;
 &lt;p&gt;One problem is the inability to adjust all states.  I chose a checkbox for the States, and as much as I wanted to, I wasn't able include all 48 states due, simply, to lack of space.  A better control would have allowed me to subset on certain important States.  To me, this is a major, major flaw in my visualization.  The question remains, how can a user intuitively and easily select any combination of 48 states when there is limited space on the graphic?  My solution is to remove control from the user, which is not ideal.  &lt;/p&gt;
 &lt;h1&gt;VISUALIZATION #2:  CLOROPLETH&lt;/h1&gt;
 &lt;p&gt;This map is a cloropleth, which is somewhat of a combination of a heatmap and geographic map.  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/002.png?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/002.png?raw=true"&gt;&lt;/p&gt;
 &lt;p&gt;When you think of a cloropleth, or even a heatmap in general, trying to incorporate interactivity can be a difficult task.  After all, a heatmap pretty much shows everything...perhaps the granularity of binning can be adjusted, but what else?  &lt;/p&gt;
 &lt;p&gt;I chose to approach this in a way that made sense to me.  The way this map works, is the view all of the states together to see how they relate to each other.  Now, we slow remove states, one by one, and each time, watch the choropleth regenerate, and rescale itself to show how the remaining states are distributed.  So, if you didn't want to live in CA, you could remove it, and see a "new" heatmap, based on the remaining parts of the country.  &lt;/p&gt;
 &lt;p&gt;Here, the colors are mapped to the total sum of all salaries.  For example, there is about 5 million dollars worth of salary to be earned in California, which makes the color dark green.  &lt;/p&gt;
@@ -409,7 +729,7 @@ alt="muay thai kick tutorial" width="240" height="180" border="10" /&gt;&lt;/a&g
 &lt;p&gt;I had to use the &lt;code&gt;choroplethr&lt;/code&gt; package, which is so different than the first plot.  Making the two of them match was difficult.  Even matching the colors (which is still imperfect) was a major challenge and required me to get creative.  &lt;/p&gt;
 &lt;h1&gt;VISUALIZATION #3: SINGLE STATE BUBBLEPLOT&lt;/h1&gt;
 &lt;p&gt;Visualization 3 moves us into looking at single states, where we can see more clearly exactly where the jobs reside.  Here is an example of just one of the states you can zoom in on, Washington:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/003.png?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/003.png?raw=true"&gt;&lt;/p&gt;
 &lt;p&gt;Here, we have:  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -434,25 +754,25 @@ alt="muay thai kick tutorial" width="240" height="180" border="10" /&gt;&lt;/a&g
 &lt;p&gt;I originally wanted to find some way to 'grey out' the controls that aren't being used in this plot, since it's hard to even find the dropdown menu way at the bottom.  &lt;/p&gt;
 &lt;h1&gt;VISUALIZATION #4: BAR PLOT&lt;/h1&gt;
 &lt;p&gt;This chart can be sorted as seen below:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/004.png?raw=true" /&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/004.png?raw=true"&gt;  &lt;/p&gt;
 &lt;p&gt;The data was summed and encoded as scalars with which to plot the number of jobs in each state.  &lt;/p&gt;
 &lt;p&gt;Strangely enough, a simple bar chart might be the most interesting plot of all 4.  Why? Because, finally, we get a numeric representation of the distribution of jobs out there.  Up until now, we've had to rely on color, shape, and space to do so.  Now, we finally hit the nail on the head and with this bar chart, we can see exactly what the job market looked like at this given time, across the country.  &lt;/p&gt;
 &lt;p&gt;Of course ordering in a bar chart is always a good idea when it comes to interactivity (or at least I suspect this is true).  It only takes a glance to see the relationship between the states and how they come together.  &lt;/p&gt;
 &lt;p&gt;I was glad that I was able to remove that annoying area between the x and y axis, remove the tickmarks as I wanted, and otherwise to the customary cleanup on ggplot that we've practiced up to now.  &lt;/p&gt;
 &lt;p&gt;There is no end to how much work you can put into a good visualization -- this project provided me with lots of appreciation as to how difficult a good vis really is to construct.  For example, was it worth the hours it took to figure out how to give this custom error message?  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/005.gif?raw=true" /&gt;  &lt;/p&gt;
-&lt;p&gt;Who knows.  But, I also now have more appreciation for why lots of visualizations are hard to read.  This is a large and deep field.  &lt;/p&gt;</summary><category term="visualization"></category></entry><entry><title>sentiment prediction with Naive Bayes</title><link href="http://mattobrien.me/sentiment-prediction-with-naive-bayes.html" rel="alternate"></link><updated>2014-05-01T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-01:sentiment-prediction-with-naive-bayes.html</id><summary type="html">&lt;p&gt;This project consists of two sets of labelled text reviews (&lt;a href="https://www.dropbox.com/sh/n2r4e929ahzx84o/AABdDVQ1Rlygs-XkjTytn3bAa"&gt;positive&lt;/a&gt; and &lt;a href="https://www.dropbox.com/sh/scnnjiotbltm2za/AAAGz7NsEoG61ojzgZZQPfV-a"&gt;negative&lt;/a&gt;) for movies.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="vis" src="https://github.com/mobbSF/msan622/blob/master/final-project/005.gif?raw=true"&gt;  &lt;/p&gt;
+&lt;p&gt;Who knows.  But, I also now have more appreciation for why lots of visualizations are hard to read.  This is a large and deep field.  &lt;/p&gt;</content><category term="visualization"></category></entry><entry><title>sentiment prediction with Naive Bayes</title><link href="http://www.mattobrien.me/sentiment-prediction-with-naive-bayes.html" rel="alternate"></link><published>2014-05-01T00:00:00-07:00</published><updated>2014-05-01T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-05-01:/sentiment-prediction-with-naive-bayes.html</id><summary type="html">&lt;p&gt;Predicting positive or negative Amazon movie reviews&lt;/p&gt;</summary><content type="html">&lt;p&gt;This project consists of two sets of labelled text reviews (&lt;a href="https://www.dropbox.com/sh/n2r4e929ahzx84o/AABdDVQ1Rlygs-XkjTytn3bAa"&gt;positive&lt;/a&gt; and &lt;a href="https://www.dropbox.com/sh/scnnjiotbltm2za/AAAGz7NsEoG61ojzgZZQPfV-a"&gt;negative&lt;/a&gt;) for movies.  &lt;/p&gt;
 &lt;p&gt;These are used as the training set; the words are split into unigrams, and the words are classified as either positive or negative given their frequencies. &lt;/p&gt;
 &lt;p&gt;Once the model is built, the test set is used to help determine the accuracy of the model.  &lt;/p&gt;
 &lt;p&gt;This is an early project I did some time ago, please forgive some of the less graceful elements.  &lt;/p&gt;
 &lt;p&gt;The algorithm uses these steps:  &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;For each iteration&lt;br /&gt;
+&lt;p&gt;For each iteration&lt;br&gt;
 (a) Randomly divide your data in training and testing using 1/3 for
-testing and 2/3 for training.&lt;br /&gt;
-(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement&lt;br /&gt;
-(c) For every document in the training set use the equation $$c^{*}=argmax_{c}log(P(c)) + \sum_{i=1}^{M}n_{i}(d) * log(P(w_{i}|c))$$ to compute $P(c|d)$ and predict the class c.&lt;br /&gt;
+testing and 2/3 for training.&lt;br&gt;
+(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement&lt;br&gt;
+(c) For every document in the training set use the equation $$c^{*}=argmax_{c}log(P(c)) + \sum_{i=1}^{M}n_{i}(d) * log(P(w_{i}|c))$$ to compute $P(c|d)$ and predict the class c.&lt;br&gt;
 (d) Compute the accuracy of the testing set.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -460,18 +780,18 @@ testing and 2/3 for training.&lt;br /&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The output will print results for each iteration, giving key metrics like this:&lt;/p&gt;
-&lt;p&gt;iteration 1:&lt;br /&gt;
-    num pos test_docs:333&lt;br /&gt;
-    num pos training docs:667&lt;br /&gt;
-    num pos correct_docs:267&lt;br /&gt;
-    num neg test_docs:331&lt;br /&gt;
-    num neg training_docs:669&lt;br /&gt;
-    num neg correct_docs:261&lt;br /&gt;
-    accuracy:79%&lt;br /&gt;
-iteration 2:&lt;br /&gt;
-    ...&lt;br /&gt;
-iteration 3:&lt;br /&gt;
-    ...&lt;br /&gt;
+&lt;p&gt;iteration 1:&lt;br&gt;
+    num pos test_docs:333&lt;br&gt;
+    num pos training docs:667&lt;br&gt;
+    num pos correct_docs:267&lt;br&gt;
+    num neg test_docs:331&lt;br&gt;
+    num neg training_docs:669&lt;br&gt;
+    num neg correct_docs:261&lt;br&gt;
+    accuracy:79%&lt;br&gt;
+iteration 2:&lt;br&gt;
+    ...&lt;br&gt;
+iteration 3:&lt;br&gt;
+    ...&lt;br&gt;
 ave_accuracy:80.3%  &lt;/p&gt;
 &lt;p&gt;Make sure to include the command line parameters &lt;code&gt;python naive-bayes.py -d my_directory&lt;/code&gt; where &lt;code&gt;my_directory&lt;/code&gt; is the path to the directory that holds the positive and negative reviews along with the python script.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
@@ -626,9 +946,39 @@ ave_accuracy:80.3%  &lt;/p&gt;
     &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ave_accuracy:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;tot_acc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;3.0&lt;/span&gt;
 
 &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="python"></category></entry><entry><title>Set Theory #1</title><link href="http://mattobrien.me/set-theory-1.html" rel="alternate"></link><updated>2014-04-10T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-04-10:set-theory-1.html</id><summary type="html">&lt;p&gt;A great little proof that is simple and a nice way to practice your $\LaTeX$.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="python"></category></entry><entry><title>Set Theory #1</title><link href="http://www.mattobrien.me/set-theory-1.html" rel="alternate"></link><published>2014-04-10T00:00:00-07:00</published><updated>2014-04-10T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-04-10:/set-theory-1.html</id><summary type="html">&lt;p&gt;Set theory proof #1&lt;/p&gt;</summary><content type="html">&lt;p&gt;A great little proof that is simple and a nice way to practice your $\LaTeX$.&lt;/p&gt;
 &lt;h3&gt;Demonstrate that this is a false claim: $C \subset A$ and $C \subset B \Leftrightarrow C \subset (A \cup B)$.&lt;/h3&gt;
-&lt;p&gt;First we examine the righthand implication, that is:&lt;br /&gt;
+&lt;p&gt;First we examine the righthand implication, that is:&lt;br&gt;
 $C \subset A$ and $C \subset B \rightarrow C \subset (A \cup B)$.   &lt;/p&gt;
 &lt;p&gt;Let $x \in C $. Then $x \in A $. So, $x \in A$ or $x \in B$. Hence $x \in (A \cup B)$.  &lt;/p&gt;
 &lt;p&gt;Second, we examine the lefthand implication, that is
@@ -636,30 +986,90 @@ $C \subset A$ and $C \subset B \leftarrow C \subset (A \cup B)$.  &lt;/p&gt;
 &lt;p&gt;This second statement is false as demonstrated by the following simple counterexample:  &lt;/p&gt;
 &lt;p&gt;Choose:  &lt;/p&gt;
 &lt;p&gt;$A = [1, 2]$, $B =[1, 3]$, and $C =[2, 3]$.  &lt;/p&gt;
-&lt;p&gt;Then, $A\cup B =[1,2,3]$.&lt;br /&gt;
-Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.&lt;/p&gt;</summary><category term="math"></category></entry><entry><title>using Pi as a pseudorandom number generator</title><link href="http://mattobrien.me/using-pi-as-a-pseudorandom-number-generator.html" rel="alternate"></link><updated>2014-03-05T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-03-05:using-pi-as-a-pseudorandom-number-generator.html</id><summary type="html">&lt;p&gt;The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  &lt;/p&gt;
+&lt;p&gt;Then, $A\cup B =[1,2,3]$.&lt;br&gt;
+Hence, $C \subset A \cup B$, but, $C \not\subset A$, and $C \not\subset B$.&lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="math"></category></entry><entry><title>using Pi as a pseudorandom number generator</title><link href="http://www.mattobrien.me/using-pi-as-a-pseudorandom-number-generator.html" rel="alternate"></link><published>2014-03-05T00:00:00-08:00</published><updated>2014-03-05T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:www.mattobrien.me,2014-03-05:/using-pi-as-a-pseudorandom-number-generator.html</id><summary type="html">&lt;p&gt;Can the digits of Pi be used as a pesudorandom number generator?&lt;/p&gt;</summary><content type="html">&lt;p&gt;The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  &lt;/p&gt;
 &lt;p&gt;First, get the digits &lt;a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt"&gt;here:&lt;/a&gt;, download the file and read it into &lt;code&gt;R&lt;/code&gt; and call it PI  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;PI &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.table&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\your_path\PI.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;quote&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
-pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; unlist&lt;span class="p"&gt;(&lt;/span&gt;strsplit&lt;span class="p"&gt;(&lt;/span&gt;as.character&lt;span class="p"&gt;(&lt;/span&gt;PI&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,]),&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
+pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;unlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;strsplit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;as.character&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;PI&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,]),&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The proportion of even numbers in the first 1000 digits of pi is found as follows:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;is_even &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; x &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;  
-is_odd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; x &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;  
-pi_digits &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; as.numeric&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)&lt;/span&gt;  
-indices_for_evens &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; pi_digits&lt;span class="p"&gt;[&lt;/span&gt;is_even&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)]&lt;/span&gt;  
-indices_for_odds &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; pi_digits&lt;span class="p"&gt;[&lt;/span&gt;is_odd&lt;span class="p"&gt;(&lt;/span&gt;pi_digits&lt;span class="p"&gt;)]&lt;/span&gt;  
-length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;is_even&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  
+&lt;span class="nx"&gt;is_odd&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;%%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  
+&lt;span class="nx"&gt;pi_digits&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nx"&gt;as&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="nx"&gt;indices_for_evens&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;is_even&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;  
+&lt;span class="nx"&gt;indices_for_odds&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;is_odd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pi_digits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;  
+&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;indices_for_evens&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;  
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;flips &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
-evens_for_t_test &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)),&lt;/span&gt;  rep&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;indices_for_odds&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;div class="highlight"&gt;&lt;pre&gt;flips &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+evens_for_t_test &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;indices_for_evens&lt;span class="p"&gt;)),&lt;/span&gt;  &lt;span class="kp"&gt;rep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; each&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;indices_for_odds&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;  
 t.test&lt;span class="p"&gt;(&lt;/span&gt;flips&lt;span class="p"&gt;,&lt;/span&gt; evens_for_t_test&lt;span class="p"&gt;,&lt;/span&gt; alternative&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;two.sided&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The p-value is 0.4881.  At a 0.05 significance level, we fail to reject the null hypothesis.Thus, we infer that the digits of pi have passed a test for randomness.  &lt;/p&gt;
-&lt;p&gt;So why aren't the digits of $\pi$ used to generate random numbers?  One problem may be the choice of a seed -- in one sense, each time you re-run your simulation based on the digits of $\pi$, you will have to pick up where you left off last time.  This invariably will lead to the requirement of having to calculated $\pi$ to a huge number of decimal places.  In the end, that computational requirement is the major bottleneck and that bottleneck can probably can be arrived at in a number of novel and unfortunate ways. &lt;/p&gt;</summary><category term="simulation"></category><category term="R"></category></entry></feed>
+&lt;p&gt;So why aren't the digits of $\pi$ used to generate random numbers?  One problem may be the choice of a seed -- in one sense, each time you re-run your simulation based on the digits of $\pi$, you will have to pick up where you left off last time.  This invariably will lead to the requirement of having to calculated $\pi$ to a huge number of decimal places.  In the end, that computational requirement is the major bottleneck and that bottleneck can probably can be arrived at in a number of novel and unfortunate ways. &lt;/p&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="simulation"></category><category term="R"></category></entry></feed>

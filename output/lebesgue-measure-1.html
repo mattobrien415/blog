@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <script src="http://www.mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,21 +24,23 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
+	    <li >
+	      <a href="http://www.mattobrien.me/category/deep-learning.html ">deep learning</a>
 	    <li  class="active" >
-	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/python.html ">python</a>
+	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -61,11 +63,11 @@
 <p>Thu 29 May 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/math.html">math</a>
+Filed under <a href="http://www.mattobrien.me/category/math.html">math</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/math.html">math</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/math.html">math</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
@@ -77,7 +79,37 @@ Filed under <a href="http://mattobrien.me/category/math.html">math</a>
 <p>Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$.  </p>
 <p><strong>Case 1:</strong>  $a &gt; 0$.  By definition of measure, $m(X) = (b -a) - m([a, b]\backslash X) = 1$, but $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
 <p><strong>Case 2:</strong>  $b &gt; 1$.  Again, be definition of measure, we fnd that $(b - a) &lt; 1$ and $m(X)$ cannot equal $1$.  </p>
-<p><strong>Case 3:</strong>  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.</p>
+<p><strong>Case 3:</strong>  $a = 0$, and b = $0$, since $b - a = 1$, and since $X = [0, 1]$, then $[0, 1]$ \ $X = 0$ which implies that $X$ must be equal to $[0, 1]$.</p><script type= "text/javascript">
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+</script>
+
 	<hr />
       </div>
     </div>
@@ -133,14 +165,14 @@ Filed under <a href="http://mattobrien.me/category/math.html">math</a>
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://mattobrien.me/" rel="alternate">
+            <li><a href="http://www.mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -150,7 +182,7 @@ Filed under <a href="http://mattobrien.me/category/math.html">math</a>
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
