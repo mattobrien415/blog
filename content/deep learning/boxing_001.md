@@ -128,22 +128,21 @@ Now, going the other direction,
 
 This actually is more clear when you look at the actual Neo4J graph itself:
 
-<Neo_000.jpg>
 ![Neo4J graph](https://github.com/mobbSF/blog/blob/master/images/Neo_000.png?raw=true)
 
 Here you see the boxer node, their record at a given time (node), the fight node, and the complementary information for their opponents. Note that this particular boxer had a few rematches which are visible when two edges touch the same P2 node.
 
 Actually, it's interesting to see how the graph can be expanded:
 
-<Neo_001.jpg>
+![Neo4J graph 1](https://github.com/mobbSF/blog/blob/master/images/Neo_001.png?raw=true)
 
 again, 
 
-<Neo_002.jpg>
+![Neo4J graph 2](https://github.com/mobbSF/blog/blob/master/images/Neo_002.png?raw=true)
 
 and again,
 
-<Neo_003.jpg>
+![Neo4J graph 3](https://github.com/mobbSF/blog/blob/master/images/Neo_003.png?raw=true)
 
 and so forth.
 
@@ -159,17 +158,17 @@ It all really comes down to the quality of those 20 fight for each boxer. If P1 
 
 To show how the metric works, let's first start with this made up, simplified visual scenario:
 
-<QOO_001.jpg>
+![QOO 1](https://github.com/mobbSF/blog/blob/master/images/QOO_001.png?raw=true)
 
 As you can see, P1 has fought 3 opponents (they live in 'Layer 1'), and each of those opponents had fought 3 opponents themselves (they live in 'Layer 2').
 
 Now consider Layer 2. For each group of 3 fights, sum up these fighters' records as : count(Wins) / count(fights).
 
-<QOO_002.jpg>
+![QOO 2](https://github.com/mobbSF/blog/blob/master/images/QOO_002.png?raw=true)
 
 Now, recursively running back up the graph, let's see how the boxer in Layer 1 performed against this group. This will be count(Wins) / count(opponents) from above, but now multiplied by the previously calculated value. Voila; we have the QOO metric.
 
-<QOO_003.jpg>
+![QOO 3](https://github.com/mobbSF/blog/blob/master/images/QOO_003.png?raw=true)
 
 After setting a QOO score for all fights on the nodes in Neo4J, it was easy to put together another quick and dirty metric: QOOP, which for lack of better nomenclature, is 'Quality of opposition prime'. Here, I just took the mean of all a boxers' opponents' QOOs and wrote it to the node.
 
