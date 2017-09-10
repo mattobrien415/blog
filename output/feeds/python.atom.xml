@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/python.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-06-20T00:00:00-07:00</updated><entry><title>Word frequencies for web pages</title><link href="http://mattobrien.me/word-frequencies-for-web-pages.html" rel="alternate"></link><updated>2014-06-20T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-06-20:word-frequencies-for-web-pages.html</id><summary type="html">&lt;p&gt;This script will take any particular webpage (in this case, the wikipedia page for Machine Learning) and do a quick a dirty scrape then count of the words on the page. It is not particularly sophisticated and can be further customized and improved for whatever your purpose may be. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me - python</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/python.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2014-06-20T00:00:00-07:00</updated><entry><title>Word frequencies for web pages</title><link href="http://mattobrien.me/word-frequencies-for-web-pages.html" rel="alternate"></link><published>2014-06-20T00:00:00-07:00</published><updated>2014-06-20T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-06-20:/word-frequencies-for-web-pages.html</id><summary type="html">&lt;p&gt;Using a few select Python packages, it's fairly painless to find top word counts&lt;/p&gt;</summary><content type="html">&lt;p&gt;This script will take any particular webpage (in this case, the wikipedia page for Machine Learning) and do a quick a dirty scrape then count of the words on the page. It is not particularly sophisticated and can be further customized and improved for whatever your purpose may be. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;urllib&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.corpus&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stopwords&lt;/span&gt;
@@ -24,18 +24,18 @@
 &lt;span class="c"&gt;# return counts using counter object&lt;/span&gt;
 &lt;span class="n"&gt;mycounts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filtered_words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;mycounts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;most_common&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="text"></category><category term="python"></category></entry><entry><title>sentiment prediction with Naive Bayes</title><link href="http://mattobrien.me/sentiment-prediction-with-naive-bayes.html" rel="alternate"></link><updated>2014-05-01T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-01:sentiment-prediction-with-naive-bayes.html</id><summary type="html">&lt;p&gt;This project consists of two sets of labelled text reviews (&lt;a href="https://www.dropbox.com/sh/n2r4e929ahzx84o/AABdDVQ1Rlygs-XkjTytn3bAa"&gt;positive&lt;/a&gt; and &lt;a href="https://www.dropbox.com/sh/scnnjiotbltm2za/AAAGz7NsEoG61ojzgZZQPfV-a"&gt;negative&lt;/a&gt;) for movies.  &lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="text"></category><category term="python"></category></entry><entry><title>sentiment prediction with Naive Bayes</title><link href="http://mattobrien.me/sentiment-prediction-with-naive-bayes.html" rel="alternate"></link><published>2014-05-01T00:00:00-07:00</published><updated>2014-05-01T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2014-05-01:/sentiment-prediction-with-naive-bayes.html</id><summary type="html">&lt;p&gt;Predicting positive or negative Amazon movie reviews&lt;/p&gt;</summary><content type="html">&lt;p&gt;This project consists of two sets of labelled text reviews (&lt;a href="https://www.dropbox.com/sh/n2r4e929ahzx84o/AABdDVQ1Rlygs-XkjTytn3bAa"&gt;positive&lt;/a&gt; and &lt;a href="https://www.dropbox.com/sh/scnnjiotbltm2za/AAAGz7NsEoG61ojzgZZQPfV-a"&gt;negative&lt;/a&gt;) for movies.  &lt;/p&gt;
 &lt;p&gt;These are used as the training set; the words are split into unigrams, and the words are classified as either positive or negative given their frequencies. &lt;/p&gt;
 &lt;p&gt;Once the model is built, the test set is used to help determine the accuracy of the model.  &lt;/p&gt;
 &lt;p&gt;This is an early project I did some time ago, please forgive some of the less graceful elements.  &lt;/p&gt;
 &lt;p&gt;The algorithm uses these steps:  &lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;For each iteration&lt;br /&gt;
+&lt;p&gt;For each iteration&lt;br&gt;
 (a) Randomly divide your data in training and testing using 1/3 for
-testing and 2/3 for training.&lt;br /&gt;
-(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement&lt;br /&gt;
-(c) For every document in the training set use the equation $$c^{*}=argmax_{c}log(P(c)) + \sum_{i=1}^{M}n_{i}(d) * log(P(w_{i}|c))$$ to compute $P(c|d)$ and predict the class c.&lt;br /&gt;
+testing and 2/3 for training.&lt;br&gt;
+(b) Use the training set to estimate the parameters $P(w|c)$ and $P(c)$ as per the naive bayes statement&lt;br&gt;
+(c) For every document in the training set use the equation $$c^{*}=argmax_{c}log(P(c)) + \sum_{i=1}^{M}n_{i}(d) * log(P(w_{i}|c))$$ to compute $P(c|d)$ and predict the class c.&lt;br&gt;
 (d) Compute the accuracy of the testing set.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -43,18 +43,18 @@ testing and 2/3 for training.&lt;br /&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The output will print results for each iteration, giving key metrics like this:&lt;/p&gt;
-&lt;p&gt;iteration 1:&lt;br /&gt;
-    num pos test_docs:333&lt;br /&gt;
-    num pos training docs:667&lt;br /&gt;
-    num pos correct_docs:267&lt;br /&gt;
-    num neg test_docs:331&lt;br /&gt;
-    num neg training_docs:669&lt;br /&gt;
-    num neg correct_docs:261&lt;br /&gt;
-    accuracy:79%&lt;br /&gt;
-iteration 2:&lt;br /&gt;
-    ...&lt;br /&gt;
-iteration 3:&lt;br /&gt;
-    ...&lt;br /&gt;
+&lt;p&gt;iteration 1:&lt;br&gt;
+    num pos test_docs:333&lt;br&gt;
+    num pos training docs:667&lt;br&gt;
+    num pos correct_docs:267&lt;br&gt;
+    num neg test_docs:331&lt;br&gt;
+    num neg training_docs:669&lt;br&gt;
+    num neg correct_docs:261&lt;br&gt;
+    accuracy:79%&lt;br&gt;
+iteration 2:&lt;br&gt;
+    ...&lt;br&gt;
+iteration 3:&lt;br&gt;
+    ...&lt;br&gt;
 ave_accuracy:80.3%  &lt;/p&gt;
 &lt;p&gt;Make sure to include the command line parameters &lt;code&gt;python naive-bayes.py -d my_directory&lt;/code&gt; where &lt;code&gt;my_directory&lt;/code&gt; is the path to the directory that holds the positive and negative reviews along with the python script.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
@@ -209,4 +209,34 @@ ave_accuracy:80.3%  &lt;/p&gt;
     &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ave_accuracy:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;tot_acc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;3.0&lt;/span&gt;
 
 &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="python"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</content><category term="python"></category></entry></feed>

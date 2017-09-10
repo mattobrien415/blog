@@ -1,7 +1,7 @@
 Title:  Deep Learning for Sport Wagering
 Date: 2017-09-15
 Tags: deep learning, sport, wagering
-Summary: Part 1: Characteristics of the dataset
+Summary: Part 1 Characteristics of the dataset
 
 
 Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.
