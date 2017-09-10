@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-09-15T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering.html</id><summary type="html">&lt;p&gt;Part 1 Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;p&gt;Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-09-15T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering.html</id><summary type="html">&lt;p&gt;Part 1 Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;h4&gt;THIS BLOG POST IS IN PROGRESS&lt;/h4&gt;
+&lt;p&gt;Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.&lt;/p&gt;
 &lt;p&gt;One particular line in the blog post stuck out for me: "It’s as if at some point in the past few years, the Warriors solved contemporary basketball..."&lt;/p&gt;
 &lt;p&gt;Solved! A bit heavy on the hyperbole, but maybe not too far off.&lt;/p&gt;
 &lt;p&gt;This got me thinking about other sports, and their capacity to be understood via data science and analytics. In particular, I became interested in the somewhat marginal and obscure (by major American sport standards, anyway) sport of boxing. I began to think that boxing could lend itself to being 'solved' nicely, because it has many characteristics that lend it to straightforward analysis and modeling.&lt;/p&gt;
@@ -85,7 +86,8 @@ P2_days_since_ff&lt;/p&gt;
 &lt;p&gt;Now, going the other direction,
 (and there was a Fight at some location, with some outcome)&amp;lt;--[the opponent had a record, (W, L, D) on that same date]---(The opponent, call them 'P2')&lt;/p&gt;
 &lt;p&gt;This actually is more clear when you look at the actual Neo4J graph itself:&lt;/p&gt;
-&lt;p&gt;&lt;Neo_000.jpg&gt;&lt;/p&gt;
+&lt;p&gt;&lt;Neo_000.jpg&gt;
+&lt;img alt="Neo4J graph" src="https://github.com/mobbSF/blog/blob/master/images/Neo_000.png?raw=true"&gt;&lt;/p&gt;
 &lt;p&gt;Here you see the boxer node, their record at a given time (node), the fight node, and the complementary information for their opponents. Note that this particular boxer had a few rematches which are visible when two edges touch the same P2 node.&lt;/p&gt;
 &lt;p&gt;Actually, it's interesting to see how the graph can be expanded:&lt;/p&gt;
 &lt;p&gt;&lt;Neo_001.jpg&gt;&lt;/p&gt;
@@ -109,191 +111,7 @@ P2_days_since_ff&lt;/p&gt;
 &lt;p&gt;After setting a QOO score for all fights on the nodes in Neo4J, it was easy to put together another quick and dirty metric: QOOP, which for lack of better nomenclature, is 'Quality of opposition prime'. Here, I just took the mean of all a boxers' opponents' QOOs and wrote it to the node.&lt;/p&gt;
 &lt;p&gt;Indicator columns with 0 or 1 were included, in case the QOO metrics couldn't be built. This could happen, say, if a fight was a boxer's debut.&lt;/p&gt;
 &lt;p&gt;As a work in progress, I'm still playing with different ways to extract value from the Neo4J implementation. But this was a good start and took me pretty far.&lt;/p&gt;
-&lt;p&gt;Now that the data were all cleaned up ready to go, it was time to (finally!!) get to the fun part...building some deep learning models.&lt;/p&gt;
-&lt;h1&gt;Dillinger&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://nodesource.com/products/nsolid"&gt;&lt;img alt="N|Solid" src="https://cldup.com/dTxpPi9lDf.thumb.png"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Type some Markdown on the left&lt;/li&gt;
-&lt;li&gt;See HTML in the right&lt;/li&gt;
-&lt;li&gt;Magic&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;New Features!&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Import a HTML file and watch it magically convert to Markdown&lt;/li&gt;
-&lt;li&gt;Drag and drop images (requires your Dropbox account be linked)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF&lt;/p&gt;
-&lt;p&gt;Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As &lt;a href="http://daringfireball.net"&gt;John Gruber&lt;/a&gt; writes on the &lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown site&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The overriding design goal for Markdown's
-formatting syntax is to make it as readable
-as possible. The idea is that a
-Markdown-formatted document should be
-publishable as-is, as plain text, without
-looking like it's been marked up with tags
-or formatting instructions.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;This text you see here is &lt;em&gt;actually&lt;/em&gt; written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.&lt;/p&gt;
-&lt;h3&gt;Tech&lt;/h3&gt;
-&lt;p&gt;Dillinger uses a number of open source projects to work properly:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://angularjs.org"&gt;AngularJS&lt;/a&gt; - HTML enhanced for web apps!&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://ace.ajax.org"&gt;Ace Editor&lt;/a&gt; - awesome web-based text editor&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/markdown-it/markdown-it"&gt;markdown-it&lt;/a&gt; - Markdown parser done right. Fast and easy to extend.&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://twitter.github.com/bootstrap/"&gt;Twitter Bootstrap&lt;/a&gt; - great UI boilerplate for modern web apps&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://nodejs.org"&gt;node.js&lt;/a&gt; - evented I/O for the backend&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://expressjs.com"&gt;Express&lt;/a&gt; - fast node.js network app framework &lt;a href="http://twitter.com/tjholowaychuk"&gt;@tjholowaychuk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://gulpjs.com"&gt;Gulp&lt;/a&gt; - the streaming build system&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://breakdance.io"&gt;Breakdance&lt;/a&gt; - HTML to Markdown converter&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; - duh&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And of course Dillinger itself is open source with a &lt;a href="https://github.com/joemccann/dillinger"&gt;public repository&lt;/a&gt;
- on GitHub.&lt;/p&gt;
-&lt;h3&gt;Installation&lt;/h3&gt;
-&lt;p&gt;Dillinger requires &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt; v4+ to run.&lt;/p&gt;
-&lt;p&gt;Install the dependencies and devDependencies and start the server.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;dillinger
-&lt;span class="nv"&gt;$ &lt;/span&gt;npm install -d
-&lt;span class="nv"&gt;$ &lt;/span&gt;node app
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;For production environments...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;npm install --production
-&lt;span class="nv"&gt;$ NODE_ENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;production node app
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Plugins&lt;/h3&gt;
-&lt;p&gt;Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Plugin&lt;/th&gt;
-&lt;th&gt;README&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Dropbox&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md"&gt;plugins/dropbox/README.md&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Github&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md"&gt;plugins/github/README.md&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Google Drive&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md"&gt;plugins/googledrive/README.md&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;OneDrive&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md"&gt;plugins/onedrive/README.md&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Medium&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md"&gt;plugins/medium/README.md&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Google Analytics&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md"&gt;plugins/googleanalytics/README.md&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;Development&lt;/h3&gt;
-&lt;p&gt;Want to contribute? Great!&lt;/p&gt;
-&lt;p&gt;Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantanously see your updates!&lt;/p&gt;
-&lt;p&gt;Open your favorite Terminal and run these commands.&lt;/p&gt;
-&lt;p&gt;First Tab:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;node app
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Second Tab:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gulp watch
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;(optional) Third:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;karma &lt;span class="nb"&gt;test&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;Building for source&lt;/h4&gt;
-&lt;p&gt;For production release:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gulp build --prod
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Generating pre-built zip archives for distribution:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gulp build dist --prod
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Docker&lt;/h3&gt;
-&lt;p&gt;Dillinger is very easy to install and deploy in a Docker container.&lt;/p&gt;
-&lt;p&gt;By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;dillinger
-docker build -t joemccann/dillinger:&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;package&lt;/span&gt;&lt;span class="p"&gt;.json.version&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out &lt;code&gt;${package.json.version}&lt;/code&gt; with the actual version of Dillinger.&lt;/p&gt;
-&lt;p&gt;Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 8080 of the Docker (or whatever port was exposed in the Dockerfile):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;docker run -d -p 8000:8080 --restart&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;always&amp;quot;&lt;/span&gt; &amp;lt;youruser&amp;gt;/dillinger:&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;package&lt;/span&gt;&lt;span class="p"&gt;.json.version&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Verify the deployment by navigating to your server address in your preferred browser.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:8000
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;Kubernetes + Google Cloud&lt;/h4&gt;
-&lt;p&gt;See &lt;a href="https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md"&gt;KUBERNETES.md&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Todos&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Write MORE Tests&lt;/li&gt;
-&lt;li&gt;Add Night Mode&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;License&lt;/h2&gt;
-&lt;p&gt;MIT&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Free Software, Hell Yeah!&lt;/strong&gt;&lt;/p&gt;&lt;script type= "text/javascript"&gt;
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-    }
-&lt;/script&gt;
-</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>The 80 Best Boxers; A Career Viewer</title><link href="http://mattobrien.me/the-80-best-boxers-a-career-viewer.html" rel="alternate"></link><published>2016-06-05T00:00:00-07:00</published><updated>2016-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-06-05:/the-80-best-boxers-a-career-viewer.html</id><summary type="html">&lt;p&gt;A visualization of the careers of the top 80 boxers in the last 80 years&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The 80 Best Boxers; A Career Viewer&lt;/h1&gt;
+&lt;p&gt;Now that the data were all cleaned up ready to go, it was time to (finally!!) get to the fun part...building some deep learning models.&lt;/p&gt;</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>The 80 Best Boxers; A Career Viewer</title><link href="http://mattobrien.me/the-80-best-boxers-a-career-viewer.html" rel="alternate"></link><published>2016-06-05T00:00:00-07:00</published><updated>2016-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-06-05:/the-80-best-boxers-a-career-viewer.html</id><summary type="html">&lt;p&gt;A visualization of the careers of the top 80 boxers in the last 80 years&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The 80 Best Boxers; A Career Viewer&lt;/h1&gt;
 &lt;p&gt;A few years back, the Ring Magazine compiled a list of &lt;a href="http://boxing.about.com/od/history/a/ring_80_best.htm"&gt;The 80 Best Boxers of the Last 80 Years&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This is a solid list, compiled by the definitive boxing authority. But it is fundamentally just..well, a list. Which is a bit boring. It got me thinking of ways to get a better feel for what these boxers' accomplished throughout the duration of their careers.&lt;/p&gt;
 &lt;p&gt;To do that, I created an app which allows us to see where in the world these 80 pugilists plied their trade. We can explore chronologically, or by their opponent's names, and see how the top guys wrecked shop all over the world. There are big 'W', 'L', or 'D' letters plotted directly on a zoomable map, to indicate what happened and where.   &lt;/p&gt;
