@@ -74,34 +74,33 @@ More useful was the specific data for each boxing match:
 
 #### fight data  
 
-
-| boxer1_id          |
-| boxer2_id          |
-| date               |
-| location           |
-| rounds_planned     |
-| rounds_happened    |
-| boxer1_mass        |
-| boxer2_mass        |
-| boxer2_wins        |
-| boxer2_loses       |
-| boxer2_draws       |
-| boxer2_last6_wins  |
-| boxer2_last6_loses |
-| boxer2_last6_draws |
-| outcome            |
-| outcome_type       |
-| rating             |
-| time               |
-| referee            |
-| judge1             |
-| judge2             |
-| judge3             |
-| judge1_score       |
-| judge2_score       |
-| judge3_score       |
-| titles             |
-| comments           |
+boxer1_id  
+boxer2_id  
+date  
+location  
+rounds_planned  
+rounds_happened  
+boxer1_mass  
+boxer2_mass  
+boxer2_wins  
+boxer2_loses  
+boxer2_draws  
+boxer2_last6_wins  
+boxer2_last6_loses  
+boxer2_last6_draws  
+outcome  
+outcome_type  
+rating  
+time  
+referee  
+judge1  
+judge2  
+judge3  
+judge1_score  
+judge2_score  
+judge3_score  
+titles  
+comments  
 
 
 As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.
@@ -114,15 +113,15 @@ Looking at these data, all seemed promising. But after some more reflection, I s
 Really, these fights are all sequences of events that happen for a boxer -- they start with fight #1, then continue forward until the end of their careers. This made me interested in engineering some temporal variables, which I proceed to do in Pandas. Now, each row had these features:  
 
 
-| P1_ageAtFight    |
-| P2_ageAtFight    |
-| P1_rounds_fought |
-| P2_rounds_fought |
+P1_ageAtFight  
+P2_ageAtFight  
+P1_rounds_fought  
+P2_rounds_fought  
 
 Another feature as basically 'career length', or how many days it had been since the boxer's debut. These became:  
 
-| P1_days_since_ff |
-| P2_days_since_ff |  
+P1_days_since_ff  
+P2_days_since_ff  
 
 where 'ff' is just 'first fight'.
 
