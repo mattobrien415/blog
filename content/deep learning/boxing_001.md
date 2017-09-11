@@ -38,14 +38,7 @@ The project was built on a very substantial dataset. I had metadata on 373,415 i
 The dataset definitely possessed depth. The breadth in features was as such:
 
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |  
-
-
-
-| boxer data   |
+|boxer data   |
 |--------------|
 | name         |
 | sex          |
