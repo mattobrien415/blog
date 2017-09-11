@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me - Matt O'Brien</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/matt-obrien.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-09-15T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering Part 1 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering-part-1-of-3.html</id><summary type="html">&lt;p&gt;Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 1: Characteristics of the dataset&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me - Matt O'Brien</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/matt-obrien.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-09-16T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering Part 2 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html" rel="alternate"></link><published>2017-09-16T00:00:00-07:00</published><updated>2017-09-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-16:/deep-learning-for-sport-wagering-part-2-of-3.html</id><summary type="html">&lt;p&gt;Modeling&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 2: Modeling&lt;/h4&gt;
+&lt;p&gt;I was fortunate enough to have attended Jeremy Howard's awesome &lt;a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one"&gt;deep learning certification program&lt;/a&gt; at University of San Francisco. One of the many insightful things Jeremy said, was, and I quote, "In real life, I always start with a variable importance plot" &lt;find video&gt;.&lt;/p&gt;
+&lt;p&gt;Being smart enough to recognize when smarter people have good ideas, this is exactly what I did.&lt;/p&gt;
+&lt;p&gt;I built a straightforward Random Forest in scikit-learn (using GridSearchCV) and retrieved this plot:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;The plot doesn't have a strong inflection point. &lt;/p&gt;
+&lt;p&gt;First let's look at what isn't important:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We see that the number of Draw outcomes isn't important, which makes sense, as these are extremely rare outcomes and are fairly irrelevant.  &lt;/li&gt;
+&lt;li&gt;We see that the permutations of stances across opponents (complimentary or opposite, left-handed or right-handed) isn't relevant.  &lt;/li&gt;
+&lt;li&gt;Finally, the indicator columns aren't useful, which isn't a major surprise. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Next, let's look at what &lt;em&gt;is&lt;/em&gt; important. But first, let's take a little detour to think ahead about what might feel right. Let's ignore the VIP for a second.&lt;/p&gt;
+&lt;p&gt;There is a fundamental axiom in boxing: "Hit and don't get hit." Without adhering to this basic principle, careers will be unnecesarily short, as physical damage sustained will quickly accumulate. So the idea of wear and tear on the body accumulated by a boxer over time seems like a naturally important component of what influences the outcome of a fight. &lt;/p&gt;
+&lt;p&gt;This being considered, it should come as no great surprise that the most important feature in the Random Forest is &lt;code&gt;P1_days_since_ff&lt;/code&gt;. Recall, this variable reports how long it has been since a boxer's career began. This perspective on career length turns out to be a natural fit.&lt;/p&gt;
+&lt;p&gt;However, it's possible a boxer could fight once, then fight again 10 years later. In this scenario,&lt;code&gt;P1_days_since_ff&lt;/code&gt; would be a value around 3,650, but this wouldn't be an accurate measurement of that boxer's accumulated wear and tear. Fortunately for us, the next most important features on the plot corresponds to the aggregated number of rounds the opponents have fought. A long 'ring life' can clearly play a large role in a fighter's success (see &lt;a href="https://www.youtube.com/watch?v=Ja9iovR9B3E"&gt;Ali vs Holmes&lt;/a&gt; for a tragic example). Conversely, too few rounds can also play a role in predicting losing.&lt;/p&gt;
+&lt;p&gt;Getting back to the variable importance plot, the two Quality of Opposition (&lt;code&gt;QOO&lt;/code&gt;) metrics are shown to be important, which is nice because they took a lot of effort to construct.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;last6_L&lt;/code&gt; and &lt;code&gt;last6_W&lt;/code&gt; variables have a large amounts of variance as evidenced by the bars. This most likely ties into the discussion about how records, as they stand alone, don't adequately reflect the quality of the opposition. For some boxers, the last 6 are very important; for some, they aren't. This makes sense.&lt;/p&gt;
+&lt;p&gt;Content with the plot and with these features in mind, I experimented with various subsets of features and various configurations when fitting multilayer perceptrons in Keras.&lt;/p&gt;
+&lt;p&gt;Because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. &lt;/p&gt;
+&lt;p&gt;Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed similarly. Epochs around 10 performed fine.&lt;/p&gt;
+&lt;p&gt;A decent final configuration looked like this: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mlp = Sequential()
+mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;, input_dim=13))
+mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
+mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
+mlp.add(Dropout(0.2))
+mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
+mlp.add(Dense(3, activation=&amp;#39;softmax&amp;#39;))
+mlp.compile(optimizer=&amp;#39;Adam&amp;#39;, loss=&amp;#39;categorical_crossentropy&amp;#39;, metrics=[&amp;#39;accuracy&amp;#39;])
+
+mlp.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The accuracy returned would settle down to roughly 66%. &lt;/p&gt;
+&lt;p&gt;OK, so how should I feel about such a low accuracy, in this age of computer vision, self-driving cars, and &lt;a href="https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html"&gt;Elon Musk's dire warnings&lt;/a&gt; of &lt;a href="https://www.youtube.com/watch?v=-WIwQlMesr0"&gt;Arnold coming baaack&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;I must admit, I feel pretty good about it. Remember, we are trying to get the edge on gambling. Theoretically, anything about a coin flip should be profitable over time. &lt;/p&gt;
+&lt;p&gt;Time to move past the accuracy. As briefly noted above, the dataset wasn't appreciably unbalanced. Here's the confusion matrix:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="CM" src="https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate to a user when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we &lt;em&gt;DO&lt;/em&gt; bet, we will win. &lt;/p&gt;
+&lt;p&gt;Looking at the ROC curve,&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ROC" src="https://github.com/mobbSF/blog/blob/master/images/ROC.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;...I was inspired to refit the model with a variety of custom precision and recall thresholds and examined the resulting metrics.  &lt;/p&gt;
+&lt;p&gt;However, by sticking with the default &lt;code&gt;[precision_threshold(0.5), recall_threshold(0.5)]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I got my best precision and recall scores: &lt;/p&gt;
+&lt;p&gt;Precision: 0.71
+Recall:    0.78&lt;/p&gt;
+&lt;p&gt;I could spend some more time exploring this area, but for now I am content with these scores.&lt;/p&gt;
+&lt;p&gt;Meanwhile, allow me to wander a bit and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. &lt;/p&gt;
+&lt;p&gt;I changed the labels to represent the granular outcomes mentioned above, and I rebuilt the model and crossed my fingers. Unfortunately, and not too surprisingly, accuracy dropped to around 30%. Hummm...well...worth a shot. And definitely worth revisiting again later.&lt;/p&gt;
+&lt;p&gt;Next up...prediction time!&lt;/p&gt;</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>Deep Learning for Sport Wagering Part 1 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering-part-1-of-3.html</id><summary type="html">&lt;p&gt;Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 1: Characteristics of the dataset&lt;/h4&gt;
 &lt;p&gt;Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.&lt;/p&gt;
 &lt;p&gt;One particular line in &lt;a href="https://fivethirtyeight.com/features/how-the-golden-state-warriors-are-breaking-the-nba/"&gt;the blog post&lt;/a&gt; stuck out for me: "It’s as if at some point in the past few years, the Warriors solved contemporary basketball..."&lt;/p&gt;
 &lt;p&gt;Solved? A bit heavy on the hyperbole, but maybe not too far off.&lt;/p&gt;
@@ -113,58 +164,7 @@ Because if P2 was battling top-quality opposition, then you'd be wise to put you
 &lt;p&gt;After setting a QOO score for all fights on the nodes in Neo4J, it was easy to put together another quick and dirty metric: QOOP, which for lack of better nomenclature, is 'Quality of opposition prime'. Here, I just took the mean of all a boxer's opponents' QOOs and wrote it to the record node.&lt;/p&gt;
 &lt;p&gt;Indicator columns with 0 or 1 were included, in case the QOO metrics couldn't be built. This could happen if, say, a fight was a boxer's debut.&lt;/p&gt;
 &lt;p&gt;As a work in progress, I'm still playing with different ways to extract value from the Neo4J implementation. But this was a good start and took me pretty far.&lt;/p&gt;
-&lt;p&gt;Now that the data were all cleaned up ready to go, it was time to (finally!!) get to the fun part...building some deep learning models.&lt;/p&gt;</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>Deep Learning for Sport Wagering Part 2 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering-part-2-of-3.html</id><summary type="html">&lt;p&gt;Modeling&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 2: Modeling&lt;/h4&gt;
-&lt;p&gt;I was fortunate enough to have attended Jeremy Howard's awesome &lt;a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one"&gt;deep learning certification program&lt;/a&gt; at University of San Francisco. One of the many insightful things Jeremy said, was, and I quote, "In real life, I always start with a variable importance plot" &lt;find video&gt;.&lt;/p&gt;
-&lt;p&gt;Being smart enough to recognize when smarter people have good ideas, this is exactly what I did.&lt;/p&gt;
-&lt;p&gt;I built a straightforward Random Forest in scikit-learn (using GridSearchCV) and retrieved this plot:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true"&gt;&lt;/p&gt;
-&lt;p&gt;The plot doesn't have a strong inflection point. &lt;/p&gt;
-&lt;p&gt;First let's look at what isn't important:  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;We see that the number of Draw outcomes isn't important, which makes sense, as these are extremely rare outcomes and are fairly irrelevant.  &lt;/li&gt;
-&lt;li&gt;We see that the permutations of stances across opponents (complimentary or opposite, left-handed or right-handed) isn't relevant.  &lt;/li&gt;
-&lt;li&gt;Finally, the indicator columns aren't useful, which isn't a major surprise. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Next, let's look at what &lt;em&gt;is&lt;/em&gt; important. But first, let's take a little detour to think ahead about what might feel right. Let's ignore the VIP for a second.&lt;/p&gt;
-&lt;p&gt;There is a fundamental axiom in boxing: "Hit and don't get hit." Without adhering to this basic principle, careers will be unnecesarily short, as physical damage sustained will quickly accumulate. So the idea of wear and tear on the body accumulated by a boxer over time seems like a naturally important component of what influences the outcome of a fight. &lt;/p&gt;
-&lt;p&gt;This being considered, it should come as no great surprise that the most important feature in the Random Forest is &lt;code&gt;P1_days_since_ff&lt;/code&gt;. Recall, this variable reports how long it has been since a boxer's career began. This perspective on career length turns out to be a natural fit.&lt;/p&gt;
-&lt;p&gt;However, it's possible a boxer could fight once, then fight again 10 years later. In this scenario,&lt;code&gt;P1_days_since_ff&lt;/code&gt; would be a value around 3,650, but this wouldn't be an accurate measurement of that boxer's accumulated wear and tear. Fortunately for us, the next most important features on the plot corresponds to the aggregated number of rounds the opponents have fought. A long 'ring life' can clearly play a large role in a fighter's success (see &lt;a href="https://www.youtube.com/watch?v=Ja9iovR9B3E"&gt;Ali vs Holmes&lt;/a&gt; for a tragic example). Conversely, too few rounds can also play a role in predicting losing.&lt;/p&gt;
-&lt;p&gt;Getting back to the variable importance plot, the two Quality of Opposition (&lt;code&gt;QOO&lt;/code&gt;) metrics are shown to be important, which is nice because they took a lot of effort to construct.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;last6_L&lt;/code&gt; and &lt;code&gt;last6_W&lt;/code&gt; variables have a large amounts of variance as evidenced by the bars. This most likely ties into the discussion about how records, as they stand alone, don't adequately reflect the quality of the opposition. For some boxers, the last 6 are very important; for some, they aren't. This makes sense.&lt;/p&gt;
-&lt;p&gt;Content with the plot and with these features in mind, I experimented with various subsets of features and various configurations when fitting multilayer perceptrons in Keras.&lt;/p&gt;
-&lt;p&gt;Because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. &lt;/p&gt;
-&lt;p&gt;Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed similarly. Epochs around 10 performed fine.&lt;/p&gt;
-&lt;p&gt;A decent final configuration looked like this: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mlp = Sequential()
-mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;, input_dim=13))
-mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
-mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
-mlp.add(Dropout(0.2))
-mlp.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
-mlp.add(Dense(3, activation=&amp;#39;softmax&amp;#39;))
-mlp.compile(optimizer=&amp;#39;Adam&amp;#39;, loss=&amp;#39;categorical_crossentropy&amp;#39;, metrics=[&amp;#39;accuracy&amp;#39;])
-
-mlp.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;The accuracy returned would settle down to roughly 66%. &lt;/p&gt;
-&lt;p&gt;OK, so how should I feel about such a low accuracy, in this age of computer vision, self-driving cars, and &lt;a href="https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html"&gt;Elon Musk's dire warnings&lt;/a&gt; of &lt;a href="https://www.youtube.com/watch?v=-WIwQlMesr0"&gt;Arnold coming baaack&lt;/a&gt;?&lt;/p&gt;
-&lt;p&gt;I must admit, I feel pretty good about it. Remember, we are trying to get the edge on gambling. Theoretically, anything about a coin flip should be profitable over time. &lt;/p&gt;
-&lt;p&gt;Time to move past the accuracy. As briefly noted above, the dataset wasn't appreciably unbalanced. Here's the confusion matrix:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="CM" src="https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true"&gt;&lt;/p&gt;
-&lt;p&gt;It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate to a user when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we &lt;em&gt;DO&lt;/em&gt; bet, we will win. &lt;/p&gt;
-&lt;p&gt;Looking at the ROC curve,&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ROC" src="https://github.com/mobbSF/blog/blob/master/images/ROC.png?raw=true"&gt;&lt;/p&gt;
-&lt;p&gt;...I was inspired to refit the model with a variety of custom precision and recall thresholds and examined the resulting metrics.  &lt;/p&gt;
-&lt;p&gt;However, by sticking with the default &lt;code&gt;[precision_threshold(0.5), recall_threshold(0.5)]&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;I got my best precision and recall scores: &lt;/p&gt;
-&lt;p&gt;Precision: 0.71
-Recall:    0.78&lt;/p&gt;
-&lt;p&gt;I could spend some more time exploring this area, but for now I am content with these scores.&lt;/p&gt;
-&lt;p&gt;Meanwhile, allow me to wander a bit and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. &lt;/p&gt;
-&lt;p&gt;I changed the labels to represent the granular outcomes mentioned above, and I rebuilt the model and crossed my fingers. Unfortunately, and not too surprisingly, accuracy dropped to around 30%. Hummm...well...worth a shot. And definitely worth revisiting again later.&lt;/p&gt;
-&lt;p&gt;Next up...prediction time!&lt;/p&gt;</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>The 80 Best Boxers; A Career Viewer</title><link href="http://mattobrien.me/the-80-best-boxers-a-career-viewer.html" rel="alternate"></link><published>2016-06-05T00:00:00-07:00</published><updated>2016-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-06-05:/the-80-best-boxers-a-career-viewer.html</id><summary type="html">&lt;p&gt;A visualization of the careers of the top 80 boxers in the last 80 years&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The 80 Best Boxers; A Career Viewer&lt;/h1&gt;
+&lt;p&gt;Now that the data were all cleaned up ready to go, it was time to (finally!!) get to the fun part...building some deep learning models.&lt;/p&gt;</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>The 80 Best Boxers; A Career Viewer</title><link href="http://mattobrien.me/the-80-best-boxers-a-career-viewer.html" rel="alternate"></link><published>2016-06-05T00:00:00-07:00</published><updated>2016-06-05T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2016-06-05:/the-80-best-boxers-a-career-viewer.html</id><summary type="html">&lt;p&gt;A visualization of the careers of the top 80 boxers in the last 80 years&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The 80 Best Boxers; A Career Viewer&lt;/h1&gt;
 &lt;p&gt;A few years back, the Ring Magazine compiled a list of &lt;a href="http://boxing.about.com/od/history/a/ring_80_best.htm"&gt;The 80 Best Boxers of the Last 80 Years&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This is a solid list, compiled by the definitive boxing authority. But it is fundamentally just..well, a list. Which is a bit boring. It got me thinking of ways to get a better feel for what these boxers' accomplished throughout the duration of their careers.&lt;/p&gt;
 &lt;p&gt;To do that, I created an app which allows us to see where in the world these 80 pugilists plied their trade. We can explore chronologically, or by their opponent's names, and see how the top guys wrecked shop all over the world. There are big 'W', 'L', or 'D' letters plotted directly on a zoomable map, to indicate what happened and where.   &lt;/p&gt;

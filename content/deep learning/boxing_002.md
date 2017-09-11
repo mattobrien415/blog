@@ -6,9 +6,9 @@ Summary: Modeling
 #### Part 2: Modeling
 
 
-I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said, was, and I quote, "In real life, I always start with a variable importance plot" <find video>.
+I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said, was, and I quote, "In real life, I always start with a [variable importance plot](http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html)."
 
-Being smart enough to recognize when smarter people have good ideas, this is exactly what I did.
+Being just smart enough to recognize when smarter people have good ideas, this is exactly what I did.
 
 I built a straightforward Random Forest in scikit-learn (using GridSearchCV) and retrieved this plot:
 
@@ -18,11 +18,11 @@ The plot doesn't have a strong inflection point.
 
 First let's look at what isn't important:  
 
-- We see that the number of Draw outcomes isn't important, which makes sense, as these are extremely rare outcomes and are fairly irrelevant.  
-- We see that the permutations of stances across opponents (complimentary or opposite, left-handed or right-handed) isn't relevant.  
+- We see that the number of Draw outcomes isn't important, which makes sense, as these are rare outcomes and are fairly irrelevant. The number of draws a boxer has doesn't have much bearing on the rest of their records.  
+- We see that the permutations of stances across opponents (complimentary or opposite, [southpaw](https://en.wikipedia.org/wiki/Southpaw_stance) or [orthodox](https://en.wikipedia.org/wiki/Orthodox_stance)) isn't relevant.  
 - Finally, the indicator columns aren't useful, which isn't a major surprise. 
 
-Next, let's look at what *is* important. But first, let's take a little detour to think ahead about what might feel right. Let's ignore the VIP for a second.
+Next, let's look at what *is* important. But first, let's take a little detour to think ahead about what might feel right. Let's ignore the variable importance plot for a moment.
 
 There is a fundamental axiom in boxing: "Hit and don't get hit." Without adhering to this basic principle, careers will be unnecesarily short, as physical damage sustained will quickly accumulate. So the idea of wear and tear on the body accumulated by a boxer over time seems like a naturally important component of what influences the outcome of a fight. 
 
