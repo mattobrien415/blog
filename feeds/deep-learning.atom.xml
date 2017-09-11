@@ -41,45 +41,45 @@ For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent 
 &lt;p&gt;The dataset was balanced: 55% Wins, 45% Losses.&lt;/p&gt;
 &lt;p&gt;More useful was the specific data for each boxing match:  &lt;/p&gt;
 &lt;h4&gt;fight data&lt;/h4&gt;
-&lt;p&gt;| boxer1_id          |
-| boxer2_id          |
-| date               |
-| location           |
-| rounds_planned     |
-| rounds_happened    |
-| boxer1_mass        |
-| boxer2_mass        |
-| boxer2_wins        |
-| boxer2_loses       |
-| boxer2_draws       |
-| boxer2_last6_wins  |
-| boxer2_last6_loses |
-| boxer2_last6_draws |
-| outcome            |
-| outcome_type       |
-| rating             |
-| time               |
-| referee            |
-| judge1             |
-| judge2             |
-| judge3             |
-| judge1_score       |
-| judge2_score       |
-| judge3_score       |
-| titles             |
-| comments           |&lt;/p&gt;
+&lt;p&gt;boxer1_id&lt;br&gt;
+boxer2_id&lt;br&gt;
+date&lt;br&gt;
+location&lt;br&gt;
+rounds_planned&lt;br&gt;
+rounds_happened&lt;br&gt;
+boxer1_mass&lt;br&gt;
+boxer2_mass&lt;br&gt;
+boxer2_wins&lt;br&gt;
+boxer2_loses&lt;br&gt;
+boxer2_draws&lt;br&gt;
+boxer2_last6_wins&lt;br&gt;
+boxer2_last6_loses&lt;br&gt;
+boxer2_last6_draws&lt;br&gt;
+outcome&lt;br&gt;
+outcome_type&lt;br&gt;
+rating&lt;br&gt;
+time&lt;br&gt;
+referee&lt;br&gt;
+judge1&lt;br&gt;
+judge2&lt;br&gt;
+judge3&lt;br&gt;
+judge1_score&lt;br&gt;
+judge2_score&lt;br&gt;
+judge3_score&lt;br&gt;
+titles&lt;br&gt;
+comments  &lt;/p&gt;
 &lt;p&gt;As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.&lt;/p&gt;
 &lt;p&gt;With that being settled, the first important decision I made with respect to transformation of the data was to do a self-join within the fight table in MySQL. Thus, as shown above, each record in the dataset represented one fight. There would be a boxer1 and a boxer2. The target for each row would be Win, Lose, or Draw, with respect to boxer1. There would also be the granular outcome information: the type of W, L or D. After all, there are many ways for a boxing match to end: points, knockout, quitting on the stool, etc etc.&lt;/p&gt;
 &lt;p&gt;(Quick note on a detail of the sport itself: Notice that although boxing is an individual sport, each fighter also has a whole team behind them. During competition, there is a coach, obviously, and there is the cutman as well. The cutman handles the first aid between rounds. These guys are the secondaries -- so in boxing, we'll call the 2 boxers primaries. I quickly renamed boxer1 and boxer2 to P1 and P2.)&lt;/p&gt;
 &lt;p&gt;Looking at these data, all seemed promising. But after some more reflection, I started to be concerned with what this rectangular representation was missing.
 Really, these fights are all sequences of events that happen for a boxer -- they start with fight #1, then continue forward until the end of their careers. This made me interested in engineering some temporal variables, which I proceed to do in Pandas. Now, each row had these features:  &lt;/p&gt;
-&lt;p&gt;| P1_ageAtFight    |
-| P2_ageAtFight    |
-| P1_rounds_fought |
-| P2_rounds_fought |&lt;/p&gt;
+&lt;p&gt;P1_ageAtFight&lt;br&gt;
+P2_ageAtFight&lt;br&gt;
+P1_rounds_fought&lt;br&gt;
+P2_rounds_fought  &lt;/p&gt;
 &lt;p&gt;Another feature as basically 'career length', or how many days it had been since the boxer's debut. These became:  &lt;/p&gt;
-&lt;p&gt;| P1_days_since_ff |
-| P2_days_since_ff |  &lt;/p&gt;
+&lt;p&gt;P1_days_since_ff&lt;br&gt;
+P2_days_since_ff  &lt;/p&gt;
 &lt;p&gt;where 'ff' is just 'first fight'.&lt;/p&gt;
 &lt;p&gt;Some boxers were missing a birthdate, so I imputed these birthdates by assuming that each boxer's debut was on their 20th birthday. This was a simple subtraction from of 20 years from the date of the first fight.&lt;/p&gt;
 &lt;p&gt;But beyond the sequential, temporal perspective, there was still something more to be done. I realized this dataset could also be realized as a graph, with nodes for the boxers and the fights, and nodes for their professional W, L, D records at the time of the fight. So I imported if out of SQL and into Neo4J.&lt;/p&gt;
