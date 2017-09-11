@@ -13,7 +13,7 @@ Solved? A bit heavy on the hyperbole, but maybe not too far off.
 
 This got me thinking about other sports, and their capacity to be understood via data science, analytics, and deep learning. In particular, I became interested in the somewhat marginal and obscure (by major American sport standards, anyway) sport of boxing. I began to think that boxing could lend itself to being 'solved' nicely, because it has many characteristics that lend it to straightforward analysis and modeling.
 
-At it's heart, boxing has a simple structure.  Unlike many popular sports, it's not a team sport -- so there isn't a dynamic interplay between multiple individuals. It's also not new: the sport became standardized in the late 1600s, via the {Marquess of Queensberry Rules](https://en.wikipedia.org/wiki/Marquess_of_Queensberry_Rules). Thus, there is plenty of data available.  Fortunately for me, much of it is available online.
+At it's heart, boxing has a simple structure.  Unlike many popular sports, it's not a team sport -- so there isn't a dynamic interplay between multiple individuals. It's also not new: the sport became standardized in the late 1600s, via the [Marquess of Queensberry Rules](https://en.wikipedia.org/wiki/Marquess_of_Queensberry_Rules). Thus, there is plenty of data available.  Fortunately for me, much of it is available online.
 
 To make the project more impactful, I decided to set a very specific goal. I've found that often, personal projects such as these will hold up better if there is the possibility of a good payoff at the end --  so I figured, why not try to build an algorithm that would allow me to win money in Vegas? Thus I set the goal of creating a tool for successful wagering on boxing.
 
@@ -27,7 +27,7 @@ There will be 3 parts to this blog post:
 2) Building models  
 3) Prediction and Evaluation  
 
-# Data 
+### Characteristics of the data 
 
 The project was built on a very substantial dataset. The were two major sources of data. First, I aquired metadata on 373,415 individual boxers. Second, I had a collection of over 3.5 million fights (3,529,624 to be exact). These I imported into two MySQL tables. The dataset spanned the entire history of the sport. It was really fun to dig into. There were fighters from every corner of the globe, competing from the very beginning of the sport to the present day. There were boxers in every weight class from minimumweight upward, possessing all skill levels, at all ages, and exhibiting all levels of success. Perusing revealed some quite obscure fighters: a boxer from Accra, Ghana, who fought only once (unfortunately losing by knockout), back in 1966. Then, there was data on all the modern day multimillionaire heavyweight champions. There were was, for example, [Wladamir Klitchko](https://en.wikipedia.org/wiki/Wladimir_Klitschko), nicknamed 'Dr Steelhammer.' 
 
@@ -35,7 +35,7 @@ The dataset definitely possessed depth. The breadth in features for the first so
 
 
 
-#### boxer data  
+##### boxer data  
 
 
 name  
@@ -68,7 +68,7 @@ The dataset was balanced: 55% Wins, 45% Losses.
 More useful was the second source of data, the specific data for each boxing match:  
 
 
-#### fight data  
+##### fight data  
 
 boxer1_id  
 boxer2_id  
