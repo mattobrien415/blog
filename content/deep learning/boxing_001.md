@@ -108,16 +108,18 @@ With that being settled, the first important decision I made with respect to tra
 (Quick note on a detail of the sport itself: Notice that although boxing is an individual sport, each fighter also has a whole team behind them. During competition, there is a coach, obviously, and there is the cutman as well. The cutman handles the first aid between rounds. These guys are the secondaries -- so in boxing, we'll call the 2 boxers primaries. I quickly renamed boxer1 and boxer2 to P1 and P2.)
 
 Looking at these data, all seemed promising. But after some more reflection, I started to be concerned with what this rectangular representation was missing.
-Really, these fights are all sequences of events that happen for a boxer -- they start with fight #1, then continue forward until the end of their careers. This made me interested in engineering some temporal variables, which I proceed to do in Pandas. Now, each row had these features:
+Really, these fights are all sequences of events that happen for a boxer -- they start with fight #1, then continue forward until the end of their careers. This made me interested in engineering some temporal variables, which I proceed to do in Pandas. Now, each row had these features:  
 
-P1_ageAtFight
-P2_ageAtFight
-P1_rounds_fought
-P2_rounds_fought
+
+| P1_ageAtFight    |
+| P2_ageAtFight    |
+| P1_rounds_fought |
+| P2_rounds_fought |
 
 Another feature as basically 'career length', or how many days it had been since the boxer's debut. These became:  
-P1_days_since_ff
-P2_days_since_ff
+
+| P1_days_since_ff |
+| P2_days_since_ff |  
 
 where 'ff' is just 'first fight'.
 
