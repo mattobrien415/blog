@@ -93,164 +93,60 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
 <p>1) Data </p>
 <p>The project was built on a very substantial dataset. I had metadata on 373,415 individual boxers, alongside a collection of over 3.5 million fights (3,529,624 to be exact). These I imported into two MySQL tables. The dataset spanned the entire history of the sport. It was really fun to dig into. There were fighters from every corner of the globe, competing from the mid-1800s to the present day. There were boxers in every weight class from minimumweight upward, possessing all skill levels, at all ages, and exhibiting all levels of success. Perusing revealed some quite obscure fighters: a boxer from Accra, Ghana, who fought only once (unfortunately losing by knockout), back in 1966. Then, there was data on all the modern day multimillionaire heavyweight champions. There were was, for example, Wladamir Klitchko, nicknamed 'Dr Steelhammer.' </p>
 <p>The dataset definitely possessed depth. The breadth in features was as such:</p>
-<table>
-<thead>
-<tr>
-<th>boxer data</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-</tr>
-<tr>
-<td>sex</td>
-</tr>
-<tr>
-<td>birth_date</td>
-</tr>
-<tr>
-<td>division</td>
-</tr>
-<tr>
-<td>stance</td>
-</tr>
-<tr>
-<td>height</td>
-</tr>
-<tr>
-<td>reach</td>
-</tr>
-<tr>
-<td>country</td>
-</tr>
-<tr>
-<td>residence</td>
-</tr>
-<tr>
-<td>birth_place</td>
-</tr>
-<tr>
-<td>world_rank</td>
-</tr>
-<tr>
-<td>total_wins</td>
-</tr>
-<tr>
-<td>ko_wins</td>
-</tr>
-<tr>
-<td>total_losses</td>
-</tr>
-<tr>
-<td>ko_losses</td>
-</tr>
-<tr>
-<td>draws</td>
-</tr>
-<tr>
-<td>rounds</td>
-</tr>
-<tr>
-<td>ko_percent</td>
-</tr>
-</tbody>
-</table>
+<h1>boxer data</h1>
+<p>|--------------|
+| name         |
+| sex          |
+| birth_date   |
+| division     |
+| stance       |
+| height       |
+| reach        |
+| country      |
+| residence    |
+| birth_place  |
+| world_rank   |
+| total_wins   |
+| ko_wins      |
+| total_losses |
+| ko_losses    |
+| draws        |
+| rounds       |
+| ko_percent   |</p>
 <p>Although elements like a boxer's weight are extremely important in real life boxing, some particular features like that and others were not applicable.
 For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent fight was at 146. So a single value pulled from the metadata would only reflect the most recent weight, not the weight at each fight.</p>
 <p>It was simple to keep stance (orthodox or southpaw) as a categorical variable.</p>
 <p>The dataset was balanced: 55% Wins, 45% Losses.</p>
 <p>More useful was the specific data for each boxing match:  </p>
-<table>
-<thead>
-<tr>
-<th>fight data</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boxer1_id</td>
-</tr>
-<tr>
-<td>boxer2_id</td>
-</tr>
-<tr>
-<td>date</td>
-</tr>
-<tr>
-<td>location</td>
-</tr>
-<tr>
-<td>rounds_planned</td>
-</tr>
-<tr>
-<td>rounds_happened</td>
-</tr>
-<tr>
-<td>boxer1_mass</td>
-</tr>
-<tr>
-<td>boxer2_mass</td>
-</tr>
-<tr>
-<td>boxer2_wins</td>
-</tr>
-<tr>
-<td>boxer2_loses</td>
-</tr>
-<tr>
-<td>boxer2_draws</td>
-</tr>
-<tr>
-<td>boxer2_last6_wins</td>
-</tr>
-<tr>
-<td>boxer2_last6_loses</td>
-</tr>
-<tr>
-<td>boxer2_last6_draws</td>
-</tr>
-<tr>
-<td>outcome</td>
-</tr>
-<tr>
-<td>outcome_type</td>
-</tr>
-<tr>
-<td>rating</td>
-</tr>
-<tr>
-<td>time</td>
-</tr>
-<tr>
-<td>referee</td>
-</tr>
-<tr>
-<td>judge1</td>
-</tr>
-<tr>
-<td>judge2</td>
-</tr>
-<tr>
-<td>judge3</td>
-</tr>
-<tr>
-<td>judge1_score</td>
-</tr>
-<tr>
-<td>judge2_score</td>
-</tr>
-<tr>
-<td>judge3_score</td>
-</tr>
-<tr>
-<td>titles</td>
-</tr>
-<tr>
-<td>comments</td>
-</tr>
-</tbody>
-</table>
+<h1>fight data</h1>
+<p>| ------------------ |
+| boxer1_id          |
+| boxer2_id          |
+| date               |
+| location           |
+| rounds_planned     |
+| rounds_happened    |
+| boxer1_mass        |
+| boxer2_mass        |
+| boxer2_wins        |
+| boxer2_loses       |
+| boxer2_draws       |
+| boxer2_last6_wins  |
+| boxer2_last6_loses |
+| boxer2_last6_draws |
+| outcome            |
+| outcome_type       |
+| rating             |
+| time               |
+| referee            |
+| judge1             |
+| judge2             |
+| judge3             |
+| judge1_score       |
+| judge2_score       |
+| judge3_score       |
+| titles             |
+| comments           |</p>
 <p>As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.</p>
 <p>With that being settled, the first important decision I made with respect to transformation of the data was to do a self-join within the fight table in MySQL. Thus, as shown above, each record in the dataset represented one fight. There would be a boxer1 and a boxer2. The target for each row would be Win, Lose, or Draw, with respect to boxer1. There would also be the granular outcome information: the type of W, L or D. After all, there are many ways for a boxing match to end: points, knockout, quitting on the stool, etc etc.</p>
 <p>(Quick note on a detail of the sport itself: Notice that although boxing is an individual sport, each fighter also has a whole team behind them. During competition, there is a coach, obviously, and there is the cutman as well. The cutman handles the first aid between rounds. These guys are the secondaries -- so in boxing, we'll call the 2 boxers primaries. I quickly renamed boxer1 and boxer2 to P1 and P2.)</p>
