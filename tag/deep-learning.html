@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <script src="http://www.mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,23 +24,23 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li >
-	      <a href="http://mattobrien.me/category/deep-learning.html ">deep learning</a>
+	      <a href="http://www.mattobrien.me/category/deep-learning.html ">deep learning</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/python.html ">python</a>
+	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -58,7 +58,7 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="http://mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"><h1>Deep Learning for Sport Wagering Part 2 of 3</h1></a>
+            <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"><h1>Deep Learning for Sport Wagering Part 2 of 3</h1></a>
         </div>
     </div>
     <div class="row-fluid">
@@ -66,18 +66,18 @@
 <p>Sat 16 September 2017 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep learning</a>
+Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep learning</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://mattobrien.me/tag/sport.html">sport</a> <a href="http://mattobrien.me/tag/wagering.html">wagering</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://www.mattobrien.me/tag/sport.html">sport</a> <a href="http://www.mattobrien.me/tag/wagering.html">wagering</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="article-content span8">
 	<h4>Part 2: Modeling</h4>
-<p>I was fortunate enough to have attended Jeremy Howard's awesome <a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one">deep learning certification program</a> at University of San Francisco. One of the many insightful things Jeremy said, was, and I quote, "In real life, I always start with a <a href="http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html">variable importance plot</a>."</p>
+<p>I was fortunate enough to have attended Jeremy Howard's awesome <a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one">deep learning certification program</a> at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, <a href="https://youtu.be/1-NYPQw5THU?t=1h19m13s">"In real life, I always start with a variable importance plot"</a></p>
 <p>Being just smart enough to recognize when smarter people have good ideas, this is exactly what I did.</p>
 <p>I built a straightforward Random Forest in scikit-learn (using GridSearchCV) and retrieved this plot:</p>
 <p><img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true"></p>
@@ -128,7 +128,7 @@ Recall:    0.78</p>
 <p>Meanwhile, allow me to wander a bit and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. </p>
 <p>I changed the labels to represent the granular outcomes mentioned above, and I rebuilt the model and crossed my fingers. Unfortunately, and not too surprisingly, accuracy dropped to around 30%. Hummm...well...worth a shot. And definitely worth revisiting again later.</p>
 <p>Next up...prediction time!</p> 
-	<a class="btn btn-mini xsmall" href="http://mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">
+	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">
           <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
@@ -143,7 +143,7 @@ Recall:    0.78</p>
 
     <div class='row-fluid'>
       <div class='article-title span9'> 
-        <a href="http://mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"><h1>Deep Learning for Sport Wagering Part 1 of 3</h1></a>
+        <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"><h1>Deep Learning for Sport Wagering Part 1 of 3</h1></a>
       </div>
     </div>
     <div class="row-fluid">
@@ -151,18 +151,18 @@ Recall:    0.78</p>
 <p>Fri 15 September 2017 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep learning</a>
+Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep learning</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://mattobrien.me/tag/sport.html">sport</a> <a href="http://mattobrien.me/tag/wagering.html">wagering</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://www.mattobrien.me/tag/sport.html">sport</a> <a href="http://www.mattobrien.me/tag/wagering.html">wagering</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="summary span8">
 	<p>Characteristics of the dataset</p> 
-	<a class="btn btn-mini xsmall" href="http://mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html">
+	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
@@ -173,7 +173,7 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="http://mattobrien.me/tag/deep-learning.html">1</a></li>
+    <li class="active"><a href="http://www.mattobrien.me/tag/deep-learning.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
@@ -217,14 +217,14 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://mattobrien.me/" rel="alternate">
+            <li><a href="http://www.mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -234,7 +234,7 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
