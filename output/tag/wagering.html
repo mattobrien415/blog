@@ -118,45 +118,45 @@ For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent 
 <p>The dataset was balanced: 55% Wins, 45% Losses.</p>
 <p>More useful was the specific data for each boxing match:  </p>
 <h4>fight data</h4>
-<p>| boxer1_id          |
-| boxer2_id          |
-| date               |
-| location           |
-| rounds_planned     |
-| rounds_happened    |
-| boxer1_mass        |
-| boxer2_mass        |
-| boxer2_wins        |
-| boxer2_loses       |
-| boxer2_draws       |
-| boxer2_last6_wins  |
-| boxer2_last6_loses |
-| boxer2_last6_draws |
-| outcome            |
-| outcome_type       |
-| rating             |
-| time               |
-| referee            |
-| judge1             |
-| judge2             |
-| judge3             |
-| judge1_score       |
-| judge2_score       |
-| judge3_score       |
-| titles             |
-| comments           |</p>
+<p>boxer1_id<br>
+boxer2_id<br>
+date<br>
+location<br>
+rounds_planned<br>
+rounds_happened<br>
+boxer1_mass<br>
+boxer2_mass<br>
+boxer2_wins<br>
+boxer2_loses<br>
+boxer2_draws<br>
+boxer2_last6_wins<br>
+boxer2_last6_loses<br>
+boxer2_last6_draws<br>
+outcome<br>
+outcome_type<br>
+rating<br>
+time<br>
+referee<br>
+judge1<br>
+judge2<br>
+judge3<br>
+judge1_score<br>
+judge2_score<br>
+judge3_score<br>
+titles<br>
+comments  </p>
 <p>As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.</p>
 <p>With that being settled, the first important decision I made with respect to transformation of the data was to do a self-join within the fight table in MySQL. Thus, as shown above, each record in the dataset represented one fight. There would be a boxer1 and a boxer2. The target for each row would be Win, Lose, or Draw, with respect to boxer1. There would also be the granular outcome information: the type of W, L or D. After all, there are many ways for a boxing match to end: points, knockout, quitting on the stool, etc etc.</p>
 <p>(Quick note on a detail of the sport itself: Notice that although boxing is an individual sport, each fighter also has a whole team behind them. During competition, there is a coach, obviously, and there is the cutman as well. The cutman handles the first aid between rounds. These guys are the secondaries -- so in boxing, we'll call the 2 boxers primaries. I quickly renamed boxer1 and boxer2 to P1 and P2.)</p>
 <p>Looking at these data, all seemed promising. But after some more reflection, I started to be concerned with what this rectangular representation was missing.
 Really, these fights are all sequences of events that happen for a boxer -- they start with fight #1, then continue forward until the end of their careers. This made me interested in engineering some temporal variables, which I proceed to do in Pandas. Now, each row had these features:  </p>
-<p>| P1_ageAtFight    |
-| P2_ageAtFight    |
-| P1_rounds_fought |
-| P2_rounds_fought |</p>
+<p>P1_ageAtFight<br>
+P2_ageAtFight<br>
+P1_rounds_fought<br>
+P2_rounds_fought  </p>
 <p>Another feature as basically 'career length', or how many days it had been since the boxer's debut. These became:  </p>
-<p>| P1_days_since_ff |
-| P2_days_since_ff |  </p>
+<p>P1_days_since_ff<br>
+P2_days_since_ff  </p>
 <p>where 'ff' is just 'first fight'.</p>
 <p>Some boxers were missing a birthdate, so I imputed these birthdates by assuming that each boxer's debut was on their 20th birthday. This was a simple subtraction from of 20 years from the date of the first fight.</p>
 <p>But beyond the sequential, temporal perspective, there was still something more to be done. I realized this dataset could also be realized as a graph, with nodes for the boxers and the fights, and nodes for their professional W, L, D records at the time of the fight. So I imported if out of SQL and into Neo4J.</p>
