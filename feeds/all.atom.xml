@@ -15,26 +15,26 @@
 3) Prediction and Evaluation  &lt;/p&gt;
 &lt;p&gt;1) Data &lt;/p&gt;
 &lt;p&gt;The project was built on a very substantial dataset. I had metadata on 373,415 individual boxers, alongside a collection of over 3.5 million fights (3,529,624 to be exact). These I imported into two MySQL tables. The dataset spanned the entire history of the sport. It was really fun to dig into. There were fighters from every corner of the globe, competing from the mid-1800s to the present day. There were boxers in every weight class from minimumweight upward, possessing all skill levels, at all ages, and exhibiting all levels of success. Perusing revealed some quite obscure fighters: a boxer from Accra, Ghana, who fought only once (unfortunately losing by knockout), back in 1966. Then, there was data on all the modern day multimillionaire heavyweight champions. There were was, for example, Wladamir Klitchko, nicknamed 'Dr Steelhammer.' &lt;/p&gt;
-&lt;h4&gt;boxer data&lt;/h4&gt;
 &lt;p&gt;The dataset definitely possessed depth. The breadth in features was as such:&lt;/p&gt;
-&lt;p&gt;| name         |
-| sex          |
-| birth_date   |
-| division     |
-| stance       |
-| height       |
-| reach        |
-| country      |
-| residence    |
-| birth_place  |
-| world_rank   |
-| total_wins   |
-| ko_wins      |
-| total_losses |
-| ko_losses    |
-| draws        |
-| rounds       |
-| ko_percent   |&lt;/p&gt;
+&lt;h4&gt;boxer data&lt;/h4&gt;
+&lt;p&gt;name&lt;br&gt;
+sex&lt;br&gt;
+birth_date&lt;br&gt;
+division&lt;br&gt;
+stance&lt;br&gt;
+height&lt;br&gt;
+reach&lt;br&gt;
+country&lt;br&gt;
+residence&lt;br&gt;
+birth_place&lt;br&gt;
+world_rank&lt;br&gt;
+total_wins&lt;br&gt;
+ko_wins&lt;br&gt;
+total_losses&lt;br&gt;
+ko_losses&lt;br&gt;
+draws&lt;br&gt;
+rounds&lt;br&gt;
+ko_percent  &lt;/p&gt;
 &lt;p&gt;Although elements like a boxer's weight are extremely important in real life boxing, some particular features like that and others were not applicable.
 For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent fight was at 146. So a single value pulled from the metadata would only reflect the most recent weight, not the weight at each fight.&lt;/p&gt;
 &lt;p&gt;It was simple to keep stance (orthodox or southpaw) as a categorical variable.&lt;/p&gt;
