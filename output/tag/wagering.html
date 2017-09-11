@@ -122,7 +122,7 @@ mlp.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
 <p>...I was inspired to refit the model with a variety of custom precision and recall thresholds and examined the resulting metrics.  </p>
 <p>However, by sticking with the default <code>[precision_threshold(0.5), recall_threshold(0.5)]</code></p>
 <p>I got my best precision and recall scores: </p>
-<p>Precision: 0.71
+<p>Precision: 0.71<br>
 Recall:    0.78</p>
 <p>I could spend some more time exploring this area, but for now I am content with these scores.</p>
 <p>Meanwhile, allow me to wander a bit and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. </p>
