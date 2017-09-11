@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-09-15T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering.html</id><summary type="html">&lt;p&gt;Part 1 Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;h4&gt;THIS BLOG POST IS IN PROGRESS&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-09-15T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering.html</id><summary type="html">&lt;p&gt;Part 1 Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 1: Characteristics of the dataset&lt;/h4&gt;
+&lt;h4&gt;THIS BLOG POST IS IN PROGRESS&lt;/h4&gt;
 &lt;p&gt;Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.&lt;/p&gt;
 &lt;p&gt;One particular line in the blog post stuck out for me: "It’s as if at some point in the past few years, the Warriors solved contemporary basketball..."&lt;/p&gt;
 &lt;p&gt;Solved! A bit heavy on the hyperbole, but maybe not too far off.&lt;/p&gt;
@@ -15,57 +16,165 @@
 &lt;p&gt;1) Data &lt;/p&gt;
 &lt;p&gt;The project was built on a very substantial dataset. I had metadata on 373,415 individual boxers, alongside a collection of over 3.5 million fights (3,529,624 to be exact). These I imported into two MySQL tables. The dataset spanned the entire history of the sport. It was really fun to dig into. There were fighters from every corner of the globe, competing from the mid-1800s to the present day. There were boxers in every weight class from minimumweight upward, possessing all skill levels, at all ages, and exhibiting all levels of success. Perusing revealed some quite obscure fighters: a boxer from Accra, Ghana, who fought only once (unfortunately losing by knockout), back in 1966. Then, there was data on all the modern day multimillionaire heavyweight champions. There were was, for example, Wladamir Klitchko, nicknamed 'Dr Steelhammer.' &lt;/p&gt;
 &lt;p&gt;The dataset definitely possessed depth. The breadth in features was as such:&lt;/p&gt;
-&lt;p&gt;Boxer's metadata
-name 
-sex 
-birth_date 
-division 
-stance 
-height 
-reach 
-country 
-residence 
-birth_place 
-world_rank 
-total_wins 
-ko_wins 
-total_losses 
-ko_losses 
-draws 
-rounds 
-ko_percent &lt;/p&gt;
+&lt;p&gt;Boxer's metadata&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;boxer data&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;name&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;sex&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;birth_date&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;division&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;stance&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;height&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;reach&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;country&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;residence&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;birth_place&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;world_rank&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;total_wins&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ko_wins&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;total_losses&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ko_losses&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;draws&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rounds&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ko_percent&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;Although elements like a boxer's weight are extremely important in real life boxing, some particular features like that and others were not applicable.
 For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent fight was at 146. So a single value pulled from the metadata would only reflect the most recent weight, not the weight at each fight.&lt;/p&gt;
 &lt;p&gt;It was simple to keep stance (orthodox or southpaw) as a categorical variable.&lt;/p&gt;
 &lt;p&gt;The dataset was balanced: 55% Wins, 45% Losses.&lt;/p&gt;
-&lt;p&gt;More useful was the specific data for each boxing match:
-boxer1_id 
-boxer2_id 
-date 
-location 
-rounds_planned 
-rounds_happened 
-boxer1_mass 
-boxer2_mass 
-boxer2_wins 
-boxer2_loses 
-boxer2_draws 
-boxer2_last6_wins 
-boxer2_last6_loses 
-boxer2_last6_draws 
-outcome 
-outcome_type 
-rating 
-time 
-referee 
-judge1 
-judge2 
-judge3 
-judge1_score 
-judge2_score 
-judge3_score 
-titles 
-comments &lt;/p&gt;
+&lt;p&gt;More useful was the specific data for each boxing match:  &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;fight data&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer1_id&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_id&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;date&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;location&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rounds_planned&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rounds_happened&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer1_mass&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_mass&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_wins&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_loses&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_draws&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_last6_wins&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_last6_loses&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;boxer2_last6_draws&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;outcome&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;outcome_type&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rating&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;time&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;referee&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;judge1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;judge2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;judge3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;judge1_score&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;judge2_score&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;judge3_score&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;titles&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;comments&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.&lt;/p&gt;
 &lt;p&gt;With that being settled, the first important decision I made with respect to transformation of the data was to do a self-join within the fight table in MySQL. Thus, as shown above, each record in the dataset represented one fight. There would be a boxer1 and a boxer2. The target for each row would be Win, Lose, or Draw, with respect to boxer1. There would also be the granular outcome information: the type of W, L or D. After all, there are many ways for a boxing match to end: points, knockout, quitting on the stool, etc etc.&lt;/p&gt;
 &lt;p&gt;(Quick note on a detail of the sport itself: Notice that although boxing is an individual sport, each fighter also has a whole team behind them. During competition, there is a coach, obviously, and there is the cutman as well. The cutman handles the first aid between rounds. These guys are the secondaries -- so in boxing, we'll call the 2 boxers primaries. I quickly renamed boxer1 and boxer2 to P1 and P2.)&lt;/p&gt;
