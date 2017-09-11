@@ -6,7 +6,7 @@ Summary: Modeling
 #### Part 2: Modeling
 
 
-I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, ["In real life, I always start with a variable importance plot"](https://youtu.be/1-NYPQw5THU?t=1h19m13s)
+I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, ["In real life, I always start with a variable importance plot"](https://youtu.be/1-NYPQw5THU?t=1h19m11s)
 
 
 Being just smart enough to recognize when smarter people have good ideas, this is exactly what I did.
