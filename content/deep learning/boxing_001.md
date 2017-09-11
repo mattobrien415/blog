@@ -41,6 +41,7 @@ The dataset definitely possessed depth. The breadth in features was as such:
 
 #### boxer data  
 
+
 |--------------|
 | name         |
 | sex          |
@@ -73,6 +74,7 @@ More useful was the specific data for each boxing match:
 
 
 #### fight data  
+
 
 | ------------------ |
 | boxer1_id          |
