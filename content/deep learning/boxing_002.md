@@ -75,7 +75,7 @@ However, by sticking with the default `[precision_threshold(0.5), recall_thresho
  
 I got my best precision and recall scores: 
 
-Precision: 0.71
+Precision: 0.71  
 Recall:    0.78
 
 I could spend some more time exploring this area, but for now I am content with these scores.

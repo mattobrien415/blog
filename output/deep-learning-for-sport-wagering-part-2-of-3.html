@@ -75,18 +75,18 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
       
       <div class="span8">
 	<h4>Part 2: Modeling</h4>
-<p>I was fortunate enough to have attended Jeremy Howard's awesome <a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one">deep learning certification program</a> at University of San Francisco. One of the many insightful things Jeremy said, was, and I quote, "In real life, I always start with a variable importance plot" <find video>.</p>
-<p>Being smart enough to recognize when smarter people have good ideas, this is exactly what I did.</p>
+<p>I was fortunate enough to have attended Jeremy Howard's awesome <a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one">deep learning certification program</a> at University of San Francisco. One of the many insightful things Jeremy said, was, and I quote, "In real life, I always start with a <a href="http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html">variable importance plot</a>."</p>
+<p>Being just smart enough to recognize when smarter people have good ideas, this is exactly what I did.</p>
 <p>I built a straightforward Random Forest in scikit-learn (using GridSearchCV) and retrieved this plot:</p>
 <p><img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true"></p>
 <p>The plot doesn't have a strong inflection point. </p>
 <p>First let's look at what isn't important:  </p>
 <ul>
-<li>We see that the number of Draw outcomes isn't important, which makes sense, as these are extremely rare outcomes and are fairly irrelevant.  </li>
-<li>We see that the permutations of stances across opponents (complimentary or opposite, left-handed or right-handed) isn't relevant.  </li>
+<li>We see that the number of Draw outcomes isn't important, which makes sense, as these are rare outcomes and are fairly irrelevant. The number of draws a boxer has doesn't have much bearing on the rest of their records.  </li>
+<li>We see that the permutations of stances across opponents (complimentary or opposite, <a href="https://en.wikipedia.org/wiki/Southpaw_stance">southpaw</a> or <a href="https://en.wikipedia.org/wiki/Orthodox_stance">orthodox</a>) isn't relevant.  </li>
 <li>Finally, the indicator columns aren't useful, which isn't a major surprise. </li>
 </ul>
-<p>Next, let's look at what <em>is</em> important. But first, let's take a little detour to think ahead about what might feel right. Let's ignore the VIP for a second.</p>
+<p>Next, let's look at what <em>is</em> important. But first, let's take a little detour to think ahead about what might feel right. Let's ignore the variable importance plot for a moment.</p>
 <p>There is a fundamental axiom in boxing: "Hit and don't get hit." Without adhering to this basic principle, careers will be unnecesarily short, as physical damage sustained will quickly accumulate. So the idea of wear and tear on the body accumulated by a boxer over time seems like a naturally important component of what influences the outcome of a fight. </p>
 <p>This being considered, it should come as no great surprise that the most important feature in the Random Forest is <code>P1_days_since_ff</code>. Recall, this variable reports how long it has been since a boxer's career began. This perspective on career length turns out to be a natural fit.</p>
 <p>However, it's possible a boxer could fight once, then fight again 10 years later. In this scenario,<code>P1_days_since_ff</code> would be a value around 3,650, but this wouldn't be an accurate measurement of that boxer's accumulated wear and tear. Fortunately for us, the next most important features on the plot corresponds to the aggregated number of rounds the opponents have fought. A long 'ring life' can clearly play a large role in a fighter's success (see <a href="https://www.youtube.com/watch?v=Ja9iovR9B3E">Ali vs Holmes</a> for a tragic example). Conversely, too few rounds can also play a role in predicting losing.</p>
