@@ -1,5 +1,5 @@
 Title:  Deep Learning for Sport Wagering Part 2 of 3
-Date: 2017-09-15
+Date: 2017-09-16
 Tags: deep learning, sport, wagering
 Summary: Modeling
 
