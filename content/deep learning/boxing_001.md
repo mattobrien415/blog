@@ -38,7 +38,8 @@ The project was built on a very substantial dataset. I had metadata on 373,415 i
 The dataset definitely possessed depth. The breadth in features was as such:
 
 
-|boxer data   |
+
+# boxer data
 |--------------|
 | name         |
 | sex          |
@@ -70,7 +71,7 @@ The dataset was balanced: 55% Wins, 45% Losses.
 More useful was the specific data for each boxing match:  
 
 
-| fight data         |
+# fight data
 | ------------------ |
 | boxer1_id          |
 | boxer2_id          |
