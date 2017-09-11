@@ -3,7 +3,7 @@ Date: 2017-09-15
 Tags: deep learning, sport, wagering
 Summary: Part 1 Characteristics of the dataset
 
-
+#### Part 1: Characteristics of the dataset
 #### THIS BLOG POST IS IN PROGRESS  
 
 Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.
@@ -38,24 +38,25 @@ The project was built on a very substantial dataset. I had metadata on 373,415 i
 The dataset definitely possessed depth. The breadth in features was as such:
 
 Boxer's metadata
-name 
-sex 
-birth_date 
-division 
-stance 
-height 
-reach 
-country 
-residence 
-birth_place 
-world_rank 
-total_wins 
-ko_wins 
-total_losses 
-ko_losses 
-draws 
-rounds 
-ko_percent 
+| name         |
+|--------------|
+| sex          |
+| birth_date   |
+| division     |
+| stance       |
+| height       |
+| reach        |
+| country      |
+| residence    |
+| birth_place  |
+| world_rank   |
+| total_wins   |
+| ko_wins      |
+| total_losses |
+| ko_losses    |
+| draws        |
+| rounds       |
+| ko_percent   |
 
 
 Although elements like a boxer's weight are extremely important in real life boxing, some particular features like that and others were not applicable.
@@ -65,34 +66,36 @@ It was simple to keep stance (orthodox or southpaw) as a categorical variable.
 
 The dataset was balanced: 55% Wins, 45% Losses.
 
-More useful was the specific data for each boxing match:
-boxer1_id 
-boxer2_id 
-date 
-location 
-rounds_planned 
-rounds_happened 
-boxer1_mass 
-boxer2_mass 
-boxer2_wins 
-boxer2_loses 
-boxer2_draws 
-boxer2_last6_wins 
-boxer2_last6_loses 
-boxer2_last6_draws 
-outcome 
-outcome_type 
-rating 
-time 
-referee 
-judge1 
-judge2 
-judge3 
-judge1_score 
-judge2_score 
-judge3_score 
-titles 
-comments 
+More useful was the specific data for each boxing match:  
+
+
+| boxer1_id          |
+| boxer2_id          |
+| date               |
+| location           |
+| rounds_planned     |
+| rounds_happened    |
+| boxer1_mass        |
+| boxer2_mass        |
+| boxer2_wins        |
+| boxer2_loses       |
+| boxer2_draws       |
+| boxer2_last6_wins  |
+| boxer2_last6_loses |
+| boxer2_last6_draws |
+| outcome            |
+| outcome_type       |
+| rating             |
+| time               |
+| referee            |
+| judge1             |
+| judge2             |
+| judge3             |
+| judge1_score       |
+| judge2_score       |
+| judge3_score       |
+| titles             |
+| comments           |
 
 
 As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.
