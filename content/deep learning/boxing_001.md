@@ -17,7 +17,7 @@ At it's heart, boxing has a simple structure.  Unlike many popular sports, it's 
 
 To make the project more impactful, I decided to set a very specific goal. I've found that often, personal projects such as these will hold up better if there is the possibility of a good payoff at the end --  so I figured, why not try to build an algorithm that would allow me to win money in Vegas? Thus I set the goal of creating a tool for successful wagering on boxing.
 
-After quite a few long nights and weekends of collecting, reshaping, and modeling the data, I came into posession a pretty good model. The tl;dr is that the model guarantees a result of up to a <insert> return on investment. 
+After quite a few long nights and weekends of collecting, reshaping, and modeling the data, I came into posession a pretty good model. The tl;dr is that the model guarantees a result of up to an (fill this in soon) <insert> return on investment. 
 
 So, if you make it through these (hopefully not painful to read) blog posts, then go ahead and check on some upcoming fights. Ask me where to put your money, and I might be able to provide you with the 'nap.' In case you didn't know, the word 'nap' refers to a highly confident bet. That's been a fun side-effect from this project -- I learned a lot of cool new slang terms! 
 
