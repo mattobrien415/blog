@@ -95,9 +95,15 @@ The ROI plot above doesn't show the net cash balance. The plot below does:
 
 This chart shows the values at the region of interest:  
 
+ | First Header  | Second Header |
+ | ------------- | ------------- |
+ | Content Cell  | Content Cell  |
+ | Content Cell  | Content Cell  |
+
+
 
  | Decision Threshold  | ROI    |
- | ---------------------------- | 
+ | ---------------------------- |
  | 0.87                | 22.46  |
  | 0.88                | 22.46  |
  | 0.89                | 22.46  |

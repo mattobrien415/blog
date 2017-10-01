@@ -57,15 +57,15 @@ and  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="cash" src="https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true"&gt;  &lt;/p&gt;
 &lt;p&gt;This chart shows the values at the region of interest:  &lt;/p&gt;
 &lt;p&gt;| Decision Threshold  | ROI    |
-| ---------------------------- | 
-| 0.87                | 22.46  |
-| 0.88                | 22.46  |
-| 0.89                | 22.46  |
-| 0.90                | 22.46  |
-| 0.91                | 22.46  |
-| 0.92                | 23.33  |
-| 0.93                | 23.33  |
-| 0.94                | 24.82  |&lt;/p&gt;
+ | ---------------------------- | 
+ | 0.87                | 22.46  |
+ | 0.88                | 22.46  |
+ | 0.89                | 22.46  |
+ | 0.90                | 22.46  |
+ | 0.91                | 22.46  |
+ | 0.92                | 23.33  |
+ | 0.93                | 23.33  |
+ | 0.94                | 24.82  |&lt;/p&gt;
 &lt;p&gt;Again, we are seeing that with a \$&lt;/p&gt;
 &lt;p&gt;Wagers as a function of dt
 ROI showing first hint of high probs
