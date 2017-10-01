@@ -9,12 +9,13 @@ Summary: Predicting
 
 I considered two major betting strategies during this final phase of the project. They are as follows:  
 
-1) If   
-model probability > some decision threshold, and  
-model probability > sportsbook probability  
+1) If  
+$\text{model probability} > \text{some decision threshold}$, and  
+$\text{model probability} > \text{sportsbook probability}$  
 then place bet  
 
-2) If model probability > some decision threshold
+2) If  
+$\text{model probability} > \text{some decision threshold}$  
 then place bet
 
 The first strategy is a more conservative approach in one sense. With this perspective, we include a parameter that indicates if we feel like we have an edge on the casino or sportsbook. 
@@ -53,7 +54,7 @@ and
 
 $\text{Implied probability for 'positive' moneyline} = \frac{100}{\text{'positive' moneyline value} + 100}$
 
-Thus, -130 is converted to 0.56%, and +110 is converted to 0.50.  
+Thus, -130 is converted to 0.56, and +110 is converted to 0.50.  
 
 But what is an implied probability anyway?
 
@@ -66,6 +67,9 @@ Thus:
 $\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied probability A} + \text{Implied probability B}}$
 
 With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  
+
+We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  
+
 
 
 
