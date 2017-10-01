@@ -93,6 +93,8 @@ The chart below shows the model will place the proportionately largest number of
 
 It looks like roughly 0.90 is a reasonable place to set the threshold.  
 
+Now that we've got a feel for where our threshold might be, we can leap forward to look at the bottom line -- did we turn a profit?  
+
 Here is a plot showing the outcome for #5 (ROI) on the list above:  
 
 ![ROI](https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true)  
@@ -102,7 +104,7 @@ This chart shows the ROI values at the region of interest:
 
 ![chart_002](https://github.com/mobbSF/blog/blob/master/images/chart_002.png?raw=true)  
 
-This shows we can get an ROI around 22.5% if we set the decision threshold to roughly 0.90. We could push it up to 24.8% if we choose 0.94 as the threshold, but notice the precipitous drop starting at 0.95 on the plot above. Better to be wary of possible noise and choose the median value.
+This shows we can get an ROI of roughly 22.5% if we set the decision threshold to 0.90. We could push it up to 24.8% if we choose 0.94 as the threshold, but notice the precipitous drop starting at 0.95 on the plot above. Better to be wary of possible noise and choose the median value.
 
 To unpack the ROI value, we can look at the actual dollar amount earned:  
 
@@ -115,9 +117,12 @@ Finally, let's see what the plot looks like when we view all these results simul
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true)  
 
-Clearly, the model is a success as a result of this tuning step.  
+Clearly, the model is a success as a result of this tuning step. The ROI is eye openingly large.
 
-There are some issues. Recall, we started with a pool of 679 possible fights to wager on. Only 13 bets were executed -- roughly 2 bets made for each 100 fights. Using this algorithm, it would take some time to converge into a profit. This is because there usually is only a handful of matches that are offered every week by the sportsbooks. Then again,   
+But before putting this model to use with blind abandon, there are some issues. 
+
+* Time  
+Recall, we started with a pool of 679 possible fights to wager on. Only 13 bets were executed -- roughly 2 bets made for each 100 fights. Using this algorithm, it would take some time to converge into a profit. This is because there usually is only a handful of matches that are offered every week by the sportsbooks. Then again, most people invest for a minimum of 10 years to see the estimated 7% return in the stock market.
 
 
 
