@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me - deep learning</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/deep-learning.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-10-09T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering Part 3 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html" rel="alternate"></link><published>2017-10-09T00:00:00-07:00</published><updated>2017-10-09T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-10-09:/deep-learning-for-sport-wagering-part-3-of-3.html</id><summary type="html">&lt;p&gt;Predicting&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 3: Predicting&lt;/h4&gt;
-&lt;p&gt;&lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"&gt;Part 1: Characteristics of the dataset&lt;/a&gt;&lt;br&gt;
+&lt;p&gt;&lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"&gt;Part 1: Characteristics of the dataset&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"&gt;Part 2: Modeling&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I considered two major betting strategies during this final phase of the project. They are as follows:  &lt;/p&gt;
-&lt;p&gt;1) If&lt;br&gt;
-$\text{model probability} &amp;gt; \text{some decision threshold}$, and&lt;br&gt;
-$\text{model probability} &amp;gt; \text{sportsbook probability}$&lt;br&gt;
+&lt;p&gt;1) If&lt;br /&gt;
+$\text{model probability} &amp;gt; \text{some decision threshold}$, and&lt;br /&gt;
+$\text{model probability} &amp;gt; \text{sportsbook probability}$&lt;br /&gt;
 then place bet  &lt;/p&gt;
-&lt;p&gt;2) If&lt;br&gt;
-$\text{model probability} &amp;gt; \text{some decision threshold}$&lt;br&gt;
+&lt;p&gt;2) If&lt;br /&gt;
+$\text{model probability} &amp;gt; \text{some decision threshold}$&lt;br /&gt;
 then place bet&lt;/p&gt;
 &lt;p&gt;The first strategy is a more conservative approach in one sense. With this perspective, we include a parameter that indicates if we feel like we have an edge on the casino or sportsbook. &lt;/p&gt;
 &lt;p&gt;Allow me a quick foray into the structure of gambling. Sportsbook odds are set, not by information, but by popular sentiment as it is revealed by &lt;a href="https://www.docsports.com/gambling-terms.html"&gt;action&lt;/a&gt;. If some Boxer A gets a large amount of action, then the sportsbook will consider Boxer A to be more likely to win, and consequently, payout on this outcome is reduced. Thus, my model is attempting to answer the question, "When does prediction based on historic data result in a confidence higher than the confidence of the sportsbook -- which is a function of popular sentiment?". In this sense, at it's most stripped down, the model is trying make a totally impartial, data driven decision, and looks for opportunities when public perception is not aligned with historically based signal.  &lt;/p&gt;
@@ -23,11 +23,11 @@ then place bet&lt;/p&gt;
 &lt;li&gt;A negative number (assocated with the favored fighter) shows how much money you need to bet to win a profit of $100.  &lt;/li&gt;
 &lt;li&gt;A positive number (associated with the underdog) shows how much profit a winning wager of $100 would yield.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;So if the moneyline has Boxer A at -130, we know that Boxer A is expected to win. Further, you know you'd have to place a \$130 bet on this fighter to win \$100.&lt;br&gt;
+&lt;p&gt;So if the moneyline has Boxer A at -130, we know that Boxer A is expected to win. Further, you know you'd have to place a \$130 bet on this fighter to win \$100.&lt;br /&gt;
 For Boxer B, the moneyline might have them set at +110. This mean Boxer B is the underdog, and if you placed a \$100 bet on this fighter, you'd win \$110.  &lt;/p&gt;
 &lt;p&gt;Since Keras is returning the probability of a boxer winning, we now need to convert the moneyline into regular probabilities so we can compare apples to apples.  &lt;/p&gt;
 &lt;p&gt;To do this, first the actual numeric values (-130 and +110, on this example above), must be converted to what are referred to as &lt;a href="https://www.sbo.net/strategy/implied-probability/"&gt;implied probabilities&lt;/a&gt; (more about implied probabilities in a second). The formula is as follows:  &lt;/p&gt;
-&lt;p&gt;$\text{Implied probability for 'negative' moneyline} = \frac{ - ( \text{'negative' moneyline value})}{- ( \text{'negative' moneyline value} ) + 100}$&lt;br&gt;
+&lt;p&gt;$\text{Implied probability for 'negative' moneyline} = \frac{ - ( \text{'negative' moneyline value})}{- ( \text{'negative' moneyline value} ) + 100}$&lt;br /&gt;
 and  &lt;/p&gt;
 &lt;p&gt;$\text{Implied probability for 'positive' moneyline} = \frac{100}{\text{'positive' moneyline value} + 100}$&lt;/p&gt;
 &lt;p&gt;Thus, -130 is converted to 0.56, and +110 is converted to 0.50.  &lt;/p&gt;
@@ -48,13 +48,13 @@ and  &lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;The iterations assumed that each bet placed was a \$100 bet. Every loss will incur a deduction of \$100, whereas each winning bet will earn a deposit depending on the sportsbook odds. This means if the model can predict 'easy' matches, it can win a smaller amount of money, but if the matches are harder to predict, the model can earn more.  &lt;/p&gt;
 &lt;p&gt;Here is a plot showing the outcome for #1 on the list above:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="wagers" src="https://github.com/mobbSF/blog/blob/master/images/wagers.png?raw=true"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="wagers" src="https://github.com/mobbSF/blog/blob/master/images/wagers.png?raw=true" /&gt;  &lt;/p&gt;
 &lt;p&gt;This gives us an intuition on where to place our decision threshold. We are interested in the point where the blue line and the green line are closest together, and simultaneously highest along the y axis. It likes the model will place the proportionately largest number of winning bets around an 0.85 to 0.95 decision threshold.  &lt;/p&gt;
 &lt;p&gt;Here is a plot showing the outcome for #5 on the list above:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="ROI" src="https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="ROI" src="https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true" /&gt;  &lt;/p&gt;
 &lt;p&gt;This shows we can get an ROI around 22\% if we set the decision threshold in that same area as we observed in the first plot.  &lt;/p&gt;
 &lt;p&gt;The ROI plot above doesn't show the net cash balance. The plot below does:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="cash" src="https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="cash" src="https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true" /&gt;  &lt;/p&gt;
 &lt;p&gt;This chart shows the values at the region of interest:  &lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -206,12 +206,12 @@ All stuff combined&lt;/p&gt;&lt;script type= "text/javascript"&gt;
     }
 &lt;/script&gt;
 </content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>Deep Learning for Sport Wagering Part 2 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html" rel="alternate"></link><published>2017-09-16T00:00:00-07:00</published><updated>2017-09-16T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-16:/deep-learning-for-sport-wagering-part-2-of-3.html</id><summary type="html">&lt;p&gt;Modeling&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 2: Modeling&lt;/h4&gt;
-&lt;p&gt;&lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"&gt;Part 1: Characteristics of the dataset&lt;/a&gt;&lt;br&gt;
+&lt;p&gt;&lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"&gt;Part 1: Characteristics of the dataset&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html"&gt;Part 3: Modeling&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I was fortunate enough to have attended Jeremy Howard's awesome &lt;a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one"&gt;deep learning certification program&lt;/a&gt; at University of San Francisco. One of the many insightful things Jeremy said was, and I quote directly, &lt;a href="https://youtu.be/1-NYPQw5THU?t=1h19m11s"&gt;"The first thing I do, is try to get a feature importance plot printed."&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Being just smart enough to recognize when smarter people have smart ideas, this is exactly what I did.&lt;/p&gt;
 &lt;p&gt;I built a straightforward Random Forest in scikit-learn (using CV to select hyperparameters and using general best procedures) and retrieved this plot:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;The plot doesn't have a strong inflection point, making it difficult to decide where to draw a line in the sand about what is important to include. Let's see if we can deduce where this cutoff might fall, by first let's look at what isn't important:  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;We see that the number of Draw outcomes isn't important, which makes sense, as these are rare outcomes and are fairly irrelevant. The number of draws a boxer has doesn't have much bearing on the rest of their records.  &lt;/li&gt;
@@ -228,31 +228,29 @@ All stuff combined&lt;/p&gt;&lt;script type= "text/javascript"&gt;
 &lt;p&gt;On a positive note, because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. &lt;/p&gt;
 &lt;p&gt;Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed very similarly. Epochs around 10 performed just fine.&lt;/p&gt;
 &lt;p&gt;A decent final configuration looked like this: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mlp_004 = Sequential()
-mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;, input_dim=13))
-mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
-mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
+&lt;pre&gt;&lt;code&gt;mlp_004 = Sequential()
+mlp_004.add(Dense(64, activation='relu', input_dim=13))
+mlp_004.add(Dense(64, activation='relu'))
+mlp_004.add(Dense(64, activation='relu'))
 mlp_004.add(Dropout(0.2))
-mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
-mlp_004.add(Dense(1, activation=&amp;#39;sigmoid&amp;#39;))
+mlp_004.add(Dense(64, activation='relu'))
+mlp_004.add(Dense(1, activation='sigmoid'))
 
-mlp_004.compile(optimizer=&amp;#39;rmsprop&amp;#39;, loss=&amp;#39;binary_crossentropy&amp;#39;, metrics=[&amp;#39;accuracy&amp;#39;])
+mlp_004.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
 
 mlp_004.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The validation set accuracy returned was 73%. &lt;/p&gt;
 &lt;p&gt;Here's the confusion matrix:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="CM" src="https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="CM" src="https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;Here's the ROC curve:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="ROC" src="https://github.com/mobbSF/blog/blob/master/images/ROC.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ROC" src="https://github.com/mobbSF/blog/blob/master/images/ROC.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;OK, so how should I feel about such relatively modest scores, in this age of a solved MNIST, self-driving cars, and &lt;a href="https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html"&gt;Elon Musk's dire warnings&lt;/a&gt; of &lt;a href="https://www.youtube.com/watch?v=-WIwQlMesr0"&gt;Arnold coming baaack&lt;/a&gt;?&lt;/p&gt;
 &lt;p&gt;I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we &lt;em&gt;DO&lt;/em&gt; bet, we will win. More in the third post about this approach.&lt;/p&gt;
 &lt;p&gt;Meanwhile, allow me to wander a bit (yet again!) and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. &lt;/p&gt;
 &lt;p&gt;I changed the labels to represent the granular outcomes mentioned above, and I rebuilt the model and crossed my fingers. Unfortunately, and not too surprisingly, accuracy dropped to around 30%. Hummm...well...worth a shot. And definitely worth revisiting again later.&lt;/p&gt;
 &lt;p&gt;Next up...prediction time!&lt;/p&gt;</content><category term="deep learning"></category><category term="sport"></category><category term="wagering"></category></entry><entry><title>Deep Learning for Sport Wagering Part 1 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html" rel="alternate"></link><published>2017-09-15T00:00:00-07:00</published><updated>2017-09-15T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-09-15:/deep-learning-for-sport-wagering-part-1-of-3.html</id><summary type="html">&lt;p&gt;Characteristics of the dataset&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 1: Characteristics of the dataset&lt;/h4&gt;
-&lt;p&gt;&lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"&gt;Part 2 Modeling&lt;/a&gt;&lt;br&gt;
+&lt;p&gt;&lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"&gt;Part 2 Modeling&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html"&gt;Part 3: Predicting&lt;/a&gt;  &lt;/p&gt;
 &lt;p&gt;Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.&lt;/p&gt;
 &lt;p&gt;One particular line in &lt;a href="https://fivethirtyeight.com/features/how-the-golden-state-warriors-are-breaking-the-nba/"&gt;the blog post&lt;/a&gt; stuck out for me: "It’s as if at some point in the past few years, the Warriors solved contemporary basketball..."&lt;/p&gt;
@@ -263,30 +261,30 @@ mlp_004.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
 &lt;p&gt;After quite a few long nights and weekends of collecting, reshaping, and modeling the data, I came into posession a pretty good model. The tl;dr is that the model guarantees a result of up to an (fill this in soon) &lt;insert&gt; return on investment. &lt;/p&gt;
 &lt;p&gt;So, if you make it through these (hopefully not painful to read) blog posts, then go ahead and check on some upcoming fights. Ask me where to put your money, and I might be able to provide you with the 'nap.' In case you didn't know, the word 'nap' refers to a highly confident bet. That's been a fun side-effect from this project -- I learned a lot of cool new slang terms! &lt;/p&gt;
 &lt;p&gt;There will be 3 parts to this blog post:&lt;/p&gt;
-&lt;p&gt;1) Characteristics of the data&lt;br&gt;
-2) Building models&lt;br&gt;
+&lt;p&gt;1) Characteristics of the data&lt;br /&gt;
+2) Building models&lt;br /&gt;
 3) Prediction and Evaluation  &lt;/p&gt;
 &lt;h3&gt;Characteristics of the data&lt;/h3&gt;
 &lt;p&gt;The project was built on a very substantial dataset. The were two major sources of data. First, I aquired metadata on 373,415 individual boxers. Second, I had a collection of over 3.5 million fights (3,529,624 to be exact). These I imported into two MySQL tables. The dataset spanned the entire history of the sport. It was really fun to dig into. There were fighters from every corner of the globe, competing from the very beginning of the sport to the present day. There were boxers in every weight class from minimumweight upward, possessing all skill levels, at all ages, and exhibiting all levels of success. Perusing revealed some quite obscure fighters: a boxer from Accra, Ghana, who fought only once (unfortunately losing by knockout), back in 1966. Then, there was data on all the modern day multimillionaire heavyweight champions. There were was, for example, &lt;a href="https://en.wikipedia.org/wiki/Wladimir_Klitschko"&gt;Wladamir Klitchko&lt;/a&gt;, nicknamed 'Dr Steelhammer.' &lt;/p&gt;
 &lt;p&gt;The dataset definitely possessed depth. The breadth in features for the first source of data, was as such:&lt;/p&gt;
 &lt;h5&gt;boxer data&lt;/h5&gt;
-&lt;p&gt;name&lt;br&gt;
-sex&lt;br&gt;
-birth_date&lt;br&gt;
-division&lt;br&gt;
-stance&lt;br&gt;
-height&lt;br&gt;
-reach&lt;br&gt;
-country&lt;br&gt;
-residence&lt;br&gt;
-birth_place&lt;br&gt;
-world_rank&lt;br&gt;
-total_wins&lt;br&gt;
-ko_wins&lt;br&gt;
-total_losses&lt;br&gt;
-ko_losses&lt;br&gt;
-draws&lt;br&gt;
-rounds&lt;br&gt;
+&lt;p&gt;name&lt;br /&gt;
+sex&lt;br /&gt;
+birth_date&lt;br /&gt;
+division&lt;br /&gt;
+stance&lt;br /&gt;
+height&lt;br /&gt;
+reach&lt;br /&gt;
+country&lt;br /&gt;
+residence&lt;br /&gt;
+birth_place&lt;br /&gt;
+world_rank&lt;br /&gt;
+total_wins&lt;br /&gt;
+ko_wins&lt;br /&gt;
+total_losses&lt;br /&gt;
+ko_losses&lt;br /&gt;
+draws&lt;br /&gt;
+rounds&lt;br /&gt;
 ko_percent  &lt;/p&gt;
 &lt;p&gt;Although elements like a boxer's weight are extremely important in real life boxing, some particular features like that and others were not applicable.
 For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent fight was at 146. So a single value pulled from the metadata would only reflect the most recent weight, not the weight at each fight.&lt;/p&gt;
@@ -294,45 +292,45 @@ For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent 
 &lt;p&gt;The dataset was balanced: 55% Wins, 45% Losses.&lt;/p&gt;
 &lt;p&gt;More useful was the second source of data, the specific data for each boxing match:  &lt;/p&gt;
 &lt;h5&gt;fight data&lt;/h5&gt;
-&lt;p&gt;boxer1_id&lt;br&gt;
-boxer2_id&lt;br&gt;
-date&lt;br&gt;
-location&lt;br&gt;
-rounds_planned&lt;br&gt;
-rounds_happened&lt;br&gt;
-boxer1_mass&lt;br&gt;
-boxer2_mass&lt;br&gt;
-boxer2_wins&lt;br&gt;
-boxer2_loses&lt;br&gt;
-boxer2_draws&lt;br&gt;
-boxer2_last6_wins&lt;br&gt;
-boxer2_last6_loses&lt;br&gt;
-boxer2_last6_draws&lt;br&gt;
-outcome&lt;br&gt;
-outcome_type&lt;br&gt;
-rating&lt;br&gt;
-time&lt;br&gt;
-referee&lt;br&gt;
-judge1&lt;br&gt;
-judge2&lt;br&gt;
-judge3&lt;br&gt;
-judge1_score&lt;br&gt;
-judge2_score&lt;br&gt;
-judge3_score&lt;br&gt;
-titles&lt;br&gt;
+&lt;p&gt;boxer1_id&lt;br /&gt;
+boxer2_id&lt;br /&gt;
+date&lt;br /&gt;
+location&lt;br /&gt;
+rounds_planned&lt;br /&gt;
+rounds_happened&lt;br /&gt;
+boxer1_mass&lt;br /&gt;
+boxer2_mass&lt;br /&gt;
+boxer2_wins&lt;br /&gt;
+boxer2_loses&lt;br /&gt;
+boxer2_draws&lt;br /&gt;
+boxer2_last6_wins&lt;br /&gt;
+boxer2_last6_loses&lt;br /&gt;
+boxer2_last6_draws&lt;br /&gt;
+outcome&lt;br /&gt;
+outcome_type&lt;br /&gt;
+rating&lt;br /&gt;
+time&lt;br /&gt;
+referee&lt;br /&gt;
+judge1&lt;br /&gt;
+judge2&lt;br /&gt;
+judge3&lt;br /&gt;
+judge1_score&lt;br /&gt;
+judge2_score&lt;br /&gt;
+judge3_score&lt;br /&gt;
+titles&lt;br /&gt;
 comments  &lt;/p&gt;
 &lt;p&gt;As with the metadata for the boxer, I discarded some features of the fights. Much of it was nice but not functionally applicable, such as the names of the referee and judges, and comments, etc.&lt;/p&gt;
 &lt;p&gt;With that being settled, the first important decision I made with respect to transformation of the data was to do a self-join within the fight table in MySQL. Thus, as shown above, each record in the dataset represented one fight. There would be a boxer1 and a boxer2. The target for each row would be Win, Lose, or Draw, with respect to boxer1. There would also be the granular outcome information: the type of W, L or D. After all, there are many ways for a boxing match to end: points, knockout, disqualification, waved off via accidental headbut, quitting on the stool, etc, etc.&lt;/p&gt;
 &lt;p&gt;(Quick note on a detail of the sport itself: Notice that although boxing is an individual sport, each fighter also has a whole team behind them. During competition, there is a coach, obviously, and there is the &lt;a href="https://en.wikipedia.org/wiki/Cutman"&gt;cutman&lt;/a&gt; as well. The cutman handles the first aid between rounds. These two team members are called the 'secondaries' -- so in boxing, we'll call the 2 boxers 'primaries'. I quickly renamed boxer1 and boxer2 to P1 and P2.)&lt;/p&gt;
 &lt;p&gt;Looking at these data, all seemed promising. But after some more reflection, I started to be concerned with what this rectangular representation was missing.
 Really, these fights are all sequences of events that happen for a boxer -- they start with fight #1, then continue forward until the end of their careers. This made me interested in engineering some temporal variables, which I proceed to do in Pandas. Now, each row had these features:  &lt;/p&gt;
-&lt;p&gt;P1_ageAtFight&lt;br&gt;
-P2_ageAtFight&lt;br&gt;
-P1_rounds_fought&lt;br&gt;
+&lt;p&gt;P1_ageAtFight&lt;br /&gt;
+P2_ageAtFight&lt;br /&gt;
+P1_rounds_fought&lt;br /&gt;
 P2_rounds_fought  &lt;/p&gt;
 &lt;p&gt;These 4 variables are rather self-explanatory given their names.  &lt;/p&gt;
 &lt;p&gt;Another engineered feature was basically 'career length', or how many days it had been since the boxer's debut. These became:  &lt;/p&gt;
-&lt;p&gt;P1_days_since_ff&lt;br&gt;
+&lt;p&gt;P1_days_since_ff&lt;br /&gt;
 P2_days_since_ff  &lt;/p&gt;
 &lt;p&gt;where 'ff' is short for 'first fight'.&lt;/p&gt;
 &lt;p&gt;Some boxers were missing a birthdate, so I imputed these birthdates by assuming that each boxer's debut was on their 20th birthday. This was a simple subtraction from of 20 years from the date of the first fight.&lt;/p&gt;
@@ -342,14 +340,14 @@ P2_days_since_ff  &lt;/p&gt;
 &lt;p&gt;Now, going the other direction,  &lt;/p&gt;
 &lt;p&gt;(and there was a Fight at some location, with some outcome)&amp;lt;--[the opponent had a record, (W, L, D) on that same date]---(The opponent, call them 'P2')&lt;/p&gt;
 &lt;p&gt;This actually is more clear when you look at the actual Neo4J graph itself:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Neo4J graph" src="https://github.com/mobbSF/blog/blob/master/images/Neo_000.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Neo4J graph" src="https://github.com/mobbSF/blog/blob/master/images/Neo_000.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;Here you see the blue boxer nodes, their records at a given time (red node), the fight node (green), and the complementary information for their opponents. Note that this particular boxer had a few rematches which are visible when two edges touch the same blue P2 (P2 being the opponent), node.&lt;/p&gt;
 &lt;p&gt;Actually, it's interesting to see how the graph can be expanded. Take a look a Muhammad Ali's and his career:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Neo4J graph 1" src="https://github.com/mobbSF/blog/blob/master/images/Neo_001.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Neo4J graph 1" src="https://github.com/mobbSF/blog/blob/master/images/Neo_001.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;and here's &lt;a href="https://www.youtube.com/watch?v=-FZBzGhxERg"&gt;Ali's fight with Archie Moore&lt;/a&gt;, and Archie Moore's career: &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Neo4J graph 2" src="https://github.com/mobbSF/blog/blob/master/images/Neo_002.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Neo4J graph 2" src="https://github.com/mobbSF/blog/blob/master/images/Neo_002.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;...and here's &lt;a href="https://www.youtube.com/watch?v=MUT71-jyY2s"&gt;Archie Moore's fight with Jimmy Slade&lt;/a&gt;,&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Neo4J graph 3" src="https://github.com/mobbSF/blog/blob/master/images/Neo_003.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Neo4J graph 3" src="https://github.com/mobbSF/blog/blob/master/images/Neo_003.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;and so forth.&lt;/p&gt;
 &lt;p&gt;Envisioned as a graph, it is insigtful to see the interconnectedness of the sport as a whole. &lt;/p&gt;
 &lt;p&gt;Now that the Neo4J database was built, the first metric I focused on creating using Cypher was a 'quality of opposition' (QOO) score.&lt;/p&gt;
@@ -358,12 +356,12 @@ P2_days_since_ff  &lt;/p&gt;
 Because if P2 was battling top-quality opposition, then you'd be wise to put your money on P2. Because they both could have records of 20 Wins, 0 losses.&lt;/p&gt;
 &lt;p&gt;(In reality, most successful fighters start competing relatively frequently, against somewhat weak opposition. Later, they increase the quality of opposition as they decrease the frequency of competition. So the above scenario is an exaggeration, in most cases).&lt;/p&gt;
 &lt;p&gt;To show how the metric works, let's first start with this made up, simplified visual scenario:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="QOO 1" src="https://github.com/mobbSF/blog/blob/master/images/QOO_001.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="QOO 1" src="https://github.com/mobbSF/blog/blob/master/images/QOO_001.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;As you can see, P1 has fought 3 opponents (they live in 'Layer 1'), and each of those opponents had fought 3 opponents themselves (they live in 'Layer 2').&lt;/p&gt;
 &lt;p&gt;Now consider Layer 2. For each group of 3 fights, sum up these fighters' records as : count(Wins) / count(fights).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="QOO 2" src="https://github.com/mobbSF/blog/blob/master/images/QOO_002.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="QOO 2" src="https://github.com/mobbSF/blog/blob/master/images/QOO_002.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;Now, recursively running back up the graph, let's see how the boxer in Layer 1 performed against this group. This will be count(Wins) / count(opponents) from above, but now multiplied by the previously calculated value. Voila; we have the QOO metric.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="QOO 3" src="https://github.com/mobbSF/blog/blob/master/images/QOO_003.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="QOO 3" src="https://github.com/mobbSF/blog/blob/master/images/QOO_003.png?raw=true" /&gt;&lt;/p&gt;
 &lt;p&gt;After setting a QOO score for all fights on the nodes in Neo4J, it was easy to put together another quick and dirty metric: QOOP, which for lack of better nomenclature, is 'Quality of opposition prime'. Here, I just took the mean of all a boxer's opponents' QOOs and wrote it to the record node.&lt;/p&gt;
 &lt;p&gt;Indicator columns with 0 or 1 were included, in case the QOO metrics couldn't be built. This could happen if, say, a fight was a boxer's debut.&lt;/p&gt;
 &lt;p&gt;As a work in progress, I'm still playing with different ways to extract value from the Neo4J implementation. But this was a good start and took me pretty far.&lt;/p&gt;
