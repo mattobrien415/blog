@@ -68,7 +68,7 @@ $\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied 
 
 With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  
 
-We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  
+We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  To determine this, it was merely a matter of looping through thresholds from $\(\big[ 0, 1\big] \)$ by 0.1 and 
 
 
 
