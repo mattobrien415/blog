@@ -48,16 +48,12 @@ To do this, first the actual numeric values (-130 and +110, on this example abov
 Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$. 
 
 
-$\text{Implied probability} = \frac{( - ( \text{'negative' moneyline value} ) )}{( - ( \text{'negative' moneyline value} ) )} + 100$  
+$\text{Implied probability for 'negative' moneyline} = \frac{ - ( \text{'negative' moneyline value})}{- ( \text{'negative' moneyline value} ) + 100}$  
 and  
 
-$\text{Implied probability} = \frac{100}{\text{'positive' moneyline value} + 100}$
+$\text{Implied probability for 'positive' moneyline} = \frac{100}{\text{'positive' moneyline value} + 100}$
 
-Implied probability $=   ( - ( $'negative' moneyline value$ ) ) / ( - ( 'negative' moneyline value ) ) + 100$  
-and  
-Implied probability =   100 / ( 'positive' moneyline value + 100 )  
-
-Thus, -130 is converted to %56.5, and +110 is converted to %50.  
+Thus, -130 is converted to 0.56%, and +110 is converted to 0.50.  
 
 But what is an implied probability anyway?
 
@@ -65,11 +61,13 @@ Implied probability is our usual notion of probability which has actually been m
 
 Take one of your implied probability. Divide it by the sum of both of your implied probabilities.  
   
-For example:  
+Thus:  
 
-Actual probability = Implied probability A / (Implied probability A + Implied probability B)  
+$\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied probability A} + \text{Implied probability B}}$
 
-With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine), I collected a set of 690 moneylines. 
+With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  
+
+
 
 
 
