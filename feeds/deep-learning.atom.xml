@@ -46,9 +46,27 @@ and  &lt;/p&gt;
 &lt;li&gt;A tabulation of the balance resulting from money won via successful wagers and money lost via unsuccessful wagers  &lt;/li&gt;
 &lt;li&gt;ROI (return on investment): simply $\frac{\text{balance}}{\text{total investment}}$  &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The iterations assumed that each bet placed was a $100 bet.  &lt;/p&gt;
-&lt;p&gt;Here is a plot showing the outcome for the output of #1 listed above:  &lt;/p&gt;
+&lt;p&gt;The iterations assumed that each bet placed was a \$100 bet. Every loss will incur a deduction of \$100, whereas each winning bet will earn a deposit depending on the sportsbook odds. This means if the model can predict 'easy' matches, it can win a smaller amount of money, but if the matches are harder to predict, the model can earn more.  &lt;/p&gt;
+&lt;p&gt;Here is a plot showing the outcome for #1 on the list above:  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="wagers" src="https://github.com/mobbSF/blog/blob/master/images/wagers.png?raw=true"&gt;  &lt;/p&gt;
+&lt;p&gt;This gives us an intuition on where to place our decision threshold. We are interested in the point where the blue line and the green line are closest together, and simultaneously highest along the y axis. It likes the model will place the proportionately largest number of winning bets around an 0.85 to 0.95 decision threshold.  &lt;/p&gt;
+&lt;p&gt;Here is a plot showing the outcome for #5 on the list above:  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="ROI" src="https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true"&gt;  &lt;/p&gt;
+&lt;p&gt;This shows we can get an ROI around 22\% if we set the decision threshold in that same area as we observed in the first plot.  &lt;/p&gt;
+&lt;p&gt;The ROI plot above doesn't show the net cash balance. The plot below does:  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="cash" src="https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true"&gt;  &lt;/p&gt;
+&lt;p&gt;This chart shows the values at the region of interest:  &lt;/p&gt;
+&lt;p&gt;| Decision Threshold  | ROI    |
+| ---------------------------- | 
+| 0.87                | 22.46  |
+| 0.88                | 22.46  |
+| 0.89                | 22.46  |
+| 0.90                | 22.46  |
+| 0.91                | 22.46  |
+| 0.92                | 23.33  |
+| 0.93                | 23.33  |
+| 0.94                | 24.82  |&lt;/p&gt;
+&lt;p&gt;Again, we are seeing that with a \$&lt;/p&gt;
 &lt;p&gt;Wagers as a function of dt
 ROI showing first hint of high probs
 Cash: showing actual dollar amount
