@@ -19,7 +19,6 @@ TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
 
-
 GOOGLE_ANALYTICS = 'UA-51519407-1'
 
 
@@ -51,5 +50,11 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
 }
 
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.tables':{},
+    }
+}
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
