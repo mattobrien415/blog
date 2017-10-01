@@ -106,7 +106,7 @@ To unpack the ROI value, we can look at the actual dollar amount earned:
 
 We are seeing that when we stick with 0.90 we earn \$292.00, from a net investment of \$1,300.
 
-Finally, let's see what the plot looks like when we view all these results simultaneously:  
+Finally, let's see what the plot looks like when we view most of these results simultaneously:  
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true)  
 
@@ -114,7 +114,8 @@ Here we can see the sweet spot of 0.90 clearly. With the bulk of the work now do
 
 The outcome can be summed up in this elevator pitch sized statement:  
 
-**"The model, with a decision threshold of 0.90, chose to place thirteen bets, winning all but one. With an initial investment of $1,300, it won $292, which represents a ROI of 22.5%."**  
+**"The model, with a decision threshold of 0.90, chose to place thirteen bets, winning all but one. With an initial investment of 
+\$1,300, it won \$292, which represents a ROI of 22.5%."**  
 
 This system performed much better than I expected. My initial hope was simply to build a MLP which had accuracy better than a coinflip. But the fact that the model can turn a profit when swimming with the Vegas sharks is very exciting.
 
