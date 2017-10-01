@@ -87,6 +87,8 @@ This gives us an intuition on where to place our decision threshold. We are inte
 
 The chart below shows the model will place the proportionately largest number of winning bets around an 0.85 to 0.95 decision threshold.  
 
+<img src="https://github.com/mobbSF/blog/blob/master/images/chart_002.png" width="200">
+
 ![chart_002](https://github.com/mobbSF/blog/blob/master/images/chart_002.png?raw=true)  
 
 It looks like roughly 0.90 is a reasonable place to set the threshold.  
@@ -114,10 +116,9 @@ Finally, let's see what the plot looks like when we view all these results simul
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true)  
 
-Wagers as a function of dt
-ROI showing first hint of high probs
-Cash: showing actual dollar amount
-All stuff combined
+Clearly, the model is a success as a result of this tuning step.  
+
+
 
 
 

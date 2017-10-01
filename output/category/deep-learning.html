@@ -126,138 +126,24 @@ and  </p>
 <p>The iterations assumed that each bet placed was a \$100 bet. Every loss will incur a deduction of \$100, whereas each winning bet will earn a deposit depending on the sportsbook odds. This means if the model can predict 'easy' matches, it can win a smaller amount of money, but if the matches are harder to predict, the model can earn more.  </p>
 <p>Here is a plot showing the outcome for #1 on the list above:  </p>
 <p><img alt="wagers" src="https://github.com/mobbSF/blog/blob/master/images/wagers.png?raw=true" />  </p>
-<p>This gives us an intuition on where to place our decision threshold. We are interested in the point where the blue line and the green line are closest together, and simultaneously highest along the y axis. It likes the model will place the proportionately largest number of winning bets around an 0.85 to 0.95 decision threshold.  </p>
-<p>Here is a plot showing the outcome for #5 on the list above:  </p>
+<p>This gives us an intuition on where to place our decision threshold. We are interested in the point where the blue line and the green line are closest together, which means we will win the highest proportion of our placed bets. Simultaneously we would like this point to be as high as possible along the y axis, meaning the model chose to place a high net number of bets. </p>
+<p>The chart below shows the model will place the proportionately largest number of winning bets around an 0.85 to 0.95 decision threshold.  </p>
+<p><img alt="chart_002" src="https://github.com/mobbSF/blog/blob/master/images/chart_002.png?raw=true" />  </p>
+<p>It looks like roughly 0.90 is a reasonable place to set the threshold.  </p>
+<p>Here is a plot showing the outcome for #5 (ROI) on the list above:  </p>
 <p><img alt="ROI" src="https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true" />  </p>
-<p>This shows we can get an ROI around 22\% if we set the decision threshold in that same area as we observed in the first plot.  </p>
-<p>The ROI plot above doesn't show the net cash balance. The plot below does:  </p>
+<p>This chart shows the ROI values at the region of interest:  </p>
+<p><img alt="chart_002" src="https://github.com/mobbSF/blog/blob/master/images/chart_002.png?raw=true" />  </p>
+<p>This shows we can get an ROI around 22.5\% if we set the decision threshold to roughly 0.90. We could push it up to 24.8\% if we choose 0.94 as the threshold, but notice the precipitous drop at 0.95 on the plot above. Better to be wary of possible noise and choose the median value.</p>
+<p>The ROI plot above doesn't show the net cash balance. Perhaps the ROI is high, but the best placed has low payouts. The plot below clarifies:  </p>
 <p><img alt="cash" src="https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true" />  </p>
-<p>This chart shows the values at the region of interest:  </p>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>boxer1_id</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boxer2_id</td>
-</tr>
-<tr>
-<td>date</td>
-</tr>
-<tr>
-<td>location</td>
-</tr>
-<tr>
-<td>rounds_planned</td>
-</tr>
-<tr>
-<td>rounds_happened</td>
-</tr>
-<tr>
-<td>boxer1_mass</td>
-</tr>
-<tr>
-<td>boxer2_mass</td>
-</tr>
-<tr>
-<td>boxer2_wins</td>
-</tr>
-<tr>
-<td>boxer2_loses</td>
-</tr>
-<tr>
-<td>boxer2_draws</td>
-</tr>
-<tr>
-<td>boxer2_last6_wins</td>
-</tr>
-<tr>
-<td>boxer2_last6_loses</td>
-</tr>
-<tr>
-<td>boxer2_last6_draws</td>
-</tr>
-<tr>
-<td>outcome</td>
-</tr>
-<tr>
-<td>outcome_type</td>
-</tr>
-<tr>
-<td>rating</td>
-</tr>
-<tr>
-<td>time</td>
-</tr>
-<tr>
-<td>referee</td>
-</tr>
-<tr>
-<td>judge1</td>
-</tr>
-<tr>
-<td>judge2</td>
-</tr>
-<tr>
-<td>judge3</td>
-</tr>
-<tr>
-<td>judge1_score</td>
-</tr>
-<tr>
-<td>judge2_score</td>
-</tr>
-<tr>
-<td>judge3_score</td>
-</tr>
-<tr>
-<td>titles</td>
-</tr>
-<tr>
-<td>comments</td>
-</tr>
-</tbody>
-</table>
-<p>| Decision Threshold  | ROI    |
- | ---------------------------- |
- | 0.87                | 22.46  |
- | 0.88                | 22.46  |
- | 0.89                | 22.46  |
- | 0.90                | 22.46  |
- | 0.91                | 22.46  |
- | 0.92                | 23.33  |
- | 0.93                | 23.33  |
- | 0.94                | 24.82  |</p>
-<p>Again, we are seeing that with a \$</p>
+<p>We are seeing that when we stick with 0.90 we earn \$292.00.  </p>
+<p>Finally, let's see what the plot looks like when we view all these results simultaneously:  </p>
+<p><img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true" />  </p>
 <p>Wagers as a function of dt
 ROI showing first hint of high probs
 Cash: showing actual dollar amount
-All stuff combined</p>
-<script>
-  $(document).ready(function () {
-    $("table").attr("class","table table-condensed table-bordered");
-  });
-</script><script type= "text/javascript">
+All stuff combined</p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
