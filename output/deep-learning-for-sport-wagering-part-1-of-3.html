@@ -114,7 +114,7 @@ ko_losses<br />
 draws<br />
 rounds<br />
 ko_percent  </p>
-<p>At this point it was time to being sifting through the features. Although elements like a boxer's weight are extremely important in real life boxing, this particular feature was not applicable because weight usually changes across a boxer's career. For example, Manny Pacquiao's first fight was at 98 pounds, but his <a href="https://www.youtube.com/watch?v=OdvxQDVP4WI">most recent fight</a> was at 146 pounds. So a single value pulled from the metadata table would only reflect the most recent weight, not the weight at each fight.</p>
+<p>At this point it was time to begin evaluating the features. Although elements like a boxer's weight are extremely important in real life boxing, this particular feature was not applicable because weight usually changes across a boxer's career. For example, Manny Pacquiao's first fight was at 98 pounds, but his <a href="https://www.youtube.com/watch?v=OdvxQDVP4WI">most recent fight</a> was at 146 pounds. So a single value pulled from the metadata table would only reflect the most recent weight, not the weight at each fight.</p>
 <p>It was simple to keep stance (orthodox or southpaw) as a categorical variable.</p>
 <p>The dataset was balanced: 55% Wins, 45% Losses.</p>
 <p>More useful was the second source of data, which was the specific data for each boxing match:  </p>
@@ -175,10 +175,10 @@ P2_days_since_ff  </p>
 <p>...and here's <a href="https://www.youtube.com/watch?v=MUT71-jyY2s">Archie Moore's fight with Jimmy Slade</a>,</p>
 <p><img alt="Neo4J graph 3" src="https://github.com/mobbSF/blog/blob/master/images/Neo_003.png?raw=true" /></p>
 <p>and so forth.</p>
-<p>Envisioned as a graph, it is insightful to see the interconnectedness of the sport as a whole.  I generated some pretty looking art which I enjoyed on an asthetic level as as well as analytic:  </p>
+<p>Envisioned as a graph, it is insightful to see the interconnectedness of the sport as a whole. Here's a few examples:  </p>
 <p><img alt="Neo4J graph 4" src="https://github.com/mobbSF/blog/blob/master/images/Neo_004.png?raw=true" />  </p>
 <p><img alt="Neo4J graph 5" src="https://github.com/mobbSF/blog/blob/master/images/Neo_005.png?raw=true" />  </p>
-<p>Time to Move along. Now that now that the Neo4J database was built, the first metric I focused on creating using Cypher was a 'quality of opposition' (QOO) score.</p>
+<p>Now that now that the Neo4J database was built, the first metric I focused on creating using Cypher was a 'quality of opposition' (QOO) score.</p>
 <p>QOO is necessary to suss out boxers with inflated records. Interestingly enough, boxing is the only sport (that I am aware of, at least) where a boxer actually gets to choose their opponent. There are no tournaments...no leagues...just arrangements between two boxers and the businesspeople around them, to hold an event. So what is stopping a boxer from inflating their record with <a href="http://boxrec.com/en/boxer/4741">lousy opposition</a>? Not much. And this happens often in practice.  </p>
 <p>It all really comes down to the quality of a boxer's opponents. If a boxer (say P1) has been beating up on <a href="https://en.wikipedia.org/wiki/Tomato_can_(sports_idiom)">tomato cans</a>, then we need to acknowledge this. 
 Because if during that same time, another boxer (say P2) was battling top-quality opposition, then you'd be wise to put your money on P2. Because both P1 and P2 could have records of 20 Wins, 0 losses. In short, W L D records can be misleading.  </p>

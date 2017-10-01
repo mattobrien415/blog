@@ -7,30 +7,24 @@ Summary: Predicting
 [Part 1: Characteristics of the dataset](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)  
 [Part 2: Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)
 
-I considered two major betting strategies during this final phase of the project. They are as follows:  
+I considered one major betting strategy during this final phase of the project. It is as follows:  
 
-1) If  
+If  
 $\text{model probability} > \text{some decision threshold}$, and  
 $\text{model probability} > \text{sportsbook probability}$  
 then place bet  
 
-2) If  
-$\text{model probability} > \text{some decision threshold}$  
-then place bet
-
-The first strategy is a more conservative approach in one sense. With this perspective, we include a parameter that indicates if we feel like we have an edge on the casino or sportsbook. 
+This strategy can be thought of as conservative approach. We include a parameter that indicates if we are confident that we have an edge on the casino or sportsbook or not.  
 
 Allow me a quick foray into the structure of gambling. Sportsbook odds are set, not by information, but by popular sentiment as it is revealed by [action](https://www.docsports.com/gambling-terms.html). If some Boxer A gets a large amount of action, then the sportsbook will consider Boxer A to be more likely to win, and consequently, payout on this outcome is reduced. Thus, my model is attempting to answer the question, "When does prediction based on historic data result in a confidence higher than the confidence of the sportsbook -- which is a function of popular sentiment?". In this sense, at it's most stripped down, the model is trying make a totally impartial, data driven decision, and looks for opportunities when public perception is not aligned with historically based signal.  
 
-This first strategy also has a built in safeguard. If the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning, then without the safeguard, the model would decide to place the bet. This is something we don't want. Instead we want to see action whenever the algorithm is confident above some appropriate threshold.
+Our strategy also has a built in safeguard. Suppose the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning. Without the safeguard, the model would decide to place the bet. This is something we don't want. Instead, we want to see action whenever the algorithm is confident above some appropriate threshold.
 
-Moving on, the second strategy isn't concerned with the sportsbook's behavior at all; merely concerned with the strength of it's (the model's) own predictions. This strategy might be more successful if it allows more bets to be made, and hopefully more money to be made, quicker. This assumes the model is accurate enough to exhibit this success.
-
-Let's examine both strategies, and see how they played out. We will start with strategy 1, because is it the more comprehensive one.  
+Let's examine what happened.
 
 #### Strategy 1  
 
-To be implemented, the first strategy required some more data acquisition. Historic sportsbook odds would need to be collected before we could compare probabilities.  
+To be implemented, our strategy required the acquistion of more data. Historic sportsbook odds needed to be collected so that we could compare them with model's.  
 
 In boxing, the bookmaker's odds come structured into a form which is referred to as the [moneyline](https://en.wikipedia.org/wiki/Odds#Moneyline_odds). The moneyline is a little confusing at first. Generally, one fighter who considered favored to win is assigned a negative number. The other fighter is considered the underdog, and is assigned a positive number. 
 
@@ -55,7 +49,7 @@ Thus, -130 is converted to 0.56, and +110 is converted to 0.50.
 
 But what is an implied probability anyway?
 
-Implied probability is our usual notion of probability which has actually been modified by what is called either [vigorish, or juice](https://en.wikipedia.org/wiki/Vigorish). Both of these terms refer to a built-in modification, by the bookmaker, of the true odds. The modification shifts the moneyline is such a way that the sportsbooks can never ultimately lose money. Usually, the vig amounts to 20 points. It's basically the casino's cut. Fortunately, it's easy to remove the vigorish using this simple formula:  
+Implied probability is our usual notion of probability which has actually been modified by what is called either [vigorish, or juice](https://en.wikipedia.org/wiki/Vigorish). Both of these terms refer to a built-in edge, by the bookmaker, on the true odds. The modification shifts the moneyline is such a way that the sportsbooks can make their profit. Usually, the vig amounts to 20 points. It's basically the casino's cut. Fortunately, it's easy to remove the vigorish using this simple formula:  
 
 Take one of your implied probability. Divide it by the sum of both of your implied probabilities.  
   
@@ -117,15 +111,15 @@ Finally, let's see what the plot looks like when we view all these results simul
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true)  
 
-Clearly, the model is a success. The ROI is eye openingly large.
+Here we can see the sweet spot of 0.90 clearly. With the bulk of the work now done, we can claim success.  
 
-But before putting this model to use with blind abandon, there are some issues. 
+The outcome can be summed up in this elevator pitch sized statement: **"The model, with a decision threshold of 0.90, chose to place thirteen bets, winning all but one. With an initial investment of $1,300, it won \$292, which represents a ROI of 22.5%."**  
 
-* Time horizon  
-Recall, we started with a pool of 679 possible fights to wager on. Only 13 bets were executed -- which is roughly 2 bets made for each 100 fights. Using this algorithm, it would take some time to converge into a profit. This is because there usually is only a handful of matches that are offered every week by the sportsbooks. Then again, most people invest for a minimum of 10 years to see the estimated 7% return in the stock market.
+This system performed much better than I expected. My initial hope was simply to build a MLP which had accuracy better than a coinflip. But the fact that the model can turn a profit when swimming with the Vegas sharks is very exciting.
 
+The next step is to put the model to use, see how it performs over a few month time period, and then see what improvements can be made. This is the real test -- putting my real money where my mouth is! I will report back with a Part 4 of this blog post series when I have had enough wagering experience to infer what can be improved. 
 
-
+Thank you for reading this far. Please comment if you have the inclination!
 
 
 
