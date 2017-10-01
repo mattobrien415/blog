@@ -123,9 +123,27 @@ and  </p>
 <li>A tabulation of the balance resulting from money won via successful wagers and money lost via unsuccessful wagers  </li>
 <li>ROI (return on investment): simply $\frac{\text{balance}}{\text{total investment}}$  </li>
 </ol>
-<p>The iterations assumed that each bet placed was a $100 bet.  </p>
-<p>Here is a plot showing the outcome for the output of #1 listed above:  </p>
+<p>The iterations assumed that each bet placed was a \$100 bet. Every loss will incur a deduction of \$100, whereas each winning bet will earn a deposit depending on the sportsbook odds. This means if the model can predict 'easy' matches, it can win a smaller amount of money, but if the matches are harder to predict, the model can earn more.  </p>
+<p>Here is a plot showing the outcome for #1 on the list above:  </p>
+<p><img alt="wagers" src="https://github.com/mobbSF/blog/blob/master/images/wagers.png?raw=true">  </p>
+<p>This gives us an intuition on where to place our decision threshold. We are interested in the point where the blue line and the green line are closest together, and simultaneously highest along the y axis. It likes the model will place the proportionately largest number of winning bets around an 0.85 to 0.95 decision threshold.  </p>
+<p>Here is a plot showing the outcome for #5 on the list above:  </p>
 <p><img alt="ROI" src="https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true">  </p>
+<p>This shows we can get an ROI around 22\% if we set the decision threshold in that same area as we observed in the first plot.  </p>
+<p>The ROI plot above doesn't show the net cash balance. The plot below does:  </p>
+<p><img alt="cash" src="https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true">  </p>
+<p>This chart shows the values at the region of interest:  </p>
+<p>| Decision Threshold  | ROI    |
+| ---------------------------- | 
+| 0.87                | 22.46  |
+| 0.88                | 22.46  |
+| 0.89                | 22.46  |
+| 0.90                | 22.46  |
+| 0.91                | 22.46  |
+| 0.92                | 23.33  |
+| 0.93                | 23.33  |
+| 0.94                | 24.82  |</p>
+<p>Again, we are seeing that with a \$</p>
 <p>Wagers as a function of dt
 ROI showing first hint of high probs
 Cash: showing actual dollar amount

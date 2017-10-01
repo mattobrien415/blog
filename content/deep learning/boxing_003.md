@@ -96,16 +96,16 @@ The ROI plot above doesn't show the net cash balance. The plot below does:
 This chart shows the values at the region of interest:  
 
 
-| Decision Threshold  | ROI    |
-| ---------------------------- | 
-| 0.87                | 22.46  |
-| 0.88                | 22.46  |
-| 0.89                | 22.46  |
-| 0.90                | 22.46  |
-| 0.91                | 22.46  |
-| 0.92                | 23.33  |
-| 0.93                | 23.33  |
-| 0.94                | 24.82  |
+ | Decision Threshold  | ROI    |
+ | ---------------------------- | 
+ | 0.87                | 22.46  |
+ | 0.88                | 22.46  |
+ | 0.89                | 22.46  |
+ | 0.90                | 22.46  |
+ | 0.91                | 22.46  |
+ | 0.92                | 23.33  |
+ | 0.93                | 23.33  |
+ | 0.94                | 24.82  |
 
 Again, we are seeing that with a \$
 
