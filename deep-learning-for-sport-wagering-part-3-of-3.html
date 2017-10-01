@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://www.mattobrien.me/theme/html5.js"></script>
+    <script src="http://mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,23 +24,23 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li  class="active" >
-	      <a href="http://www.mattobrien.me/category/deep-learning.html ">deep learning</a>
+	      <a href="http://mattobrien.me/category/deep-learning.html ">deep learning</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
+	      <a href="http://mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
+	      <a href="http://mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
+	      <a href="http://mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -63,11 +63,11 @@
 <p>Mon 09 October 2017 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep learning</a>
+Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep learning</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://www.mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://www.mattobrien.me/tag/sport.html">sport</a> <a href="http://www.mattobrien.me/tag/wagering.html">wagering</a> </p>
+    Tags <a href="http://mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://mattobrien.me/tag/sport.html">sport</a> <a href="http://mattobrien.me/tag/wagering.html">wagering</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
@@ -78,11 +78,12 @@ Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep 
 <p><a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html">Part 1: Characteristics of the dataset</a><br>
 <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">Part 2: Modeling</a></p>
 <p>I considered two major betting strategies during this final phase of the project. They are as follows:  </p>
-<p>1) If <br>
-model probability &gt; some decision threshold, and<br>
-model probability &gt; sportsbook probability<br>
+<p>1) If<br>
+$\text{model probability} &gt; \text{some decision threshold}$, and<br>
+$\text{model probability} &gt; \text{sportsbook probability}$<br>
 then place bet  </p>
-<p>2) If model probability &gt; some decision threshold
+<p>2) If<br>
+$\text{model probability} &gt; \text{some decision threshold}$<br>
 then place bet</p>
 <p>The first strategy is a more conservative approach in one sense. With this perspective, we include a parameter that indicates if we feel like we have an edge on the casino or sportsbook. </p>
 <p>Allow me a quick foray into the structure of gambling. Sportsbook odds are set, not by information, but by popular sentiment as it is revealed by <a href="https://www.docsports.com/gambling-terms.html">action</a>. If some Boxer A gets a large amount of action, then the sportsbook will consider Boxer A to be more likely to win, and consequently, payout on this outcome is reduced. Thus, my model is attempting to answer the question, "When does prediction based on historic data result in a confidence higher than the confidence of the sportsbook -- which is a function of popular sentiment?". In this sense, at it's most stripped down, the model is trying make a totally impartial, data driven decision, and looks for opportunities when public perception is not aligned with historically based signal.  </p>
@@ -105,13 +106,14 @@ For Boxer B, the moneyline might have them set at +110. This mean Boxer B is the
 <p>$\text{Implied probability for 'negative' moneyline} = \frac{ - ( \text{'negative' moneyline value})}{- ( \text{'negative' moneyline value} ) + 100}$<br>
 and  </p>
 <p>$\text{Implied probability for 'positive' moneyline} = \frac{100}{\text{'positive' moneyline value} + 100}$</p>
-<p>Thus, -130 is converted to 0.56%, and +110 is converted to 0.50.  </p>
+<p>Thus, -130 is converted to 0.56, and +110 is converted to 0.50.  </p>
 <p>But what is an implied probability anyway?</p>
 <p>Implied probability is our usual notion of probability which has actually been modified by what is called either <a href="https://en.wikipedia.org/wiki/Vigorish">vigorish, or juice</a>. Both of these terms refer to a built-in modification, by the bookmaker, of the true odds. The modification shifts the moneyline is such a way that the sportsbooks can never ultimately lose money. Usually, the vig amounts to 20 points. It's basically the casino's cut. Fortunately, it's easy to remove the vigorish using this simple formula:  </p>
 <p>Take one of your implied probability. Divide it by the sum of both of your implied probabilities.  </p>
 <p>Thus:  </p>
 <p>$\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied probability A} + \text{Implied probability B}}$</p>
-<p>With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  </p><script type= "text/javascript">
+<p>With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  </p>
+<p>We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} &gt; \text{some decision threshold}$?  </p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -197,14 +199,14 @@ and  </p>
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://www.mattobrien.me/" rel="alternate">
+            <li><a href="http://mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -214,7 +216,7 @@ and  </p>
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
