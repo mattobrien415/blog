@@ -4,8 +4,8 @@ Tags: deep learning, sport, wagering
 Summary: Predicting
 
 #### Part 3: Predicting
-[Part 1 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)  
-[Part 2 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)
+[Part 1 here](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)  
+[Part 2 here](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)
 
 I considered two major betting strategies during this final phase of the project. They are as follows:  
 

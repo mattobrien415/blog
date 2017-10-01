@@ -4,8 +4,8 @@ Tags: deep learning, sport, wagering
 Summary: Characteristics of the dataset
 
 #### Part 1: Characteristics of the dataset
-[Part 2 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)  
-[Part 3 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)  
+[Part 2 here](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)  
+[Part 3 here](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)  
 
 Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.
 
