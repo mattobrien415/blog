@@ -4,11 +4,11 @@ Tags: deep learning, sport, wagering
 Summary: Modeling
 
 #### Part 2: Modeling
-[Part 1 here](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)  
-[Part 3 here](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)
+[Part 1: Characteristics of the dataset](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)  
+[Part 3: Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)
 
 
-I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, ["In real life, I always start with a variable importance plot"](https://youtu.be/1-NYPQw5THU?t=1h19m11s)
+I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I quote directly, ["The first thing I do, is try to get a feature importance plot printed."](https://youtu.be/1-NYPQw5THU?t=1h19m11s)
 
 Being just smart enough to recognize when smarter people have smart ideas, this is exactly what I did.
 
