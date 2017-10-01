@@ -66,18 +66,28 @@ $\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied 
 With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  
 
 We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  To determine this, it was merely a matter of looping through thresholds from $\[ 0, 1 \]$ by 0.1 and collecting results.  
- 
+
 The outputs collects as a function of varying decision threshold were as follows:   
 
-* Number of wagers:  number of wagers that satisified the criteria and thus were executed  
- Number of wagers won: as above, that won  
-* Number of wagers lost: as above, that lost  
-* Balance: a tabulation of the balance between money won from successful wagers, and money lost from unsuccessful wagers  
-* ROI (return on investment): simply $\frac{\text{balance}}{\text{total investment}$  
+1. Number of wagers that satisified the criteria and thus were placed  
+2. Number of wagers placed which won  
+3. Number of wagers placed which lost  
+4. A tabulation of the balance resulting from money won via successful wagers and money lost via unsuccessful wagers  
+5. ROI (return on investment): simply $\frac{\text{balance}}{\text{total investment}}$  
 
-Here is the outcome
+The iterations assumed that each bet placed was a $100 bet.  
+
+Here is a plot showing the outcome for the output #1 listed above:  
+
+![ROI](https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true)  
 
 
+
+
+Wagers as a function of dt
+ROI showing first hint of high probs
+Cash: showing actual dollar amount
+All stuff combined
 
 
 
