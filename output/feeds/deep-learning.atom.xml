@@ -38,7 +38,7 @@ and  &lt;/p&gt;
 &lt;p&gt;Thus:  &lt;/p&gt;
 &lt;p&gt;$\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied probability A} + \text{Implied probability B}}$&lt;/p&gt;
 &lt;p&gt;With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  &lt;/p&gt;
-&lt;p&gt;We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} &amp;gt; \text{some decision threshold}$?  &lt;/p&gt;&lt;script type= "text/javascript"&gt;
+&lt;p&gt;We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} &amp;gt; \text{some decision threshold}$?  To determine this, it was merely a matter of looping through thresholds from $(\big[ 0, 1\big] )$ by 0.1 and &lt;/p&gt;&lt;script type= "text/javascript"&gt;
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
         var mathjaxscript = document.createElement('script');
         mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
