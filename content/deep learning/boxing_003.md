@@ -10,8 +10,9 @@ Summary: Predicting
 I considered one major betting strategy during this final phase of the project. It is as follows:  
 
 If  
-$\text{model probability} > \text{some decision threshold}$, and  
-$\text{model probability} > \text{sportsbook probability}$  
+$\text{predicted probability} > \text{some decision threshold}$, 
+ and  
+$\text{predicted probability} > \text{sportsbook probability}$  
 then place bet  
 
 This strategy can be thought of as conservative approach. We include a parameter that indicates if we are confident that we have an edge on the casino or sportsbook or not.  
@@ -20,10 +21,8 @@ Allow me a quick foray into the structure of gambling. Sportsbook odds are set, 
 
 Our strategy also has a built in safeguard. Suppose the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning. Without the safeguard, the model would decide to place the bet. This is something we don't want. Instead, we want to see action whenever the algorithm is confident above some appropriate threshold.
 
-Let's examine what happened.
-
-#### Strategy 1  
-
+Let's examine the process and see what happened.
+  
 To be implemented, our strategy required the acquistion of more data. Historic sportsbook odds needed to be collected so that we could compare them with model's.  
 
 In boxing, the bookmaker's odds come structured into a form which is referred to as the [moneyline](https://en.wikipedia.org/wiki/Odds#Moneyline_odds). The moneyline is a little confusing at first. Generally, one fighter who considered favored to win is assigned a negative number. The other fighter is considered the underdog, and is assigned a positive number. 
@@ -113,11 +112,13 @@ Finally, let's see what the plot looks like when we view all these results simul
 
 Here we can see the sweet spot of 0.90 clearly. With the bulk of the work now done, we can claim success.  
 
-The outcome can be summed up in this elevator pitch sized statement: **"The model, with a decision threshold of 0.90, chose to place thirteen bets, winning all but one. With an initial investment of $1,300, it won \$292, which represents a ROI of 22.5%."**  
+The outcome can be summed up in this elevator pitch sized statement:  
+
+**"The model, with a decision threshold of 0.90, chose to place thirteen bets, winning all but one. With an initial investment of $1,300, it won $292, which represents a ROI of 22.5%."**  
 
 This system performed much better than I expected. My initial hope was simply to build a MLP which had accuracy better than a coinflip. But the fact that the model can turn a profit when swimming with the Vegas sharks is very exciting.
 
-The next step is to put the model to use, see how it performs over a few month time period, and then see what improvements can be made. This is the real test -- putting my real money where my mouth is! I will report back with a Part 4 of this blog post series when I have had enough wagering experience to infer what can be improved. 
+The next step is to put the model to use, see how it performs over a few month time period, and then see what improvements can be made. This is the true test -- putting my real money where my mouth is! I will report back with a Part 4 of this blog post series when I have had enough wagering experience to infer what can be improved. 
 
 Thank you for reading this far. Please comment if you have the inclination!
 
