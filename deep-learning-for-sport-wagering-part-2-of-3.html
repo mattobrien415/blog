@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <script src="http://www.mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,23 +24,23 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li  class="active" >
-	      <a href="http://mattobrien.me/category/deep-learning.html ">deep learning</a>
+	      <a href="http://www.mattobrien.me/category/deep-learning.html ">deep learning</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/python.html ">python</a>
+	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -63,11 +63,11 @@
 <p>Sat 16 September 2017 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep learning</a>
+Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep learning</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://mattobrien.me/tag/sport.html">sport</a> <a href="http://mattobrien.me/tag/wagering.html">wagering</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://www.mattobrien.me/tag/sport.html">sport</a> <a href="http://www.mattobrien.me/tag/wagering.html">wagering</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
@@ -77,10 +77,9 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
 	<h4>Part 2: Modeling</h4>
 <p>I was fortunate enough to have attended Jeremy Howard's awesome <a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one">deep learning certification program</a> at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, <a href="https://youtu.be/1-NYPQw5THU?t=1h19m11s">"In real life, I always start with a variable importance plot"</a></p>
 <p>Being just smart enough to recognize when smarter people have smart ideas, this is exactly what I did.</p>
-<p>I built a straightforward Random Forest in scikit-learn (using CV to select hyperparameters) and retrieved this plot:</p>
+<p>I built a straightforward Random Forest in scikit-learn (using CV to select hyperparameters and using general best procedures) and retrieved this plot:</p>
 <p><img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true"></p>
-<p>The plot doesn't have a strong inflection point. </p>
-<p>First let's look at what isn't important:  </p>
+<p>The plot doesn't have a strong inflection point, making it difficult to decide where to draw a line in the sand about what is important to include. Let's see if we can deduce where this cutoff might fall, by first let's look at what isn't important:  </p>
 <ul>
 <li>We see that the number of Draw outcomes isn't important, which makes sense, as these are rare outcomes and are fairly irrelevant. The number of draws a boxer has doesn't have much bearing on the rest of their records.  </li>
 <li>We see that the permutations of stances across opponents (complimentary or opposite, <a href="https://en.wikipedia.org/wiki/Southpaw_stance">southpaw</a> or <a href="https://en.wikipedia.org/wiki/Orthodox_stance">orthodox</a>) isn't relevant.  </li>
@@ -93,8 +92,8 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
 <p>Getting back to the variable importance plot, the two Quality of Opposition (<code>QOO</code>) metrics are shown to be important, which is nice because they took a lot of effort to construct.</p>
 <p>The <code>last6_L</code> and <code>last6_W</code> variables have a large amounts of variance as evidenced by the bars. This most likely ties into the discussion about how records, as they stand alone, don't adequately reflect the quality of the opposition. For some boxers, the last 6 are very important; for some, they aren't. This makes sense.</p>
 <p>Content with the plot and with these features in mind, I experimented with various subsets of features and various configurations when fitting multilayer perceptrons in Keras.</p>
-<p>Because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. </p>
-<p>Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed similarly. Epochs around 10 performed just fine.</p>
+<p>On a positive note, because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. </p>
+<p>Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed very similarly. Epochs around 10 performed just fine.</p>
 <p>A decent final configuration looked like this: </p>
 <div class="highlight"><pre>mlp_004 = Sequential()
 mlp_004.add(Dense(64, activation=&#39;relu&#39;, input_dim=13))  #0.69 after 20 epochs w/out BatchNormalization#
@@ -110,11 +109,13 @@ mlp_004.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
 </pre></div>
 
 
-<p>The accuracy returned was 73%. </p>
-<p>OK, so how should I feel about such a modest accuracy, in this age of computer vision, self-driving cars, and <a href="https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html">Elon Musk's dire warnings</a> of <a href="https://www.youtube.com/watch?v=-WIwQlMesr0">Arnold coming baaack</a>?</p>
-<p>I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we <em>DO</em> bet, we will win. More in the third post on these approaches.</p>
-<p>Time to move past the accuracy. As briefly noted above, the dataset wasn't appreciably unbalanced. Here's the confusion matrix:</p>
+<p>The validation set accuracy returned was 73%. </p>
+<p>Here's the confusion matrix:</p>
 <p><img alt="CM" src="https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true"></p>
+<p>Here's the ROC curve:  </p>
+<p><img alt="ROC" src="https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true"></p>
+<p>OK, so how should I feel about such relatively modest scores, in this age of a solved MNIST, self-driving cars, and <a href="https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html">Elon Musk's dire warnings</a> of <a href="https://www.youtube.com/watch?v=-WIwQlMesr0">Arnold coming baaack</a>?</p>
+<p>I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we <em>DO</em> bet, we will win. More in the third post on these approaches.</p>
 <p>Meanwhile, allow me to wander a bit (yet again!) and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. </p>
 <p>I changed the labels to represent the granular outcomes mentioned above, and I rebuilt the model and crossed my fingers. Unfortunately, and not too surprisingly, accuracy dropped to around 30%. Hummm...well...worth a shot. And definitely worth revisiting again later.</p>
 <p>Next up...prediction time!</p>
@@ -173,14 +174,14 @@ mlp_004.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://mattobrien.me/" rel="alternate">
+            <li><a href="http://www.mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -190,7 +191,7 @@ mlp_004.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
