@@ -45,9 +45,15 @@ Since Keras is returning the probability of a boxer winning, we now need to conv
 
 To do this, first the actual numeric values (-130 and +110, on this example above), must be converted to what are referred to as [implied probabilities](https://www.sbo.net/strategy/implied-probability/) (more about implied probabilities in a second). The formula is as follows:  
 
- \alpha = 10^2
+Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$. 
 
-Implied probability =   ( - ( 'negative' moneyline value ) ) / ( - ( 'negative' moneyline value ) ) + 100  
+
+$\text{Implied probability} = \frac{( - ( \text{'negative' moneyline value} ) )}{( - ( \text{'negative' moneyline value} ) )} + 100$  
+and  
+
+$\text{Implied probability} = \frac{100}{\text{'positive' moneyline value} + 100}$
+
+Implied probability $=   ( - ( $'negative' moneyline value$ ) ) / ( - ( 'negative' moneyline value ) ) + 100$  
 and  
 Implied probability =   100 / ( 'positive' moneyline value + 100 )  
 

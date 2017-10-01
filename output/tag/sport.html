@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://www.mattobrien.me/theme/html5.js"></script>
+    <script src="http://mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,23 +24,23 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li >
-	      <a href="http://www.mattobrien.me/category/deep-learning.html ">deep learning</a>
+	      <a href="http://mattobrien.me/category/deep-learning.html ">deep learning</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
+	      <a href="http://mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
+	      <a href="http://mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
+	      <a href="http://mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
 	    <li >
-	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -58,7 +58,7 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html"><h1>Deep Learning for Sport Wagering Part 3 of 3</h1></a>
+            <a href="http://mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html"><h1>Deep Learning for Sport Wagering Part 3 of 3</h1></a>
         </div>
     </div>
     <div class="row-fluid">
@@ -66,19 +66,19 @@
 <p>Mon 09 October 2017 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep learning</a>
+Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep learning</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://www.mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://www.mattobrien.me/tag/sport.html">sport</a> <a href="http://www.mattobrien.me/tag/wagering.html">wagering</a> </p>
+    Tags <a href="http://mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://mattobrien.me/tag/sport.html">sport</a> <a href="http://mattobrien.me/tag/wagering.html">wagering</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="article-content span8">
 	<h4>Part 3: Predicting</h4>
-<p><a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html">Part 1 here</a><br>
-<a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">Part 2 here</a></p>
+<p><a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html">Part 1: Characteristics of the dataset</a><br>
+<a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">Part 2: Modeling</a></p>
 <p>I considered two major betting strategies during this final phase of the project. They are as follows:  </p>
 <p>1) If <br>
 model probability &gt; some decision threshold, and<br>
@@ -86,22 +86,24 @@ model probability &gt; sportsbook probability<br>
 then place bet  </p>
 <p>2) If model probability &gt; some decision threshold
 then place bet</p>
-<p>The first strategy is a more conservative approach in one sense. With this perspective, we care if we feel like we have an edge on the casino or sportsbook. </p>
-<p>Allow me a quick foray into the structure of gambling. Sportsbook odds are set, not by information, but by popular sentiment. If some Boxer A is favored by the public, then the sportsbook will consider Boxer A to be more likely to win. Thus, my model is attempting to answer the question, "When does prediction based on historic data result in a confidence higher than the confidence represented by public perception?".</p>
-<p>This first strategy also has a built in safeguard. If the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning, then a bet will not placed (assuming the decision threshold is greater than 10%, which, it is).</p>
-<p>Moving on, the second strategy isn't concerned with the sportsbook's behavior at all; merely concerned with the strength of it's (the model's) own predictions. </p>
-<p>Let's examine both strategies, and see how they played out.   </p>
+<p>The first strategy is a more conservative approach in one sense. With this perspective, we include a parameter that indicates if we feel like we have an edge on the casino or sportsbook. </p>
+<p>Allow me a quick foray into the structure of gambling. Sportsbook odds are set, not by information, but by popular sentiment as it is revealed by <a href="https://www.docsports.com/gambling-terms.html">action</a>. If some Boxer A gets a large amount of action, then the sportsbook will consider Boxer A to be more likely to win, and consequently, payout on this outcome is reduced. Thus, my model is attempting to answer the question, "When does prediction based on historic data result in a confidence higher than the confidence of the sportsbook -- which is a function of popular sentiment?". In this sense, at it's most stripped down, the model is trying make a totally impartial, data driven decision, and looks for opportunities when public perception is not aligned with historically based signal.  </p>
+<p>This first strategy also has a built in safeguard. If the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning, then without the safeguard, the bet would be place. This is something we don't want. Instead we want to see action whenever the algorithm is confident above some threshold.</p>
+<p>Moving on, the second strategy isn't concerned with the sportsbook's behavior at all; merely concerned with the strength of it's (the model's) own predictions. This strategy might be more successful if it allows more bets to be made, and hopefully more money to be made, quicker. This assumes the model is accurate enough to exhibit this success.</p>
+<p>Let's examine both strategies, and see how they played out. We will start with strategy 1, because is it the more comprehensive one.  </p>
 <h4>Strategy 1</h4>
-<p>To be implemented, the first strategy required a data acquisition step first. Historic sportsbook odds needed to be collected. This is for the purpose of compairing the probability of a win assigned by a sportsbook to the probability of a win assigned by the model.  </p>
+<p>To be implemented, the first strategy required a data acquisition step first. Historic sportsbook odds needed to be collected. This is for the purpose of compairing the probability of a win assigned by the model with the probability of a win assigned by a sportsbook.  </p>
 <p>In boxing, the bookmaker's odds come structured into a form which is referred to as the <a href="https://en.wikipedia.org/wiki/Odds#Moneyline_odds">moneyline</a>. The moneyline is a little confusing at first. Generally, one fighter who considered favored to win is assigned a negative number. The other fighter is considered the underdog, and is assigned a positive number. </p>
 <p>The best way to remember how to read the moneyline is to always start with the image of a one-hundred dollar bill in your mind.  </p>
 <ul>
-<li>A negative number shows how much money you need to bet to win a profit of $100.  </li>
-<li>A positive number shows how much profit a winning wager of $100 would yield.</li>
+<li>A negative number (assocated with the favored fighter) shows how much money you need to bet to win a profit of $100.  </li>
+<li>A positive number (associated with the underdog) shows how much profit a winning wager of $100 would yield.</li>
 </ul>
 <p>So if the moneyline has Boxer A at -130, we know that Boxer A is expected to win. Further, you know you'd have to place a $130 bet on this fighter to win $100.<br>
 For Boxer B, the moneyline might have them set at +110. This mean Boxer B is the underdog, and if you placed a $100 bet on this fighter, you'd win $110.  </p>
-<p>The actual numeric values (-130 and +110, on this example above), can be converted to what are referred to as <a href="https://www.sbo.net/strategy/implied-probability/">implied probabilities</a> (more about these in a second).</p>
+<p>Since Keras is returning the probability of a boxer winning, we now need to convert the moneyline into regular probabilities so we can compare apples to apples.  </p>
+<p>To do this, first the actual numeric values (-130 and +110, on this example above), must be converted to what are referred to as <a href="https://www.sbo.net/strategy/implied-probability/">implied probabilities</a> (more about implied probabilities in a second). The formula is as follows:  </p>
+<p>\alpha = 10^2</p>
 <p>Implied probability =   ( - ( 'negative' moneyline value ) ) / ( - ( 'negative' moneyline value ) ) + 100<br>
 and<br>
 Implied probability =   100 / ( 'positive' moneyline value + 100 )  </p>
@@ -142,7 +144,7 @@ Implied probability =   100 / ( 'positive' moneyline value + 100 )  </p>
     }
 </script>
  
-	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html">
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html">
           <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
@@ -157,7 +159,7 @@ Implied probability =   100 / ( 'positive' moneyline value + 100 )  </p>
 
     <div class='row-fluid'>
       <div class='article-title span9'> 
-        <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"><h1>Deep Learning for Sport Wagering Part 2 of 3</h1></a>
+        <a href="http://mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"><h1>Deep Learning for Sport Wagering Part 2 of 3</h1></a>
       </div>
     </div>
     <div class="row-fluid">
@@ -165,18 +167,18 @@ Implied probability =   100 / ( 'positive' moneyline value + 100 )  </p>
 <p>Sat 16 September 2017 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep learning</a>
+Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep learning</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://www.mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://www.mattobrien.me/tag/sport.html">sport</a> <a href="http://www.mattobrien.me/tag/wagering.html">wagering</a> </p>
+    Tags <a href="http://mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://mattobrien.me/tag/sport.html">sport</a> <a href="http://mattobrien.me/tag/wagering.html">wagering</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="summary span8">
 	<p>Modeling</p> 
-	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
@@ -191,7 +193,7 @@ Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep 
 
     <div class='row-fluid'>
       <div class='article-title span9'> 
-        <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"><h1>Deep Learning for Sport Wagering Part 1 of 3</h1></a>
+        <a href="http://mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"><h1>Deep Learning for Sport Wagering Part 1 of 3</h1></a>
       </div>
     </div>
     <div class="row-fluid">
@@ -199,18 +201,18 @@ Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep 
 <p>Fri 15 September 2017 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep learning</a>
+Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep learning</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://www.mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://www.mattobrien.me/tag/sport.html">sport</a> <a href="http://www.mattobrien.me/tag/wagering.html">wagering</a> </p>
+    Tags <a href="http://mattobrien.me/tag/deep-learning.html">deep learning</a> <a href="http://mattobrien.me/tag/sport.html">sport</a> <a href="http://mattobrien.me/tag/wagering.html">wagering</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       <div class="summary span8">
 	<p>Characteristics of the dataset</p> 
-	<a class="btn btn-mini xsmall" href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html">
+	<a class="btn btn-mini xsmall" href="http://mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
@@ -221,7 +223,7 @@ Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep 
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="http://www.mattobrien.me/tag/sport.html">1</a></li>
+    <li class="active"><a href="http://mattobrien.me/tag/sport.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
@@ -265,14 +267,14 @@ Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep 
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://www.mattobrien.me/" rel="alternate">
+            <li><a href="http://mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -282,7 +284,7 @@ Filed under <a href="http://www.mattobrien.me/category/deep-learning.html">deep 
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
