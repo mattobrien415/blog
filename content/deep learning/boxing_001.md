@@ -66,7 +66,7 @@ rounds
 ko_percent  
 
 
-At this point it was time to being sifting through the features. Although elements like a boxer's weight are extremely important in real life boxing, this particular feature was not applicable because weight usually changes across a boxer's career. For example, Manny Pacquiao's first fight was at 98 pounds, but his [most recent fight](https://www.youtube.com/watch?v=OdvxQDVP4WI) was at 146 pounds. So a single value pulled from the metadata table would only reflect the most recent weight, not the weight at each fight.
+At this point it was time to begin evaluating the features. Although elements like a boxer's weight are extremely important in real life boxing, this particular feature was not applicable because weight usually changes across a boxer's career. For example, Manny Pacquiao's first fight was at 98 pounds, but his [most recent fight](https://www.youtube.com/watch?v=OdvxQDVP4WI) was at 146 pounds. So a single value pulled from the metadata table would only reflect the most recent weight, not the weight at each fight.
 
 It was simple to keep stance (orthodox or southpaw) as a categorical variable.
 
@@ -163,13 +163,13 @@ and here's [Ali's fight with Archie Moore](https://www.youtube.com/watch?v=-FZBz
 
 and so forth.
 
-Envisioned as a graph, it is insightful to see the interconnectedness of the sport as a whole.  I generated some pretty looking art which I enjoyed on an asthetic level as as well as analytic:  
+Envisioned as a graph, it is insightful to see the interconnectedness of the sport as a whole. Here's a few examples:  
 
 ![Neo4J graph 4](https://github.com/mobbSF/blog/blob/master/images/Neo_004.png?raw=true)  
 
 ![Neo4J graph 5](https://github.com/mobbSF/blog/blob/master/images/Neo_005.png?raw=true)  
 
-Time to Move along. Now that now that the Neo4J database was built, the first metric I focused on creating using Cypher was a 'quality of opposition' (QOO) score.
+Now that now that the Neo4J database was built, the first metric I focused on creating using Cypher was a 'quality of opposition' (QOO) score.
 
 QOO is necessary to suss out boxers with inflated records. Interestingly enough, boxing is the only sport (that I am aware of, at least) where a boxer actually gets to choose their opponent. There are no tournaments...no leagues...just arrangements between two boxers and the businesspeople around them, to hold an event. So what is stopping a boxer from inflating their record with [lousy opposition](http://boxrec.com/en/boxer/4741)? Not much. And this happens often in practice.  
 

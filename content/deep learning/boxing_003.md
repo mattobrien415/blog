@@ -22,7 +22,7 @@ The first strategy is a more conservative approach in one sense. With this persp
 
 Allow me a quick foray into the structure of gambling. Sportsbook odds are set, not by information, but by popular sentiment as it is revealed by [action](https://www.docsports.com/gambling-terms.html). If some Boxer A gets a large amount of action, then the sportsbook will consider Boxer A to be more likely to win, and consequently, payout on this outcome is reduced. Thus, my model is attempting to answer the question, "When does prediction based on historic data result in a confidence higher than the confidence of the sportsbook -- which is a function of popular sentiment?". In this sense, at it's most stripped down, the model is trying make a totally impartial, data driven decision, and looks for opportunities when public perception is not aligned with historically based signal.  
 
-This first strategy also has a built in safeguard. If the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning, then without the safeguard, the bet would be place. This is something we don't want. Instead we want to see action whenever the algorithm is confident above some threshold.
+This first strategy also has a built in safeguard. If the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning, then without the safeguard, the model would decide to place the bet. This is something we don't want. Instead we want to see action whenever the algorithm is confident above some appropriate threshold.
 
 Moving on, the second strategy isn't concerned with the sportsbook's behavior at all; merely concerned with the strength of it's (the model's) own predictions. This strategy might be more successful if it allows more bets to be made, and hopefully more money to be made, quicker. This assumes the model is accurate enough to exhibit this success.
 
@@ -30,7 +30,7 @@ Let's examine both strategies, and see how they played out. We will start with s
 
 #### Strategy 1  
 
-To be implemented, the first strategy required a data acquisition step first. Historic sportsbook odds needed to be collected. This is for the purpose of compairing the probability of a win assigned by the model with the probability of a win assigned by a sportsbook.  
+To be implemented, the first strategy required some more data acquisition. Historic sportsbook odds would need to be collected before we could compare probabilities.  
 
 In boxing, the bookmaker's odds come structured into a form which is referred to as the [moneyline](https://en.wikipedia.org/wiki/Odds#Moneyline_odds). The moneyline is a little confusing at first. Generally, one fighter who considered favored to win is assigned a negative number. The other fighter is considered the underdog, and is assigned a positive number. 
 
@@ -85,7 +85,7 @@ Here is a plot showing the outcome for #1 on the list above:
 
 This gives us an intuition on where to place our decision threshold. We are interested in the point where the blue line and the green line are closest together, which means we will win the highest proportion of our placed bets. Simultaneously we would like this point to be as high as possible along the y axis, meaning the model chose to place a high net number of bets. 
 
-The chart below shows the model will place the proportionately largest number of winning bets around an 0.85 to 0.95 decision threshold.  
+The chart below shows the model will place the proportionately largest number of winning bets around an 0.85 to 0.94 decision threshold.  
 
 <img src="https://github.com/mobbSF/blog/blob/master/images/chart_002.png" width="200">
 
@@ -100,11 +100,11 @@ Here is a plot showing the outcome for #5 (ROI) on the list above:
 ![ROI](https://github.com/mobbSF/blog/blob/master/images/ROI.png?raw=true)  
 
 
-This chart shows the ROI values at the region of interest:  
+This chart shows the ROI values at the regions of interest we saw in the first plot:  
 
 ![chart_002](https://github.com/mobbSF/blog/blob/master/images/chart_002.png?raw=true)  
 
-This shows we can get an ROI of roughly 22.5% if we set the decision threshold to 0.90. We could push it up to 24.8% if we choose 0.94 as the threshold, but notice the precipitous drop starting at 0.95 on the plot above. Better to be wary of possible noise and choose the median value.
+This chart shows we can get an ROI of roughly 22.5% if we set the decision threshold to 0.90. We could push it up to 24.8% if we choose 0.94 as the threshold, but notice the precipitous drop starting at 0.95 on the plot above. Better to be wary of the presence of variance and/or noise and choose to focus on a more median value.
 
 To unpack the ROI value, we can look at the actual dollar amount earned:  
 
@@ -117,12 +117,12 @@ Finally, let's see what the plot looks like when we view all these results simul
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true)  
 
-Clearly, the model is a success as a result of this tuning step. The ROI is eye openingly large.
+Clearly, the model is a success. The ROI is eye openingly large.
 
 But before putting this model to use with blind abandon, there are some issues. 
 
-* Time horizon 
-Recall, we started with a pool of 679 possible fights to wager on. Only 13 bets were executed -- roughly 2 bets made for each 100 fights. Using this algorithm, it would take some time to converge into a profit. This is because there usually is only a handful of matches that are offered every week by the sportsbooks. Then again, most people invest for a minimum of 10 years to see the estimated 7% return in the stock market.
+* Time horizon  
+Recall, we started with a pool of 679 possible fights to wager on. Only 13 bets were executed -- which is roughly 2 bets made for each 100 fights. Using this algorithm, it would take some time to converge into a profit. This is because there usually is only a handful of matches that are offered every week by the sportsbooks. Then again, most people invest for a minimum of 10 years to see the estimated 7% return in the stock market.
 
 
 
