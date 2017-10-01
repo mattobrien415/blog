@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <script src="http://www.mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,23 +24,23 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li >
-	      <a href="http://mattobrien.me/category/deep-learning.html ">deep learning</a>
+	      <a href="http://www.mattobrien.me/category/deep-learning.html ">deep learning</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/python.html ">python</a>
+	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
 	    <li  class="active" >
-	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -63,26 +63,26 @@
 <p>Wed 16 March 2016 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/visualization.html">visualization</a>
+Filed under <a href="http://www.mattobrien.me/category/visualization.html">visualization</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/visualization.html">visualization</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/visualization.html">visualization</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
       </div>
       
       <div class="span8">
-	<p><img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!"></p>
+	<p><img alt="Mike Tyson's Punchout!!" src="http://underratedretro.com/press/wp-content/uploads/2014/08/Mike-Tysons-Punchout.jpg" title="Mike Tyson's Punchout!!" /></p>
 <p>This is a quick and fun little graph of the classic Nintendo game, Mike Tyson's Punch-Out!!.  </p>
 <p>The information for the graph comes directly from the <a href="http://punchout.wikia.com/wiki/Punch-Out_Wiki">Punchout Wiki</a>. The graph is based off the NES console from 1987 as opposed to the earlier arcade games or the later release for the Wii. </p>
 <p>I took the liberty of having Little Mac win all his fights by knockout. But then he went up against Iron Mike...  </p>
 <p><em>Notice that the dataset is read in painlessly via Google Docs as outlined <a href="http://blog.bruggen.com/2014/07/using-loadcsv-to-import-data-from.html">here</a>.</em></p>
-<div class="highlight"><pre>Query 1
-
-LOAD CSV WITH HEADERS FROM
-&#39;https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;gid=0&#39; AS line
+<p>```
+Query 1</p>
+<p>LOAD CSV WITH HEADERS FROM
+'https://docs.google.com/spreadsheets/u/0/d/1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0/export?format=csv&amp;id=1Jr5ABoLMrUPQ3Vm9GTOzVmNucfnWq1ELTxv2WxOYOx0&amp;gid=0' AS line
 MERGE (b1:boxer {
                     boxer_id: line.boxer_id,
                     name: line.name
@@ -104,32 +104,23 @@ CREATE (b1)-[r:BOXER_STATUS {
                   nationality: line.nationality,
                   age: line.age,
                   rank: line.rank
-                         } ]-&gt;(f);  
-</pre></div>
-
-
+                         } ]-&gt;(f);  </p>
+<p>```</p>
 <p>Here's what it looks like:</p>
-<div class="highlight"><pre>MATCH (n)
-RETURN n
-</pre></div>
-
-
-<p><img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png?raw=true"></p>
+<p><code>MATCH (n)
+RETURN n</code>
+<img alt="mtpo" src="https://github.com/mobbSF/blog/blob/master/publicfolder/mtpo.png?raw=true" /></p>
 <p>Here's some simple queries to practice with:  </p>
 <p>Query 1: What happened when Little Mac fought opponents ranked #1?  </p>
-<div class="highlight"><pre>MATCH <span class="p">(</span>result<span class="p">)</span> <span class="o">&lt;-</span><span class="p">[</span>r<span class="o">:</span>BOXER_STATUS<span class="p">]</span><span class="o">-</span> <span class="p">(</span>boxer<span class="p">)</span>
-WHERE toInt<span class="p">(</span>r.rank<span class="p">)</span> <span class="o">=</span> <span class="m">1</span>
-RETURN result.outcome<span class="p">,</span> result.notes
-</pre></div>
-
-
-<p>Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?</p>
-<div class="highlight"><pre>START n=node(*), m=node(*)
+<p><code>MATCH (result) &lt;-[r:BOXER_STATUS]- (boxer)
+WHERE toInt(r.rank) = 1
+RETURN result.outcome, result.notes</code></p>
+<p>Query 2: Did Little Mac lose twice to anyone? Or win twice against anyone?
+<code>START n=node(*), m=node(*)
 WHERE
   n.outcome=m.outcome AND
   ID(n) &lt;ID(m)
-RETURN n, m
-</pre></div>
+RETURN n, m</code></p>
 	<hr />
       </div>
     </div>
@@ -185,14 +176,14 @@ RETURN n, m
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://mattobrien.me/" rel="alternate">
+            <li><a href="http://www.mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -202,7 +193,7 @@ RETURN n, m
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 

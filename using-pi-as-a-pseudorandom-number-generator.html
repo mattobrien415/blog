@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="http://mattobrien.me/theme/html5.js"></script>
+    <script src="http://www.mattobrien.me/theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/local.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/pygments.css" rel="stylesheet">
-    <link href="http://mattobrien.me/theme/font-awesome.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/local.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/pygments.css" rel="stylesheet">
+    <link href="http://www.mattobrien.me/theme/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
@@ -24,23 +24,23 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="http://mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
+	<a href="http://www.mattobrien.me" class="brand">Matt O'Brien (dot) Me</a>
       </div>
 
       <div class="span3" id="blog-nav">
 	<ul class="nav nav-pills pull-right">
 	    <li >
-	      <a href="http://mattobrien.me/category/deep-learning.html ">deep learning</a>
+	      <a href="http://www.mattobrien.me/category/deep-learning.html ">deep learning</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/math.html ">math</a>
+	      <a href="http://www.mattobrien.me/category/math.html ">math</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/python.html ">python</a>
+	      <a href="http://www.mattobrien.me/category/python.html ">python</a>
 	    <li  class="active" >
-	      <a href="http://mattobrien.me/category/r.html ">R</a>
+	      <a href="http://www.mattobrien.me/category/r.html ">R</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/sport.html ">sport</a>
+	      <a href="http://www.mattobrien.me/category/sport.html ">sport</a>
 	    <li >
-	      <a href="http://mattobrien.me/category/visualization.html ">visualization</a>
+	      <a href="http://www.mattobrien.me/category/visualization.html ">visualization</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -63,11 +63,11 @@
 <p>Wed 05 March 2014 </p>
 
 <p style="text-align: left;">
-Filed under <a href="http://mattobrien.me/category/r.html">R</a>
+Filed under <a href="http://www.mattobrien.me/category/r.html">R</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="http://mattobrien.me/tag/simulation.html">simulation</a> <a href="http://mattobrien.me/tag/r.html">R</a> </p>
+    Tags <a href="http://www.mattobrien.me/tag/simulation.html">simulation</a> <a href="http://www.mattobrien.me/tag/r.html">R</a> </p>
 <p>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="digitizerSF">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </p>
@@ -76,28 +76,19 @@ Filed under <a href="http://mattobrien.me/category/r.html">R</a>
       <div class="span8">
 	<p>The digits of transcendental numbers such as $\pi = 3.14159 \dots$ pass many tests for randomness. So, take the first 1000 digits and use it to simulate 500 tosses of a coin, taking even digits to represent Heads and odd digits to represent Tails. Is this simulation consistent with 500 independent tosses of a fair coin?  </p>
 <p>First, get the digits <a href="https://www.dropbox.com/s/purpzv0tzdsca08/PI.txt">here:</a>, download the file and read it into <code>R</code> and call it PI  </p>
-<div class="highlight"><pre>PI <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&quot;\your_path\PI.txt&quot;</span><span class="p">,</span>quote<span class="o">=</span><span class="s">&quot;\&quot;&quot;</span><span class="p">)</span>  
-pi_digits <span class="o">&lt;-</span> <span class="kp">unlist</span><span class="p">(</span><span class="kp">strsplit</span><span class="p">(</span><span class="kp">as.character</span><span class="p">(</span>PI<span class="p">[</span><span class="m">1</span><span class="p">,]),</span><span class="s">&quot;&quot;</span><span class="p">))[</span><span class="m">2</span><span class="o">:</span><span class="m">1000</span><span class="p">]</span>  
-</pre></div>
-
-
+<p><code>PI &lt;- read.table("\your_path\PI.txt",quote="\"")  
+pi_digits &lt;- unlist(strsplit(as.character(PI[1,]),""))[2:1000]</code></p>
 <p>The proportion of even numbers in the first 1000 digits of pi is found as follows:  </p>
-<div class="highlight"><pre><span class="nx">is_even</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="nx">x</span> <span class="o">%%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>  
-<span class="nx">is_odd</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="nx">x</span> <span class="o">%%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>  
-<span class="nx">pi_digits</span> <span class="o">&lt;-</span> <span class="nx">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">pi_digits</span><span class="p">)</span>  
-<span class="nx">indices_for_evens</span> <span class="o">&lt;-</span> <span class="nx">pi_digits</span><span class="cp">[</span><span class="nx">is_even</span><span class="p">(</span><span class="nx">pi_digits</span><span class="p">)</span><span class="cp">]</span>  
-<span class="nx">indices_for_odds</span> <span class="o">&lt;-</span> <span class="nx">pi_digits</span><span class="cp">[</span><span class="nx">is_odd</span><span class="p">(</span><span class="nx">pi_digits</span><span class="p">)</span><span class="cp">]</span>  
-<span class="nx">length</span><span class="p">(</span><span class="nx">indices_for_evens</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span>  
-</pre></div>
-
-
+<p><code>is_even &lt;- function(x) x %% 2 == 0  
+is_odd &lt;- function(x) x %% 2 != 0  
+pi_digits &lt;- as.numeric(pi_digits)  
+indices_for_evens &lt;- pi_digits[is_even(pi_digits)]  
+indices_for_odds &lt;- pi_digits[is_odd(pi_digits)]  
+length(indices_for_evens) / 1000</code></p>
 <p>Now we will do a t-test to see if there is a significant difference between the probability of getting a heads on a coin flip, and getting an even digit of pi, by seeing if there is any significant differene between the mean for a coin flip (0.50) and the mean of getting an even (0.516). We should expect that these aren't significantly different since they are so close:  </p>
-<div class="highlight"><pre>flips <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="kp">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">500</span><span class="p">),</span> <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">500</span><span class="p">))</span>  
-evens_for_t_test <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="kp">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> each<span class="o">=</span><span class="kp">length</span><span class="p">(</span>indices_for_evens<span class="p">)),</span>  <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> each<span class="o">=</span><span class="kp">length</span><span class="p">(</span>indices_for_odds<span class="p">))</span> <span class="p">)</span>  
-t.test<span class="p">(</span>flips<span class="p">,</span> evens_for_t_test<span class="p">,</span> alternative<span class="o">=</span><span class="s">&quot;two.sided&quot;</span><span class="p">)</span>  
-</pre></div>
-
-
+<p><code>flips &lt;- c(rep(1, 500), rep(0, 500))  
+evens_for_t_test &lt;- c(rep(1, each=length(indices_for_evens)),  rep(0, each=length(indices_for_odds)) )  
+t.test(flips, evens_for_t_test, alternative="two.sided")</code></p>
 <p>The p-value is 0.4881.  At a 0.05 significance level, we fail to reject the null hypothesis.Thus, we infer that the digits of pi have passed a test for randomness.  </p>
 <p>So why aren't the digits of $\pi$ used to generate random numbers?  One problem may be the choice of a seed -- in one sense, each time you re-run your simulation based on the digits of $\pi$, you will have to pick up where you left off last time.  This invariably will lead to the requirement of having to calculated $\pi$ to a huge number of decimal places.  In the end, that computational requirement is the major bottleneck and that bottleneck can probably can be arrived at in a number of novel and unfortunate ways. </p><script type= "text/javascript">
     if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -185,14 +176,14 @@ t.test<span class="p">(</span>flips<span class="p">,</span> evens_for_t_test<spa
             <li class="nav-header"> 
               Site
             </li>
-            <li><a href="http://mattobrien.me"><i class="icon-home" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me"><i class="icon-home" style="color: #1f334b">
                 </i>Home</a></li>
-            <li><a href="http://mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
+            <li><a href="http://www.mattobrien.me/archives.html"><i class="icon-list" style="color: #1f334b">
                 </i>Archives</a></li>
-	    <li><a href="http://mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
+	    <li><a href="http://www.mattobrien.me/tags.html"><i class="icon-tags" style="color: #1f334b">
                 </i>Tags</a></li>
 	    
-            <li><a href="http://mattobrien.me/" rel="alternate">
+            <li><a href="http://www.mattobrien.me/" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -202,7 +193,7 @@ t.test<span class="p">(</span>flips<span class="p">,</span> evens_for_t_test<spa
       </div> <!--end of fluid row-->
     </div> <!--end of blog-footer-->
     <hr />
-    <p align="center"><a href="http://mattobrien.me">Matt O'Brien (dot) Me</a>
+    <p align="center"><a href="http://www.mattobrien.me">Matt O'Brien (dot) Me</a>
       &copy; Matt O'Brien
     Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
