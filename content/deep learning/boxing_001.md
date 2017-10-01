@@ -66,7 +66,7 @@ rounds
 ko_percent  
 
 
-At this point it was time to being sifting through the features. Although elements like a boxer's weight are extremely important in real life boxing, this particular feature was not applicable because weight usually changes across a boxer's career. For example, Manny Pacquiao's first fight was at 98 pounds, but his most recent fight was at 146 pounds. So a single value pulled from the metadata table would only reflect the most recent weight, not the weight at each fight.
+At this point it was time to being sifting through the features. Although elements like a boxer's weight are extremely important in real life boxing, this particular feature was not applicable because weight usually changes across a boxer's career. For example, Manny Pacquiao's first fight was at 98 pounds, but his [most recent fight](https://www.youtube.com/watch?v=OdvxQDVP4WI) was at 146 pounds. So a single value pulled from the metadata table would only reflect the most recent weight, not the weight at each fight.
 
 It was simple to keep stance (orthodox or southpaw) as a categorical variable.
 
