@@ -8,15 +8,15 @@ Summary: Modeling
 [Part 3: Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)
 
 
-I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I quote directly, ["The first thing I do, is try to get a feature importance plot printed."](https://youtu.be/1-NYPQw5THU?t=1h19m11s)
+I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I quote verbatium, ["The first thing I do, is try to get a feature importance plot printed."](https://youtu.be/1-NYPQw5THU?t=1h19m11s)
 
 Being just smart enough to recognize when smarter people have smart ideas, this is exactly what I did.
 
-I built a straightforward Random Forest in scikit-learn (using CV to select hyperparameters and using general best procedures) and retrieved this plot:
+I built a straightforward Random Forest in scikit-learn, using CV to select hyperparameters and using general best procedures. I retrieved this plot:
 
 ![VIP](https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true)
 
-The plot doesn't have a strong inflection point, making it difficult to decide where to draw a line in the sand about what is important to include. Let's see if we can deduce where this cutoff might fall, by first let's look at what isn't important:  
+The plot doesn't have a strong inflection point, making it difficult to decide where to draw a line in the sand about what is important to include and what isn't. Let's see if we can deduce where this cutoff might fall, by first let's look at what isn't important:  
 
 - We see that the number of Draw outcomes isn't important, which makes sense, as these are rare outcomes and are fairly irrelevant. The number of draws a boxer has doesn't have much bearing on the rest of their records.  
 - We see that the permutations of stances across opponents (complimentary or opposite, [southpaw](https://en.wikipedia.org/wiki/Southpaw_stance) or [orthodox](https://en.wikipedia.org/wiki/Orthodox_stance)) isn't relevant.  
@@ -30,7 +30,7 @@ This being considered, it should come as no great surprise that the most importa
 
 However, it's possible a boxer could fight once, then fight once again 10 years later. In this scenario,`P1_days_since_ff` would be a value around 3,650, but this wouldn't be an accurate measurement of that boxer's accumulated wear and tear. The boxer would only have fought twice within that period. Fortunately for us, the next most important features on the plot corresponds to the aggregated number of rounds the opponents have fought. A long 'ring life' can clearly play a large role in a fighter's success (see [Ali vs Holmes](https://www.youtube.com/watch?v=Ja9iovR9B3E) for a tragic example). Conversely, too few rounds can also play a role in predicting losing.
 
-Getting back to the variable importance plot, the two Quality of Opposition (`QOO`) metrics are shown to be important, which is nice because they took a lot of effort to construct.
+Getting back to the variable importance plot, the two Quality of Opposition (`QOO`) metrics are shown to be important, which is nice not at the very least because they took a lot of effort to construct!
 
 The `last6_L` and `last6_W` variables have a large amounts of variance as evidenced by the bars. This most likely ties into the discussion about how records, as they stand alone, don't adequately reflect the quality of the opposition. For some boxers, the last 6 are very important; for some, they aren't. This makes sense.
 

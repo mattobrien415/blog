@@ -171,10 +171,10 @@ Envisioned as a graph, it is insightful to see the interconnectedness of the spo
 
 Time to Move along. Now that now that the Neo4J database was built, the first metric I focused on creating using Cypher was a 'quality of opposition' (QOO) score.
 
-QOO is necessary to suss out boxers with inflated records. Interestingly enough, boxing is the only sport (that I can think of, anyway) where a boxer actually gets to choose their opponent. There are no tournaments...no leagues...just arrangements between two boxers and the businesspeople around them, to hold an event. So what is stopping a boxer from inflating their record with [lousy opposition](http://boxrec.com/en/boxer/4741)? Not much.
+QOO is necessary to suss out boxers with inflated records. Interestingly enough, boxing is the only sport (that I am aware of, at least) where a boxer actually gets to choose their opponent. There are no tournaments...no leagues...just arrangements between two boxers and the businesspeople around them, to hold an event. So what is stopping a boxer from inflating their record with [lousy opposition](http://boxrec.com/en/boxer/4741)? Not much. And this happens often in practice.  
 
-It all really comes down to the quality of a boxer's opponents. If a boxer (say P1) has just been beating up on [tomato cans](https://en.wikipedia.org/wiki/Tomato_can_(sports_idiom)), then we need to acknowledge this. 
-Because if P2 was battling top-quality opposition, then you'd be wise to put your money on P2. Because they both could have records of 20 Wins, 0 losses.
+It all really comes down to the quality of a boxer's opponents. If a boxer (say P1) has been beating up on [tomato cans](https://en.wikipedia.org/wiki/Tomato_can_(sports_idiom)), then we need to acknowledge this. 
+Because if during that same time, another boxer (say P2) was battling top-quality opposition, then you'd be wise to put your money on P2. Because both P1 and P2 could have records of 20 Wins, 0 losses. In short, W L D records can be misleading.  
 
 (In reality, most successful fighters start competing relatively frequently, against somewhat weak opposition. Later, they increase the quality of opposition as they decrease the frequency of competition. So the above scenario is an exaggeration, in most cases).
 
@@ -196,6 +196,6 @@ After setting a QOO score for all fights on the nodes in Neo4J, it was easy to p
 
 Indicator columns with 0 or 1 were included, in case the QOO metrics couldn't be built. This could happen if, say, a fight was a boxer's debut.
 
-As a work in progress, I'm still playing with different ways to extract value from the Neo4J implementation. But this was a good start and took me pretty far.
+There are still many other ways to extract value from the Neo4J implementation. For example, implementing an [elo rating](https://en.wikipedia.org/wiki/Elo_rating_system) (as borrowed from chess) could result in a valuable datum for the state of each boxer during each match. But this was a good enough start and took me pretty far.
 
-Now that the data were all cleaned up ready to go, it was time to (finally!!) get to the fun part...building some deep learning models.
+Now that the data were all cleaned up ready to go, it was time to (finally!) get to the fun part...building some deep learning models.

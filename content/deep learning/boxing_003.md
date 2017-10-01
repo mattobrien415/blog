@@ -3,7 +3,7 @@ Date: 2017-10-09
 Tags: deep learning, sport, wagering
 Summary: Predicting
 
-#### Part 3: Predicting
+#### Part 3: Prediction and Evaluation
 [Part 1: Characteristics of the dataset](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)  
 [Part 2: Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)
 
