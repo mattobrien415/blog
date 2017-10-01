@@ -3,7 +3,7 @@ Date: 2017-10-09
 Tags: deep learning, sport, wagering
 Summary: Predicting
 
-#### Part 2: Predicting
+#### Part 3: Predicting
 
 I considered two major betting strategies during this final phase of the project. They are as follows:  
 

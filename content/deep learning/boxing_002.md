@@ -60,7 +60,7 @@ Here's the confusion matrix:
 
 Here's the ROC curve:  
 
-![ROC](https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true)
+![ROC](https://github.com/mobbSF/blog/blob/master/images/ROC.png?raw=true)
 
 OK, so how should I feel about such relatively modest scores, in this age of a solved MNIST, self-driving cars, and [Elon Musk's dire warnings](https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html) of [Arnold coming baaack](https://www.youtube.com/watch?v=-WIwQlMesr0)?
 

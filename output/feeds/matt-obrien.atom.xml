@@ -84,7 +84,7 @@ Implied probability =   100 / ( 'positive' moneyline value + 100 )  &lt;/p&gt;
 &lt;p&gt;Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed very similarly. Epochs around 10 performed just fine.&lt;/p&gt;
 &lt;p&gt;A decent final configuration looked like this: &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;mlp_004 = Sequential()
-mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;, input_dim=13))  #0.69 after 20 epochs w/out BatchNormalization#
+mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;, input_dim=13))
 mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
 mlp_004.add(Dense(64, activation=&amp;#39;relu&amp;#39;))
 mlp_004.add(Dropout(0.2))

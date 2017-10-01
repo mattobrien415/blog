@@ -96,7 +96,7 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
 <p>Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed very similarly. Epochs around 10 performed just fine.</p>
 <p>A decent final configuration looked like this: </p>
 <div class="highlight"><pre>mlp_004 = Sequential()
-mlp_004.add(Dense(64, activation=&#39;relu&#39;, input_dim=13))  #0.69 after 20 epochs w/out BatchNormalization#
+mlp_004.add(Dense(64, activation=&#39;relu&#39;, input_dim=13))
 mlp_004.add(Dense(64, activation=&#39;relu&#39;))
 mlp_004.add(Dense(64, activation=&#39;relu&#39;))
 mlp_004.add(Dropout(0.2))
