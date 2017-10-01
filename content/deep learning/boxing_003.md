@@ -101,6 +101,35 @@ This chart shows the values at the region of interest:
  | Content Cell  | Content Cell  |
 
 
+| boxer1_id          |
+|--------------------|
+| boxer2_id          |
+| date               |
+| location           |
+| rounds_planned     |
+| rounds_happened    |
+| boxer1_mass        |
+| boxer2_mass        |
+| boxer2_wins        |
+| boxer2_loses       |
+| boxer2_draws       |
+| boxer2_last6_wins  |
+| boxer2_last6_loses |
+| boxer2_last6_draws |
+| outcome            |
+| outcome_type       |
+| rating             |
+| time               |
+| referee            |
+| judge1             |
+| judge2             |
+| judge3             |
+| judge1_score       |
+| judge2_score       |
+| judge3_score       |
+| titles             |
+| comments           |
+
 
  | Decision Threshold  | ROI    |
  | ---------------------------- |

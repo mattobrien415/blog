@@ -56,8 +56,26 @@ and  &lt;/p&gt;
 &lt;p&gt;The ROI plot above doesn't show the net cash balance. The plot below does:  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="cash" src="https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true"&gt;  &lt;/p&gt;
 &lt;p&gt;This chart shows the values at the region of interest:  &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;First Header&lt;/th&gt;
+&lt;th&gt;Second Header&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Content Cell&lt;/td&gt;
+&lt;td&gt;Content Cell&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Content Cell&lt;/td&gt;
+&lt;td&gt;Content Cell&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;| Decision Threshold  | ROI    |
- | ---------------------------- | 
+ | ---------------------------- |
  | 0.87                | 22.46  |
  | 0.88                | 22.46  |
  | 0.89                | 22.46  |
