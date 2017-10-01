@@ -89,7 +89,7 @@ The chart below shows the model will place the proportionately largest number of
 
 <img src="https://github.com/mobbSF/blog/blob/master/images/chart_002.png" width="200">
 
-![chart_002](https://github.com/mobbSF/blog/blob/master/images/chart_002.png?raw=true)  
+![chart_001](https://github.com/mobbSF/blog/blob/master/images/chart_001.png?raw=true)  
 
 It looks like roughly 0.90 is a reasonable place to set the threshold.  
 
@@ -102,21 +102,22 @@ This chart shows the ROI values at the region of interest:
 
 ![chart_002](https://github.com/mobbSF/blog/blob/master/images/chart_002.png?raw=true)  
 
-This shows we can get an ROI around 22.5\% if we set the decision threshold to roughly 0.90. We could push it up to 24.8\% if we choose 0.94 as the threshold, but notice the precipitous drop at 0.95 on the plot above. Better to be wary of possible noise and choose the median value.
+This shows we can get an ROI around 22.5% if we set the decision threshold to roughly 0.90. We could push it up to 24.8% if we choose 0.94 as the threshold, but notice the precipitous drop starting at 0.95 on the plot above. Better to be wary of possible noise and choose the median value.
 
-The ROI plot above doesn't show the net cash balance. Perhaps the ROI is high, but the best placed has low payouts. The plot below clarifies:  
+To unpack the ROI value, we can look at the actual dollar amount earned:  
 
 ![cash](https://github.com/mobbSF/blog/blob/master/images/cash.png?raw=true)  
 
 
-
-We are seeing that when we stick with 0.90 we earn \$292.00.  
+We are seeing that when we stick with 0.90 we earn \$292.00, from a net investment of \$1,300.
 
 Finally, let's see what the plot looks like when we view all these results simultaneously:  
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true)  
 
 Clearly, the model is a success as a result of this tuning step.  
+
+There are some issues. Recall, we started with a pool of 679 possible fights to wager on. Only 13 bets were executed -- roughly 2 bets made for each 100 fights. Using this algorithm, it would take some time to converge into a profit. This is because there usually is only a handful of matches that are offered every week by the sportsbooks. Then again,   
 
 
 
