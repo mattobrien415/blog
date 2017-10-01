@@ -8,16 +8,13 @@ Summary: Modeling
 
 I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, ["In real life, I always start with a variable importance plot"](https://youtu.be/1-NYPQw5THU?t=1h19m11s)
 
-
 Being just smart enough to recognize when smarter people have smart ideas, this is exactly what I did.
 
-I built a straightforward Random Forest in scikit-learn (using CV to select hyperparameters) and retrieved this plot:
+I built a straightforward Random Forest in scikit-learn (using CV to select hyperparameters and using general best procedures) and retrieved this plot:
 
 ![VIP](https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true)
 
-The plot doesn't have a strong inflection point. 
-
-First let's look at what isn't important:  
+The plot doesn't have a strong inflection point, making it difficult to decide where to draw a line in the sand about what is important to include. Let's see if we can deduce where this cutoff might fall, by first let's look at what isn't important:  
 
 - We see that the number of Draw outcomes isn't important, which makes sense, as these are rare outcomes and are fairly irrelevant. The number of draws a boxer has doesn't have much bearing on the rest of their records.  
 - We see that the permutations of stances across opponents (complimentary or opposite, [southpaw](https://en.wikipedia.org/wiki/Southpaw_stance) or [orthodox](https://en.wikipedia.org/wiki/Orthodox_stance)) isn't relevant.  
@@ -37,9 +34,9 @@ The `last6_L` and `last6_W` variables have a large amounts of variance as eviden
 
 Content with the plot and with these features in mind, I experimented with various subsets of features and various configurations when fitting multilayer perceptrons in Keras.
 
-Because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. 
+On a positive note, because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. 
 
-Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed similarly. Epochs around 10 performed just fine.
+Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed very similarly. Epochs around 10 performed just fine.
 
 A decent final configuration looked like this: 
 
@@ -55,15 +52,22 @@ A decent final configuration looked like this:
 
 	mlp_004.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
 
-The accuracy returned was 73%. 
+The validation set accuracy returned was 73%. 
 
-OK, so how should I feel about such a modest accuracy, in this age of computer vision, self-driving cars, and [Elon Musk's dire warnings](https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html) of [Arnold coming baaack](https://www.youtube.com/watch?v=-WIwQlMesr0)?
+Here's the confusion matrix:
+
+![CM](https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true)
+
+Here's the ROC curve:  
+
+![ROC](https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true)
+
+
+
+OK, so how should I feel about such relatively modest scores, in this age of a solved MNIST, self-driving cars, and [Elon Musk's dire warnings](https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html) of [Arnold coming baaack](https://www.youtube.com/watch?v=-WIwQlMesr0)?
 
 I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we *DO* bet, we will win. More in the third post on these approaches.
 
-Time to move past the accuracy. As briefly noted above, the dataset wasn't appreciably unbalanced. Here's the confusion matrix:
-
-![CM](https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true)
 
 
 Meanwhile, allow me to wander a bit (yet again!) and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. 

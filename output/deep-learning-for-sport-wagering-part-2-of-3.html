@@ -76,8 +76,8 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
       <div class="span8">
 	<h4>Part 2: Modeling</h4>
 <p>I was fortunate enough to have attended Jeremy Howard's awesome <a href="https://www.usfca.edu/data-institute/certificates/deep-learning-part-one">deep learning certification program</a> at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, <a href="https://youtu.be/1-NYPQw5THU?t=1h19m11s">"In real life, I always start with a variable importance plot"</a></p>
-<p>Being just smart enough to recognize when smarter people have good ideas, this is exactly what I did.</p>
-<p>I built a straightforward Random Forest in scikit-learn (using GridSearchCV) and retrieved this plot:</p>
+<p>Being just smart enough to recognize when smarter people have smart ideas, this is exactly what I did.</p>
+<p>I built a straightforward Random Forest in scikit-learn (using CV to select hyperparameters) and retrieved this plot:</p>
 <p><img alt="VIP" src="https://github.com/mobbSF/blog/blob/master/images/VIP.png?raw=true"></p>
 <p>The plot doesn't have a strong inflection point. </p>
 <p>First let's look at what isn't important:  </p>
@@ -87,43 +87,35 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
 <li>Finally, the indicator columns aren't useful, which isn't a major surprise. </li>
 </ul>
 <p>Next, let's look at what <em>is</em> important. But first, let's take a little detour to think ahead about what might feel right. Let's ignore the variable importance plot for a moment.</p>
-<p>There is a fundamental axiom in boxing: "Hit and don't get hit." Without adhering to this basic principle, careers will be unnecesarily short, as physical damage sustained will quickly accumulate. So the idea of wear and tear on the body accumulated by a boxer over time seems like a naturally important component of what influences the outcome of a fight. </p>
-<p>This being considered, it should come as no great surprise that the most important feature in the Random Forest is <code>P1_days_since_ff</code>. Recall, this variable reports how long it has been since a boxer's career began. This perspective on career length turns out to be a natural fit.</p>
-<p>However, it's possible a boxer could fight once, then fight again 10 years later. In this scenario,<code>P1_days_since_ff</code> would be a value around 3,650, but this wouldn't be an accurate measurement of that boxer's accumulated wear and tear. Fortunately for us, the next most important features on the plot corresponds to the aggregated number of rounds the opponents have fought. A long 'ring life' can clearly play a large role in a fighter's success (see <a href="https://www.youtube.com/watch?v=Ja9iovR9B3E">Ali vs Holmes</a> for a tragic example). Conversely, too few rounds can also play a role in predicting losing.</p>
+<p>There is a fundamental axiom in boxing: "Hit and don't get hit." For boxers who fail to adhere to this basic principle, careers will be unnecesarily short, as physical damage sustained will quickly accumulate. So the idea of wear and tear on the body accumulated by a boxer over time seems like a naturally important component of what influences the outcome of a fight. </p>
+<p>This being considered, it should come as no great surprise that the most important feature in the Random Forest is <code>P1_days_since_ff</code>. Recall, this variable reflects how long it has been since a boxer's career began. This perspective on career length turns out to be a natural fit.</p>
+<p>However, it's possible a boxer could fight once, then fight once again 10 years later. In this scenario,<code>P1_days_since_ff</code> would be a value around 3,650, but this wouldn't be an accurate measurement of that boxer's accumulated wear and tear. The boxer would only have fought twice within that period. Fortunately for us, the next most important features on the plot corresponds to the aggregated number of rounds the opponents have fought. A long 'ring life' can clearly play a large role in a fighter's success (see <a href="https://www.youtube.com/watch?v=Ja9iovR9B3E">Ali vs Holmes</a> for a tragic example). Conversely, too few rounds can also play a role in predicting losing.</p>
 <p>Getting back to the variable importance plot, the two Quality of Opposition (<code>QOO</code>) metrics are shown to be important, which is nice because they took a lot of effort to construct.</p>
 <p>The <code>last6_L</code> and <code>last6_W</code> variables have a large amounts of variance as evidenced by the bars. This most likely ties into the discussion about how records, as they stand alone, don't adequately reflect the quality of the opposition. For some boxers, the last 6 are very important; for some, they aren't. This makes sense.</p>
 <p>Content with the plot and with these features in mind, I experimented with various subsets of features and various configurations when fitting multilayer perceptrons in Keras.</p>
 <p>Because of the small file size of the flat dataset (only 1.85 GB), there were no heavy demands on IO or memory. Thus I could rip through each epoch on a basic AWS cloud GPU painlessly, and iterate on models easily. </p>
-<p>Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed similarly. Epochs around 10 performed fine.</p>
+<p>Regarding the actual deep architecture of the MLP, I didn't have major overfitting issues, thus didn't get any advantage with a copious amount of dropout. Batch Normalization didn't give me any advantage, so I discarded it. Fundamentally, it's a remarkably simple dataset and most models I built performed similarly. Epochs around 10 performed just fine.</p>
 <p>A decent final configuration looked like this: </p>
-<div class="highlight"><pre>mlp = Sequential()
-mlp.add(Dense(64, activation=&#39;relu&#39;, input_dim=13))
-mlp.add(Dense(64, activation=&#39;relu&#39;))
-mlp.add(Dense(64, activation=&#39;relu&#39;))
-mlp.add(Dropout(0.2))
-mlp.add(Dense(64, activation=&#39;relu&#39;))
-mlp.add(Dense(3, activation=&#39;softmax&#39;))
-mlp.compile(optimizer=&#39;Adam&#39;, loss=&#39;categorical_crossentropy&#39;, metrics=[&#39;accuracy&#39;])
+<div class="highlight"><pre>mlp_004 = Sequential()
+mlp_004.add(Dense(64, activation=&#39;relu&#39;, input_dim=13))  #0.69 after 20 epochs w/out BatchNormalization#
+mlp_004.add(Dense(64, activation=&#39;relu&#39;))
+mlp_004.add(Dense(64, activation=&#39;relu&#39;))
+mlp_004.add(Dropout(0.2))
+mlp_004.add(Dense(64, activation=&#39;relu&#39;))
+mlp_004.add(Dense(1, activation=&#39;sigmoid&#39;))
 
-mlp.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
+mlp_004.compile(optimizer=&#39;rmsprop&#39;, loss=&#39;binary_crossentropy&#39;, metrics=[&#39;accuracy&#39;])
+
+mlp_004.fit(X_train, y_train, batch_size=64, validation_split=0.2, nb_epoch=10)
 </pre></div>
 
 
-<p>The accuracy returned would settle down to roughly 66%. </p>
-<p>OK, so how should I feel about such a low accuracy, in this age of computer vision, self-driving cars, and <a href="https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html">Elon Musk's dire warnings</a> of <a href="https://www.youtube.com/watch?v=-WIwQlMesr0">Arnold coming baaack</a>?</p>
-<p>I must admit, I feel pretty good about it. Remember, we are trying to get the edge on gambling. Theoretically, anything about a coin flip should be profitable over time. </p>
+<p>The accuracy returned was 73%. </p>
+<p>OK, so how should I feel about such a modest accuracy, in this age of computer vision, self-driving cars, and <a href="https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html">Elon Musk's dire warnings</a> of <a href="https://www.youtube.com/watch?v=-WIwQlMesr0">Arnold coming baaack</a>?</p>
+<p>I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we <em>DO</em> bet, we will win. More in the third post on these approaches.</p>
 <p>Time to move past the accuracy. As briefly noted above, the dataset wasn't appreciably unbalanced. Here's the confusion matrix:</p>
 <p><img alt="CM" src="https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true"></p>
-<p>It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate to a user when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we <em>DO</em> bet, we will win. </p>
-<p>Looking at the ROC curve,</p>
-<p><img alt="ROC" src="https://github.com/mobbSF/blog/blob/master/images/ROC.png?raw=true"></p>
-<p>...I was inspired to refit the model with a variety of custom precision and recall thresholds and examined the resulting metrics.  </p>
-<p>However, by sticking with the default <code>[precision_threshold(0.5), recall_threshold(0.5)]</code></p>
-<p>I got my best precision and recall scores: </p>
-<p>Precision: 0.71<br>
-Recall:    0.78</p>
-<p>I could spend some more time exploring this area, but for now I am content with these scores.</p>
-<p>Meanwhile, allow me to wander a bit and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. </p>
+<p>Meanwhile, allow me to wander a bit (yet again!) and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. </p>
 <p>I changed the labels to represent the granular outcomes mentioned above, and I rebuilt the model and crossed my fingers. Unfortunately, and not too surprisingly, accuracy dropped to around 30%. Hummm...well...worth a shot. And definitely worth revisiting again later.</p>
 <p>Next up...prediction time!</p>
 	<hr />
