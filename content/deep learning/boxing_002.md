@@ -4,6 +4,8 @@ Tags: deep learning, sport, wagering
 Summary: Modeling
 
 #### Part 2: Modeling
+[Part 1 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)
+[Part 3 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)
 
 
 I was fortunate enough to have attended Jeremy Howard's awesome [deep learning certification program](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) at University of San Francisco. One of the many insightful things Jeremy said was, and I paraphrase, ["In real life, I always start with a variable importance plot"](https://youtu.be/1-NYPQw5THU?t=1h19m11s)
@@ -64,7 +66,7 @@ Here's the ROC curve:
 
 OK, so how should I feel about such relatively modest scores, in this age of a solved MNIST, self-driving cars, and [Elon Musk's dire warnings](https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html) of [Arnold coming baaack](https://www.youtube.com/watch?v=-WIwQlMesr0)?
 
-I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we *DO* bet, we will win. More in the third post on these approaches.
+I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we *DO* bet, we will win. More in the third post about this approach.
 
 Meanwhile, allow me to wander a bit (yet again!) and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. 
 
