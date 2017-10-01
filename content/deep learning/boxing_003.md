@@ -39,15 +39,12 @@ The best way to remember how to read the moneyline is to always start with the i
 - A negative number (assocated with the favored fighter) shows how much money you need to bet to win a profit of $100.  
 - A positive number (associated with the underdog) shows how much profit a winning wager of $100 would yield.
 
-So if the moneyline has Boxer A at -130, we know that Boxer A is expected to win. Further, you know you'd have to place a $130 bet on this fighter to win $100.  
-For Boxer B, the moneyline might have them set at +110. This mean Boxer B is the underdog, and if you placed a $100 bet on this fighter, you'd win $110.  
+So if the moneyline has Boxer A at -130, we know that Boxer A is expected to win. Further, you know you'd have to place a \$130 bet on this fighter to win \$100.  
+For Boxer B, the moneyline might have them set at +110. This mean Boxer B is the underdog, and if you placed a \$100 bet on this fighter, you'd win \$110.  
 
 Since Keras is returning the probability of a boxer winning, we now need to convert the moneyline into regular probabilities so we can compare apples to apples.  
 
 To do this, first the actual numeric values (-130 and +110, on this example above), must be converted to what are referred to as [implied probabilities](https://www.sbo.net/strategy/implied-probability/) (more about implied probabilities in a second). The formula is as follows:  
-
-Let $X$ be closed subset of $[0,1]$ such that $m(X) = 1$.  We need to show that $X= [0,1]$.  Let $a=inf(X)$ and let $b=sup(X)$.  Suppose, by contradiction, that $X \neq [0, 1]$.  Then, there are 3 cases for which $X=[0, 1]$. 
-
 
 $\text{Implied probability for 'negative' moneyline} = \frac{ - ( \text{'negative' moneyline value})}{- ( \text{'negative' moneyline value} ) + 100}$  
 and  
@@ -68,7 +65,14 @@ $\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied 
 
 With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  
 
-We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  To determine this, it was merely a matter of looping through thresholds from $\[ 0, 1 \]$ by 0.1 and 
+We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  To determine this, it was merely a matter of looping through thresholds from $\[ 0, 1 \]$ by 0.1 and collecting results. The results to collect were as follows:   
+* Number of wagers:  number of wagers that satisified the criteria and thus were executed,  
+* Number of wagers won: as above, that won  
+* Number of wagers lost: as above, that lost  
+* Balance: a tabulation of the balance between money won from successful wagers, and money lost from unsuccessful wagers  
+* ROI (return on investment): simply $\frac{\text{balance}}{\text{total investment}$ 
+
+Here is the outcome
 
 
 
