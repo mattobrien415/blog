@@ -41,7 +41,7 @@ Regarding the actual deep architecture of the MLP, I didn't have major overfitti
 A decent final configuration looked like this: 
 
 	mlp_004 = Sequential()
-	mlp_004.add(Dense(64, activation='relu', input_dim=13))  #0.69 after 20 epochs w/out BatchNormalization#
+	mlp_004.add(Dense(64, activation='relu', input_dim=13))
 	mlp_004.add(Dense(64, activation='relu'))
 	mlp_004.add(Dense(64, activation='relu'))
 	mlp_004.add(Dropout(0.2))
@@ -62,13 +62,9 @@ Here's the ROC curve:
 
 ![ROC](https://github.com/mobbSF/blog/blob/master/images/CM.png?raw=true)
 
-
-
 OK, so how should I feel about such relatively modest scores, in this age of a solved MNIST, self-driving cars, and [Elon Musk's dire warnings](https://www.cnbc.com/2017/08/11/elon-musk-issues-a-stark-warning-about-a-i-calls-it-a-bigger-threat-than-north-korea.html) of [Arnold coming baaack](https://www.youtube.com/watch?v=-WIwQlMesr0)?
 
 I must admit, I feel pretty good about it. It's useful to take a step back here and reiterate that the purpose of this project is to make money gambling on boxing. If we were to use this algorithm to indicate when to place a bet, then we would prefer a larger precision at the expense of recall. What this means it that it's better to avoid betting and miss out on opportunities to win (lower recall), as long as we are more confident that when we *DO* bet, we will win. More in the third post on these approaches.
-
-
 
 Meanwhile, allow me to wander a bit (yet again!) and discuss one of the many experiments I ran that didn't pay off. I went ahead and went for a moonshot. The reality is that as far as wagering on boxing go, it's one thing to wager on a W or L outcome. But if you can win a bet by predicting a more granular types of outcomes, the payouts are several orders of magnitude better. The actual type of outcome -- either a judges decision, or an actual knockout, or a technical knockout -- that's where the big bucks are. And when it comes to knockouts, if it's possible to predict the actual round? The payouts are huge. 
 
