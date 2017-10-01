@@ -150,7 +150,11 @@ ROI showing first hint of high probs
 Cash: showing actual dollar amount
 All stuff combined
 
-
+<script>
+  $(document).ready(function () {
+    $("table").attr("class","table table-condensed table-bordered");
+  });
+</script>
 
 
 
