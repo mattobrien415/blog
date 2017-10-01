@@ -4,7 +4,7 @@ Tags: deep learning, sport, wagering
 Summary: Modeling
 
 #### Part 2: Modeling
-[Part 1 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)
+[Part 1 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html)  
 [Part 3 here:](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)
 
 
