@@ -118,17 +118,17 @@ I reran the project from top to bottom a few times, and found that indeed the th
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/slate.png?raw=true) 
 
-How to mitigate this? I decided to create 100 models, evaluate each of them, and take averages.  
-
 To visually get a feel for the variance, I made a plot of these 100 models:  
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/cash_100.png?raw=true) 
 
-Quite a lot of varaiance. Here's a plot of the average:
+That's quite a lot of varaiance. How to mitigate this? The idea is akin to ensembling the model with many different versions of itself. I decided to create 100 models, evaluate each of them, and take average for ROI, bets placed, cash balance, etc.  
+
+Here's a plot of the average:
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions_100_mean.png?raw=true) 
 
-It seems like the choice of 0.90 is still pretty conservative. But in gambling, perhaps conservative is okay.
+Notice how much smoother the line is than on the other plots. It seems like the choice of 0.90 is still pretty conservative. But in gambling, perhaps conservative is okay.
 
 With the bulk of the work now done, we can claim success.  
 
