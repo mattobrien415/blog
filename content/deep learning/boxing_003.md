@@ -124,10 +124,11 @@ To visually get a feel for the variance, I made a plot of these 100 models:
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/cash100.png?raw=true) 
 
-However, considering what the average looks like, it seems like the choice of 0.90 is 
+Quite a lot of varaiance. Here's a plot of the average:
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions_100_mean.png?raw=true) 
 
+It seems like the choice of 0.90 is still pretty conservative. But in gambling, perhaps conservative is okay.
 
 With the bulk of the work now done, we can claim success.  
 
