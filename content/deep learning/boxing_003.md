@@ -122,7 +122,7 @@ How to mitigate this? I decided to create 100 models, evaluate each of them, and
 
 To visually get a feel for the variance, I made a plot of these 100 models:  
 
-![functions](https://github.com/mobbSF/blog/blob/master/images/cash100.png?raw=true) 
+![functions](https://github.com/mobbSF/blog/blob/master/images/cash_100.png?raw=true) 
 
 Quite a lot of varaiance. Here's a plot of the average:
 
