@@ -19,11 +19,9 @@ This strategy can be thought of as conservative approach. We include a parameter
 
 Allow me a quick foray into the structure of gambling. Sportsbook odds are set, not by information, but by popular sentiment as it is revealed by [action](https://www.docsports.com/gambling-terms.html). If some Boxer A gets a large amount of action, then the sportsbook will consider Boxer A to be more likely to win, and consequently, payout on this outcome is reduced. Thus, my model is attempting to answer the question, "When does prediction based on historic data result in a confidence higher than the confidence of the sportsbook -- which is a function of popular sentiment?". In this sense, at it's most stripped down, the model is trying make a totally impartial, data driven decision, and looks for opportunities when public perception is not aligned with historically based signal.  
 
-Our strategy also has a built in safeguard. Suppose the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning. Without the safeguard, the model would decide to place the bet. This is something we don't want. Instead, we want to see action whenever the algorithm is confident above some appropriate threshold.
-
-Let's examine the process and see what happened.
+The strategy also has the opportunity to benefit from it's built-in safeguard. Suppose the sportsbook places some Boxer A at a 10% chance of winning, and the model predicts an 11% chance of winning. Without the safeguard, the model would decide to place the bet. Wagering on such low probabilities is something we don't want. Instead, we want to see action whenever the algorithm is confident above some appropriate threshold.
   
-To be implemented, our strategy required the acquistion of more data. Historic sportsbook odds needed to be collected so that we could compare them with model's.  
+To be implemented, first comes acquistion of more data. Historic sportsbook odds needed to be collected so that we could compare them with model's.  
 
 In boxing, the bookmaker's odds come structured into a form which is referred to as the [moneyline](https://en.wikipedia.org/wiki/Odds#Moneyline_odds). The moneyline is a little confusing at first. Generally, one fighter who considered favored to win is assigned a negative number. The other fighter is considered the underdog, and is assigned a positive number. 
 
@@ -58,17 +56,17 @@ $\text{Actual probability } = \frac{\text{Implied probability A}}{\text{Implied 
 
 With the math settled, I began searching for a set of historic moneylines for records which I could use in my test set. Using a variety of sources (including laborious searching of the Wayback Machine, and locating an actual broker for assistance), I collected a set of 728 moneylines. After munging, the final size was 679.  
 
-We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  To determine this, it was merely a matter of looping through thresholds from $\[ 0, 1 \]$ by 0.1 and collecting results.  
+We now bring our attention back to decision thresholds. What would be the optimal value where our $\text{model probability} > \text{some decision threshold}$?  To determine this, it was merely a matter of looping through thresholds from $\[ 0, 1 \]$ by 0.1 and collecting the resulting classifications.  
 
-The outputs collects as a function of varying decision threshold were as follows:   
+The outputs collects at each of these varying decision thresholds were as follows:   
 
-1. Number of wagers that satisified the criteria and thus were placed  
+1. Total number of wagers that satisified the criteria and thus were placed  
 2. Number of wagers placed which won  
 3. Number of wagers placed which lost  
 4. A tabulation of the balance resulting from money won via successful wagers and money lost via unsuccessful wagers  
 5. ROI (return on investment): simply $\frac{\text{balance}}{\text{total investment}}$  
 
-The iterations assumed that each bet placed was a \$100 bet. Every loss will incur a deduction of \$100, whereas each winning bet will earn a deposit depending on the sportsbook odds. This means if the model can predict 'easy' matches, it can win a smaller amount of money, but if the matches are harder to predict, the model can earn more.  
+We assumed that each bet placed was a \$100 bet. Every loss will incur a deduction of \$100, whereas each winning bet will earn a deposit depending on the sportsbook odds. This means if the model can predict 'easy' matches, it can win a smaller amount of money, but if the matches are harder to predict, the model can earn more.  
 
 
 
@@ -86,7 +84,7 @@ The chart below shows the model will place the proportionately largest number of
 
 It looks like roughly 0.90 is a reasonable place to set the threshold.  
 
-Now that we've got a feel for where our threshold might be, we can leap forward to look at the bottom line -- did we turn a profit?  
+Now that we've got a feel for where our threshold might be, we can look forward to the bottom line -- did we turn a profit?  
 
 Here is a plot showing the outcome for #5 (ROI) on the list above:  
 
@@ -110,7 +108,28 @@ Finally, let's see what the plot looks like when we view most of these results s
 
 ![functions](https://github.com/mobbSF/blog/blob/master/images/functions.png?raw=true)  
 
-Here we can see the sweet spot of 0.90 clearly. With the bulk of the work now done, we can claim success.  
+
+
+Here we can see the sweet spot of 0.90 clearly. 
+
+However, modeling like this isn't always deterministic. Small variations in inputs such that occur during randomly selecting test and validation sets can ripple through the pipeline and give different results.  
+
+I reran the project from top to bottom a few times, and found that indeed the threshold is a pretty fragile spot. These three images show that the 0.9 threshold might not always be the optimum.  
+
+![functions](https://github.com/mobbSF/blog/blob/master/images/slate.png?raw=true) 
+
+How to mitigate this? I decided to create 100 models, evaluate each of them, and take averages.  
+
+To visually get a feel for the variance, I made a plot of these 100 models:  
+
+![functions](https://github.com/mobbSF/blog/blob/master/images/cash100.png?raw=true) 
+
+However, considering what the average looks like, it seems like the choice of 0.90 is 
+
+![functions](https://github.com/mobbSF/blog/blob/master/images/functions_100_mean.png?raw=true) 
+
+
+With the bulk of the work now done, we can claim success.  
 
 The outcome can be summed up in this elevator pitch sized statement:  
 
