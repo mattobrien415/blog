@@ -66,7 +66,7 @@ and  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/slate.png?raw=true" /&gt; &lt;/p&gt;
 &lt;p&gt;How to mitigate this? I decided to create 100 models, evaluate each of them, and take averages.  &lt;/p&gt;
 &lt;p&gt;To visually get a feel for the variance, I made a plot of these 100 models:  &lt;/p&gt;
-&lt;p&gt;&lt;img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/cash100.png?raw=true" /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/cash_100.png?raw=true" /&gt; &lt;/p&gt;
 &lt;p&gt;Quite a lot of varaiance. Here's a plot of the average:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/functions_100_mean.png?raw=true" /&gt; &lt;/p&gt;
 &lt;p&gt;It seems like the choice of 0.90 is still pretty conservative. But in gambling, perhaps conservative is okay.&lt;/p&gt;
