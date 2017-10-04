@@ -141,12 +141,12 @@ and  </p>
 <p>However, modeling like this isn't always deterministic. Small variations in inputs such that occur during randomly selecting test and validation sets can ripple through the pipeline and give different results.  </p>
 <p>I reran the project from top to bottom a few times, and found that indeed the threshold is a pretty fragile spot. These three images show that the 0.9 threshold might not always be the optimum.  </p>
 <p><img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/slate.png?raw=true" /> </p>
-<p>How to mitigate this? I decided to create 100 models, evaluate each of them, and take averages.  </p>
 <p>To visually get a feel for the variance, I made a plot of these 100 models:  </p>
 <p><img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/cash_100.png?raw=true" /> </p>
-<p>Quite a lot of varaiance. Here's a plot of the average:</p>
+<p>That's quite a lot of varaiance. How to mitigate this? The idea is akin to ensembling the model with many different versions of itself. I decided to create 100 models, evaluate each of them, and take average for ROI, bets placed, cash balance, etc.  </p>
+<p>Here's a plot of the average:</p>
 <p><img alt="functions" src="https://github.com/mobbSF/blog/blob/master/images/functions_100_mean.png?raw=true" /> </p>
-<p>It seems like the choice of 0.90 is still pretty conservative. But in gambling, perhaps conservative is okay.</p>
+<p>Notice how much smoother the line is than on the other plots. It seems like the choice of 0.90 is still pretty conservative. But in gambling, perhaps conservative is okay.</p>
 <p>With the bulk of the work now done, we can claim success.  </p>
 <p>The outcome can be summed up in this elevator pitch sized statement:  </p>
 <p><strong>"The model, with a decision threshold of 0.90, chose to place thirteen bets, winning all but one. With an initial investment of 
