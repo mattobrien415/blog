@@ -72,4 +72,6 @@ Meanwhile, allow me to wander a bit (yet again!) and discuss one of the many exp
 
 I changed the labels to represent the granular outcomes mentioned above, and I rebuilt the model and crossed my fingers. Unfortunately, and not too surprisingly, accuracy dropped to around 30%. Hummm...well...worth a shot. And definitely worth revisiting again later.
 
-Next up...prediction time!
+Next up...prediction time!  
+
+[Part 3: Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)

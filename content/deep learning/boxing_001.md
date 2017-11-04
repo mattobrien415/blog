@@ -4,7 +4,7 @@ Tags: deep learning, sport, wagering
 Summary: Characteristics of the dataset
 
 #### Part 1: Characteristics of the dataset
-[Part 2 Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)  
+[Part 2: Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)  
 [Part 3: Prediction and Evaluation](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html)  
 
 Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.
@@ -33,7 +33,9 @@ Part 1 is fairly dry and reflect the laborous truth that the majority of data sc
 
 Part 2 is short and has some interesting forays into feature engineering vis-à-vis graph databases.  
 
-Part 3 is the most exciting, since we finally get to talk money!  
+Part 3 is the most exciting, since we finally get to talk money! 
+
+It might not be a bad idea to actually read these posts in reverse order.   
 
 ### Characteristics of the data 
 
@@ -198,4 +200,6 @@ Indicator columns with 0 or 1 were included, in case the QOO metrics couldn't be
 
 There are still many other ways to extract value from the Neo4J implementation. For example, implementing an [elo rating](https://en.wikipedia.org/wiki/Elo_rating_system) (as borrowed from chess) could result in a valuable datum for the state of each boxer during each match. But this was a good enough start and took me pretty far.
 
-Now that the data were all cleaned up ready to go, it was time to (finally!) get to the fun part...building some deep learning models.
+Now that the data were all cleaned up ready to go, it was time to (finally!) get to the fun part...building some deep learning models.  
+
+[Part 2: Modeling](http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html)
