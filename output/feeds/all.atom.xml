@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2017-10-09T00:00:00-07:00</updated><entry><title>Deep Learning for Sport Wagering Part 3 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html" rel="alternate"></link><published>2017-10-09T00:00:00-07:00</published><updated>2017-10-09T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-10-09:/deep-learning-for-sport-wagering-part-3-of-3.html</id><summary type="html">&lt;p&gt;Predicting&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 3: Prediction and Evaluation&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matt O'Brien (dot) Me</title><link href="http://mattobrien.me/" rel="alternate"></link><link href="http://mattobrien.me/feeds/all.atom.xml" rel="self"></link><id>http://mattobrien.me/</id><updated>2018-01-10T00:00:00-08:00</updated><entry><title>Improve your defense! Eat donuts and learn to Pole Vault!</title><link href="http://mattobrien.me/improve-your-defense-eat-donuts-and-learn-to-pole-vault.html" rel="alternate"></link><published>2018-01-10T00:00:00-08:00</published><updated>2018-01-10T00:00:00-08:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2018-01-10:/improve-your-defense-eat-donuts-and-learn-to-pole-vault.html</id><summary type="html">&lt;p&gt;Fosberry Flop and muay thai&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Improve your defense! Eat donuts and learn to Pole Vault!&lt;/h4&gt;
+&lt;p&gt;I love sports because whatever works, works. If you can figure out a smarter way to do something, and you do it, then you win. Not to say that we need to go around trying to change and revolutionize everything all the time. It's more about looking closely at what already works and then shaving off tiny bits of wasted movement. This is usually how we get improvement.  In sport science, they frame this as the &lt;a href="https://en.wikipedia.org/wiki/Degrees_of_freedom_problem"&gt;degrees of freedom problem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One notorious example of someone getting better by shaving off wasted movement came from a guy in Oregon named &lt;a href="https://en.wikipedia.org/wiki/Dick_Fosbury"&gt;Dick Fosberry&lt;/a&gt;. Aside from having an awesome name, he also revolutionized the sport of pole vault. He figured out a technique that is now called the Fosberry Flop. He ultimately ended up winning the gold medal at the Olympics and setting a new record at the same time.  &lt;/p&gt;
+&lt;p&gt;I'll explain it here.   &lt;/p&gt;
+&lt;p&gt;First, read this three times:  &lt;/p&gt;
+&lt;p&gt;The shocking truth behind the Fosberry Flop is that our friend Dick Fosberry actually made his center of mass go UNDER the bar he was supposed to jump OVER.  &lt;/p&gt;
+&lt;p&gt;This should make no sense right now to anyone reading this, assuming you don't already know about the Fosberry Flop. But I assure you, this is the kind of forehead slapping idea that makes perfect sense once it clicks. So bear with me and just look at the pretty pictures:  &lt;/p&gt;
+&lt;p&gt;Check out the black dot. That's the center of mass of a basketball, right?:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="basketball" src="https://github.com/mobbSF/blog/blob/master/images/fosberry/basketball.png?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="donut" src="https://github.com/mobbSF/blog/blob/master/images/fosberry/donut.png?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="half_donut" src="https://github.com/mobbSF/blog/blob/master/images/fosberry/half_donut.png?raw=true" /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    * Here's the center of mass of a donut
+    * Here's the center of mass of a half a donut
+* What if you bent over backwards, so you looked like a half a donut?
+* What if you could jump so that the bar passed between your body and your body's center of mass?
+    * If you could do this, you wouldn't have to jump as high to clear the bar. Meaning...you win the Olympics
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Main Point #2:
+* So what does that have to do with muay thai?
+    * First, check out a less useful way to not get kicked in the ribs
+        * Show the shittier way 
+            * The disadvantage is that you had to move your center of mass 
+                * It cost energy
+                * It cost time
+                * You can't attack back because you are out of range
+    * If Fosberry could get over the bar with his body in a donut shape, then you can avoid a kick by putting your body in a donut shape
+        * You can move your body around a stable center of mass
+        * Show the better way
+            * The advantage is that you con't have to move your center of mass
+                * It costs less energy
+                * It cost less time
+                * You can attack back right away because you are in range&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;what is Markdown?&lt;/h2&gt;
+&lt;p&gt;see &lt;a href="http://en.wikipedia.org/wiki/Markdown"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz allowing people "to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)".&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;h2&gt;usage&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Write markdown text in this textarea.&lt;/li&gt;
+&lt;li&gt;Click 'HTML Preview' button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h2&gt;markdown quick reference&lt;/h2&gt;
+&lt;h1&gt;headers&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;emphasis&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;strong&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;block quote&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;code (4 spaces indent)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href="http://wikipedia.org"&gt;links&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;changelog&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;17-Feb-2013 re-design&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2&gt;thanks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/evilstreak/markdown-js"&gt;markdown-js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="sport"></category></entry><entry><title>Deep Learning for Sport Wagering Part 3 of 3</title><link href="http://mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html" rel="alternate"></link><published>2017-10-09T00:00:00-07:00</published><updated>2017-10-09T00:00:00-07:00</updated><author><name>Matt O'Brien</name></author><id>tag:mattobrien.me,2017-10-09:/deep-learning-for-sport-wagering-part-3-of-3.html</id><summary type="html">&lt;p&gt;Predicting&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Part 3: Prediction and Evaluation&lt;/h4&gt;
 &lt;p&gt;&lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-1-of-3.html"&gt;Part 1: Characteristics of the dataset&lt;/a&gt;&lt;br /&gt;
 &lt;a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html"&gt;Part 2: Modeling&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I considered one major betting strategy during this final phase of the project. It is as follows:  &lt;/p&gt;
