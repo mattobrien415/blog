@@ -1,6 +1,9 @@
-# Improve your defense! Eat donuts and learn to Pole Vault!
+Title:  Improve your defense! Eat donuts and learn to Pole Vault!
+Date: 2018-01-10
+Tags: sport
+Summary: Fosberry Flop and muay thai
 
-
+#### Improve your defense! Eat donuts and learn to Pole Vault!
 
 I love sports because whatever works, works. If you can figure out a smarter way to do something, and you do it, then you win. Not to say that we need to go around trying to change and revolutionize everything all the time. It's more about looking closely at what already works and then shaving off tiny bits of wasted movement. This is usually how we get improvement.  In sport science, they frame this as the [degrees of freedom problem](https://en.wikipedia.org/wiki/Degrees_of_freedom_problem).
 
@@ -17,7 +20,13 @@ This should make no sense right now to anyone reading this, assuming you don't a
 Check out the black dot. That's the center of mass of a basketball, right?:
 
 
-![basketball](/Users/matt/Dropbox/blog/images/fosberry/basketball.png)
+![basketball](https://github.com/mobbSF/blog/blob/master/images/fosberry/basketball.png?raw=true)
+
+
+![donut](https://github.com/mobbSF/blog/blob/master/images/fosberry/donut.png?raw=true)
+
+
+![half_donut](https://github.com/mobbSF/blog/blob/master/images/fosberry/half_donut.png?raw=true)
 
         * Here's the center of mass of a donut
         * Here's the center of mass of a half a donut
