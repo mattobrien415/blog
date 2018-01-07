@@ -6,32 +6,32 @@
 &lt;p&gt;First, read this three times:  &lt;/p&gt;
 &lt;p&gt;The shocking truth behind the Fosberry Flop is that our friend Dick Fosberry actually made his center of mass go UNDER the bar he was supposed to jump OVER.  &lt;/p&gt;
 &lt;p&gt;This should make no sense right now to anyone reading this, assuming you don't already know about the Fosberry Flop. But I assure you, this is the kind of forehead slapping idea that makes perfect sense once it clicks. So bear with me and just look at the pretty pictures:  &lt;/p&gt;
-&lt;p&gt;Check out the black dot. That's the center of mass of a basketball, right?:&lt;/p&gt;
+&lt;h4&gt;Check out the black dot. That's the center of mass of a basketball, right?&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="basketball" src="https://github.com/mobbSF/blog/blob/master/images/fosberry/basketball.png?raw=true" /&gt;&lt;/p&gt;
+&lt;h4&gt;Check out the black dot. That's the center of mass of a donut, right?&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="donut" src="https://github.com/mobbSF/blog/blob/master/images/fosberry/donut.png?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;Your mind should be blown because you just admitted that the center of mass of a donut is not actually &lt;strong&gt;inside&lt;/strong&gt; the donut.&lt;/p&gt;
+&lt;h4&gt;Check out the black dot. That's the center of mass of a half of a donut, right?:&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="half_donut" src="https://github.com/mobbSF/blog/blob/master/images/fosberry/half_donut.png?raw=true" /&gt;&lt;/p&gt;
+&lt;h4&gt;Now, What if you bent over backwards, so you looked like a half a donut? Then jumped over the bar?&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="fosberry" src="https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.gif?raw=true" /&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    * Here's the center of mass of a donut
-    * Here's the center of mass of a half a donut
-* What if you bent over backwards, so you looked like a half a donut?
-* What if you could jump so that the bar passed between your body and your body's center of mass?
-    * If you could do this, you wouldn't have to jump as high to clear the bar. Meaning...you win the Olympics
+&lt;p&gt;Yes, Fosberry jumped over the bar, while his center of mass went &lt;strong&gt;under&lt;/strong&gt; the bar. Before he figured this out, his center of mass had to go &lt;strong&gt;over&lt;/strong&gt; the bar.
+Meaning...he won the Olympic gold.  &lt;/p&gt;
+&lt;p&gt;So what does that have to do with muay thai?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* First, check out a less useful way to not get kicked in the ribs
+    * Show the shittier way 
+        * The disadvantage is that you had to move your center of mass 
+            * It cost energy
+            * It cost time
+            * You can't attack back because you are out of range
+* If Fosberry could get over the bar with his body in a donut shape, then you can avoid a kick by putting your body in a donut shape
+    * You can move your body around a stable center of mass
+    * Show the better way
+        * The advantage is that you con't have to move your center of mass
+            * It costs less energy
+            * It cost less time
+            * You can attack back right away because you are in range
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Main Point #2:
-* So what does that have to do with muay thai?
-    * First, check out a less useful way to not get kicked in the ribs
-        * Show the shittier way 
-            * The disadvantage is that you had to move your center of mass 
-                * It cost energy
-                * It cost time
-                * You can't attack back because you are out of range
-    * If Fosberry could get over the bar with his body in a donut shape, then you can avoid a kick by putting your body in a donut shape
-        * You can move your body around a stable center of mass
-        * Show the better way
-            * The advantage is that you con't have to move your center of mass
-                * It costs less energy
-                * It cost less time
-                * You can attack back right away because you are in range&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;what is Markdown?&lt;/h2&gt;
 &lt;p&gt;see &lt;a href="http://en.wikipedia.org/wiki/Markdown"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;

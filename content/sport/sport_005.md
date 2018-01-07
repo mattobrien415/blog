@@ -35,64 +35,43 @@ Your mind should be blown because you just admitted that the center of mass of a
 
 #### Now, What if you bent over backwards, so you looked like a half a donut? Then jumped over the bar?
 
-
-
 ![fosberry](https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.gif?raw=true)
 
+
 Yes, Fosberry jumped over the bar, while his center of mass went **under** the bar. Before he figured this out, his center of mass had to go **over** the bar.
-Meaning...he won the Olympic gold.  
+Meaning...he could move the bar up higher. Easy Olympic gold.  
 
 
-So what does that have to do with muay thai?
+So what does any of this have to do with muay thai? And defense?
+
+First, let's see what we are trying to optimize. I call this the 'Non-Donut Method'. The Non-Donut-Method (NDM?) is pretty straightforward. When someone kicks you, step back:
 
 
-    * First, check out a less useful way to not get kicked in the ribs
-        * Show the shittier way 
-            * The disadvantage is that you had to move your center of mass 
-                * It cost energy
-                * It cost time
-                * You can't attack back because you are out of range
-    * If Fosberry could get over the bar with his body in a donut shape, then you can avoid a kick by putting your body in a donut shape
-        * You can move your body around a stable center of mass
-        * Show the better way
-            * The advantage is that you con't have to move your center of mass
-                * It costs less energy
-                * It cost less time
-                * You can attack back right away because you are in range
+This is all fine and dandy, but look at the black dots. 
+
+You had to move your center of mass, twice. Once to get out of the way, and once to get back where you started. 
+
+* It cost energy
+* It cost time
+* You can't attack back because you are out of range
+
+Now let's see the Half A Donut Method.  
+
+If Fosberry could get over the bar with his body in a donut shape, then you should consider avoiding a kick by putting your body in a donut shape too. See the image below:
 
 
+This is exactly the same thing that Fosberry did with the bar, but now the other guy's shin is going through your center of mass. And missing.
+
+* The advantage is that you con't have to move your center of mass
+* It costs less energy
+* It cost less time
+* You can attack back right away because you are in range  
+
+I recommend to anyone at any level to add the Half A Donut Method to their shadowboxing and sparring. It's too easy, it makes too much sense, and it's got a ton of bang for the buck.
+
+Once you start to catch on, you see it happening all over the place. Here's Mayweather doing something similar versus Canelo:  
 
 
-----
-## what is Markdown?
-see [Wikipedia](http://en.wikipedia.org/wiki/Markdown)
+![mayweather](https://github.com/mobbSF/blog/blob/master/images/fosberry/mayweather.png?raw=true)
 
-> Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz allowing people "to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)".
-
-----
-## usage
-1. Write markdown text in this textarea.
-2. Click 'HTML Preview' button.
-
-----
-## markdown quick reference
-# headers
-
-*emphasis*
-
-**strong**
-
-* list
-
->block quote
-
-    code (4 spaces indent)
-[links](http://wikipedia.org)
-
-----
-## changelog
-* 17-Feb-2013 re-design
-
-----
-## thanks
-* [markdown-js](https://github.com/evilstreak/markdown-js)
+Thanks for reading this far. I sincerely hope the idea of thinking critically about training is something that resonates with you, and you got some measure of use out of it. Please comment below!
