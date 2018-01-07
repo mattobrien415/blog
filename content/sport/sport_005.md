@@ -3,7 +3,7 @@ Date: 2018-01-10
 Tags: sport
 Summary:  Fosbury Flop and muay thai
 
-#### Improve your defense! Eat donuts and learn to Pole Vault!
+#### This post originally appeared 
 
 I love sports because whatever works, works. If you can figure out a smarter way to do something, and you do it, then you win. Not to say that we need to go around trying to change and revolutionize everything all the time. It's more about looking closely at what already works and then shaving off tiny bits of wasted movement. This is usually how we get improvement.  In sport science, they frame this as the [degrees of freedom problem](https://en.wikipedia.org/wiki/Degrees_of_freedom_problem).
 
@@ -13,7 +13,7 @@ One notorious example of someone getting better by shaving off wasted movement c
 
 First, read this three times:  
 
-The shocking truth behind the Fosbury Flop is that our friend Dick Fosbury actually made his center of mass go UNDER the bar he was supposed to jump OVER.  
+The shocking truth behind the Fosbury Flop is that our friend Dick Fosbury actually made his center of mass go *UNDER* the bar he was supposed to jump *OVER*. 
 
 This should make no sense right now to anyone reading this, assuming you don't already know about the Fosbury Flop. But I assure you, this is the kind of forehead slapping idea that makes perfect sense once it clicks. So bear with me and just look at the pretty pictures:  
 
@@ -38,9 +38,8 @@ Your mind should be blown because you just admitted that the center of mass of a
 ![fosberry](https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.gif?raw=true)
 
 
-Yes, Fosbury jumped over the bar, while his center of mass went **under** the bar. Before he figured this out, his center of mass had to go **over** the bar.
-Meaning...he could move the bar up higher. Easy Olympic gold.  
-
+Yes, Fosbury figured out that he could jump over the bar, while his center of mass went **under** the bar, allowing him to maximize the return on his effort. Prior to this discovery, it was assumed the center of mass always had to go **over** the bar.
+Meaning...he could move the bar up higher than anyone else, and still clear it. Easy Olympic gold. 
 
 So what does any of this have to do with muay thai? And defense?
 
@@ -69,9 +68,9 @@ This is exactly the same thing that Fosbury did with the bar, but now the other 
 
 I recommend to anyone at any level to add the Half A Donut Method to their shadowboxing and sparring. It's too easy, it makes too much sense, and it's got a ton of bang for the buck.
 
-Once you start to catch on, you see it happening all over the place. Here's Mayweather doing something similar versus Canelo:  
+Once you start to catch on, you see it happening all over the place. Here's Mayweather doing something similar versus Canelo:
 
 
 ![mayweather](https://github.com/mobbSF/blog/blob/master/images/fosberry/mayweather.png?raw=true)
 
-Thanks for reading this far; I hope it was worth it...and hope folks, no matter what level, feel comfortable thinking critically about training. Please comment below!
+Thanks for reading this far; I hope it was worth it...and hope folks, no matter what level at your training you may be, feel comfortable thinking critically about what you do in the gym. Please comment below!
