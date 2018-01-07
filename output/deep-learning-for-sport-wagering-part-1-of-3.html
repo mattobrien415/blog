@@ -75,7 +75,7 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
       
       <div class="span8">
 	<h4>Part 1: Characteristics of the dataset</h4>
-<p><a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">Part 2 Modeling</a><br />
+<p><a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">Part 2: Modeling</a><br />
 <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html">Part 3: Prediction and Evaluation</a>  </p>
 <p>Not long ago, I was reading Nate Silver's blog, where there was some discussion about basketball. In particular, my hometown's team, the Golden State Warriors. At the time of the writing, the Warriors were surging towards the status of present-day dynasty, and the blog post was examining ways that the team performed that were revolutionary in the sport.</p>
 <p>One particular line in <a href="https://fivethirtyeight.com/features/how-the-golden-state-warriors-are-breaking-the-nba/">the blog post</a> stuck out for me: "It’s as if at some point in the past few years, the Warriors solved contemporary basketball..."</p>
@@ -91,7 +91,8 @@ Filed under <a href="http://mattobrien.me/category/deep-learning.html">deep lear
 3) <a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-3-of-3.html">Prediction and Evaluation</a>  </p>
 <p>Part 1 is fairly dry and reflect the laborous truth that the majority of data science work is often dominated by collection and transforming data.  </p>
 <p>Part 2 is short and has some interesting forays into feature engineering vis-à-vis graph databases.  </p>
-<p>Part 3 is the most exciting, since we finally get to talk money!  </p>
+<p>Part 3 is the most exciting, since we finally get to talk money! </p>
+<p>It might not be a bad idea to actually read these posts in reverse order.   </p>
 <h3>Characteristics of the data</h3>
 <p>The project was built on a very substantial dataset. The were two major sources of data. First, I aquired metadata on 373,415 individual boxers. Second, I had a collection of over 3.5 million fights (3,529,624 to be exact). Both were imported into MySQL tables. Interestingly, the dataset spanned the entire history of the sport. It was really fun to dig into. There were fighters from every corner of the globe, competing from the very beginning of the sport to the present day. There were boxers in every weight class from minimumweight upward, possessing all skill levels. They came in all ages, and exhibited all levels of success. Casually perusing revealed some quite obscure fighters: a boxer from Accra, Ghana, who fought only once back in 1966 (unfortunately losing by knockout). There was data on all the modern day multimillionaire champions. There were was, for example, <a href="https://en.wikipedia.org/wiki/Wladimir_Klitschko">Wladamir Klitchko</a>, nicknamed 'Dr Steelhammer.' The dataset definitely possessed depth. </p>
 <p>Looking specifically at the breadth of features for the metadata on each fighter, I had:</p>
@@ -193,7 +194,8 @@ Because if during that same time, another boxer (say P2) was battling top-qualit
 <p>After setting a QOO score for all fights on the nodes in Neo4J, it was easy to put together another quick and dirty metric: QOOP, which for lack of better nomenclature, is 'Quality of opposition prime'. Here, I just took the mean of all a boxer's opponents' QOOs and wrote it to the record node.</p>
 <p>Indicator columns with 0 or 1 were included, in case the QOO metrics couldn't be built. This could happen if, say, a fight was a boxer's debut.</p>
 <p>There are still many other ways to extract value from the Neo4J implementation. For example, implementing an <a href="https://en.wikipedia.org/wiki/Elo_rating_system">elo rating</a> (as borrowed from chess) could result in a valuable datum for the state of each boxer during each match. But this was a good enough start and took me pretty far.</p>
-<p>Now that the data were all cleaned up ready to go, it was time to (finally!) get to the fun part...building some deep learning models.</p>
+<p>Now that the data were all cleaned up ready to go, it was time to (finally!) get to the fun part...building some deep learning models.  </p>
+<p><a href="http://www.mattobrien.me/deep-learning-for-sport-wagering-part-2-of-3.html">Part 2: Modeling</a></p>
 	<hr />
       </div>
     </div>
