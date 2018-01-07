@@ -29,7 +29,7 @@ This should make no sense right now to anyone reading this, assuming you don't a
 
 Your mind should be blown because you just admitted that the center of mass of a donut is not actually **inside** the donut.
 
-#### Check out the black dot. That's the center of mass of a donut, after we cut it up, right?:
+#### Check out the black dot. That's the center of mass of a half of a donut, after we cut off the bottom, right?
 
 ![half_donut](https://github.com/mobbSF/blog/blob/master/images/fosberry/half_donut.png?raw=true)
 
@@ -45,8 +45,7 @@ So what does any of this have to do with muay thai? And defense?
 
 First, let's see what we are trying to optimize. I call this the 'Non-Donut Method'. The Non-Donut-Method (NDM?) is pretty straightforward. When someone kicks you, step back:
 
-
-This is all fine and dandy, but look at the black dots. 
+This is all fine and good, but could be better. Look at the black dots. 
 
 You had to move your center of mass, twice. Once to get out of the way, and once to get back where you started. 
 
@@ -74,4 +73,4 @@ Once you start to catch on, you see it happening all over the place. Here's Mayw
 ![mayweather](https://github.com/mobbSF/blog/blob/master/images/fosberry/mayweather.png?raw=true)
 
 I'm going to wrap it up because I want to keep this short. 
-Thanks for reading; I hope it was worth it...and hope folks, no matter what level at your training you may be, feel comfortable thinking critically about what you do in the gym. Please comment below!
+Thanks for reading; I hope it was worth it. And hope that no matter what level at your training you may be, you feel comfortable thinking critically about what you do in the gym. Please comment below!
