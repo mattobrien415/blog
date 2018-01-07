@@ -28,7 +28,7 @@ Check out the black dot. That's the center of mass of a basketball, right?:
 
 ![half_donut](https://github.com/mobbSF/blog/blob/master/images/fosberry/half_donut.png?raw=true)
 
-![fosberry](https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.png?raw=true)
+![fosberry](https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.gif?raw=true)
 
         * Here's the center of mass of a donut
         * Here's the center of mass of a half a donut
