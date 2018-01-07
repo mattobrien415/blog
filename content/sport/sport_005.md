@@ -17,26 +17,35 @@ The shocking truth behind the Fosberry Flop is that our friend Dick Fosberry act
 
 This should make no sense right now to anyone reading this, assuming you don't already know about the Fosberry Flop. But I assure you, this is the kind of forehead slapping idea that makes perfect sense once it clicks. So bear with me and just look at the pretty pictures:  
 
-Check out the black dot. That's the center of mass of a basketball, right?:
+#### Check out the black dot. That's the center of mass of a basketball, right?
 
 
 ![basketball](https://github.com/mobbSF/blog/blob/master/images/fosberry/basketball.png?raw=true)
 
+#### Check out the black dot. That's the center of mass of a donut, right?  
+
 
 ![donut](https://github.com/mobbSF/blog/blob/master/images/fosberry/donut.png?raw=true)
 
+Your mind should be blown because you just admitted that the center of mass of a donut is not actually **inside** the donut.
+
+#### Check out the black dot. That's the center of mass of a half of a donut, right?:
 
 ![half_donut](https://github.com/mobbSF/blog/blob/master/images/fosberry/half_donut.png?raw=true)
 
+#### Now, What if you bent over backwards, so you looked like a half a donut? Then jumped over the bar?
+
+
+
 ![fosberry](https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.gif?raw=true)
 
-        * Here's the center of mass of a donut
-        * Here's the center of mass of a half a donut
-    * What if you bent over backwards, so you looked like a half a donut?
-    * What if you could jump so that the bar passed between your body and your body's center of mass?
-        * If you could do this, you wouldn't have to jump as high to clear the bar. Meaning...you win the Olympics
- Main Point #2:
-* So what does that have to do with muay thai?
+Yes, Fosberry jumped over the bar, while his center of mass went **under** the bar. Before he figured this out, his center of mass had to go **over** the bar.
+Meaning...he won the Olympic gold.  
+
+
+So what does that have to do with muay thai?
+
+
     * First, check out a less useful way to not get kicked in the ribs
         * Show the shittier way 
             * The disadvantage is that you had to move your center of mass 
