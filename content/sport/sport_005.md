@@ -29,15 +29,13 @@ This should make no sense right now to anyone reading this, assuming you don't a
 
 Your mind should be blown because you just admitted that the center of mass of a donut is not actually **inside** the donut.
 
-#### Check out the black dot. That's the center of mass of a half of a donut, right?:
+#### Check out the black dot. That's the center of mass of a donut, after we cut it up, right?:
 
 ![half_donut](https://github.com/mobbSF/blog/blob/master/images/fosberry/half_donut.png?raw=true)
 
 #### Now, What if you bent over backwards, so you looked like a half a donut? Then jumped over the bar?
 
 ![fosberry](https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.gif?raw=true)
-
-
 
 
 Yes, Fosbury figured out that he could jump over the bar, while his center of mass went **under** the bar, allowing him to maximize the return on his effort. Prior to this discovery, it was assumed the center of mass always had to go **over** the bar.
