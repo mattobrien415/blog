@@ -68,9 +68,10 @@ This is exactly the same thing that Fosbury did with the bar, but now the other 
 
 I recommend to anyone at any level to add the Half A Donut Method to their shadowboxing and sparring. It's too easy, it makes too much sense, and it's got a ton of bang for the buck.
 
-Once you start to catch on, you see it happening all over the place. Here's Mayweather doing something similar versus Canelo:
+Once you start to catch on, you see it happening all over the place. Here's Mayweather doing something similar versus Canelo. Mayweather is evading the punch and limiting how far back he needs to move his feet (and center of mass):
 
 
 ![mayweather](https://github.com/mobbSF/blog/blob/master/images/fosberry/mayweather.png?raw=true)
 
-Thanks for reading this far; I hope it was worth it...and hope folks, no matter what level at your training you may be, feel comfortable thinking critically about what you do in the gym. Please comment below!
+I'm going to wrap it up because I want to keep this short. 
+Thanks for reading; I hope it was worth it...and hope folks, no matter what level at your training you may be, feel comfortable thinking critically about what you do in the gym. Please comment below!
