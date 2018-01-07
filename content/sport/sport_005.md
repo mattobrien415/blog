@@ -38,6 +38,8 @@ Your mind should be blown because you just admitted that the center of mass of a
 ![fosberry](https://github.com/mobbSF/blog/blob/master/images/fosberry/fosberry.gif?raw=true)
 
 
+
+
 Yes, Fosbury figured out that he could jump over the bar, while his center of mass went **under** the bar, allowing him to maximize the return on his effort. Prior to this discovery, it was assumed the center of mass always had to go **over** the bar.
 Meaning...he could move the bar up higher than anyone else, and still clear it. Easy Olympic gold. 
 
