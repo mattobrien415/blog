@@ -46,6 +46,9 @@ So what does any of this have to do with muay thai? And defense?
 
 First, let's see what we are trying to optimize. We are trying to optimize a pretty straightforward response to a body kick. Naturally, we asume we should step back to get out of the way:
 
+![pre-donut-gif](https://github.com/mobbSF/blog/blob/master/images/fosberry/pre-donut-gif.gif?raw=true)
+
+
 This is all fine and good, but could be better. Look at the black dots. 
 
 You had to move your center of mass, two times. Once to get out of the way, and then once to get back where you started. 
@@ -58,6 +61,7 @@ Now let's see the Donut Defense.
 
 If Fosbury could get over the bar with his body in a donut shape, then you should consider avoiding a kick by putting your body in a donut shape too. See the images below:
 
+![half-donut-gif](https://github.com/mobbSF/blog/blob/master/images/fosberry/half-donut-gif.gif?raw=true)
 
 This is exactly the same thing that Fosbury did with the bar, but now the other guy's shin is going through your center of mass. And missing.
 
