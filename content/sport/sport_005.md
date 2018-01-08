@@ -13,7 +13,7 @@ I'll explain the Fosbury Flop here. Then we'll steal the idea. We'll apply it to
 
 First, read this next paragraph three times, because it sounds like gibberish at first:  
 
-The shocking truth behind the Fosbury Flop is that our friend Dick Fosbury actually figured out how to made his center of mass go *UNDER* the bar at the exact same time as he was jumping *OVER* the bar. 
+The shocking truth behind the Fosbury Flop is that our friend Dick Fosbury actually figured out how to make his center of mass go *UNDER* the bar at the exact same time as he was jumping *OVER* the bar. 
 
 This should make no sense right now to anyone reading this, assuming you don't already know about the Fosbury Flop. But I assure you, this is the kind of forehead slapping idea that makes perfect sense once it clicks. So bear with me and just look at these pretty pictures:  
 
