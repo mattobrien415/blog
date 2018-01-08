@@ -54,7 +54,8 @@ This is all fine and good, but could be better.
 The shorter guy had to move his center of mass, two times. Once to get out of the way, and then once to get back where he started. 
 
 * This costs energy
-* This takes time
+* This takes time  
+
 As a result, you can't counterattack, because you spent all your time and energy getting out of the way.
 
 Now let's see the Donut Defense.
@@ -69,6 +70,7 @@ The advantage of *not* having to move your center of mass:
 
 * This costs less energy
 * This takes less time
+
 As a result, you can counterattack immediately because you are in position to do so.
 
 I recommend to anyone at any level to add the Donut Defense to their shadowboxing and sparring. It's super simple. It's a good alternative to checking and catching. And it just makes a ton of sense from both theortical and practical perspectives.
