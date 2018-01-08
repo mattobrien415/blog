@@ -49,9 +49,9 @@ First, let's see what we are trying to optimize. We are trying to optimize a pre
 ![pre-donut-gif](https://github.com/mobbSF/blog/blob/master/images/fosberry/pre-donut-gif.gif?raw=true)
 
 
-This is all fine and good, but could be better. Look at the black dots. 
+This is all fine and good, but could be better. 
 
-You had to move your center of mass, two times. Once to get out of the way, and then once to get back where you started. 
+The shorter guy had to move his center of mass, two times. Once to get out of the way, and then once to get back where he started. 
 
 * This costs energy
 * This takes time
@@ -63,12 +63,12 @@ If Fosbury could get over the bar with his body in a donut shape, then you shoul
 
 ![half-donut-gif](https://github.com/mobbSF/blog/blob/master/images/fosberry/half-donut-gif.gif?raw=true)
 
-This is exactly the same thing that Fosbury did with the bar, but now the other guy's shin is going through your center of mass. And missing.
+This is exactly the same thing that Fosbury did with the bar, but now the shorter guy's shin is going through the tall guy's center of mass. And missing.
 
 The advantage of *not* having to move your center of mass: 
 
-* It costs less energy
-* It takes less time
+* This costs less energy
+* This takes less time
 As a result, you can counterattack immediately because you are in position to do so.
 
 I recommend to anyone at any level to add the Donut Defense to their shadowboxing and sparring. It's super simple. It's a good alternative to checking and catching. And it just makes a ton of sense from both theortical and practical perspectives.
