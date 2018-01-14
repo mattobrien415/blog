@@ -5,11 +5,11 @@ Summary:  Fosbury Flop and muay thai
 
 #### This post originally appeared on XXX
 
-I love sports because whatever works, works. If you can figure out a smarter way to do something, and you do it, your odds of winning go up. This isn't to say that we need to run around trying to change and revolutionize everything. It's more about looking closely at what already works and then shaving off tiny bits of wasted movement. This is usually how improvement happens.  In sport science, they frame this as the [degrees of freedom problem](https://en.wikipedia.org/wiki/Degrees_of_freedom_problem).
+The purpose of this post is to dig into how and why the Donut Defense in muay thai works. Basically, the Donut Defense is a way to slip a body kick. It turns out that aside from being simple and effective, the Donut Defense is based on solid sport science. And it all started with a guy from Oregon named [Dick Fosbury](https://en.wikipedia.org/wiki/Dick_Fosbury). I promise this will all make sense in about 4 minutes after you are done reading this.
 
-One notorious example of someone getting better by shaving off wasted movement came from a guy in Oregon named [Dick Fosbury](https://en.wikipedia.org/wiki/Dick_Fosbury). Aside from having an awesome name, he also revolutionized the sport of pole vault. He figured out a technique that is now called the  Fosbury Flop. He ultimately ended up winning the gold medal at the Olympics and setting a new record simultaneously.  
+So who the hell is Dick Fosberry? Aside from having an awesome name, he revolutionized the sport of pole vault. He figured out a technique that is now called the  Fosbury Flop. He ultimately ended up winning the gold medal at the Olympics and setting a new record simultaneously.  
 
-I'll explain the Fosbury Flop here. Then we'll steal the idea. We'll apply it to defending against body kicks in muay thai. And we'll call our new version the Donut Defense, because that sounds like a fitting tribute to the Fosbury Flop.
+The gameplan for us is to first break down the Fosbury Flop. Then we'll steal the idea. We'll apply it to defending against body kicks in muay thai. And we'll call our new version the Donut Defense, because that sounds like a fitting tribute to the Fosbury Flop.
 
 First, read this next paragraph three times, because it sounds like gibberish at first:  
 
