@@ -9,7 +9,7 @@ The purpose of this post is to dig into how and why the Donut Defense in muay th
 
 So who the hell is Dick Fosberry? Aside from having an awesome name, he revolutionized the sport of pole vault. He figured out a technique that is now called the  Fosbury Flop. He ultimately ended up winning the gold medal at the Olympics and setting a new record simultaneously.  
 
-The gameplan for us is to first break down the Fosbury Flop. Then we'll steal the idea. We'll apply it to defending against body kicks in muay thai. And we'll call our new version the Donut Defense, because that sounds like a fitting tribute to the Fosbury Flop.
+The gameplan for us is to first break down the Fosbury Flop3w. Then we'll steal the idea. We'll apply it to defending against body kicks in muay thai. And we'll call our new version the Donut Defense, because that sounds like a fitting tribute to the Fosbury Flop.
 
 First, read this next paragraph three times, because it sounds like gibberish at first:  
 
