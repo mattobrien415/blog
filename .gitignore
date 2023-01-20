@@ -4,7 +4,7 @@ pelicanconf_local.py
 output/
 #Python
 *.py[cod]
-
+.DS_Store
 # C extensions
 *.so
 
