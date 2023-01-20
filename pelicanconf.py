@@ -1,60 +1,33 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
+AUTHOR = "Matt O'Brien"
+SITENAME = 'mattobrien.me'
+SITEURL = ''
 
-PLUGIN_PATHS = ["pelican-plugins"]
+PATH = 'content'
 
-THEME = 'Flex'
-
-
-AUTHOR = u"Matt O'Brien"
-SITENAME = u"Matt O'Brien (dot) Me"
-SITEURL = 'http://www.mattobrien.me'
-
-DISQUS_SITENAME = "mattobrienme"
-
-PLUGINS = ["render_math"]
+THEME = "pelican-themes/Flex"
 
 TIMEZONE = 'America/Los_Angeles'
 
-DEFAULT_LANG = u'en'
-
-GOOGLE_ANALYTICS = 'UA-51519407-1'
-
+DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS =  (('Spencer Boucher', 'http://spencerboucher.com/'),
-          ('Trevor Stephens', 'http://trevorstephens.com/'),)
+LINKS = (('Pelican', 'https://getpelican.com/'),
+         ('Python.org', 'https://www.python.org/'),
+         ('Jinja2', 'https://palletsprojects.com/p/jinja/'),
+         ('You can modify those links in your config file', '#'),)
 
 # Social widget
+SOCIAL = (('You can add links in your config file', '#'),
+          ('Another social link', '#'),)
 
-TWITTER_USERNAME = 'digitizerSF'
-TWITTER_WIDGET_ID = '472464593332097024'
-
-SOCIAL = (('GitHub', 'https://github.com/mobbSF'),
-          ('LinkedIn', 'http://www.linkedin.com/pub/matt-o-brien/5/833/91b/'),
-          ('RSS', SITEURL + 'feeds/all.atom.xml'))
 DEFAULT_PAGINATION = 10
 
-
-# Static paths will be copied without parsing their contents
-STATIC_PATHS = ['images', 'extra']
-
-# Shift the installed location of a file
-EXTRA_PATH_METADATA = {
-    'extra/CNAME': {'path': 'CNAME'},
-}
-
-
-MARKDOWN = {
-    'extension_configs': {
-        'markdown.extensions.tables':{},
-    }
-}
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
